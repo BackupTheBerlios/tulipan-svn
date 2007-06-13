@@ -1,0 +1,429 @@
+/* 
+   Original CSS Template by gorotron
+   Download from the excellent http://openwebdesign.org
+   Adapted for Elgg by Curverider
+*/
+
+body {
+	background-image:url({{templatesroot}}Mandarin/images/bg1b.gif);
+	background-repeat:repeat-x;
+	background-color:#FC3;
+	margin:20px;
+	font-size: 80%;
+	padding:0;
+	text-align:center;
+}
+
+h1 {
+	font-size:130%;
+	font-weight:700;
+	margin:0;
+}
+
+h2 {
+	font-size:110%;
+	color:#F90;
+	margin:5px 0 5px 0;
+	font-weight:700;
+}
+
+h3 {
+	font-size:16px;
+	color:#369;
+	font-weight:700;
+	margin:0;
+	padding-bottom:5px;
+}
+
+p {
+	margin-top:5px;
+	padding-bottom:5px;
+	line-height:1.5em;
+}
+
+blockquote{
+	background: #EEE url({{templatesroot}}Default_Template/images/blockquote.png) no-repeat bottom left;
+	padding: 10px;
+	padding-bottom: 40px;
+	margin: 1em;
+}
+
+/*
+   TABLES IN ELGG
+*/
+
+td {
+  border:1px solid #eee;
+  padding:3px;
+  margin:0;
+}
+
+td h4, h3, h5 {
+  padding:0;
+  margin:0;
+}
+
+/* 
+   CONTAINER: WRAPS THE HEADER AND MAIN CONTENT AREA BELOW THE USER TOOLBAR
+*/
+
+#container {
+	font-family:Arial,Helvetica,sans-serif;
+	margin:0 auto;
+	width:800px;
+	padding:10px;
+	height:auto;
+	background-color:#FFF;
+	text-align:left;
+	overflow:auto;
+}
+
+/*
+   HEADER - CONTAINING THE LOGO SPACE AND SEARCHBAR
+*/
+
+#header {
+	width:800px;
+	height:100px;
+}
+
+#logo {
+	width:220px;
+	height:100px;
+	margin:0 10px 0 0;
+	background-image:url({{templatesroot}}Mandarin/images/leaf.gif);
+	float:left;
+}
+
+#logo h1 a {
+   font-size:1.1em;
+   text-decoration:none;
+   color:#fff;
+   padding:3px 0 0 5px;
+   margin:0;
+}   
+
+#search-header {
+	width:558px;
+	height:49px;
+	background:url({{templatesroot}}Mandarin/images/bg1c.gif) repeat-x;
+	float:left;
+	padding:50px 10px 0 0;
+	margin:0;
+	text-align:right;
+	color:#fff;
+}
+
+#search-header a {
+   color:#fff;
+}
+
+/* 
+   CONTENT-HOLDER: WRAPS THE MAIN PAGE CONTENT. THIS CAN INCLUDE
+   THE SINGLE PAGE LAYOUT AND THE SPLIT PANE (CONTENT AND SIDEBAR)
+*/
+
+#content-holder {
+	background:url({{templatesroot}}Mandarin/images/bg1.gif) repeat-y;
+	position:relative;
+	margin:10px 0 0 0;
+}
+
+/* 
+   VARIOUS LAYOUTS WITHIN CONTENT-HOLDER
+*/
+
+/* 
+   THE MAIN CONTENT AREA WHEN IT IS A SINGLE PAGE, NO SIDEBAR
+*/
+
+div#single-page {
+    margin: 0;
+    padding: 0 15px 0 0;
+    width:780px;
+    text-align: left;
+}
+
+/* 
+   THE MAIN CONTENT AREA WHEN THE SIDEBAR IS IN PLACE
+*/
+
+#splitpane-content {
+	float:right;
+	width:560px;
+	color:#666;
+	text-align:left;
+}
+
+/* 
+   SIDEBAR: THIS IS ONLY PRESENT WHEN SPLITPANE-CONTENT IS IN USE
+*/
+
+#splitpane-sidebar {
+	float:left;
+	background:#000 url({{templatesroot}}Mandarin/images/bg1c.gif) repeat-x;
+	color:#EAEAEA;
+	padding:4px;
+	margin:0;
+	width:212px;
+}
+
+/* 
+   THE SIDEBAR CONTENTS
+*/
+
+#splitpane-sidebar ul {
+   margin:0;
+   padding:0;
+}
+
+#splitpane-sidebar ul li {
+	margin:10px 0 20px 0;
+        padding-left: 5px;
+	list-style:none;
+}
+
+#splitpane-sidebar ul li a {
+	color:#F90;
+	text-decoration:none;
+	padding:10px 0 10px 0;
+	width:200px;
+	margin:0;
+}
+
+#splitpane-sidebar .userdetails a {
+        display:inline;
+}
+
+#splitpane-sidebar ul li a:hover {
+	trxt-decoration:underline;
+}
+
+div#splitpane-sidebar ul li ul li a {
+     padding:0 0 0 5px;
+}
+
+div#splitpane-sidebar h2 {
+    text-align:left;
+    border-bottom:1px solid #ccc;
+    color:#777;
+    font-size:0.9em;
+    width:200px;
+    margin:10px 0 10px 0;
+    padding:0;
+}
+
+/* the profile box located in the sidebar */
+
+#splitpane-sidebar #sidebar_user a {
+    border:none;
+    font-size:0.9em;
+}
+
+#splitpane-sidebar #sidebar_user a:hover {
+    background:none;
+    border:none;
+}
+
+#splitpane-sidebar #sidebar_user #icon img {
+    float:left;
+    margin:0 10px 10px 0;
+}
+
+#splitpane-sidebar td {
+   border:none;
+   padding:2px;
+}
+
+#clear {
+	clear:both;
+}
+
+/* 
+   FOOTER 
+*/
+
+div#footer {
+      clear: both;
+      padding-top:10px;
+	font:10px Arial,Helvetica,sans-serif;
+	color:#369;
+      text-align:center;
+}
+
+div#footer a {
+   color:#369;
+}
+
+div#footer p {
+   margin:10px 0 10px 0;
+}
+
+/*
+   SYSTEM MESSAGES 
+*/
+
+div#system-message{ 
+    border:1px solid #D3322A;
+    background:#F7DAD8;
+    color:#000;
+    padding:3px 50px;
+    margin:20px 20px 0 10px;
+}
+
+div#system-message p{
+   padding:0px;
+   margin:2px;
+ }
+
+/* 
+   SUB MENU OPTIONS: THESE WILL BE MOVED TO THE NEW SIDEBAR SHORTLY
+*/
+
+div#sub-menu p {
+  margin:10px 0 10px 0;
+  padding:3px;
+  background:#efefef;
+  border:1px solid #ccc;
+}
+
+/* 
+   BLOGGING ENGINE
+*/
+
+.weblog-post {
+   margin:20px 0 10px 0;
+}
+
+.user {
+  float:right;
+  margin:5px 0 10px 5px;
+  padding:0 0 10px 0;
+  text-align:center;
+  color:#fff;
+  height:120px;
+  background:#6CAE00;
+  width:110px;
+}
+
+.user a {
+  color:#fff;
+ }
+
+.user img {
+   border:0px solid #eee;
+   padding:2px;
+}
+
+.weblog_keywords p {
+  font-weight:bold;
+}
+
+.weblog-keywords p a {
+   margin:20px 0 0 0;
+   padding:0;
+   color:
+   clear:both;
+}
+
+.weblog-title {
+   margin:10px 0 10px 0;
+}
+
+.weblog-title h3 a {
+   text-decoration:none;
+   color:#555;
+   font-size:0.9em;
+ }
+
+.post {
+   margin:10px 0 10px 0;
+}
+
+.info {
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
+  margin:0 0 10px 0;
+  clear:both;
+  background:#000 url({{templatesroot}}Mandarin/images/bg1c.gif) repeat-x;
+}
+
+.info p { 
+   padding:0 0 0 10px;
+   margin:0;
+   color:#fff;
+}
+
+.info p a { 
+   font-size:0.9em;
+   color:#efefef;
+}
+
+.weblog_dateheader {
+    text-align:right;
+    textdecoration:underline;
+}
+
+/* this is the thin line between the actual post and comments */
+
+#comments-divide {
+   height:1px;
+   background:#ccc;
+}
+
+.comment-owner {
+    border:1px solid #eee;
+    background:#f2f7fb;
+    padding:5px;
+    margin:20px 0 5px 0;
+    height:50px;
+    width:500px;
+}
+
+.comment-owner img {
+   margin:0px 5px 0px 0px;
+   text-align:left;
+}
+
+.comment-owner a {
+   background:#f2f7fb;
+}
+
+.comment-owner p {
+  padding:0;
+  margin:0;
+}
+
+.dashboard_widget {
+
+                        border: 1px solid #BBDCE9; /*#95BDCD;*/
+                        margin-bottom: 5px;
+                        padding: 0px;
+
+                    }
+
+.dashboard_widget .dashboard_widget_content {
+                        padding: 10px;
+                    }
+
+.dashboard_widget .dashboard_widget_menu {
+                        display: block;
+                        background-color: #E2F0F6; /*#CBE5EF;*/
+                        margin: 0px;
+                        padding-left: 10px;
+                        border-top: 1px solid #BBDCE9;
+}
+
+.dashboard_widget  .dashboard_widget_content h2 {
+          border:0;
+          border-bottom:1px solid #eee;
+          padding:0;
+          margin:5px 0 10px 0;
+          color:#666;
+          background:#fff;
+}
+
+.dashboard_widget  .dashboard_widget_content h2 a {
+    background:url({{url}}_templates/icons/arrow.gif) no-repeat left;
+    padding:0 0 0 10px;
+}

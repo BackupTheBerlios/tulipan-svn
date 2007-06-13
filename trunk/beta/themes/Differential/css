@@ -1,0 +1,348 @@
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+Adapted for Elgg by Curverider
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+	font: normal 11px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #A4AFBD;
+}
+
+form {
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+	color: #FFFFFF;
+}
+
+h1 { font-size: 24px; }
+h2 { font-size: 20px; }
+h3 { font-size: 18px; }
+
+p, ul, ol, blockquote {
+	margin-top: 0;
+	padding-top: 0;
+	line-height: 18px;
+}
+
+a {
+	color: #95BA2E;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+/* 
+   CONTAINER: WRAPS THE HEADER AND MAIN CONTENT AREA BELOW THE USER TOOLBAR
+*/
+
+div#container {
+   background: #252D37 url({{templatesroot}}Differential/images/img1.gif) repeat-x;
+}
+
+
+/* Header */
+
+#header {
+	width: 904px;
+	height: 140px;
+	margin: 0 auto;
+	position:relative;
+}
+
+/* Logo */
+
+#logo {
+	float:left;
+}
+
+#logo h1 {
+	text-transform: lowercase;
+}
+
+#logo h2 {
+	text-transform: lowercase;
+	font-size: 12px;
+}
+
+#logo a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+/* Search */
+
+#search-header {
+	float: right;
+	padding: 40px 0 0 0;
+	color:#fff;
+}
+
+#search-header a {
+    color:#fff;
+}
+
+#textfield1 {
+	width: 175px;
+	background: #FFFFFF;
+	border: none;
+}
+
+#submit1 {
+	height: 19px;
+	background: #6F9303;
+	border: none;
+	text-transform: lowercase;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+/* Content */
+
+#content-holder {
+	width: 904px;
+	margin: 0 auto;
+}
+
+#splitpane-sidebar {
+	float: left;
+	width: 238px;
+}
+
+#splitpane-content {
+	float: right;
+	width: 646px;
+}
+
+/* Sidebar */
+
+#splitpane-sidebar ul {
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none;
+}
+
+#splitpane-sidebar ul li ul {
+    background: url({{templatesroot}}Differential/images/img4.gif) repeat-x left bottom;
+}
+
+#splitpane-sidebar li {
+	padding: 5px 0 7px 0;
+	border-top: 1px solid #3B495A;
+}
+
+#splitpane-sidebar h2 {
+	font-size: 15px;
+}
+
+/* Footer */
+
+#footer {
+	clear: both;
+	width: 904px;
+	margin: 0 auto;
+	background: url({{templatesroot}}Differential/images/img6.gif) repeat-x left top;
+}
+
+#footer p {
+	margin: 0;
+	padding: 10px 0 10px 0;
+	text-align: center;
+}
+
+/* 
+   ELGG SPECIFIC CLASSES 
+*/
+
+/*
+   TABLES IN ELGG
+*/
+
+td {
+  border:1px solid #eee;
+  padding:3px;
+  margin:0;
+}
+
+td h4, h3, h5 {
+  padding:0;
+  margin:0;
+}
+
+/* 
+  SIDEBAR ITEMS
+*/
+
+#me #icon {
+   float:left;
+   margin:5px 5px 5px 0;
+}
+
+#splitpane-sidebar td {
+    border:none;
+    padding:4px;
+}
+
+/* 
+   BLOGGING ENGINE
+*/
+
+.weblog-post {
+   margin:20px 0 10px 0;
+   background: url({{templatesroot}}Differential/images/img4.gif) repeat-x left bottom;
+}
+
+.user {
+  float:left;
+  margin:5px 10px 10px 0;
+  height:120px;
+  width:110px;
+}
+
+.user img {
+   border:1px solid #3B495A;
+   padding:2px;
+}
+
+.weblog_keywords p a {
+   margin:20px 0 0 0;
+   padding:0;
+   clear:both;
+}
+
+.weblog-title {
+   margin:10px 0 10px 105px;
+}
+
+.weblog-title h3 {
+   border:none;
+   font-size:15px;
+   color:#fff;
+}
+
+.weblog-title a {
+   color: #fff;
+   text-decoration:none;
+   font-size: 1.2em;
+}
+
+.post {
+   margin:10px 0 10px 105px;
+ }
+
+.info {
+  border-top:1px solid #3B495A;
+  margin:10px 0 10px 105px;
+  clear:both;
+}
+
+.info p { 
+   padding:0 0 0 10px;
+   margin:0;
+   color:#990000;
+}
+
+.info p a { 
+   padding:0;
+   margin:0;
+}
+
+.weblog_dateheader {
+padding:0 0 0 15px;
+text-align:right;
+}
+
+/* this is the thin line between the actual post and comments */
+
+#comments {
+  margin:0 30px 0 30px;
+}
+
+#comments h4 {
+  font-size:1.5em;
+  padding:0 0 0 15px;
+  margin:0 0 10px 0;
+}
+
+#comments ol li {
+  margin:0 30px 0 30px;
+}
+
+#comments-divide {
+   height:1px;
+   background:#eee;
+}
+
+.comment-owner {
+    border:1px solid #555;
+    background:#777;
+    padding:5px;
+    margin:20px 0 5px 0;
+    height:50px;
+    width:450px;
+}
+
+.comment-owner img {
+   margin:0px 5px 0px 0px;
+   text-align:left;
+}
+
+.comment-owner a {
+}
+
+.comment-owner p {
+  padding:0;
+  margin:0;
+  color:#fff;
+}
+
+/* END OF BLOGGING ENGINE */
+
+/* 
+   SUB MENU OPTIONS: THESE WILL BE MOVED TO THE NEW SIDEBAR SHORTLY
+*/
+
+div#sub-menu p {
+  margin:10px 0 10px 0;
+  padding:3px;
+  border:1px solid #3B495A;
+}
+
+div#sub-menu img {
+   padding:0;
+   margin:0;
+   float:left;
+ }
+
+/* END OF SUB-MENU DIV */
+
+/*
+   SYSTEM MESSAGES 
+*/
+
+div#system-message{ 
+    border:1px solid #D3322A;
+    background:#F7DAD8;
+    color:#000;
+    padding:3px 50px;
+    margin:20px 20px 0 20px;
+}
+
+div#system-message p{
+   padding:0px;
+   margin:2px;
+ }
+
+.current-blogs {
+   background:transparent;
+}
