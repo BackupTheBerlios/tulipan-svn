@@ -1,0 +1,9 @@
+<?xml-stylesheet type="text/xsl" href="http://latinpyme/web/rss/rssstyles.xsl"?>
+<rss version='2.0'   xmlns:dc='http://purl.org/dc/elements/1.1/'>
+    <channel xml:base='http://latinpyme/web/'>
+        <title><![CDATA[TRES ZERO : Activity]]></title>
+        <description><![CDATA[Activity for TRES ZERO, hosted on LatinPyme.]]></description>
+        <generator>Elgg</generator>
+        <link>http://latinpyme/web/</link>
+    </channel>
+</rss>
