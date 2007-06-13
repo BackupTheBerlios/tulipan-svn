@@ -1,0 +1,9 @@
+<?xml-stylesheet type="text/xsl" href="http://latinpyme/calzachile/weblog/rss/rssstyles.xsl"?>
+<rss version='2.0'   xmlns:dc='http://purl.org/dc/elements/1.1/'>
+    <channel xml:base='http://latinpyme/calzachile/weblog/'>
+        <title><![CDATA[Calzado -- Chile : Weblog]]></title>
+        <description><![CDATA[El weblog para Calzado -- Chile, alojado en LatinPyme.]]></description>
+        <generator>Elgg</generator>
+        <link>http://latinpyme/calzachile/weblog/</link>
+    </channel>
+</rss>

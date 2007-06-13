@@ -1,0 +1,13 @@
+<h1>Bienvenido {{name}}</h1>
+<p>
+    Esta es {{sitename}}, la comunidad de empresarios Pyme de Latinoamerica. Si lo desea, puede consultar <a href="{{url}}_weblog/everyone.php">lo que esta sucediendo</a> ahora mismo en nuestro sitio.
+</p>
+<p>
+    <a href="{{url}}search/tags.php">Encuentre a otros empresarios</a> con deseos de hacer negocios e intercambiar experiencias.
+</p>
+<p>
+    Este es un ejemplo de los empresarios que hacen parte de nuestra comunidad: {{randomusers}}
+</p>
+<p>
+    <a href="{{url}}{{username}}">Visite su perfil</a>! Su portafolio es la principal forma de que otros empresarios lo busquen. Usted puede editar su informacion de tal manera que puede escoger lo que desea compartir con los demas miembros de LatinPyme.
+</p>

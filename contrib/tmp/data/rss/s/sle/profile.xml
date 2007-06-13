@@ -1,0 +1,17 @@
+<?xml-stylesheet type="text/xsl" href="http://latinpyme/sle/rss/rssstyles.xsl"?>
+<rss version='2.0'   xmlns:dc='http://purl.org/dc/elements/1.1/'>
+    <channel xml:base='http://latinpyme/sle/'>
+        <title><![CDATA[Sociedad Latinoamericana de Exportadores : Actividad]]></title>
+        <description><![CDATA[Actividad para  Sociedad Latinoamericana de Exportadores, alojada en LatinPyme.]]></description>
+        <generator>Elgg</generator>
+        <link>http://latinpyme/sle/</link>        
+        <item>
+            <title><![CDATA[Inmersion Games en CNN]]></title>
+            <link>http://latinpyme/sle/weblog/4.html</link>
+            <guid isPermaLink="true">http://latinpyme/sle/weblog/4.html</guid>
+            <pubDate>Wed, 13 Jun 2007 17:11:25 GMT</pubDate>
+            <description><![CDATA[<p><embed class="VideoPlayback" type="application/x-shockwave-flash" src="http://www.youtube.com/v/UMIl_GmUFXg" width="240" height="200"/></p><p>&nbsp;</p><p>Inmersion Games en CNN</p>]]></description>
+        </item>
+        
+    </channel>
+</rss>
