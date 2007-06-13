@@ -1,9 +1,0 @@
-<?xml-stylesheet type="text/xsl" href="http://latinpyme/johanqnms/weblog/rss/rssstyles.xsl"?>
-<rss version='2.0'   xmlns:dc='http://purl.org/dc/elements/1.1/'>
-    <channel xml:base='http://latinpyme/johanqnms/weblog/'>
-        <title><![CDATA[Johan Quijano : Weblog]]></title>
-        <description><![CDATA[The weblog for Johan Quijano, hosted on LatinPyme.]]></description>
-        <generator>Elgg</generator>
-        <link>http://latinpyme/johanqnms/weblog/</link>
-    </channel>
-</rss>
