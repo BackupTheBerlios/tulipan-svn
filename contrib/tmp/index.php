@@ -1,5 +1,5 @@
 <?php
-
+    // Pagina principal
     global $CFG;
 
     require_once(dirname(__FILE__)."/includes.php");
