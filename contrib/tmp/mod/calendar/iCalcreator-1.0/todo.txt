@@ -1,0 +1,6 @@
+- support for iCal file parsing and component editing
+
+- continue writing using.html
+- more TESTs and bugreports !!!
+- support for xCal non standard properties.. . ??
+

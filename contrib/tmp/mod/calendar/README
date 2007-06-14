@@ -1,0 +1,77 @@
+
+Calendar 0.1-0.7
+Copyright (C) 2007 Ellen Davis
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation version 2.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+*****************************
+See INSTALL for installation instructions
+
+******************************* 
+Required PHP Classes, included:
+
+activecalendar - Active Calendar 1.2.0  PHP class
+    http://www.micronetwork.de/activecalendar/
+    used to create HTML for monthly calendar
+
+    activecalendar/source/activecalendar.php
+    activecalendar/data/js.php - Popup date picker
+
+iCalcreator 1.0
+ http://www.kigkonsult.se/iCalcreator/index.php
+ used to create .ics file in export funciion
+
+Files found in mod/calendar
+
+config.php - defines names for months and days
+
+lib.php - page setup and database initialization
+
+css - CSS for calendar
+
+actions.php - various functions used by calendar
+
+index.php - displays a monthly calendar with events as clickable links
+    "Your Calendar"  links to http://ELGGROOT/username/calendar/ which is changed to
+    http://ELGGROOT/mod/calendar/index.php/calendar_name=username by .htaccess mod_rewrite: 
+
+add.php - displays a form to enter information for an event, or adds the event to the database
+    http://ELGGROOT/mod/calendar/add.php?owner=2
+
+dayview.php - list all events for a particular day.  
+    Display all events for a particular day
+    http://ELGGROOT/mod/calendar/dayview.php?calendar_name=username&yearID=2007&monthID=2&dayID=1
+
+    Display a particular event
+    http://ELGGROOT/username/calendar/83.html is changed it 
+    http://ELGGROOT/mod/calendar/dayview.php?calendar_name=username&event_id=83
+
+export.php - create a .ics file for the event that the user can downlaod
+    http://ELGGROOT/mod/calendar/export.php?calendar_name=username&event_id=32
+
+edit.php - edit an event, or save the edits
+    http://ELGGROOT/mod/calendar/edit.php?calendar_name=username&event_id=32
+
+delete.php - delete an event (upon confirmation)
+    http://ELGGROOT/mod/calendar/delete.php?calendar_name=username&event_id=32
+
+archivesview.php - display a list of months/years that have events in them.  Each month is clickable.
+    http://ELGGROOT/mod/calendar/archiveview.php?calendar_name=ellen
+
+rss2.php - RSS feed
+    http://ELGGROOT/username/calendar/rss/ which is changed to 
+    http://ELGGROOT/mod/calendar/rss2.php?calendar_name=username by .htaccess
+
+user_info_menu.php  - Adds View Calendar to sidebar
+

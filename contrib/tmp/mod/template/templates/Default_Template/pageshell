@@ -5,7 +5,6 @@
 {{metatags}}
 </head>
 <body>
-{{toolbar}}
 <div id="container"><!-- open container which wraps the header, maincontent and sidebar --> 
 <div id="header"><!-- open div header -->
     <div id="header-inner" class="fixed">
@@ -16,6 +15,7 @@
 	{{searchbox}}
     </div>
 </div><!-- close div header -->
+{{toolbar}}
 <div id="content-holder"><!-- open content-holder div -->
     <div id="content-holder-inner" class="fixed">
 	<div id="splitpane-content"><!-- open splitpane-content div -->
@@ -34,8 +34,7 @@
     </div>
 </div><!-- close content-holder div --> 
 <div id="footer" class="fixed"><!-- start footer -->
-	<span style="color:#FF934B">{{sitename}}</span> <a href="{{url}}content/terms.php">Terms and conditions</a>&nbsp;|&nbsp;<a href="{{url}}content/privacy.php">Privacy Policy</a><br />
-<p>Original design by <a href="http://www.nodethirtythree.com/">NodeThirtyThree Design</a></p>
+	<span style="color:#FF934B">{{sitename}}</span> <a href="{{url}}content/terms.php">Términos y Condiciones</a>&nbsp;|&nbsp;<a href="{{url}}content/privacy.php">Póliza de Privacidad</a><br />
 	<a href="http://elgg.org/"><img src="{{url}}mod/template/icons/elgg_powered.png" title="Elgg powered" border="0" alt="Elgg powered" /></a>
 	<br />
 	{{perf}}
