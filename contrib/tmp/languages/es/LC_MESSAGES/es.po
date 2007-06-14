@@ -46,7 +46,7 @@ msgstr "El último mes"
 
 #: _activity/index.php:38
 msgid "Your recent messages"
-msgstr "Tus mensajes recientes"
+msgstr "Mis mensajes recientes"
 
 #: _activity/index.php:49
 msgid "Activity on weblog posts you have marked as interesting"
@@ -58,12 +58,12 @@ msgstr "Leer más"
 
 #: _activity/index.php:64
 msgid "your blog"
-msgstr "Tu blog"
+msgstr "Su blog"
 
 #: _activity/index.php:67
 #, php-format
 msgid "<b>You</b> commented on weblog post '%s' in %s:"
-msgstr "<b>Tus</b> comentarios a la entrada '%s' en el blog  %s:"
+msgstr "<b>Mis</b> comentarios a la entrada '%s' en el blog  %s:"
 
 #: _activity/index.php:69
 #, php-format
@@ -140,11 +140,11 @@ msgstr "Archivos parar %s, alojados en %s."
 
 #: _friends/friendsof.php:21 units/friends/friends_of_edit_wrapper.php:5
 msgid "Friends who have linked to you"
-msgstr "Contactos que tienen tu enlace"
+msgstr "Contactos que lo referencian"
 
 #: _friends/index.php:21 units/friends/friends_edit_wrapper.php:5
 msgid "Friends I have linked to"
-msgstr "Contactos con los que tengo enlace"
+msgstr "Contactos que referencio"
 
 #: _friends/requests.php:22 mod/friend/lib.php:38
 #: units/friends/user_friendship_requests.php:11
@@ -192,7 +192,7 @@ msgstr "Información de feeds"
 
 #: _rss/opml.php:16
 msgid "Feed subscriptions for %s"
-msgstr "Suscripciones para %s"
+msgstr "Miscripciones para %s"
 
 #: _rss/opml.php:35
 msgid "No subscriptions found"
@@ -338,7 +338,7 @@ msgid ""
 "Error! Your username must contain letters and numbers only, cannot be blank, "
 "and must be between 3 and 12 characters in length."
 msgstr ""
-"¡Error! Tu nombre de usuario sólo puede contener letras y números, no debe "
+"¡Error! Su nombre de usuario sólo puede contener letras y números, no debe "
 "dejarse en blanco, y tiene que oscilar entre 3 y 12 caracteres."
 
 #: auth/ldap/lib.php:118 units/communities/communities_actions.php:27
@@ -1019,7 +1019,7 @@ msgstr "Salir"
 
 #: lib/templates.php:474
 msgid "Your site picture"
-msgstr "Tu foto"
+msgstr "Su foto"
 
 #: lib/templates.php:481 profile/edit.php:105 profile/edit.php:112
 #: profile/profile.class.php:111 profile/profile.class.php:124
@@ -1048,11 +1048,11 @@ msgstr "No se hicieron cambios, por que no se seleccionó un área de cambio."
 
 #: lib/templates.php:637
 msgid "Your template has been updated."
-msgstr "Tu template ha sido actualizada."
+msgstr "Su template ha sido actualizada."
 
 #: lib/templates.php:652
 msgid "Your template was deleted."
-msgstr "Tu template fue borrada."
+msgstr "Su template fue borrada."
 
 #: lib/templates.php:779
 msgid "Create theme"
@@ -1216,7 +1216,7 @@ msgstr "Los cambios seleccionados afectaran:"
 
 #: lib/templates.php:1180
 msgid "Your personal space"
-msgstr "Tu espacio personal"
+msgstr "Su espacio personal"
 
 #: lib/templates.php:1193
 msgid "Community: "
@@ -1379,7 +1379,7 @@ msgid ""
 msgstr ""
 "El administrador ha activado el chequeo de virus para los archivos subidos "
 "pero no ha configurado algo correctamente. <br />No se ha subido el archivo "
-"correctamente. Tu administrador ha sido informado por lo que solucionará el "
+"correctamente. Su administrador ha sido informado por lo que solucionará el "
 "fallo. <br />Quizás debería intentar subir el archivo más tarde."
 
 #: lib/uploadlib.php:621
@@ -1463,7 +1463,7 @@ msgid ""
 "Error! Invalid password. Your passwords must match and be between 6 and 16 "
 "characters in length."
 msgstr ""
-"¡Error! Contraseña no válida. Tus contraseñas han de coincidir y deben "
+"¡Error! Contraseña no válida. Mis contraseñas han de coincidir y deben "
 "oscilar entre 6 y 16 caracteres."
 
 #: lms/join.php:60
@@ -1472,7 +1472,7 @@ msgstr "¡Error! Debes introducir tu nombre"
 
 #: lms/join.php:71
 msgid "Error! Your username and password does not match our record."
-msgstr "¡Error! Tu nombre de usuario y/o contraseña no son válidos."
+msgstr "¡Error! Su nombre de usuario y/o contraseña no son válidos."
 
 #: lms/join.php:76
 msgid "Fatal Error! Unknown action requested."
@@ -1584,7 +1584,7 @@ msgstr "Este dashboard está vacío."
 
 #: mod/adash/lib.php:19 mod/adash/lib.php:22
 msgid "Your Dashboard"
-msgstr "Tu dashboard"
+msgstr "Su dashboard"
 
 #: mod/adash/lib.php:27
 msgid "Add new item"
@@ -1640,7 +1640,7 @@ msgstr "Widgat movido."
 
 #: mod/blog/lib.php:17 mod/blog/lib.php:21
 msgid "Your Blog"
-msgstr "Tu Blog"
+msgstr "Mi Blog"
 
 #: mod/blog/lib.php:39
 msgid "Post a new entry"
@@ -1750,7 +1750,7 @@ msgstr "Carpeta por defecto para archivos"
 #: mod/file/lib.php:29 mod/file/lib.php:32
 #: units/files/files_user_info_menu.php:11
 msgid "Your Files"
-msgstr "Tus Archivos"
+msgstr "Mis Archivos"
 
 #: mod/file/lib.php:43
 msgid "Add a file or a folder"
@@ -1784,7 +1784,7 @@ msgstr "¿Estás seguro de que quieres borrar  esta carpeta definitivamente?"
 
 #: mod/friend/lib.php:15 mod/friend/lib.php:18
 msgid "Your Network"
-msgstr "Tu red"
+msgstr "Mis contactos"
 
 #: mod/friend/lib.php:30 units/friends/profile_friends.php:18
 msgid "Friends"
@@ -1808,7 +1808,7 @@ msgstr "Invitar a un amigo"
 
 #: mod/newsclient/lib.php:15 mod/newsclient/lib.php:18
 msgid "Your Resources"
-msgstr "Tus recursos"
+msgstr "Mis recursos"
 
 #: mod/newsclient/lib.php:31
 msgid "Publish to blog"
@@ -1862,7 +1862,7 @@ msgid ""
 "feed."
 msgstr ""
 "No puedes seleccionar un feed para este widget porque no estás suscrito a "
-"ningún feed. Haz clic en <a href=\"%s\">Tus Recursos</a> para suscribirte a "
+"ningún feed. Haz clic en <a href=\"%s\">Mis Recursos</a> para suscribirte a "
 "un feed."
 
 #: mod/photogallery/lib.php:9
@@ -1884,7 +1884,7 @@ msgstr "No hay archivo de imágenes"
 
 #: mod/profile/lib.php:16 mod/profile/lib.php:19
 msgid "Your Profile"
-msgstr "Tu Perfil"
+msgstr "Mi Perfíl"
 
 #: mod/profile/lib.php:31
 msgid "Change site picture"
@@ -2117,7 +2117,7 @@ msgstr "Me gustaría..."
 
 #: mod/profile/profile.config.php:370
 msgid "Your goals, separated with commas."
-msgstr "Tus objetivos, separados por comas."
+msgstr "Mis objetivos, separados por comas."
 
 #: mod/profile/profile.config.php:377
 #: units/profile/function_editfield_defaults.php:104
@@ -2273,7 +2273,7 @@ msgstr "Propietario del perfil"
 #: profile/profile.class.php:938 units/profile/profile_user_info.php:60
 #: units/weblogs/weblogs_user_info.php:9
 msgid "You"
-msgstr "Tú"
+msgstr "Mi Perfíl"
 
 #: profile/rss2.php:25
 #, php-format
@@ -2383,7 +2383,7 @@ msgstr ""
 #: units/admin/admin_actions.php:181
 #, php-format
 msgid "Your new %s account"
-msgstr "Tu nueva cuenta %s"
+msgstr "Su nueva cuenta %s"
 
 #: units/admin/admin_actions.php:182
 #, php-format
@@ -2731,7 +2731,7 @@ msgstr "Nueva %s petición de miembro"
 #, php-format
 msgid "%s is a private community. Your membership request has been declined."
 msgstr ""
-"%s es una comunidad privada. Tu solicitud de ingreso como miembro ha sido "
+"%s es una comunidad privada. Su solicitud de ingreso como miembro ha sido "
 "denegada."
 
 #: units/communities/communities_actions.php:89
@@ -2741,7 +2741,7 @@ msgstr "Dejaste %s."
 
 #: units/communities/communities_actions.php:96
 msgid "Your post has been added to the community weblog."
-msgstr "Tu post se ha añadido al weblog de la comunidad."
+msgstr "Su post se ha añadido al weblog de la comunidad."
 
 #: units/communities/communities_actions.php:112
 #, php-format
@@ -2836,11 +2836,11 @@ msgstr "Este usuario no modera actualmente ninguna comunidad."
 
 #: units/communities/communities_owned.php:18
 msgid "Owned communities"
-msgstr "Comunidades en propiedad"
+msgstr "Mis Comunidades"
 
 #: units/communities/community_memberships.php:20
 msgid "Community memberships"
-msgstr "Miembros de la comunidad"
+msgstr "Comunidades a las que pertenezco"
 
 #: units/communities/community_wiki.php:15
 msgid "Community Wiki"
@@ -3281,7 +3281,7 @@ msgid ""
 "%s has elected to moderate friendship requests. Your request has been added "
 "to their moderation queue."
 msgstr ""
-"%s ha decidido restringir las solicitudes de contacto. Tu solicitud ha sido "
+"%s ha decidido restringir las solicitudes de contacto. Su solicitud ha sido "
 "añadida a su cola de restricciones."
 
 #: units/friends/friends_actions.php:40
@@ -3338,7 +3338,7 @@ msgid ""
 "friendship request has been declined."
 msgstr ""
 "%s ha decidido no permitir ninguna nueva solicitud de contacto en este "
-"momento. Tu solicitud de contacto ha sido denegada."
+"momento. Su solicitud de contacto ha sido denegada."
 
 #: units/friends/friends_actions.php:60
 msgid " was removed from your friends."
@@ -3491,7 +3491,7 @@ msgstr "Ver todos los amigos"
 
 #: units/friends/profile_friends.php:27 units/friends/user_friends.php:14
 msgid "Your Friends"
-msgstr "Tus Contactos"
+msgstr "Mis Contactos"
 
 #: units/friends/user_friends.php:14
 msgid "Friends Screen"
@@ -3566,7 +3566,7 @@ msgstr "Grupo"
 
 #: units/groups/groups_actions.php:27
 msgid "Your group was updated."
-msgstr "Tu grupo fue actualizado."
+msgstr "Su grupo fue actualizado."
 
 #: units/groups/groups_create.php:3
 msgid "Create a new group"
@@ -3587,7 +3587,7 @@ msgstr "Propiedad de %s"
 
 #: units/groups/groups_edit_display.php:13
 msgid "Your friends:"
-msgstr "Tus contactos:"
+msgstr "Mis contactos:"
 
 #: units/groups/groups_edit_display.php:44
 msgid "Add selected to group"
@@ -3685,7 +3685,7 @@ msgstr ""
 
 #: units/icons/function_actions.php:138
 msgid "Your icon was uploaded successfully."
-msgstr "Tu icono subido con éxito."
+msgstr "Su icono subido con éxito."
 
 #: units/icons/function_actions.php:141
 msgid ""
@@ -3822,7 +3822,7 @@ msgstr ""
 "\n"
 "\t%s\n"
 "\n"
-"Tu dirección email no fue dada a ningúna tercera parte, y será removida de "
+"Su dirección email no fue dada a ningúna tercera parte, y será removida de "
 "nuestro sistema en siete días.\n"
 "\n"
 "Saludos,\n"
@@ -3834,7 +3834,7 @@ msgstr ""
 msgid ""
 "Your invitation was sent to %s at %s. It will be valid for seven days."
 msgstr ""
-"Tu invitación se envió a %s a la dirección %s. Será válida durante siete días."
+"Su invitación se envió a %s a la dirección %s. Será válida durante siete días."
 
 #: units/invite/invite_actions.php:51
 #, php-format
@@ -3891,14 +3891,14 @@ msgid ""
 "you supplied. You have been sent an email containing these details for "
 "reference purposes."
 msgstr ""
-"¡Tu cuenta fue creada! Puedes iniciar la sesión utilizando el nombre de "
+"¡Su cuenta fue creada! Puedes iniciar la sesión utilizando el nombre de "
 "usuario y contraseña que proporcionaste. Se te ha enviado un correo "
 "electrónico con estos datos para fines de referencia."
 
 #: units/invite/invite_actions.php:138
 #, php-format
 msgid "Your %s account"
-msgstr "Tu %s cuenta"
+msgstr "Su %s cuenta"
 
 #: units/invite/invite_actions.php:139
 #, php-format
@@ -3953,7 +3953,7 @@ msgstr ""
 
 #: units/invite/invite_join.php:29 units/invite/join_noinvite.php:10
 msgid "terms and conditions"
-msgstr "términos y condiciones"
+msgstr "Términos y Condiciones"
 
 #: units/invite/invite_join.php:30 units/invite/join_noinvite.php:11
 msgid "Privacy policy"
@@ -3970,11 +3970,11 @@ msgstr ""
 #: units/invite/invite_join.php:50 units/invite/join_noinvite.php:32
 #: units/weblogs/weblogs_comments_add.php:48
 msgid "Your name"
-msgstr "Tu nombre"
+msgstr "Su nombre"
 
 #: units/invite/invite_join.php:56
 msgid "Your username - (Must be letters only)"
-msgstr "Tu nombre de usuario - (Deben ser letras sólo)"
+msgstr "Su nombre de usuario - (Deben ser letras sólo)"
 
 #: units/invite/invite_join.php:62
 msgid "Enter a password"
@@ -3982,7 +3982,7 @@ msgstr "Introducir una contraseña"
 
 #: units/invite/invite_join.php:68
 msgid "Your password again for verification purposes"
-msgstr "Tu contraseña otra vez con el propósito de verificar"
+msgstr "Su contraseña otra vez con el propósito de verificar"
 
 #: units/invite/invite_join.php:72
 msgid "I am at least thirteen years of age."
@@ -3997,7 +3997,7 @@ msgid ""
 "Your invitation code appears to be invalid. Codes only last for seven days; "
 "it's possible that yours is older."
 msgstr ""
-"Tu código de invitación para ser inválido. Los códigos sólo duran por siete "
+"Su código de invitación para ser inválido. Los códigos sólo duran por siete "
 "días; es posible que el tuyo haya caducado."
 
 #: units/invite/invite_join.php:90
@@ -4051,7 +4051,7 @@ msgstr ""
 
 #: units/invite/join_noinvite.php:38
 msgid "Your email address"
-msgstr "Tu dirección de correo electrónico"
+msgstr "Su dirección de correo electrónico"
 
 #: units/invite/join_noinvite.php:53
 msgid "Self-registration is currently disabled."
@@ -4069,7 +4069,7 @@ msgstr ""
 #: units/invite/new_password.php:30
 #, php-format
 msgid "Your %s password"
-msgstr "Tu %s contraseña"
+msgstr "Su %s contraseña"
 
 #: units/invite/new_password.php:30
 #, php-format
@@ -4089,7 +4089,7 @@ msgid ""
 "\n"
 "The %s Team"
 msgstr ""
-"Tu contraseña de %s ha sido reiniciada.\n"
+"Su contraseña de %s ha sido reiniciada.\n"
 "\n"
 "Para tus datos, tu nueva contraseña es:\n"
 "\n"
@@ -4130,7 +4130,7 @@ msgstr ""
 
 #: units/invite/password_request.php:22
 msgid "Your username"
-msgstr "Tu nombre de usuario"
+msgstr "Su nombre de usuario"
 
 #: units/invite/password_request.php:26
 msgid "Request new password"
@@ -4187,7 +4187,7 @@ msgstr "Añadido"
 #: units/magpie/function_actions.php:23 units/magpie/function_actions.php:87
 #: units/magpie/function_actions.php:107
 msgid "Your feed subscription was successful."
-msgstr "Tu suscrición de feed tuvo éxito."
+msgstr "Su suscrición de feed tuvo éxito."
 
 #: units/magpie/function_actions.php:25
 msgid "Feed subscription failed: you are already subscribed to this feed."
@@ -4307,7 +4307,7 @@ msgstr "Para suscribirse a una nuevo feed, introduce su dirección abajo:"
 #: units/magpie/function_subscriptions_popular.php:58
 #: units/magpie/function_view_post.php:46
 msgid "Subscribe"
-msgstr "Suscribirse"
+msgstr "Miscribirse"
 
 #: units/magpie/function_subscriptions_popular.php:6
 msgid "This is a list of the feeds with the most subscribers."
@@ -4332,7 +4332,7 @@ msgstr "¿Estás seguro de que quieres suscribirte a este feed?"
 
 #: units/magpie/function_subscriptions_popular.php:36
 msgid "Subscribers"
-msgstr "Suscriptores"
+msgstr "Miscriptores"
 
 #: units/magpie/function_subscriptions_popular.php:49
 msgid "No-one has subscribed to any feeds."
@@ -4380,7 +4380,7 @@ msgstr "Visualizar página"
 
 #: units/profile/profile_user_info.php:42
 msgid "Your LMS hosts"
-msgstr "Tus hosts LMS"
+msgstr "Mis hosts LMS"
 
 #: units/search/function_search_all_display_rss.php:16
 #, php-format
@@ -4472,15 +4472,15 @@ msgstr "Este guarda el contenido marcado a través de Elgg"
 
 #: units/tinymce/tinymce_userdetails_actions.php:15
 msgid "Your editor preferences have been saved"
-msgstr "Tus preferencias de editor se han guardado."
+msgstr "Mis preferencias de editor se han guardado."
 
 #: units/tinymce/tinymce_userdetails_actions.php:18
 msgid "Your editor preferences have been changed"
-msgstr "Tus preferencias de editor se han cambiado."
+msgstr "Mis preferencias de editor se han cambiado."
 
 #: units/tinymce/tinymce_userdetails_actions.php:20
 msgid "Your editor preferences could not be changed"
-msgstr "Tus preferencias de editor no pudieron cambiarse."
+msgstr "Mis preferencias de editor no pudieron cambiarse."
 
 #: units/tinymce/tinymce_userdetails_edit.php:3
 msgid "Visual text editing"
@@ -4515,7 +4515,7 @@ msgstr "(%d iniciado (s).)"
 
 #: units/users/function_number_of_users.php:17
 msgid "User Statistics"
-msgstr "Estadísticas de usuario"
+msgstr "Estadísticas de Acceso"
 
 #: units/users/user_info.php:22
 msgid "None."
@@ -4568,14 +4568,14 @@ msgid ""
 "Password not changed: Your password is either too short or too long. It must "
 "be between 4 and 32 characters in length."
 msgstr ""
-"No se ha cambiado la contraseña: Tu contraseña es o demasiado corta o "
+"No se ha cambiado la contraseña: Su contraseña es o demasiado corta o "
 "demasiado larga. Tiene que tener entre 4 y 32 caracteres."
 
 #: units/users/userdetails_actions.php:109
 msgid ""
 "Password not changed: Your password can only consist of letters or numbers."
 msgstr ""
-"No se ha cambiado la contraseña: Tu contraseña sólo puede contener letras o "
+"No se ha cambiado la contraseña: Su contraseña sólo puede contener letras o "
 "números."
 
 #: units/users/userdetails_actions.php:111
@@ -4595,11 +4595,11 @@ msgstr "Cambiar tu nombre:"
 
 #: units/users/userdetails_edit.php:28
 msgid "Your full name "
-msgstr "Tu nombre "
+msgstr "Su nombre "
 
 #: units/users/userdetails_edit.php:33
 msgid "Your email address:"
-msgstr "Tu dirección de correo electrónico:"
+msgstr "Su dirección de correo electrónico:"
 
 #: units/users/userdetails_edit.php:34
 msgid ""
@@ -4611,7 +4611,7 @@ msgstr ""
 
 #: units/users/userdetails_edit.php:48
 msgid "Your email address "
-msgstr "Tu dirección de correo electrónico "
+msgstr "Su dirección de correo electrónico "
 
 #: units/users/userdetails_edit.php:53
 msgid "Friendship moderation:"
@@ -4687,7 +4687,7 @@ msgstr "Deja este espacio en blanco si deseas dejar tu contraseña tal cual."
 
 #: units/users/userdetails_edit.php:166
 msgid "Your password: "
-msgstr "Tu contraseña: "
+msgstr "Su contraseña: "
 
 #: units/users/userdetails_edit.php:173
 msgid "Again for verification purposes: "
@@ -4859,7 +4859,7 @@ msgstr "Invitado indeseado"
 #: units/weblogs/templates_preview.php:8
 msgid " I mock you, Babbage! Your difference engine will never catch on."
 msgstr ""
-" ¡Te engañé, Babbage! Tu motor de diferencia nunca podrá funcionar bien."
+" ¡Te engañé, Babbage! Su motor de diferencia nunca podrá funcionar bien."
 
 #: units/weblogs/templates_preview.php:9
 #: units/weblogs/templates_preview.php:11
@@ -4915,7 +4915,7 @@ msgstr ""
 
 #: units/weblogs/weblogs_actions.php:31
 msgid "Your post has been added to your weblog."
-msgstr "Tu post se ha añadido a tu weblog."
+msgstr "Su post se ha añadido a tu weblog."
 
 #: units/weblogs/weblogs_actions.php:66
 msgid "The weblog post has been modified."
@@ -4943,15 +4943,15 @@ msgstr ""
 
 #: units/weblogs/weblogs_actions.php:161
 msgid "Your comment has been added."
-msgstr "Tu comentario ha sido añadido."
+msgstr "Su comentario ha sido añadido."
 
 #: units/weblogs/weblogs_actions.php:166
 msgid "Your comment could not be posted. The system thought it was spam."
-msgstr "Tu comentario no pudo enviarse. El sistema lo consideró como spam."
+msgstr "Su comentario no pudo enviarse. El sistema lo consideró como spam."
 
 #: units/weblogs/weblogs_actions.php:186
 msgid "Your comment was deleted."
-msgstr "Tu comentario fue borrado."
+msgstr "Su comentario fue borrado."
 
 #: units/weblogs/weblogs_all_users_view.php:24
 msgid "Remove filter"
@@ -4987,7 +4987,7 @@ msgstr "Añadir un comentario"
 
 #: units/weblogs/weblogs_comments_add.php:33
 msgid "Your comment text"
-msgstr "Tu texto de comentario"
+msgstr "Su texto de comentario"
 
 #: units/weblogs/weblogs_comments_add.php:58
 msgid "Add comment"
@@ -5130,19 +5130,19 @@ msgstr "XML error: "
 #~ msgstr "%d posts de weblog, %d comentarios"
 
 #~ msgid "'Your Files' help"
-#~ msgstr "Ayuda 'Tus archivos'"
+#~ msgstr "Ayuda 'Mis archivos'"
 
 #~ msgid "'Your Network' help"
-#~ msgstr "Ayuda 'Tu red'"
+#~ msgstr "Ayuda 'Su red'"
 
 #~ msgid "'Your Profile' help"
-#~ msgstr "Ayuda 'Tu perfil'"
+#~ msgstr "Ayuda 'Su perfil'"
 
 #~ msgid "'Your blog' help"
-#~ msgstr "Ayuda 'Tu blog'"
+#~ msgstr "Ayuda 'Su blog'"
 
 #~ msgid "'Your calendar' help"
-#~ msgstr "Ayuda 'Tu calendario'"
+#~ msgstr "Ayuda 'Su calendario'"
 
 #~ msgid "<b>%s</b> posted on weblog post '%s'"
 #~ msgstr "<b>%s</b>enviado (s) al post de weblog  '%s'"
@@ -5404,7 +5404,7 @@ msgstr "XML error: "
 #~ "\n"
 #~ "\t"
 #~ msgstr ""
-#~ "Tu %s contraseña ha sido cambiada.\n"
+#~ "Su %s contraseña ha sido cambiada.\n"
 #~ "\n"
 #~ "Para tu información, tu nueva contraseña es:\n"
 #~ "\n"
@@ -5418,7 +5418,7 @@ msgstr "XML error: "
 #~ "$CFG->dataroot!"
 
 #~ msgid "Your current template has been changed."
-#~ msgstr "Tu template actual ha sido cambiada."
+#~ msgstr "Su template actual ha sido cambiada."
 
 #~ msgid "Your email address has not been passed onto any third parties,"
 #~ msgstr ""
@@ -5437,8 +5437,8 @@ msgstr "XML error: "
 
 #~ msgid "Your portfolio is the main way people find out about you. You can"
 #~ msgstr ""
-#~ "Tu portfolio es el instrumento principal que tienen los demás para saber "
-#~ "sobre ti. Puedes"
+#~ "Su portfolio es el instrumento principal que tienen los demás para saber "
+#~ "sobre su empresa. Puede"
 
 #~ msgid "Your suggested email address $email doesn't appear to be valid."
 #~ msgstr ""
@@ -5459,3 +5459,6 @@ msgstr "XML error: "
 
 msgid "Add widget"
 msgstr "Adicionar widget"
+
+msgid "New Community"
+msgstr "Crear una Comunidad"

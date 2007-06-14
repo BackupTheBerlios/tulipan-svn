@@ -21,7 +21,7 @@
 // Physical path to the files (eg /home/elggserver/httpdocs/)
 // NB: **MUST** have a final slash at the end
 
-    $CFG->dirroot = '/usr/local/apache/htdocs/';
+    $CFG->dirroot = '/usr/local/apache/tmp/';
 
 // Email address of the system (eg elgg-admin@bogton.edu)
 
@@ -89,7 +89,7 @@
 // This should be OUTSIDE your wwwroot.
 // NB: **MUST** have a final slash at the end
 
-    $CFG->dataroot = '/usr/local/apache/htdocs/data/';
+    $CFG->dataroot = '/usr/local/apache/tmp/data/';
 
 // You may change these values to something else but you must ensure that
 // the user the web server process runs as is able to read and write under
