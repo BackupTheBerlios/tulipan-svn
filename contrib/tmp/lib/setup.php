@@ -54,7 +54,7 @@ if (empty($CFG->framename)) {
 }
 
 if (empty($CFG->defaultlocale)) {
-    $CFG->defaultlocale = 'en';
+    $CFG->defaultlocale = 'es';
 }
 
 if (empty($CFG->disable_templatechanging)) {

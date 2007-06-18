@@ -3986,7 +3986,7 @@ msgstr "Su contraseña otra vez con el propósito de verificar"
 
 #: units/invite/invite_join.php:72
 msgid "I am at least thirteen years of age."
-msgstr "Tengo al menos trece años."
+msgstr "Soy mayor de edad."
 
 #: units/invite/invite_join.php:73
 msgid "Join"

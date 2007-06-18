@@ -310,19 +310,17 @@
                 // No flag set yet, try extract from the browser
                 $setting = '';
 
-                if (!empty($USER->languages_browser))
-                {
-                    $keys = array_keys($USER->languages_browser);
-
-                    if ($browser = $USER->languages_browser[$keys[0]])
-                    {
-                        $setting = $browser['fullcode'];
-                    }
-                }
-                else
-                {
-                    // No browser preference, get defaultlocale
+                if ($CFG->defaultlocale) {
                     $setting = $CFG->defaultlocale;
+		} else {
+                         if (!empty($USER->languages_browser)) {
+                             $keys = array_keys($USER->languages_browser);
+
+                             if ($browser = $USER->languages_browser[$keys[0]]) {
+			         print "Te pillamos!!!: ".$browser['fullcode']."<br>";
+                                 $setting = $browser['fullcode'];
+                             }
+                           }
                 }
 
                 // Store the value
