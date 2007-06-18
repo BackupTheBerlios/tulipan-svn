@@ -12,16 +12,18 @@
     function profile_photo_user_publish($object_type, $event, $object) {
         global $data;
         if ($object_type == "user" && $event == "publish") {
-            foreach($data['profile:details'] as $profileitem) {
-                if ($profileitem->field_type == "profile_photo") {
-                    $profile_data = new stdClass;
-                    $profile_data->access = "PUBLIC";
-                    $profile_data->owner = $object->ident;
-                    $profile_data->name = $profileitem->internal_name;
-                    $profile_data->value = "photo";
-                }
-            }
-        }
+            if ($data['profile:details']) {
+            	foreach($data['profile:details'] as $profileitem) {
+                        if ($profileitem->field_type == "profile_photo") {
+                            $profile_data = new stdClass;
+                            $profile_data->access = "PUBLIC";
+                            $profile_data->owner = $object->ident;
+                            $profile_data->name = $profileitem->internal_name;
+                            $profile_data->value = "photo";
+                        } // end if
+                  } // end foreach
+             } // end if
+        } // end if
     }
     
     function profile_photo_display_input_field($parameter) {
