@@ -317,7 +317,6 @@
                              $keys = array_keys($USER->languages_browser);
 
                              if ($browser = $USER->languages_browser[$keys[0]]) {
-			         print "Te pillamos!!!: ".$browser['fullcode']."<br>";
                                  $setting = $browser['fullcode'];
                              }
                            }
