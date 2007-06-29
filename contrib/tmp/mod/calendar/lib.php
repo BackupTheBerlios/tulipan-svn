@@ -51,7 +51,7 @@ if (isloggedin() && user_info("user_type",$_SESSION['userid']) != "external") {
             $PAGE->menu_sub[] = array ( 'name' => 'calendar:rssfeed',
                                         'html' => "<a href=\"{$CFG->wwwroot}".  user_info("username",$page_owner). 
 				    "/calendar/rss/\"><img src =".
-"\"{$CFG->wwwroot}_templates/icons/rss.png\" border=\"0\" alt=\"rss\" /></a>"); 
+"\"{$CFG->wwwroot}_templates/icons/rss.png\" border=\"0\" alt=\"RSS\" /></a>"); 
 
             $PAGE->menu_sub[] = array ( 'name' => 'calendar:archives',
                                         'html' => a_href( $CFG->wwwroot."mod/calendar/archiveview.php?calendar_name=".

@@ -3020,7 +3020,7 @@ msgstr "Archivar descripción:"
 #: units/weblogs/weblogs_posts_add.php:27
 #: units/weblogs/weblogs_posts_edit.php:21
 msgid "Access restrictions:"
-msgstr "Restricciones de acceso:"
+msgstr "Restricciones de acceso"
 
 #: units/files/edit_file.php:51
 msgid "File folder:"
@@ -5685,5 +5685,166 @@ msgid "My Friends Events"
 msgstr "Eventos de mis Amigos"
 
 msgid "Public access"
-msgstr "Acceso Público"
+msgstr "Público"
 
+#: mod/calendar/actions.php:36
+msgid "Add A Calendar Event"
+msgstr "Agregar Evento"
+
+msgid "Event Title:"
+msgstr "Título del Evento"
+
+msgid "Time"
+msgstr "Hora"
+
+msgid "Event Location:"
+msgstr "Ubicación del Evento"
+
+msgid "Event Description:"
+msgstr "Descripción del Evento"
+
+msgid "Keywords commonly referred to as 'Tags' are words that represent the calendar post you have just made. This will make it easier for others to search and find your posting."
+msgstr "Las palabras clave están relacionadas con los 'Tags' que son palabras que representan las anotaciones en el calendario . Esto hara mas facil para otros usuarios realizar la busqueda y encontrar sus apuntes."
+
+msgid "Save Event"
+msgstr "Guardar Evento"
+
+msgid "Start"
+msgstr "Inicia"
+
+msgid "End"
+msgstr "Termina"
+
+msgid "Please enter a title for your event."
+msgstr "Por favor ingrese un título para su evento."
+
+msgid "Please enter a Date that is valid"
+msgstr "Por favor ingrese una fecha valida"
+
+msgid "Please make sure your event start time occurs before the event end time"
+msgstr "Por favor verifique que la hora de inicio quede antes de la hora en que el evento termina."
+
+msgid "Edit A Calendar Event"
+msgstr "Editar Evento"
+
+#: mod/calendar/add.php:99
+msgid "Add calendar event"
+msgstr "Agregar Nuevo Evento"
+
+msgid "Event has been sucessfully added to your calendar."
+msgstr "Evento ingresado con éxito en el calendario"
+
+#: mod/calendar/index.php:155
+msgid "Private access"
+msgstr "Privado"
+
+msgid "Logged in access"
+msgstr "Usuarios conectados"
+
+#: mod/calendar/config.php:1
+msgid "January"
+msgstr "Enero"
+
+msgid "February"
+msgstr "Febrero"
+
+msgid "March"
+msgstr "Marzo"
+
+msgid "April"
+msgstr "Abril"
+
+msgid "May"
+msgstr "Mayo"
+
+msgid "June"
+msgstr "Junio"
+
+msgid "July"
+msgstr "Julio"
+
+msgid "August"
+msgstr "Agosto"
+
+msgid "September"
+msgstr "Septiembre"
+
+msgid "October"
+msgstr "Octubre"
+
+msgid "November"
+msgstr "Noviembre"
+
+msgid "December"
+msgstr "Diciembre"
+
+msgid "Sunday"
+msgstr "Domingo"
+
+msgid "Monday"
+msgstr "Lunes"
+
+msgid "Tuesday"
+msgstr "Martes"
+
+msgid "Wednesday"
+msgstr "Miercoles"
+
+msgid "Thursday"
+msgstr "Jueves"
+
+msgid "Friday"
+msgstr "Viernes"
+
+msgid "Saturday"
+msgstr "Sabado"
+
+msgid "Sun"
+msgstr "Dom"
+
+msgid "Mon"
+msgstr "Lun"
+
+msgid "Tue"
+msgstr "Mar"
+
+msgid "Wed"
+msgstr "Mie"
+
+msgid "Thu"
+msgstr "Jue"
+
+msgid "Fri"
+msgstr "Vie"
+
+msgid "Sat"
+msgstr "Sab"
+
+#: mod/calendar/activecalendar/data/js.php:27
+msgid "Close Calendar"
+msgstr "Cerrar Calendario"
+
+#: mod/calendar/edit.php:117
+msgid "Edit calendar event"
+msgstr "Editar Evento"
+
+msgid "Event has been sucessfully edited."
+msgstr "Evento editado con éxito."
+
+#: mod/calendar/delete.php:83
+msgid "Calendar event has been deleted."
+msgstr "El evento ha sido borrado."
+
+#: mod/calendar/dayview.php:188
+msgid "There are no events for this day.  Would you like to add one?"
+msgstr "No hay eventos para este día. ¿Desea agregar uno?"
+
+msgid "View Calendar Events"
+msgstr "Eventos del Calendario"
+
+msgid "Are you sure you want to delete this event?"
+msgstr "¿Desea realmente eliminar este evento?"
+
+#: mod/calendar/dayview.php:188
+msgid "The calendar for %s, hosted on %s."
+msgstr "El calendario para %s, es recibido en %s."

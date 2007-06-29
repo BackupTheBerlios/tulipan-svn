@@ -7,7 +7,7 @@
     $jun = __gettext("June");
     $jul = __gettext("July");
     $aug = __gettext("August");
-    $sep = __gettext("september");
+    $sep = __gettext("September");
     $oct = __gettext("October");
     $nov = __gettext("November");
     $dec = __gettext("December");
