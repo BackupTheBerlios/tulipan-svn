@@ -1,6 +1,10 @@
 <h1>Bienvenido {{name}}</h1>
+<img src="/images/latinpyme_logo.png">
+<BR>
+<BR>
+
 <p>
-    Esta es {{sitename}}, la comunidad de empresarios Pyme de Latinoamerica. Si lo desea, puede consultar <a href="{{url}}_weblog/everyone.php">lo que está sucediendo</a> ahora mismo en nuestro sitio.
+    {{sitename}} es una red de empresarios Pymes de Latinoamerica. Si lo desea, puede consultar <a href="{{url}}_weblog/everyone.php">lo que está sucediendo</a> ahora mismo en nuestro sitio.
 </p>
 <p>
     <a href="{{url}}search/tags.php">Encuentre a otros empresarios</a> con deseos de hacer negocios e intercambiar experiencias.
@@ -9,6 +13,6 @@
     Este es un ejemplo de los empresarios que hacen parte de nuestra comunidad: {{randomusers}}
 </p>
 <p>
-    Si desea unirse a nuestra comunidad, lo invitamos a que se <a href="{{url}}_invite/register.php">registre ahora mismo</a>.
-</p>
+    Si desea unirse a nuestra comunidad, lo invitamos a que se registre ahora mismo <a href="{{url}}_invite/register.php"> <img src="/registro_latinpyme.png" border="0"></a>
 
+</p>
