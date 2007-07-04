@@ -5845,6 +5845,23 @@ msgstr "Eventos del Calendario"
 msgid "Are you sure you want to delete this event?"
 msgstr "¿Desea realmente eliminar este evento?"
 
-#: mod/calendar/dayview.php:188
 msgid "The calendar for %s, hosted on %s."
 msgstr "El calendario para %s, es recibido en %s."
+
+msgid "Export"
+msgstr "Exportar"
+
+msgid "Date:"
+msgstr "Fecha:"
+
+msgid "Location:"
+msgstr "Ubicación"
+
+msgid "Description:"
+msgstr "Descripción:"
+
+msgid "Start Time:"
+msgstr "Inicia:"
+
+msgid "End Time:"
+msgstr "Termina:"
