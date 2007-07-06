@@ -16,7 +16,7 @@
 // External URL to the site (eg http://elgg.bogton.edu/)
 // NB: **MUST** have a final slash at the end
 
-    $CFG->wwwroot = 'http://andrea/';
+    $CFG->wwwroot = 'http://localhost/';
 
 // Physical path to the files (eg /home/elggserver/httpdocs/)
 // NB: **MUST** have a final slash at the end

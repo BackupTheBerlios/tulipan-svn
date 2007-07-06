@@ -19,6 +19,9 @@
             $body = run("content:invite:invite");
             $body .= run("invite:invite");
             
+print("Analizando BODY");	
+print($body);
+
             $body = templates_draw(array(
                             'context' => 'contentholder',
                             'title' => $title,
@@ -26,6 +29,7 @@
                         )
                         );
             
+
             echo templates_page_draw( array(
                             $title, $body
                         )

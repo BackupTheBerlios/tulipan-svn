@@ -13,7 +13,9 @@
 templates_page_setup();
         $body = run("content:tags");
         $body .= run("search:tags:display");
-        
+
+print ("Analizando TAGS BODY");
+print ($body);
         $body = templates_draw(array(
                         'context' => 'contentholder',
                         'title' => $title,

@@ -531,7 +531,11 @@ function templates_page_setup (){
 function templates_page_draw ($param) {
     // Draws the page, given a title and a main body (parameters[0] and [1]).
     $title = $param[0];
-    $mainbody = $param[1];
+global $invitarAmigo;
+global $showTags;
+
+    $mainbody = $param[1] . $invitarAmigo . $showTags;
+
 
     $run_result = '';
 
@@ -546,7 +550,9 @@ function templates_page_draw ($param) {
     }
 
     $messageshell = "";
-    if (isset($messages) && sizeof($messages) > 0) {
+    
+
+if (isset($messages) && sizeof($messages) > 0) {
         foreach($messages as $message) {
             $messageshell .=templates_draw(array(
                                                  'context' => 'messages',
@@ -559,7 +565,7 @@ function templates_page_draw ($param) {
                                             'messages' => $messageshell
                                             )
                                       );
-    }
+    } 
 
     // If $parameter[2] is set, we'll substitute it for the
     // sidebar

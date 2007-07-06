@@ -7,7 +7,8 @@
         <form action="" method="post">
         
 END;
-        $run_result .= templates_draw(array(
+        
+$run_result .= templates_draw(array(
                                                         'context' => 'databox1',
                                                         'name' => __gettext("Their name"),
                                                         'column1' => display_input_field(array("invite_name","","text"))

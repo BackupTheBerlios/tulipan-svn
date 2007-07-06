@@ -2,10 +2,6 @@
 <p>
     Esta es {{sitename}}, la comunidad de empresarios Pyme de Latinoamerica. Si lo desea, puede consultar <a href="{{url}}_weblog/everyone.php">lo que está sucediendo</a> ahora mismo en nuestro sitio.
 </p>
-
-<p>
-    Para expandir su red empresarial puede invitar a mas personas <a href="{{url}}/_invite">aqui</a>.
-</p>
 <p>
     <a href="{{url}}search/tags.php">Encuentre a otros empresarios</a> con deseos de hacer negocios e intercambiar experiencias.
 </p>
@@ -15,3 +11,7 @@
 <p>
     <a href="{{url}}{{username}}">Visite su perfíl!</a> Recuerde que su presentación es la principal forma de que otros empresarios lo encuentren. 
 </p>
+<p>
+    Si desea ampliar su red de negocios, puede invitar a sus amigos enviandole una invitación:</a>.
+</p>
+
