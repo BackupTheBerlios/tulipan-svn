@@ -1,7 +1,7 @@
 <?php
 
     //    ELGG invite-a-friend page
-
+	Global $invitarAmigo;
     // Run includes
         require_once(dirname(dirname(__FILE__))."/includes.php");
         
@@ -19,8 +19,8 @@
             $body = run("content:invite:invite");
             $body .= run("invite:invite");
             
-print("Analizando BODY");	
-print($body);
+
+            //$invitarAmigo = $body;
 
             $body = templates_draw(array(
                             'context' => 'contentholder',

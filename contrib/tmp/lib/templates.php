@@ -540,6 +540,14 @@ global $showTags;
     $run_result = '';
 
     global $messages;
+/*ANALISIS JOHAN VIERNES
+print("Analizando LIB/TEMPLATES.PHP: messages");
+print($messages[0]);
+print("Analizando LIB/TEMPLATES.PHP: messages [1]");
+print($messages[1])
+END ANALISIS;
+*/
+
 
     ////
     //// Prepare things for the module run

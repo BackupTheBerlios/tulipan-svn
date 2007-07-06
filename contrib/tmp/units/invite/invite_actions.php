@@ -43,10 +43,14 @@ switch ($action) {
                                      $subjectline = $USER->name . " " . __gettext("has invited you to join") ." $sitename";
                                      $from_email = $USER->email;
                                  }
-                                 $emailmessage = sprintf(__gettext("Dear %s,\n\n%s %s\n\nTo join, visit the following URL:\n\n\t%s\n\nYour email address has not been passed onto any third parties, and will be removed from our system within seven days.\n\nRegards,\n\nThe %s team."),$strippedname,$greetingstext,$invitetext,$url, $sitename);
+                                 $emailmessage = sprintf(__gettext("Dear %s,\n\n%s %sfile:///usr/local/apache/tmp/units/invite/invite_actions.php\n\nTo join, visit the following URL:\n\n\t%s\n\nYour email address has not been passed onto any third parties, and will be removed from our system within seven days.\n\nRegards,\n\nThe %s team."),$strippedname,$greetingstext,$invitetext,$url, $sitename);
                                  $emailmessage = wordwrap($emailmessage);
                                  $messages[] = sprintf(__gettext("Your invitation was sent to %s at %s. It will be valid for seven days."),$strippedname,$invite->email);
                                  email_to_user($invite,null,$subjectline,$emailmessage);
+                                 global $confirmationInvitation;
+				 print("Analizando archivo INVITE_ACTIONS:");
+				 print($messages);
+                                 $confirmationInvitation = $messages;
                              } else {
                                  $messages[] = sprintf(__gettext("User %s already has that email address. Invitation not sent."),$account->username);
                              }
