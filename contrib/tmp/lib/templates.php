@@ -533,9 +533,9 @@ function templates_page_draw ($param) {
     $title = $param[0];
 global $invitarAmigo;
 global $showTags;
+global $showNewsLatinPyme;
 
-    $mainbody = $param[1] . $invitarAmigo . $showTags;
-
+    $mainbody = $param[1] . $invitarAmigo . $showTags . $showNewsLatinPyme;
 
     $run_result = '';
 
