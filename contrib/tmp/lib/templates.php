@@ -531,11 +531,15 @@ function templates_page_setup (){
 function templates_page_draw ($param) {
     // Draws the page, given a title and a main body (parameters[0] and [1]).
     $title = $param[0];
-global $invitarAmigo;
+global $inviteFriend;
 global $showTags;
 global $showNewsLatinPyme;
+global $showFriends;
+//echo ("ANALIZANDO TEMPLATES -- FRIENDS: ");
+//echo $showFriends;
 
-    $mainbody = $param[1] . $invitarAmigo . $showTags . $showNewsLatinPyme;
+
+    $mainbody = $param[1] . $showFriends . $inviteFriend . $showTags . $showNewsLatinPyme;
 
     $run_result = '';
 
@@ -547,7 +551,6 @@ print("Analizando LIB/TEMPLATES.PHP: messages [1]");
 print($messages[1])
 END ANALISIS;
 */
-
 
     ////
     //// Prepare things for the module run

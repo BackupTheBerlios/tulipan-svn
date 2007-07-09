@@ -1,9 +1,12 @@
 <?php
     // Pagina principal
     global $CFG;
-    global $invitarAmigo;
+    global $inviteFriend;
     global $showTags;
     global $showNewsLatinPyme;
+    global $showFriends;
+
+//Las variables GLOBALES estan definidas en /lib/setup.php
 
     require_once(dirname(__FILE__)."/includes.php");
     templates_page_setup();
@@ -12,12 +15,17 @@
                                         'context' => 'frontpage_loggedin'
                                 )
                                 );
-    // Modify by JOHAN Friday 6 of July
+    // Modify by JOHAN Monday 9 of July
+
+     
     //Falta organizar la logica de mis modificaciones por que estoy colocando variables en esta pagina, pero deben estar en otro archivo...
-    $invitarAmigo .= run("invite:invite");
+    $inviteFriend .= run("invite:invite");
     $showTags = run("search:tags:display");
-//Estoy siguiendo la logica de ELGG para crear una funcionalidad llamada NEWS donde se muestren las noticias de LATINPYME en la pagina de inicio
     $showNewsLatinPyme = run("news:display");
+    $showFriends =  run("friends:editpage");
+
+    // $showFriends = run();
+
    // End modify
 
 } else {
@@ -26,6 +34,7 @@
                                 )
                                 );
     }
+
    
     echo templates_page_draw( array(
                     $CFG->sitename,
