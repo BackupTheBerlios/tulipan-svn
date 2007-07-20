@@ -50,6 +50,7 @@
         $tagcloud = __gettext("Tag cloud");
         $browse = __gettext("Browse");
         $searchdefault = __gettext("Search");
+	$go = __gettext("Go");
         
         $searchbox = <<< END
         
@@ -61,7 +62,7 @@
                 <option value="person">{$people}</option>
                 <option value="community">{$communities}</option>
             </select>
-            <input type="submit" value="Go" /><span><br />[<a href="{$CFG->wwwroot}mod/browser/"><b>{$browse}</b></a>] [<a href="{$CFG->wwwroot}search/tags.php"><b>{$tagcloud}</b></a>]</span></p>
+            <input type="submit" value="$go" /><span><br />[<a href="{$CFG->wwwroot}mod/browser/"><b>{$browse}</b></a>] [<a href="{$CFG->wwwroot}search/tags.php"><b>{$tagcloud}</b></a>]</span></p>
         </form>
         </div><!-- close search-header div -->
         

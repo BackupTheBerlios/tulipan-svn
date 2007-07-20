@@ -544,6 +544,9 @@ msgid "Log on"
 msgstr "Entrar"
 
 #: lib/displaylib.php:219 units/display/function_log_on_pane.php:44
+#: units/display/function_log_on_pane.php:44
+#: lib/displaylib.php:219
+#: content/users/content_log_on_pane.php:32
 msgid "Go"
 msgstr "Ir"
 
@@ -1232,6 +1235,7 @@ msgid "Guest"
 msgstr "Invitado"
 
 #: lib/templates.php:1280
+#: _elggadmin/lib.php:648
 msgid "Log in"
 msgstr "Iniciar la sesión"
 
@@ -1527,6 +1531,7 @@ msgstr ""
 "riesgo de seguridad elevado. Deberías cambiarla inmediatamente."
 
 #: login/index.php:49
+#: _elggadmin/lib.php:642
 msgid "Please log in"
 msgstr "Por favor, entra"
 
@@ -1591,6 +1596,8 @@ msgid "Add new item"
 msgstr "Añadir nuevo elemento"
 
 #: mod/adash/lib.php:46 mod/adash/lib.php:263
+#: mod/widget/lib.php:34
+#: mod/widget/README.txt:45
 msgid "Text box"
 msgstr "Caja de texto"
 
@@ -1615,8 +1622,9 @@ msgid "Access for this widget:"
 msgstr "Acceso a este widget:"
 
 #: mod/adash/lib.php:229
+#: mod/widget/lib.php:609
 msgid "Save widget"
-msgstr "Salvar widget"
+msgstr "Guardar widget"
 
 #: mod/adash/lib.php:247
 msgid ""
@@ -4307,7 +4315,7 @@ msgstr "Para suscribirse a una nuevo feed, introduce su dirección abajo:"
 #: units/magpie/function_subscriptions_popular.php:58
 #: units/magpie/function_view_post.php:46
 msgid "Subscribe"
-msgstr "Miscribirse"
+msgstr "Suscribirse"
 
 #: units/magpie/function_subscriptions_popular.php:6
 msgid "This is a list of the feeds with the most subscribers."
@@ -5855,7 +5863,7 @@ msgid "Date:"
 msgstr "Fecha:"
 
 msgid "Location:"
-msgstr "Ubicación"
+msgstr "Ubicación:"
 
 msgid "Description:"
 msgstr "Descripción:"
@@ -5865,3 +5873,110 @@ msgstr "Inicia:"
 
 msgid "End Time:"
 msgstr "Termina:"
+
+#: _elggadmin/lib.php:642
+msgid "Log in with your admin username and password below."
+msgstr "Ingrese con su nombre de usuario y contraseña."
+
+msgid "Username:"
+msgstr "Nombre de usuario:"
+
+msgid "Password:"
+msgstr "Contraseña:"
+
+#: _elggadmin/configdef.php:7
+msgid "Admin password"
+msgstr "Administrador de contraseña"
+
+#: mod/category/category_manage.php:7
+msgid "Manage blog categories"
+msgstr "Administrar categorías del blog"
+
+msgid "Categories allow you to highlight particular tags that represent important weblog content and display them in your sidebar."
+msgstr "Las categorías le permitiran destacar tags que representan contenido importante del blog y mostrarlas."
+
+msgid "For example, if you wanted to draw attention to all blog posts tagged with 'science', you could add that tag below, and users would know that 'science' represents an important category of content. They could then click on 'science' in your sidebar and see all content relating to science."
+msgstr "Por ejemplo, si usted quiere atención para todos los blogs con el tag 'Ciencia', usted puede agregar el tag abajo, y los usuarios sabrán que 'Ciencia' representa una importante categoría de contenido. Ellos pueden hacer click sobre 'Ciencia' y ver todo su contenido."
+
+msgid "To set up categories, type the tags you'd like to highlight separated by commas below:"
+msgstr "Para ingresar las categorías, escriba los tags que usted quiere destacados por comas abajo:"
+
+msgid "Highlighted categories"
+msgstr "Categorías destacadas"
+
+#: mod/contenttoolbar/lib.php:7
+msgid "Add External video"
+msgstr "Agregar Video Externo"
+
+#: mod/file/lib.php:141
+msgid "Add File"
+msgstr "Agregar Archivo"
+
+msgid "Files widget"
+msgstr "Widget de archivos"
+
+msgid "Displays images of some of your files."
+msgstr "Muestra imágenes de algunos de sus archivos."
+
+#: mod/blog/lib/archives_view.php:95
+msgid "You currently don't have any %s to archive"
+msgstr "Su cuenta no tiene ningun %s para archivar"
+
+#: mod/blog/lib/weblogs_view.php:111
+msgid "You currently don't have any %s"
+msgstr "Su cuenta no tiene ningun %s"
+
+#: mod/blog/lib/weblogs_interesting_view.php:110
+msgid "You haven't marked any %s as interesting "
+msgstr "Usted no tiene marcado ningun %s como interesante"
+
+#: mod/community/lib/communities_create.php:19
+msgid "Username for community (forms part of the community website address):"
+msgstr "Nombre de usuario para la comunidad (forma parte de la dirección del sitio de la comunidad):"
+
+#: mod/community/lib/communities_create.php:19
+msgid "Extended profile"
+msgstr "Perfil"
+
+msgid "Click here to view extended profile"
+msgstr "Haga click aquí para ver su perfil"
+
+#: mod/contenttoolbar/lib.php:19
+msgid "Displays a video of your choice."
+msgstr "Muestra un video de su elección."
+
+#: mod/profile/lib.php:19
+msgid "Friends widget"
+msgstr "Widget de amigos"
+
+msgid "Displays the icons of your most recently logged-in friends."
+msgstr "Muestra los iconos de sus amigos recientemente conectados."
+
+#: mod/widget/lib.php:545
+msgid "Access: "
+msgstr "Acceso: "
+
+#: mod/profile/add.php:25
+#: mod/widget/add.php:25
+msgid "Add widgets"
+msgstr "Agregar widgets"
+
+#: mod/contenttoolbar/lib.php:61
+msgid "To embed videos from popular sites like Google Video and Youtube, obtain the embed HTML, paste it in the following form and configure your preferred size:"
+msgstr "Para enlazar videos desde sitios populares como Google Video y Youtube, obtenga el enlace HTML, peguelo a continuación y configure su tamaño:"
+
+msgid "Video URL"
+msgstr "URL del video"
+
+msgid "Video size"
+msgstr "Tamaño del video"
+
+#: mod/file/lib.php:211
+msgid "This widget displays the last couple of files from this account. Simply select the number of latest files below:"
+msgstr "Este widget muestra el último par de archivos desde esta cuenta. Simplemente seleccione el número de los últimos archivos abajo:"
+
+msgid "No files found."
+msgstr "Archivos no encontrados."
+
+msgid "Latest files"
+msgstr "Últimos archivos"

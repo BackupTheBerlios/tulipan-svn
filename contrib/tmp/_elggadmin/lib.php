@@ -9,6 +9,7 @@
 
     // We want to load the config file whenever we can
         require_once("config.php");
+	//require_once(dirname(dirname(__FILE__))."/includes.php");
 
     // Initialisation    
         function elggadmin_init() {
@@ -610,7 +611,7 @@ END;
             echo <<< END
             <div id="navigation"><!-- start navigation -->
                 <ul>
-                    <li><a href="index.php" {$current['config']}>Site configuration</a></li>
+                    <li><a href="index.php" {$current['config']}> Site configuration</a></li>
                     <li><a href="theme.php" {$current['theme']}>Site theme</a></li>
                     <li><a href="frontpage.php" {$current['frontpage']}>Front page</a></li>
                     <!-- <li><a href="profile.php" {$current['profile']}>Profile fields</a></li>

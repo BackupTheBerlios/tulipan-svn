@@ -31,8 +31,8 @@
         // register the widgets that this module provides
         
         $CFG->widgets->list[] = array(
-                                                'name' => gettext("Text box"),
-                                                'description' => gettext("Displays the text of your choice."),
+                                                'name' => __gettext("Text box"),
+                                                'description' => __gettext("Displays the text of your choice."),
                                                 'type' => "widget::text"
                                         );
         if (!in_array($CFG->prefix . "widget_data",$METATABLES) || !in_array($CFG->prefix . "widgets",$METATABLES)) {
@@ -542,7 +542,7 @@ END;
         
         global $CFG;
         
-        $access_bit = '<br />'.gettext("Access: ") . run("display:access_level_select",array("_widget_access",$widget->access));
+        $access_bit = '<br />'.__gettext("Access: ") . run("display:access_level_select",array("_widget_access",$widget->access));
         if ($ajax) {
             $form = "<form id=\"widget_edit_form\" method=\"post\">\n" . $body;
             $form .= "<input type=\"hidden\" name=\"_widget_action\" value=\"widget:save:ajax\" />\n";
@@ -606,9 +606,9 @@ END;
         // Stick it in an appropriate form for saving
         $body = widget_finish_edit_form($widget,$body,$ajax);
         if ($ajax) {
-            $body .= "<input type=\"button\" onClick=\"javascript:handle_widget_edit();return true;\" value=\"" . gettext("Save widget") . "\" />";
+            $body .= "<input type=\"button\" onClick=\"javascript:handle_widget_edit();return true;\" value=\"" . __gettext("Save widget") . "\" />";
         } else {
-            $body .= "<input type=\"submit\" value=\"" . gettext("Save widget") . "\" />";
+            $body .= "<input type=\"submit\" value=\"" . __gettext("Save widget") . "\" />";
         }
         $body .= "</p>\n</form>\n";
         // Return HTML
@@ -659,7 +659,7 @@ END;
         $widget_text_body = widget_get_data("widget_text_body",$widget->ident);
 
 
-        $body = "<h2>" . gettext("Text box") . "</h2>";
+        $body = "<h2>" . __gettext("Text box") . "</h2>";
         $body .= "<p>" . gettext("This widget displays the text content of your choice. All you need to do is enter the title and body below:") . "</p>";
 
         $body .= "<p>" . display_input_field(array("widget_data[widget_text_title]",$widget_text_title,"text")) . "</p>";
