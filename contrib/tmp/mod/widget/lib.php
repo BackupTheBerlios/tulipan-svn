@@ -324,12 +324,12 @@ END;
             $q = widget_get_display_query($widget);
             
             // print("widget_get_display_query: $q");
-            $edit_msg = gettext("Edit widget");
-            $delete_msg = gettext("Delete widget");
-            $moveup_msg = gettext("Move up");
-            $movedown_msg = gettext("Move down");
-            $moveright_msg = gettext("Move right");
-            $moveleft_msg = gettext("Move left");
+            $edit_msg = __gettext("Edit widget");
+            $delete_msg = __gettext("Delete widget");
+            $moveup_msg = __gettext("Move up");
+            $movedown_msg = __gettext("Move down");
+            $moveright_msg = __gettext("Move right");
+            $moveleft_msg = __gettext("Move left");
             $img_template = '<img border="0" width="16" height="16" alt="%s" title="%s" src="'.$CFG->wwwroot.'mod/widget/images/%s" />';
             $edit_img = sprintf($img_template,$edit_msg,$edit_msg,"16-em-pencil.png");
             $delete_img = sprintf($img_template,$delete_msg,$delete_msg,"16-em-cross.png");
@@ -660,7 +660,7 @@ END;
 
 
         $body = "<h2>" . __gettext("Text box") . "</h2>";
-        $body .= "<p>" . gettext("This widget displays the text content of your choice. All you need to do is enter the title and body below:") . "</p>";
+        $body .= "<p>" . __gettext("This widget displays the text content of your choice. All you need to do is enter the title and body below:") . "</p>";
 
         $body .= "<p>" . display_input_field(array("widget_data[widget_text_title]",$widget_text_title,"text")) . "</p>";
         $body .= "<p>" . display_input_field(array("widget_data[widget_text_body]",$widget_text_body,"longtext")) . "</p>";

@@ -1639,7 +1639,7 @@ msgid ""
 "This widget displays the text content of your choice. All you need to do is "
 "enter the title and body below:"
 msgstr ""
-"Este widget mostrará un texto de tu elección. Todo lo que necesitas es "
+"Este widget mostrará un texto de su elección. Todo lo que necesita es "
 "introducir el título y el texto a continuación:"
 
 #: mod/adash/move.php:50
@@ -1929,7 +1929,7 @@ msgstr "¿Quién soy?"
 #: mod/profile/profile.config.php:59
 #: units/profile/function_editfield_defaults.php:37
 msgid "A short introduction for you."
-msgstr "Una breve introducción para ti."
+msgstr "Una breve introducción personal."
 
 #: mod/profile/profile.config.php:61 mod/profile/profile.config.php:71
 #: mod/profile/profile.config.php:83 mod/profile/profile.config.php:285
@@ -1954,7 +1954,7 @@ msgstr "Breve descripción"
 #: mod/profile/profile.config.php:82
 #: units/profile/function_editfield_defaults.php:40
 msgid "For use in your sidebar profile."
-msgstr "Para uso en su sidebar de perfil."
+msgstr "Para incluir en la descripción de su perfil."
 
 #: mod/profile/profile.config.php:91
 #: units/profile/function_editfield_defaults.php:43
@@ -2217,11 +2217,9 @@ msgid ""
 "hands. For example, we strongly recommend you keep your address to yourself "
 "or a few trusted parties."
 msgstr ""
-"    Esta pantalla te permite editar tu perfil. Los campos en blanco no "
-"aparecerán en la pantalla de perfil en ningún modo de vista; podrás cambiar "
-"el nivel de acceso de cada uno de los datos con el objeto de evitar que "
-"caigan en las manos equivocadas. Por ejemplo, es muy recomendable que no "
-"divulgues tu dirección, salgo a un pequeño círculo de allegados."
+"    Este formulario le permite editar su perfil. Los campos en blanco no "
+"aparecerán en la descripción del perfil; puede cambiar "
+"el nivel de acceso de cada uno de los datos con el objeto de hacer visible sólo la información que usted desea hacer pública."
 
 #: profile/profile.class.php:145
 msgid "Submit details:"
@@ -2229,16 +2227,16 @@ msgstr "Mandar datos:"
 
 #: profile/profile.class.php:146
 msgid "Save your profile"
-msgstr "Guardar tu perfil"
+msgstr "Guardar su perfil"
 
 #: profile/profile.class.php:164
 msgid "You can import some profile data by uploading a FOAF file here:"
 msgstr ""
-"Puedes importar algún dato del perfil descargando un archivo FOAF aquí:"
+"Usted puede importar algún dato del perfil cargando un archivo FOAF desde aquí:"
 
 #: profile/profile.class.php:167
 msgid "Upload a FOAF file:"
-msgstr "Descargar un archivo FOAF:"
+msgstr "Cargar un archivo FOAF:"
 
 #: profile/profile.class.php:169 units/files/edit_folder.php:285
 msgid "Upload"
@@ -5892,6 +5890,10 @@ msgstr "Administrador de contraseña"
 msgid "Manage blog categories"
 msgstr "Administrar categorías del blog"
 
+#: mod/category/category_sidebar.php
+msgid "Blog categories"
+msgstr "Categorías de Blogs"
+
 msgid "Categories allow you to highlight particular tags that represent important weblog content and display them in your sidebar."
 msgstr "Las categorías le permitiran destacar tags que representan contenido importante del blog y mostrarlas."
 
@@ -5956,6 +5958,12 @@ msgstr "Muestra los iconos de sus amigos recientemente conectados."
 msgid "Access: "
 msgstr "Acceso: "
 
+msgid "Move right"
+msgstr "Mover a la derecha"
+
+msgid "Move left"
+msgstr "Mover a la izquierda"
+
 #: mod/profile/add.php:25
 #: mod/widget/add.php:25
 msgid "Add widgets"
@@ -5980,3 +5988,18 @@ msgstr "Archivos no encontrados."
 
 msgid "Latest files"
 msgstr "Últimos archivos"
+
+#: mod/community/profile.config.php:25
+#: mod/profile/profile.config.php:25
+msgid "Profile photo"
+msgstr "Foto personal"
+
+#: mod/community/profile.config.php:25
+#: mod/profile/profile.config.php:25
+msgid "Photo to display at the top of your profile."
+msgstr "Foto para publicar en la parte superior de su perfil."
+
+#: mod/profile_photo/lib.php:25
+msgid "Click here to verify that this is a photo of you and that it is not obscene or abusive."
+msgstr "Haga click aquí para verificar que esta foto es suya y que no es obsena o abusiva."
+
