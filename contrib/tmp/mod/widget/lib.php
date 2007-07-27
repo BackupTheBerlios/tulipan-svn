@@ -642,7 +642,7 @@ END;
         $text_body = widget_get_data("widget_text_body",$widget->ident);
         
         if (empty($text_body)) {
-            $text_body = gettext("This text box is undefined. If you are the widget owner, click 'edit widget' to add your own content.");
+            $text_body = __gettext("This text box is undefined. If you are the widget owner, click 'edit widget' to add your own content.");
         }
         
         $body = "<p>" . nl2br($text_body) . "</p>";

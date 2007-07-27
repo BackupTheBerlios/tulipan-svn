@@ -6003,3 +6003,6 @@ msgstr "Foto para publicar en la parte superior de su perfil."
 msgid "Click here to verify that this is a photo of you and that it is not obscene or abusive."
 msgstr "Haga click aquí para verificar que esta foto es suya y que no es obsena o abusiva."
 
+#: mod/contenttoolbar/lib.php:25
+msgid "Invalid video param edit an check that if is a valid &lt;embed> object."
+msgstr "Parámetro de video inválido, edite y verifique que sea valido el objeto &lt;embed>."
