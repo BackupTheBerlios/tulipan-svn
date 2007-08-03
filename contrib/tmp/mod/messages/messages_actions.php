@@ -44,6 +44,7 @@ require_once (dirname(dirname(__FILE__)) . "/../includes.php");
  * @param boolean $sent If the message its a sent message or not
  */
 function deleteMessage($msg, $user,$sent=0) {
+
   global $messages;
   if ($msg_info = get_record('messages', 'ident', $msg)) {
     if($sent){
@@ -70,6 +71,7 @@ global $USER;
 global $CFG;
 // Actions to perform
 $action = optional_param('action');
+
 switch ($action) {
   case "delete" :
     $msg = optional_param('msg_id', 0, PARAM_INT);
@@ -86,13 +88,13 @@ switch ($action) {
 
   case "compose" :
     $redirect_url = url . user_info('username', $_SESSION['userid']) . "/messages/compose";
-
     $from = optional_param('new_msg_from', -1, PARAM_INT);
     $to = optional_param('new_msg_to', -1, PARAM_INT);
     $subject = optional_param('new_msg_subject');
     $body = optional_param('new_msg_body');
 
     if ($from != -1 && $to != -1) {
+
       if (trim($body) != "" && trim($subject) != "") {
         $msg = new StdClass;
         $msg->from_id = trim($from);

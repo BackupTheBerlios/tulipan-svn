@@ -30,7 +30,8 @@
  */
 function required_param($varname, $options=PARAM_CLEAN) {
 
-    // detect_unchecked_vars addition
+    // detect_unchecked_vars 
+
     global $CFG;
     if (!empty($CFG->detect_unchecked_vars)) {
         global $UNCHECKED_VARS;
@@ -65,20 +66,23 @@ function required_param($varname, $options=PARAM_CLEAN) {
 function optional_param($varname, $default=NULL, $options=PARAM_CLEAN) {
 
     // detect_unchecked_vars addition
+    
     global $CFG;
     if (!empty($CFG->detect_unchecked_vars)) {
         global $UNCHECKED_VARS;
         unset ($UNCHECKED_VARS->vars[$varname]);
     }
+    
 
     if (isset($_POST[$varname])) {       // POST has precedence
         $param = $_POST[$varname];
+
+
     } else if (isset($_GET[$varname])) {
         $param = $_GET[$varname];
     } else {
         return $default;
     }
-
     return clean_param($param, $options);
 }
 
@@ -88,7 +92,7 @@ function optional_param($varname, $default=NULL, $options=PARAM_CLEAN) {
  * clean the variables and/or cast to specific types, based on
  * an options field.
  * <code>
- * $course->format = clean_param($course->format, PARAM_ALPHA);
+ * $course->format = clean_param($course->format, PARAM_Afile:///usr/local/apache/tmp/lib/elgglib.phpLPHA);
  * $selectedgrade_item = clean_param($selectedgrade_item, PARAM_CLEAN);
  * </code>
  *
@@ -116,7 +120,8 @@ function optional_param($varname, $default=NULL, $options=PARAM_CLEAN) {
 function clean_param($param, $options) {
 
     global $CFG;
-
+    if($para == "")
+  
     if (is_array($param)) {              // Let's loop
         $newparam = array();
         foreach ($param as $key => $value) {
@@ -3366,7 +3371,7 @@ function remember_login($id) {
     $user->code = $md5ticket;
     $user->ident = $id;
     update_record('users',$user);
-    
+
     setcookie(AUTH_COOKIE, $ticket, time()+AUTH_COOKIE_LENGTH, $CFG->cookiepath);
     global $messages;
     $messages[] = __gettext("The system will remember you and automatically log you in next time.");

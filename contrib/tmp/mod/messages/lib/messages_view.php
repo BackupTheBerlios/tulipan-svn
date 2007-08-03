@@ -43,6 +43,7 @@ $action_options .= "<option value=\"delete\">$delete</option>";
 $filterlink = "";
 $where_sent = "to_id=$profile_id AND hidden_to='0'";
 if ($sent === 1) {
+  echo "ENTRO AL IF DONDE LA VARIABLE SENT ES IGUAL A 1";
   $from = __gettext("Sent to");
   $title = __gettext("Sent messages");
   $where_sent = "from_id=$profile_id AND hidden_from='0'";
@@ -55,10 +56,10 @@ if ($sent === 1) {
 
 $posts = get_records_select('messages', "$where_sent", null, 'posted DESC', '*', $msg_offset, $msgs_per_page);
 $numberofposts = count_records_select('messages', "$where_sent");
-
 $msgs = "";
 $pagging = "&nbsp;";
 if (!empty ($posts)) {
+
   $index = $msg_offset+1;
   foreach ($posts as $post) {
     $msgs .= run("messages:message:view", array($post,$sent,$index));

@@ -42,6 +42,8 @@ function blog_pagesetup() {
           'html' => "<a href=\"{$CFG->wwwroot}{$weblog_username}/weblog/edit\">" . __gettext("Post a new entry") . '</a>');
       }
 
+echo "BLOG::::" .$CFG->wwwroot . $weblog_username . "FIN";
+
       $PAGE->menu_sub[]= array (
         'name' => 'blog:view',
         'html' => "<a href=\"{$CFG->wwwroot}{$weblog_username}/weblog/\">" . __gettext("View blog") . '</a>');

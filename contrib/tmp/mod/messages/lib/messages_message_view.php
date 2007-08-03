@@ -9,9 +9,12 @@
  * @uses $profile_id
  * @uses $CFG
  *
+ * @author Johan Eduardo Quijano Garcia <gerencia@treszero.com>
+ * @copyright Tres Zero - 2007
  * @author Diego Andrés Ramírez Aragón <diego@somosmas.org>
  * @copyright Corporación Somos Más - 2007
 */
+
 
 if (isset ($parameter)) {
   global $CFG, $profile_id;

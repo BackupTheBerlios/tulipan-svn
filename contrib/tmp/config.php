@@ -7,7 +7,7 @@
 
 // Name of the site (eg Elgg, Apcala, University of Bogton's Social Network, etc)
 
-    $CFG->sitename = 'LatinPyme';
+    $CFG->sitename = 'Pymera';
 
 // A tagline for your site (eg 'Social network for Bogton')
 
@@ -16,7 +16,7 @@
 // External URL to the site (eg http://elgg.bogton.edu/)
 // NB: **MUST** have a final slash at the end
 
-    $CFG->wwwroot = 'http://localhost/';
+    $CFG->wwwroot = 'http://pymera/';
 
 // Physical path to the files (eg /home/elggserver/httpdocs/)
 // NB: **MUST** have a final slash at the end
@@ -101,7 +101,7 @@
     $CFG->dbhost = 'localhost';
     $CFG->dbuser = 'root';
     $CFG->dbpass = '';
-    $CFG->dbname = 'latinpyme';
+    $CFG->dbname = 'pymera';
     $CFG->dbpersist = false;
 
 // The following will assume all your database tables have this value at the start

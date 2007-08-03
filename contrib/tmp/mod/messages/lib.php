@@ -1,4 +1,5 @@
 <?php
+
 function messages_pagesetup() {
   // register links --
     global $metatags,$function,$USER;
@@ -18,6 +19,8 @@ function messages_pagesetup() {
     $url= substr($CFG->wwwroot, 0, -1);
     $metatags .= "<script language=\"javascript\" type=\"text/javascript\" src=\"$url/mod/messages/messages.js\"></script>";
     $metatags .= "<link rel=\"stylesheet\" href=\"" . $CFG->wwwroot . "mod/messages/css.css\" type=\"text/css\" media=\"screen\" />";
+
+
 
     $messages = count_records_select('messages','to_id='.$USER->ident." AND status='unread'");
     if (defined("context") && context == "messages" && $pgowner == $_SESSION['userid']) {

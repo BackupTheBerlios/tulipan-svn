@@ -18,6 +18,7 @@ $title = run("profile:display:name") . " :: " . __gettext("Messages");
 $body = run("content:messages:view");
 $body .= run("messages:view");
 
+
 $body = templates_draw(array (
   'context' => 'contentholder',
   'title' => $title,

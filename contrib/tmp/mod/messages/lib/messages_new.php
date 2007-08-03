@@ -17,9 +17,9 @@
 global $CFG, $profile_id;
 
 $from_param_id = optional_param('from', $profile_id, PARAM_INT);
-$from_param_name = (isset ($from_param_id)) ? user_info('name', $from_param_id) : "";
-
+$creator_param_name = (isset ($from_param_id)) ? user_info('name', $from_param_id) : "";
 $to_param_id = optional_param('to', -1, PARAM_INT);
+
 if ($to_param_id == -1) {
   // If the 'to' param its not specified load the list of friends/communities
   $friends = get_records_select('friends', "owner=$profile_id", null, '', 'friend');
@@ -67,6 +67,7 @@ $subject = __gettext("Subject:");
 $message = __gettext("Message:");
 $submitButton = ($action == "reply") ? "Reply" : "Send";
 
+
 $run_result =<<< END
 <form method="post" name="elggform" action="$redirect" onsubmit="return submitForm();">
     <input type="hidden" name="new_msg_from" value="$from_param_id"/>
@@ -76,7 +77,7 @@ END;
 $run_result .= templates_draw(array (
   'context' => 'databoxvertical',
   'name' => $from,
-  'contents' => $from_param_name
+  'contents' => $creator_param_name
 ));
 
 // @todo Mirar como se hace lo de los selects usando las funciones de ellos o si hay que hacerlo a manoplas
