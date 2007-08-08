@@ -1,4 +1,11 @@
 <?php
+/** ELGG index.php
+    *Show de friend page depending if the user is logged on.
+    *@author Johan Eduardo Quijano <gerencia@treszero.com>
+    *@version 1.0
+    *@package index
+    */
+
 
 function friend_pagesetup() {
     // register links -- 
@@ -6,22 +13,36 @@ function friend_pagesetup() {
     global $PAGE;
     global $CFG;
 
+
+
     $page_owner = $profile_id;
+
+
+/**
+    * Special global variable: Show the ELGG's main body.
+    * @global array $PAGE
+    * CONTEXT is a global varible tha change depending the page where the user in surfing
+    */
 
     if (isloggedin()) {
         if (defined("context") && context == "network" && $page_owner == $_SESSION['userid']) {
+
             
             $PAGE->menu[] = array( 'name' => 'friends',
                                    'html' => "<li><a href=\"{$CFG->wwwroot}{$_SESSION['username']}/friends/\" class=\"selected\" >" .__gettext("Your Network").'</a></li>');
+
             } else {
+
                 $PAGE->menu[] = array( 'name' => 'friends',
                                        'html' => "<li><a href=\"{$CFG->wwwroot}{$_SESSION['username']}/friends/\" >" .__gettext("Your Network").'</a></li>');
+
             }
     }        
 
     if (defined("context") && context == "network") {
-        
+
         if (user_type($page_owner) == "person" || user_type($page_owner) == "external") {
+
         
             $friends_username = user_info('username', $page_owner);
             
@@ -72,6 +93,7 @@ function friend_pagesetup() {
         }
     }
     
+
     function friend_user_delete($object_type, $event, $object) {
         if (!empty($object->ident) && $object_type == "user" && $event == "delete") {
             delete_records('friends','owner',$object->ident);

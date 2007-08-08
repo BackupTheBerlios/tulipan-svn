@@ -1,5 +1,5 @@
 <?php
-// ELGG system configuration parameters.
+    
 
 // System constants: set values as necessary
 // Supply your values within the second set of speech marks in the pair
@@ -16,7 +16,7 @@
 // External URL to the site (eg http://elgg.bogton.edu/)
 // NB: **MUST** have a final slash at the end
 
-    $CFG->wwwroot = 'http://pymera/';
+    $CFG->wwwroot = 'http://latinpyme/';
 
 // Physical path to the files (eg /home/elggserver/httpdocs/)
 // NB: **MUST** have a final slash at the end
@@ -32,7 +32,7 @@
 // IN AS NEWS AND CHANGE THE PASSWORD IMMEDIATELY.
 
     $CFG->newsinitialpassword = 'admin';
-
+    
 // Country code to set language to if you have gettext installed
 // To include new languages, save their compiled .mo gettext
 // file into languages/country code/LC_MESSAGES/
@@ -46,12 +46,12 @@
 // general public to be able to register accounts with your
 // Elgg site.
 
-    $CFG->publicreg = true;
-
+    $CFG->publicreg = 1;
+    
 // The following should be set to false if you don't want users
 // to be able to invite new users into the system.
 
-    $CFG->publicinvite = true;
+    $CFG->publicinvite = 1;
 
 // Set this to a positive number to cap the number of users in your
 // installation, for example if you're testing and only have a certain number
@@ -65,14 +65,14 @@
     $CFG->walledgarden = 0;
 
 // If the following string is non-blank, it must be present within
-// the domains of email addresses of people signing up. For example,
+// the domains of email addresses of people signing up. For example, 
 // if you set it to yourinstitution.edu, a user with the email address
 // foo@bar.yourinstitution.edu will be able to sign up.
 // This rule will hold true for both public registrations and invitations
 // from within the system (if either are enabled).
 
     $CFG->emailfilter = "";
-
+    
 // The following sets the default access level within the Elgg
 // site. Possible values include:
 //        PUBLIC        :: available to everyone
@@ -83,8 +83,8 @@
 
 // Set the following to true to force users to log in before they can post comments, overriding per-user option
 // Handy sledgehammer-to-crack-a-nut to protect against comment spam.
-    $CFG->disable_publiccomments = false;
-
+    $CFG->disable_publiccomments = 0;
+    
 // dataroot. this is where uploaded files will go (and sessions for now)
 // This should be OUTSIDE your wwwroot.
 // NB: **MUST** have a final slash at the end
@@ -101,25 +101,21 @@
     $CFG->dbhost = 'localhost';
     $CFG->dbuser = 'root';
     $CFG->dbpass = '';
-    $CFG->dbname = 'pymera';
-    $CFG->dbpersist = false;
+    $CFG->dbname = 'latinpyme';
+    $CFG->dbpersist = 0;
 
-// The following will assume all your database tables have this value at the start
-// of their names. If you're upgrading from an earlier version of Elgg, you might
+// The following will assume all your database tables have this value at the start 
+// of their names. If you're upgrading from an earlier version of Elgg, you might 
 // need to set this to $CFG->prefix = '';
 
     $CFG->prefix = 'elgg';
 
-// performance and debugging
+// performance and debugging //
 // Uncomment this to get sql errors sent to the webserver error log.
 // $CFG->dblogerror = true;
+// put this to 2047 to get adodb error handling.
 
-// verbosity of PHP error message logging.
-// set this to 2047 to get adodb error handling.
-
-    //$CFG->debug = 0; // don't log *any* error messages. previously this was the (unhelpful) default.
-    $CFG->debug = 7; // only basic errors. for production systems. equivalent to php (E_ERROR | E_WARNING | E_PARSE).
-    //$CFG->debug = 2047; // errors and notices. for development systems/debugging. equivalent to php E_ALL.
+    $CFG->debug = 7;
 
 // Number of days to keep incoming RSS feed entries for before deleting them.
 // A value of 0 disables automatic deletion.
@@ -136,7 +132,7 @@
 
     $CFG->adminuser = "admin";
     $CFG->adminpassword = "admin";
-
+    
 //
 //   Capture performance profiling data
 //   define('ELGG_PERF'  , true);
@@ -153,7 +149,7 @@
 // EMAIL HANDLING
 // $CFG->smtphosts= ''; // empty (sendmail), qmail (qmail) or hosts
 // $CFG->smtpuser = ''; // if using smtphosts, optional smtpuser & smtppass
-// $CFG->smtppass = '';
+// $CFG->smtppass = ''; 
 // $CFG->noreplyaddress = ''; // this will default to noreply@hostname (from wwwroot)
 
 // CLAMAV HANDLING
@@ -163,17 +159,17 @@
 //$CFG->pathtoclam = '/usr/bin/clamscan'; // OR '/usr/bin/clamdscan';
 
 // TEMPLATES HANDLING
-//$CFG->disable_usertemplates = true;  // users can only choose from available templates
-//$CFG->disable_templatechanging = true; // users can't change their template at all
+$CFG->disable_usertemplates = 0;  // users can only choose from available templates
+$CFG->disable_templatechanging = 0; // users can't change their template at all
 //Templates root defaults to /mod/template/templates; if you change this, you will need
 //to move or copy /mod/template/templates/Default_Template/ to the new location
-//$CFG->templatesroot = '/some/path/'; // use on-disk templates instead of DB templates
+$CFG->templatesroot = '/usr/local/apache/tmp/mod/template/templates/'; // use on-disk templates instead of DB templates 
+
+// PROFILE LOCATION
+$CFG->profilelocation = '';
 
 //Template file handing is not currently recommended.
 //$CFG->templatestore = 'db';          // 'db' (default) or 'files' (requires $CFG->templatesroot to be set)
-
-// PROFILE LOCATION
-//\$CFG->profilelocation = '$PARSEDCFG->templatelocation';
 
 // set up some LMS hosts.
 // --------------------------------------------------
@@ -188,33 +184,28 @@
 // Network address is optional (performs further checking on requests from the lms) & can be three different formats:
 //      A full exact address like 192.168.0.1
 //      A partial address like 192.168
-//      CIDR notation, such as 231.54.211.0/20
+//      CIDR notation, such as 231.54.211.0/20 
 //
 // $CFG->lmshosts = array('installid' => array('token' => 'sharedsecret', 'networkaddress' => 'xxx.xxx.xxx.xxx','confirmurl' => 'http://thelms.com/something.php', 'baseurl' => 'http://thelms.com', 'name' => 'Something Friendly'));
 //
 // Note that if you are going to allow file transfers between your lms and elgg using scp
-// you will need to obtain the .pub part of an ssh key that the lms has been set up to use,
-// and add it to the ~/.ssh/authorized_keys file for the user on this machine they need to connect to,
-// and provide the lms with the username for that user.
+// you will need to obtain the .pub part of an ssh key that the lms has been set up to use, 
+// and add it to the ~/.ssh/authorized_keys file for the user on this machine they need to connect to, 
+// and provide the lms with the username for that user. 
 // This user needs write access to {$CFG->dataroot}lms/incoming/ as that is where the incoming files will end up.
 
 
 // For SSL feed *reading* support, Snoopy needs to know where the curl executable is.
 // To disable, or if curl is not available (e.g. on Windows), set to false
 //$CFG->curlpath = "/usr/bin/curl";
-$CFG->curlpath = false;
-
-// Whether to prevent users from changing their passwords.
-// For use with an external authentication system that doesn't look at the elgg user's password.
-// You'll probably want to disable registration and invites too.
-$CFG->disable_passwordchanging = false;
+$CFG->curlpath = '';
 
 // Some other $CFG variables found in codebase.
 // They may or may not be config options. Some are just used for holding global data.
 
 // $CFG->admin
 // $CFG->allowobjectembed // boolean - whether to allow <object> and <embed> tags through input-cleaning
-// $CFG->auth // string - which auth plugin to use
+// $CFG->auth
 // $CFG->cachetext
 // $CFG->currenttextiscacheable
 // $CFG->dbsessions

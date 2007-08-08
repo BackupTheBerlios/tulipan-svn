@@ -30,6 +30,9 @@
     // Given a user ID number, returns the specified field
     // Returns false if the user doesn't exist.
     function user_info($fieldname, $user_id) {
+
+
+
         
         // Name table
         static $id_to_name_table;
@@ -37,7 +40,7 @@
         // Returns field from a given ID
 
         $user_id = (int) $user_id;
-        
+        //print ($user_id);
         if (!empty($user_id)) {
             if (!isset($id_to_name_table[$user_id][$fieldname])) {
                 //$id_to_name_table[$user_id][$fieldname] = get_field('users',$fieldname,'ident',$user_id);
@@ -82,8 +85,9 @@
     
     // Gets the type of a particular user
     function user_type($user_id) {
-        
+
         return user_info('user_type', $user_id);
+	
         
     }
     

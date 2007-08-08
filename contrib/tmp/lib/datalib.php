@@ -598,6 +598,8 @@ function count_records_sql($sql, $values=null) {
  */
 function get_record($table, $field1=null, $value1=null, $field2=null, $value2=null, $field3=null, $value3=null, $fields='*') {
 
+
+
     global $CFG;
     $trycache = false;
     
@@ -617,6 +619,8 @@ function get_record($table, $field1=null, $value1=null, $field2=null, $value2=nu
     $values = where_values_prepared($value1, $value2, $value3);
     
     $returnvalue = get_record_sql('SELECT '.$fields.' FROM '. $CFG->prefix . $table .' '. $select, $values);
+
+
     
     if ($trycache) {
         $setres = elggcache_set($table, $field1 . "_" . $value1, $returnvalue);

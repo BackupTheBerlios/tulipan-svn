@@ -1,32 +1,43 @@
 <?php
-    // Pagina principal
+    /** ELGG index.php
+    *Show de main page depending if the user is logged on or is the administrator.
+    *@author Johan Eduardo Quijano <gerencia@treszero.com>
+    *@version 1.0
+    */
     global $CFG;
     global $inviteFriend;
     global $showTags;
     global $showNewsLatinPyme;
     global $showFriends;
 
-//Las variables GLOBALES estan definidas en /lib/setup.php
-
     require_once(dirname(__FILE__)."/includes.php");
+
+/**
+ * Function standar in all ELGG for organizate the page. 
+ * @method logged_on
+ */
     templates_page_setup();
+
     if (logged_on) {
+/**
+    * Special global variable: Show the ELGG's main body.
+    * @global array $body
+    * @uses context,frontpage_loggedin
+    * @var array
+    * CONTEXT is a global varible tha change depending the page where the user in surfing
+    */
         $body = templates_draw(array(
+
+
                                         'context' => 'frontpage_loggedin'
                                 )
                                 );
-    // Modify by JOHAN Monday 9 of July
 
-     
-    //Falta organizar la logica de mis modificaciones por que estoy colocando variables en esta pagina, pero deben estar en otro archivo...
     $inviteFriend .= run("invite:invite");
     $showTags = run("search:tags:display");
     $showNewsLatinPyme = run("news:display");
     $showFriends =  run("friends:editpage");
-
     // $showFriends = run();
-
-   // End modify
 
 } else {
         $body = templates_draw(array(
@@ -35,7 +46,11 @@
                                 );
     }
 
-   
+/**
+ * Templates_page_draw
+ * @global array $CFG
+ * @name 'sitename'
+ */   
     echo templates_page_draw( array(
                     $CFG->sitename,
                     $body
