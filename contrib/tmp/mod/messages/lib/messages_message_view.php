@@ -23,6 +23,7 @@ if (isset ($parameter)) {
   $index= $parameter[2];
 
   $sent= optional_param('sent', 0, PARAM_INT);
+
   $author= new StdClass;
 
   $authorid= ($sent === 1) ? $msg->to_id : $msg->from_id;
@@ -48,6 +49,10 @@ if (isset ($parameter)) {
     $msg_style= "class='message_read'";
   }
 
+echo "USERNAME:::::" . $_SESSION['username'];
+echo "IDENT::::" . $msg->ident;
+echo "SENT:::" . $sent;
+echo "TITLE:::" . $title;
   $run_result .= templates_draw(array (
     'context' => 'plug_message',
     'date' => $date,

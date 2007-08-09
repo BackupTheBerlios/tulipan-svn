@@ -61,7 +61,6 @@ if (!empty ($posts)) {
 
   $index = $msg_offset+1;
   foreach ($posts as $post) {
-    echo "Estamos entrando a RUN :::::";
     $msgs .= run("messages:message:view", array($post,$sent,$index));
     $index++;
   }

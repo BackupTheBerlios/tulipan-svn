@@ -80,7 +80,6 @@ $run_result .= templates_draw(array (
   'contents' => $creator_param_name
 ));
 
-// @todo Mirar como se hace lo de los selects usando las funciones de ellos o si hay que hacerlo a manoplas
 if (is_array($to_param)) {
   $run_result .= templates_draw(array (
     'context' => 'databoxvertical',

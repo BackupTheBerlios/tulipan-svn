@@ -16,10 +16,10 @@ $template_definition[] = array ('id' => 'plug_polls',
                                 'description' => __gettext("A template for the poll list"),
                                 'glossary' => array ('{{polls}}' => __gettext("The list of polls"),
                                                      '{{paging}}' => __gettext("The list of page links when there are lots of polls"),
-                                                     '{{from_to}}' => __gettext("From | To Label for the poll list"),
+                                                     '{{creator}}' => __gettext("From | To Label for the poll list"),
                                                      'action' => "",
                                                      'date' => '',
-                                                     'subject' => '',
+                                                     'polls_name' => '',
                                                      'actionMsg' => '',
                                                      'returnConfirm' => ''
                                                      )
@@ -30,6 +30,7 @@ $template_definition[] = array ('id' => 'plug_poll',
                                 'name' => __gettext("Poll"),
                                 'description' => __gettext("A template for each poll"),
                                 'glossary' => array ('{{date}}' => __gettext("The time and date of the poll"),
+						     '{{state}}' => __gettext("The state of Poll"),
                                                      '{{title}}' => __gettext("Poll title"),
                                                      '{{from_username}}' => __gettext("The username from the sender"),
                                                      '{{from_name}}' => __gettext("The full name from the sender"),
@@ -52,8 +53,7 @@ $template_definition[] = array ('id' => 'plug_detailedpoll',
                                 );
 
 
-$template['plug_poll'] = file_get_contents(dirname(__FILE__)."/templates/polls_polls.html");
-$template['plug_poll'] = file_get_contents(dirname(__FILE__)."/templates/polls_polls.html");
+$template['plug_polls'] = file_get_contents(dirname(__FILE__)."/templates/polls_polls.html");
+$template['plug_poll'] = file_get_contents(dirname(__FILE__)."/templates/polls_poll.html");
 $template['plug_detailedpoll'] = file_get_contents(dirname(__FILE__)."/templates/polls_detailed_poll.html");
-
 ?>

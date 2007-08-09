@@ -2,35 +2,6 @@
 /*
  * This script defines the actions avaible for the private polls plug-in.
  *
- * Actions avaible:
- *      - Delete    Allows to delete the specified message
- *                  Params:
- *                    $msg_id
- *                  Uses:
- *                    $USER
- *      - Compose   Allows to create a new message
- *                  Params:
- *                    $new_msg_from
- *                    $new_msg_to
- *                    $new_msg_subject
- *                    $new_msg_body
- *                  Uses:
- *                    $USER
- *      - Multiple  Allows to do the following operations over several messages:
- *                  (Mark as read | mark as unread | delete)
- *                  Params:
- *                    $message_action_type (read | unread | delete)
- *                    $selected array with the messages ids
- *                    $sent if the requirement comes from the sent messages list
- *                  Uses:
- *                    $USER
- *
- * @param string $action Action to be executed
- *
- * @uses $USER
- * @uses $CFG
- * @uses $messages
- *
  * @author Johan Eduardo Quijano Garcia <gerencia@treszero.com>
  * @copyright Tres Zero - 2007
  * @author Diego Andrés Ramírez Aragón <diego@somosmas.org>
@@ -39,61 +10,46 @@
 
 require_once (dirname(dirname(__FILE__)) . "/../includes.php");
 
-/**
- * Deletes the specified message
- * @param int $msg Message id
- * @param int $user Current user id
- * @param boolean $sent If the message its a sent message or not
- */
 
-/*function deletePoll($msg, $user,$sent=0) {
+function deletePoll($poll, $user,$sent=0) {
   global $messages;
-  if ($msg_info = get_record('messages', 'ident', $msg)) {
-    if($sent){
-      $msg_info->hidden_from = '1';
-    }
-    else{
-      $msg_info->hidden_to = '1';
-    }
-    $msg_info->status = "read";
-    update_record('messages', $msg_info);
-    if ($msg_info->hidden_from && $msg_info->hidden_to) {
-      delete_records('messages', 'ident', $msg);
-    }
-    $messages[] = __gettext("The selected message was deleted.");
+  if ($pol_info = get_record('polls', 'ident', $poll)) {
+      delete_records('polls', 'ident', $poll);
+    $messages[] = __gettext("The selected Poll was deleted.");
   } else {
     $messages[] = __gettext("The message ID its not valid!.");
   }
   return $sent;
 }
-*/
+
 
 run("polls:init");
 
 global $USER;
 global $CFG;
 global $messages;
+global $profile_id;
 
 // Actions to perform
 $action = optional_param('action');
 
 switch ($action) {
-  /*case "delete" :
+  case "delete" :
+          echo "Eliminado";
+
     $msg = optional_param('msg_id', 0, PARAM_INT);
     $sent = optional_param('sent',0,PARAM_INT);
     if (logged_on && !empty ($msg)) {
       $redirect_url = url . user_info('username', $USER->ident) . "/polls/";
-      $sent = deleteMessage($msg, $USER->ident,$sent);
-      if ($sent) {
-        $redirect_url .= "sent";
-      }
+      $sent = deleteMessage($msg, $USER->ident);
       define('redirect_url', $redirect_url);
     }
     break;
-  */
+  
   case "create" :
-    $redirect_url = url . user_info('username', $_SESSION['userid']) . "/polls/create";
-    $poll_creator = optional_param('new_poll',-1, PARAM_INT);
+    $redirect_url = url . user_info('username', $_SESSION['userid']) . "/polls/";
+    $poll_creator_id = optional_param('new_poll');
+    $creator_poll_name = (isset ($poll_creator_id)) ? user_info('name', $poll_creator_id) : "";
     $title_poll = optional_param('new_poll_name');
     $kind_poll = optional_param('new_kind_poll');
     $poll_question = optional_param('new_poll_question');
@@ -104,32 +60,37 @@ switch ($action) {
 
       if (trim($title_poll) != "") {
 
+
          if (trim($poll_question) != "") {
-       // echo "Estamos en QUESTION POLL IF:::::";
+
 		if (trim($answer_poll) != "") {
-		        //echo "Estamos en ANSWER POLL IF:::::";
 
         //Poll
         $poll = new StdClass;
-        $poll->owner = trim($creator);
+        $poll->owner_id = trim($poll_creator_id);
+        $poll->owner = trim($creator_poll_name);
         $poll->title = trim($title_poll);
+        $poll->question = trim($poll_question);
         $poll->kind = trim($kind_poll);
-        $poll->question = trim($poll);
         $poll->date_start = time();
         $poll->date_end = trim($date);
-        //Poll Votes
-        $votes->answer_vote = trim($answer_poll);
-        $votes->answer = trim($answer_poll);
+	$idpoll = insert_record('polls', $poll);
+        //Poll Answer
+        $answer = new StdClass;
+        $answer->id_poll = $idpoll;
+        $answer->answer = trim($answer_poll);
+	$idpoll_answer = insert_record('poll_answer', $answer);
 
-        //Poll Participants
-        $participants->participant = trim($answer_poll);
- 
-// Probando Base de Datos
-	/*$insert_idpoll = insert_record('polls', $poll);
-          if ($insert_idpoll != -1) {
+        //Poll Votes CUANDO UN USUARIO CUALQUIERA VOTE ............ CAPTURA DE LOS VOTOS
+        //$vote = new StdClass;
+        //$vote->id_answer = $idpoll_answer;
+        //$vote->id_user = $_SESSION['userid'];
+ 	//$idpoll_vote = insert_record('poll_vote', $vote);
+
+          if ($idpoll != -1) {
             $poll++;
           }
-
+/*
         // The members will see the poll
         $recipients = array ();
         //$recipient = get_record("users", "ident", "*");
@@ -193,24 +154,58 @@ switch ($action) {
 		}
 		else {
         	$messages[] = __gettext("You must specify minimun two Answers!");
-      	     }
+      	     	     }
+	     }
+      	     else {
+             	$messages[] = __gettext("You must specify a Question!");
+      	          }
 	}
-      	else {
-        	$messages[] = __gettext("You must specify a Question!");
-      	     }
+        else {
+      		$messages[] = __gettext("You must specify the Poll's Name!");
+             }
 
-      } else {
-        $messages[] = __gettext("You must specify the Poll's Name!");
-      }
-   
-    
     define('redirect_url', $redirect_url);
+    break;
+
+case "multiple" :
+    $action_type = optional_param('message_action_type', -1, PARAM_ALPHA);
+    $selected = optional_param('selected');
+    $sent = optional_param('sent');
+    if (is_array($selected)) {
+      foreach ($selected as $option) {
+        $msg = get_record('polls', 'ident', $option);
+        switch ($action_type) {
+          case "read";
+            if ($msg->status == "unread") {
+              $msg->status = "read";
+              update_record('messages', $msg);
+            }
+            break;
+          case "unread";
+            if ($msg->status == "read") {
+              $msg->status = "unread";
+              update_record('messages', $msg);
+            }
+            break;
+          case "delete";
+            deletePoll($option, $USER->ident,$sent);
+            break;
+        }
+      }
+    }
+
+    $redirect_url = url . user_info('username', $USER->ident) . "/messages/";
+    if ($sent) {
+      $redirect_url .= "sent";
+    }
+    define('redirect_url', $redirect_url);
+
     break;
   
 }
 
 if (defined('redirect_url')) {
-  $_SESSION['polls'] = $messages;
+  $_SESSION['messages'] = $messages;
   header("Location: " . redirect_url);
   exit;
 }

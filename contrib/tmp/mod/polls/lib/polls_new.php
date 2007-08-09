@@ -17,14 +17,9 @@
 */
 global $CFG, $profile_id;
 
-$cretor_poll_id = optional_param('from', $profile_id, PARAM_INT);
-$creator_poll_name = (isset ($cretor_poll_id)) ? user_info('name', $cretor_poll_id) : "";
-
+$creator_poll_id = optional_param('from', $profile_id, PARAM_INT);
+$creator_poll_name = (isset ($creator_poll_id)) ? user_info('name', $creator_poll_id) : "";
 /*
-Diego: Segun veo... esta funcion la podria convertir en lo siguiente: Una vez creado el nuevo Poll entonces en VER POLLS Aparecera el listado de encuestas donde se mostrara el creador y un resumen del mismo... Correcto?
-Diego: Si las encuestas solo pueden ser creadas por un administrador entonces la variable CREATED BY sobraria... lo mismo que esta funcion ????
-
-
 //Analizando msg_param
  
 $msg_param = optional_param('msg_id', -1, PARAM_INT);
@@ -63,7 +58,7 @@ $submitButton = ($action == "reply") ? "Reply" : "Create";
 //New Poll
 $run_result =<<< END
 <form method="post" name="elggform" action="$redirect" onsubmit="return submitForm();">
-    <input type="hidden" name="new_poll" value="$cretor_poll_id"/>
+    <input type="hidden" name="new_poll" value="$creator_poll_id"/>
     <h2>$addPoll</h2>
 END;
 

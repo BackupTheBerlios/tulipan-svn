@@ -14,46 +14,64 @@
  * @author Diego Andrés Ramírez Aragón <diego@somosmas.org>
  * @copyright Corporación Somos Más - 2007
 */
+global $template;
 
 if (isset ($parameter)) {
   global $CFG, $profile_id;
   $msg= $parameter[0];
-  $sent= $parameter[1];
-  $index= $parameter[2];
+  //$sent= $parameter[1];
+  $index= $parameter[1];
+  $state = __gettext("State");
 
   $sent= optional_param('sent', 0, PARAM_INT);
-  $author= new StdClass;
 
-  $authorid= ($sent === 1) ? $msg->to_id : $msg->from_id;
-  if ($authorInfo= get_record('users', 'ident', $authorid)) {
-    $author->username= $authorInfo->username;
-    $author->fullname= htmlspecialchars($authorInfo->name, ENT_COMPAT, 'utf-8');
-    $author->ident = $authorInfo->ident;
+  $creatorPoll= new StdClass;
+
+  if ($creatorInfo= get_record('users', 'ident',$msg->owner_id)) {
+
+    $creatorPoll->username= $creatorInfo->username;
+    $creatorPoll->fullname= htmlspecialchars($authorInfo->name, ENT_COMPAT, 'utf-8');
+    $creatorPoll->ident = $creatorInfo->ident;
   } else {
-    $author->username= "";
-    $author->fullname= "";
-    $author->ident= -1;
+    $creatorPoll->username= "";
+    $creatorPoll->fullname= "";
+    $creatorPoll->ident= -1;
   }
 
-  $author->icon= '<a href="' . url . $author->username . '/">' .user_icon_html($author->ident,50). "</a>";
-
+  $creatorPoll->icon= '<a href="' . url . $creatorPoll->username . '/">' .user_icon_html($creatorPoll->ident,50). "</a>";
   $mark= "<input type=\"checkbox\" name=\"selected[]\" value=\"" . $msg->ident . "\" onclick=\"mark(this)\">";
 
-  $date= strftime("%d/%m/%Y, %H:%M", $msg->posted);
-  $username= user_info('username', $msg->from_id);
-  $title= run("weblogs:text:process", $msg->title);
-  $msg_style= "";
-  if ($msg->status == "read" || $sent === 1) {
-    $msg_style= "class='message_read'";
-  }
+  $date= strftime("%d/%m/%Y, %H:%M", $msg->date_start);
 
-  $run_result .= templates_draw(array (
+  $username= user_info('username', $msg->owner_id);
+
+  $title= run("weblogs:text:process", $msg->title);
+
+  $msg_style= "";
+
+//'<img src="/mod/polls/jpgraph/src/elgg_polls/graph_poll.php" alt="" border="0">'
+
+  /* $run_result .= templates_draw(array (
     'context' => 'plug_poll',
     'date' => $date,
+    'title' => '<a href="' . url . $_SESSION['username'] . '/polls/view/' . $msg->owner_id . "/$sent\">" . $title . "</a>",
+    'from_username' => $creatorPoll->username,
+    'from_name' => '<a href="' . url . $creatorPoll->username . '/">' . $creatorPoll->fullname . "</a>",
+    'from_icon' => $creatorPoll->icon,
+    'msg_style' => $msg_style,
+    'mark' => $mark,
+    'index' => $index
+  ));*/
+
+
+$run_result .= templates_draw(array (
+    'context' => 'plug_poll',
+    'date' => $date,
+    'state' => $state,
     'title' => '<a href="' . url . $_SESSION['username'] . '/polls/view/' . $msg->ident . "/$sent\">" . $title . "</a>",
-    'from_username' => $author->username,
-    'from_name' => '<a href="' . url . $author->username . '/">' . $author->fullname . "</a>",
-    'from_icon' => $author->icon,
+    'from_username' => $creatorPoll->username,
+    'from_name' => '<a href="' . url . $creatorPoll->username . '/">' . $creatorPoll->fullname . "</a>",
+    'from_icon' => $creatorPoll->icon,
     'msg_style' => $msg_style,
     'mark' => $mark,
     'index' => $index

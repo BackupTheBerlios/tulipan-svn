@@ -13,7 +13,7 @@ function cbFmtPercentage($aVal) {
 }
 
 // Create the graph.
-$graph = new Graph(400,300);
+$graph = new Graph(300,200);
 $graph->SetScale("textlin");
 
 // Create a bar plots

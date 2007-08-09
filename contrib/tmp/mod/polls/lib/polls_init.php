@@ -30,8 +30,6 @@ if (empty ($profile_id)) {
 
 
 if (!logged_on) {
-echo "entrando al IF (logged_on)";
-
   header("Location: " . url);
   exit;
 }

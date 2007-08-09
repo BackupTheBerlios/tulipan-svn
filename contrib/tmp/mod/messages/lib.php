@@ -56,7 +56,7 @@ function messages_pagesetup() {
 
 function messages_init() {
   global $CFG, $function, $db, $METATABLES;
-  if (in_array($CFG->prefix . "messages", $METATABLES)) {
+ /* if (in_array($CFG->prefix . "messages", $METATABLES)) {
     $messagesTable= $db->MetaColumnNames($CFG->prefix . "messages", true);
     // If dosn't exists adding the colummns 'hidden_from' and 'hidden_to'
     if (!in_array("hidden_from", $messagesTable) || !in_array("hidden_to", $messagesTable)) {
@@ -67,7 +67,7 @@ function messages_init() {
       }
     }
   }
-
+*/
   // Functions to perform initializacion
 
   $function['messages:init'][] = $CFG->dirroot . "mod/messages/lib/messages_init.php";

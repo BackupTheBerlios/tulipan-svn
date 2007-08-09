@@ -533,7 +533,6 @@ function count_records_select($table, $select='', $values=null, $countitem='COUN
     if ($select) {
         $select = 'WHERE '.$select;
     }
-
     return count_records_sql('SELECT '. $countitem .' FROM '. $CFG->prefix . $table .' '. $select, $values);
 }
 
@@ -1290,10 +1289,7 @@ function delete_records_select($table, $select='',$values=null) {
  */
 function insert_record($table, $dataobject, $returnid=true, $primarykey='ident') {
 
-    //echo "INSERT RECORD::::TABLA" . $table . "DATAOBJECT:::". $dataobject . "RETURN ID::::" . $returnid . "KEY::::" . $primarykey;
-    echo "Entrando a Intert Record::::::";
-    echo "TABLA::::" . $table;
-//echo "DATAOBJECT::::" . $primarykey;
+ 
     global $db, $CFG;
     static $table_columns;
     

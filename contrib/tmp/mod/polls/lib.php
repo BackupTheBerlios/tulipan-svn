@@ -9,17 +9,17 @@ function polls_pagesetup() {
 
   $pgowner= $profile_id;
 
-  require_once $CFG->dirroot . "mod/messages/lib/messages_config.php";
+  require_once $CFG->dirroot . "mod/polls/lib/polls_config.php";
   require_once $CFG->dirroot . "mod/polls/default_template.php";
 
   if (isloggedin() && user_info("user_type", $_SESSION['userid']) != "external") {
     // Add the JavaScript functions
     // Lose the trailing slash
     $url= substr($CFG->wwwroot, 0, -1);
-    $metatags .= "<script language=\"javascript\" type=\"text/javascript\" src=\"$url/mod/messages/messages.js\"></script>";
-    $metatags .= "<link rel=\"stylesheet\" href=\"" . $CFG->wwwroot . "/mod/messages/css.css\" type=\"text/css\" media=\"screen\" />";
+    $metatags .= "<script language=\"javascript\" type=\"text/javascript\" src=\"$url/mod/polls/polls.js\"></script>";
+    $metatags .= "<link rel=\"stylesheet\" href=\"" . $CFG->wwwroot . "/mod/polls/css.css\" type=\"text/css\" media=\"screen\" />";
 
-    $messages = count_records_select('polls','to_id='.$USER->ident." AND status='unread'");
+    //$messages = count_records_select('polls','to_id='.$USER->ident." AND status='unread'");
     if (defined("context") && context == "polls" && $pgowner == $_SESSION['userid']) {
       $PAGE->menu[]= array (
         'name' => 'polls',
@@ -60,7 +60,7 @@ function polls_init() {
 global $CFG, $function, $db, $METATABLES;
 // Functions to perform initializacion
 
-  $function['messages:init'][] = $CFG->dirroot . "mod/polls/lib/polls_init.php";
+  $function['polls:init'][] = $CFG->dirroot . "mod/polls/lib/polls_init.php";
 
   // Compose / Delete messages
   $function['polls:new'][] = $CFG->dirroot . "mod/polls/lib/polls_new.php";
@@ -70,13 +70,12 @@ global $CFG, $function, $db, $METATABLES;
   */
   $function['polls:view'][] = $CFG->dirroot . "mod/polls/lib/polls_view.php";
   $function['polls:poll:view'][] = $CFG->dirroot . "mod/polls/lib/polls_poll_view.php";
- /*  
-$function['messages:detailedview'][] = $CFG->dirroot . "mod/messages/lib/messages_message_detailedview.php";
+  $function['polls:detailedview'][] = $CFG->dirroot . "mod/polls/lib/polls_poll_detailedview.php";
 
-*/
+
   // Sidebar display function
-  $function['messages:contact:link'][] = $CFG->dirroot ."/mod/messages/lib/messages_sidebar_link.php";
-  $function['users:infobox:menu:text'][] = $CFG->dirroot ."/mod/messages/lib/messages_sidebar_link.php";
+  //$function['messages:contact:link'][] = $CFG->dirroot ."/mod/messages/lib/messages_sidebar_link.php";
+  //$function['users:infobox:menu:text'][] = $CFG->dirroot ."/mod/messages/lib/messages_sidebar_link.php";
 
   $function['display:sidebar'][] = $CFG->dirroot . "mod/polls/sidebar/current_polls_info.php";
 

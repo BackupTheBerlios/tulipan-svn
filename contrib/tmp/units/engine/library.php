@@ -27,9 +27,11 @@
             global $errorlog;
             global $messages;
             global $data;
-            
             global $run_context;
-            
+            /*if($context == "polls:poll:view")
+		{
+		echo "DENTRO DE RUN !!!!::::::: " . $context;
+		}*/
             $run_result = NULL;
             
             if (isset($function[$context])) {
