@@ -16,7 +16,8 @@
 // External URL to the site (eg http://elgg.bogton.edu/)
 // NB: **MUST** have a final slash at the end
 
-    $CFG->wwwroot = 'http://andrea/';
+
+    $CFG->wwwroot = 'http://pymera/';
 
 // Physical path to the files (eg /home/elggserver/httpdocs/)
 // NB: **MUST** have a final slash at the end
@@ -46,12 +47,12 @@
 // general public to be able to register accounts with your
 // Elgg site.
 
-    $CFG->publicreg = 1;
+    $CFG->publicreg = true;
     
 // The following should be set to false if you don't want users
 // to be able to invite new users into the system.
 
-    $CFG->publicinvite = 1;
+    $CFG->publicinvite = true;
 
 // Set this to a positive number to cap the number of users in your
 // installation, for example if you're testing and only have a certain number
@@ -83,7 +84,7 @@
 
 // Set the following to true to force users to log in before they can post comments, overriding per-user option
 // Handy sledgehammer-to-crack-a-nut to protect against comment spam.
-    $CFG->disable_publiccomments = 0;
+    $CFG->disable_publiccomments = false;
     
 // dataroot. this is where uploaded files will go (and sessions for now)
 // This should be OUTSIDE your wwwroot.
@@ -101,9 +102,12 @@
     $CFG->dbhost = 'localhost';
     $CFG->dbuser = 'root';
     $CFG->dbpass = '';
-    $CFG->dbname = 'latinpyme';
+    $CFG->dbname = 'pymera';
     $CFG->dbpersist = 0;
 
+
+// The following will assume all your database tables have this value at the start
+// of their names. If you're upgrading from an earlier version of Elgg, you might
 // The following will assume all your database tables have this value at the start 
 // of their names. If you're upgrading from an earlier version of Elgg, you might 
 // need to set this to $CFG->prefix = '';
@@ -159,14 +163,14 @@
 //$CFG->pathtoclam = '/usr/bin/clamscan'; // OR '/usr/bin/clamdscan';
 
 // TEMPLATES HANDLING
-$CFG->disable_usertemplates = 0;  // users can only choose from available templates
-$CFG->disable_templatechanging = 0; // users can't change their template at all
+//$CFG->disable_usertemplates = 0;  // users can only choose from available templates
+//$CFG->disable_templatechanging = 0; // users can't change their template at all
 //Templates root defaults to /mod/template/templates; if you change this, you will need
 //to move or copy /mod/template/templates/Default_Template/ to the new location
-$CFG->templatesroot = '/usr/local/apache/tmp/mod/template/templates/'; // use on-disk templates instead of DB templates 
+//$CFG->templatesroot = '/usr/local/apache/tmp/mod/template/templates/'; // use on-disk templates instead of DB templates 
 
 // PROFILE LOCATION
-$CFG->profilelocation = '';
+//$CFG->profilelocation = '$PARSEDCFG->templatelocation';
 
 //Template file handing is not currently recommended.
 //$CFG->templatestore = 'db';          // 'db' (default) or 'files' (requires $CFG->templatesroot to be set)
