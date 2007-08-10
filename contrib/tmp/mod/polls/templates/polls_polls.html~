@@ -1,0 +1,30 @@
+<div id="polls"><!-- start comments div -->
+<form method="post" name="poll_form" action="{{action_form}}" onsubmit="return submitForm();">
+   <input type="hidden" name="sent" value="{{sent}}">
+   <h2>{{title}}</h2>
+    <table id="polls_table" cellspacing="0" width="100%">
+     <tr>
+      <th colspan="4" style="text-align:left">
+        {{action}}&nbsp;
+        <select name="poll_action_type" id="poll_action_type" onchange="submitPollsAction(this,poll_form,'{{returnConfirm}}')">
+          <option value="-1">{{actionMsg}}</option>
+          {{action_options}}
+        </select>
+      </th>
+      <th>&nbsp;</th>
+     </tr>
+     <tr>
+      <th width="4%" colspan="2">&nbsp;</th>
+      <th width="23%">{{from_to}}</th>
+      <th width="40%">{{polls_name}}</th>
+      <th width="23%">{{date}}</th>
+      <th width="23%">{{state}}</th>
+     </tr>
+        {{messages}}
+     <tr>
+      <th colspan="4" style="text-align:left">{{paging}}</th>
+      <th>&nbsp;</th>
+     </tr>
+    </table>
+</form>
+</div><!-- end comments div -->
