@@ -49,10 +49,6 @@ if (isset ($parameter)) {
     $msg_style= "class='message_read'";
   }
 
-echo "USERNAME:::::" . $_SESSION['username'];
-echo "IDENT::::" . $msg->ident;
-echo "SENT:::" . $sent;
-echo "TITLE:::" . $title;
   $run_result .= templates_draw(array (
     'context' => 'plug_message',
     'date' => $date,

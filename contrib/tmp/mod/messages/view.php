@@ -15,7 +15,6 @@ templates_page_setup();
 
 $title = run("profile:display:name") . " :: " . __gettext("Messages");
 $message = optional_param('message');
-
 $msg = get_record('messages', 'ident', $message);
 
 templates_page_setup();

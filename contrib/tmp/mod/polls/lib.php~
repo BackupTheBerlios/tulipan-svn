@@ -1,4 +1,13 @@
 <?php
+/*
+ * This script initialize the enviroment for show the message list
+ * @author Johan Eduardo Quijano Garcia <gerencia@treszero.com>
+ * @copyright Tres Zero - 2007
+ * @author Diego Andrés Ramírez Aragón <diego@somosmas.org>
+ * @copyright Corporación Somos Más - 2007
+ */
+
+
 function polls_pagesetup() {
   // register links --
     global $metatags,$function,$USER;
@@ -17,7 +26,7 @@ function polls_pagesetup() {
     // Lose the trailing slash
     $url= substr($CFG->wwwroot, 0, -1);
     $metatags .= "<script language=\"javascript\" type=\"text/javascript\" src=\"$url/mod/polls/polls.js\"></script>";
-    $metatags .= "<link rel=\"stylesheet\" href=\"" . $CFG->wwwroot . "/mod/pollss/css.css\" type=\"text/css\" media=\"screen\" />";
+    $metatags .= "<link rel=\"stylesheet\" href=\"" . $CFG->wwwroot . "/mod/polls/css.css\" type=\"text/css\" media=\"screen\" />";
 
     //$messages = count_records_select('polls','to_id='.$USER->ident." AND status='unread'");
     if (defined("context") && context == "polls" && $pgowner == $_SESSION['userid']) {

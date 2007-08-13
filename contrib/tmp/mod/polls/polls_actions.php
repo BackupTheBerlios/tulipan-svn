@@ -35,7 +35,7 @@ $action = optional_param('action');
 
 switch ($action) {
   case "delete" :
-          echo "Eliminado";
+    echo "MSG ID ::::: " . $msg;
 
     $msg = optional_param('msg_id', 0, PARAM_INT);
     $sent = optional_param('sent',0,PARAM_INT);
@@ -53,9 +53,42 @@ switch ($action) {
     $title_poll = optional_param('new_poll_name');
     $kind_poll = optional_param('new_kind_poll');
     $poll_question = optional_param('new_poll_question');
-    $answer_poll = optional_param('new_answer_poll');
+    $answers_quantity = optional_param('poll_answers');
+switch ($answers_quantity) {
+
+  case "2" :
+$answers_poll =array(optional_param('answer1'),optional_param('answer2'));
+    break;
+case "3" :
+$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'));
+    break;
+case "4" :
+$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'));
+    break;
+case "5" :
+$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'));
+    break;
+case "6" :
+$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'));
+    break;
+case "7" :
+$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'));
+    break;
+case "8" :
+$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'),optional_param('answer8'));
+    break;
+case "9" :
+$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'),optional_param('answer8'),optional_param('answer9'));
+    break;
+case "10" :
+$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'),optional_param('answer8'),optional_param('answer9'),optional_param('answer10'));
+    break;
+
+}
+    
+  /*  $answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'),optional_param('answer8'),optional_param('answer9'),optional_param('answer10'));*/
     $date = optional_param('new_date_poll');
-    //echo "KIND FORM" . $kind_poll . "POLL QUESTION::" . $poll_question . "ANSWER POLL:::" . $answer_poll . "DATE :::" . $date;
+
 
 
       if (trim($title_poll) != "") {
@@ -63,7 +96,7 @@ switch ($action) {
 
          if (trim($poll_question) != "") {
 
-		if (trim($answer_poll) != "") {
+		if (trim($answers_poll[0]) != "") {
 
         //Poll
         $poll = new StdClass;
@@ -78,8 +111,14 @@ switch ($action) {
         //Poll Answer
         $answer = new StdClass;
         $answer->id_poll = $idpoll;
-        $answer->answer = trim($answer_poll);
-	$idpoll_answer = insert_record('poll_answer', $answer);
+        foreach ($answers_poll as $answer_poll) {
+		$answer->answer = trim($answer_poll);
+                $idpoll_answer = insert_record('poll_answer', $answer);
+
+	}
+        //$answer->answer = trim($answers_poll[0]);
+        //$answer->answer = trim($answer_poll[0]);
+
 
         //Poll Votes CUANDO UN USUARIO CUALQUIERA VOTE ............ CAPTURA DE LOS VOTOS
         //$vote = new StdClass;

@@ -14,13 +14,21 @@ define("context", "polls");
 templates_page_setup();
 
 $title = run("profile:display:name") . " :: " . __gettext("Polls");
-$poll = optional_param('poll');
+$poll = optional_param('message');
 
-$msg = get_record('messages', 'ident', $poll);
+//$poll_information = get_record('polls', 'owner_id', $profile_id);
+$poll_information = get_record('polls', 'ident', $poll);
+
 
 templates_page_setup();
+if($poll_information->owner_id != $profile_id)
+{$body = run("polls:detailedview",$poll_information);
+}
+else
+{
 
-$body = run("polls:detailedview",$msg);
+$body = run("polls:pollforvotation",$poll_information);
+}
 
 $body = templates_draw(array (
   'context' => 'contentholder',

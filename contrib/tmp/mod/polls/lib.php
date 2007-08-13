@@ -1,4 +1,13 @@
 <?php
+/*
+ * This script initialize the enviroment for show the message list
+ * @author Johan Eduardo Quijano Garcia <gerencia@treszero.com>
+ * @copyright Tres Zero - 2007
+ * @author Diego Andrés Ramírez Aragón <diego@somosmas.org>
+ * @copyright Corporación Somos Más - 2007
+ */
+
+
 function polls_pagesetup() {
   // register links --
     global $metatags,$function,$USER;
@@ -71,6 +80,7 @@ global $CFG, $function, $db, $METATABLES;
   $function['polls:view'][] = $CFG->dirroot . "mod/polls/lib/polls_view.php";
   $function['polls:poll:view'][] = $CFG->dirroot . "mod/polls/lib/polls_poll_view.php";
   $function['polls:detailedview'][] = $CFG->dirroot . "mod/polls/lib/polls_poll_detailedview.php";
+  $function['polls:pollforvotation'][] = $CFG->dirroot . "mod/polls/lib/poll_for_votation.php";
 
 
   // Sidebar display function

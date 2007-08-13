@@ -14,7 +14,6 @@ $polls_per_page = 7;
 
 // If the msg offset hasn't been set, it's 0
 //PENDIENTE MIRAR DONDE ESTAN DEFINIDAS
-echo "OFFSET" . $msg_offset;
 $msg_offset = optional_param('msg_offset', 0, PARAM_INT);
 $sent = optional_param('sent', 0, PARAM_INT);
 //******************************
