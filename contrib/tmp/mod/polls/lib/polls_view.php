@@ -34,15 +34,17 @@ $action_options = "<option value=\"read\">$finish_poll</option>";
 $action_options .= "<option value=\"delete\">$delete</option>";
 
 $filterlink = "";
-$where_sent = "to_id=$profile_id AND hidden_to='0'";
+$polls_closed = get_record('polls','state','closed');
+echo "POLLS Closed ::::" . $polls_closed->state;
 //PENDIENTE HISTORIAL !!!!
-if ($sent === 1) {
+/*if ($polls_closed->state) {
+  echo "Entro al IF de los cerrados ::::";
   $from = __gettext("Sent to");
   $title = __gettext("Historial of Polls");
   $where_sent = "from_id=$profile_id AND hidden_from='0'";
   $filterlink = "history/";
   $action_options = "<option value=\"delete\">$delete</option>";
-}
+}*/
 
 $polls = get_records_select('polls');
 //$polls = get_records_select('polls', "", null, '', '*', $msg_offset,'');

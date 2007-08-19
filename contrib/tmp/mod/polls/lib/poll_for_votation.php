@@ -29,7 +29,6 @@ $submitButton = "vote";
 $redirect = url . "mod/polls/lib/votation.php";
 
 
-
   if ($creatorInfo= get_record('users', 'ident', $creatorid)) {
     $creator->username= $creatorInfo->username;
     $creator->fullname= htmlspecialchars($creatorInfo->name, ENT_COMPAT, 'utf-8');
@@ -40,6 +39,30 @@ $redirect = url . "mod/polls/lib/votation.php";
     $creator->ident= -1;
   }
   $creator->icon= '<a href="' . url . $creator->username . '/">' .user_icon_html($creator->ident)."</a>";
+
+
+//Show the poll if this has finished
+
+$current_poll = get_record('polls','ident',$poll->ident);
+//Updating the actual date of Poll
+$actualDate = date("Y-n-j");
+$current_poll->actual_date = $actualDate;
+$update = update_record('polls',$current_poll);
+$current_poll = get_record('polls','ident',$poll->ident);
+$daysforendPoll = get_record('polls','ident',$poll->ident,null,null,null,null,'DAY(date_end)-DAY(actual_date) AS days');
+echo "DIAS para que termine el POLL ::::" . $daysforendPoll->days;
+if($daysforendPoll->days==0 || $daysforendPoll->days<0)
+{
+  $Poll = "<h3>This Poll has finished</h3><br><br><h2>Thanks for your Vote !! </h2>";
+  
+}
+else
+{
+  $Poll = "<h2>This Poll will end in:   " . $current_poll->date_end . "</h2><br>";
+
+
+
+
 
   //$date= strftime("%d %b %Y, %H:%M", $creator->username);
 
@@ -135,6 +158,10 @@ $Poll .=<<<END
 	</form>
 
 END;
+
+//End ELSE
+}
+
 
   $run_result .= templates_draw(array (
     'context' => 'plug_detailedpoll',

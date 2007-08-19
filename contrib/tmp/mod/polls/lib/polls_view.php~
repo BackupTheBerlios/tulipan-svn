@@ -34,9 +34,11 @@ $action_options = "<option value=\"read\">$finish_poll</option>";
 $action_options .= "<option value=\"delete\">$delete</option>";
 
 $filterlink = "";
-$where_sent = "to_id=$profile_id AND hidden_to='0'";
+$polls_closed = get_record('polls','state','closed');
+echo "POLLS Closed ::::" . $polls_closed->state;
 //PENDIENTE HISTORIAL !!!!
-if ($sent === 1) {
+if ($polls_closed->state) {
+  echo "Entro al IF de los cerrados ::::";
   $from = __gettext("Sent to");
   $title = __gettext("Historial of Polls");
   $where_sent = "from_id=$profile_id AND hidden_from='0'";
@@ -76,7 +78,7 @@ echo $numberofpolls;
 echo "::::: offset :::::" . $msg_offset;
 echo "polls por pagina :::" . $polls_per_page;
   //if ($numberofpolls - ($msg_offset + $polls_per_page) > 0) {
-if ($numberofpolls  < $polls_per_page) {
+if ($numberofpolls  > $polls_per_page) {
 
     $display_msg_offset = $msg_offset + $polls_per_page;
     echo "entro al primer IF::::DISPLAY" . $display_msg_offset;

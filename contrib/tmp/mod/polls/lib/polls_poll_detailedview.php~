@@ -34,35 +34,49 @@ if (isset ($parameter)) {
   $date= strftime("%d %b %Y, %H:%M", $msg->posted);
   $title= run("weblogs:text:process", $msg->title);
   $body= run("weblogs:text:process", $msg->body);
-
+ 
+  $returnConfirm= __gettext("Are you sure you want to permanently delete this Poll?");
   $Delete= __gettext("Delete");
   $endPoll = __gettext("Finish the Poll");
 
   $from_msg= __gettext("Creator:");
-  $links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?action=delete&amp;sent=' . $sent . '&amp;poll_id=' . $msg->ident . '" onclick="return confirm(\'' . $returnConfirm . '\')">' . $Delete . '</a> |';
-
+ 
 $poll = optional_param('message');
-
 $answer_poll  = get_record('polls', 'ident',$poll);
 //Check if the Poll is active with the dates !!!
 //if($answer_poll->
 
 
-echo "ESTADO ::: " . $answer_poll->date_start;
-//$daysforendPoll = get_record('polls',null,null,null,null,null,null,'(DAY(date_end)-DAY(date_start)) AS days');
-//$daysforendPoll = get_field('polls','(DAY(date_end)-DAY(date_start)) AS days',null,null);
-//$daysforendPoll = get_record('polls',null,null,null,null,null,null,'DAY(date_end) AS days');
-//$daysforendPoll = get_record('polls','',null,null,'DAY(date_end)');
-//echo "DIAS para que termine el POLL ::::" . $daysforendPoll->(DAY(date_end)-DAY(date_start));
-//echo "DIAS para que termine el POLL ::::" . $daysforendPoll->days;
-echo "DIAS para que termine el POLL ::::" . $daysforendPoll->date_end;
+$current_poll = get_record('polls','ident',$poll);
+
+//Updating the actual date of Poll
+$actualDate = date("Y-n-j");
+$current_poll->actual_date = $actualDate;
+$update = update_record('polls',$current_poll);
+$current_poll = get_record('polls','ident',$poll);
+$daysforendPoll = get_record('polls','ident',$poll,null,null,null,null,'DAY(date_end)-DAY(actual_date) AS days');
+echo "DIAS para que termine el POLL ::::" . $daysforendPoll->days;
+ $links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?action=delete&amp;sent=' . $sent . '&amp;poll_id=' . $msg->ident . '" onclick="return confirm(\'' . $returnConfirm . '\')">' . $Delete . '</a> |';
+
+
+if($daysforendPoll->days==0 || $daysforendPoll->days<0)
+{
+  $imagePoll = "<h2>This Poll has finished</h2><br>";
+  
+}
+else
+{
+  $imagePoll = "<h2>This Poll will end in:   " . $current_poll->date_end . "</h2><br>";
+}
+
+
 
 if($answer_poll->state == "active" &&  $answer_poll->finish == "manual")
 {
 
 echo "Estamos en POLL :::" . $poll;
 
- $links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/messages/messages_actions.php?action=delete&amp;sent=' . $sent . '&amp;msg_id=' . $msg->ident . '" onclick="return confirm(\'' . $returnConfirm . '\')">' . $endPoll . '</a> |';
+ $links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?action=delete&amp;sent=' . $sent . '&amp;msg_id=' . $msg->ident . '" onclick="return confirm(\'' . $returnConfirm . '\')">' . $endPoll . '</a> |';
 }
 
 
@@ -70,7 +84,7 @@ echo "Estamos en POLL :::" . $poll;
 
 //  $imagePoll = '<img src="/mod/polls/jpgraph/src/elgg_polls/bartutex1.php" alt="" border="0">';
 $answer_poll  = get_record('poll_answer', 'id_poll',$poll);
-$imagePoll = '<img src="/mod/polls/jpgraph/src/elgg_polls/bartutex1.php?action=' . $poll .'" alt="" border="0">';
+$imagePoll .= '<img src="/mod/polls/jpgraph/src/elgg_polls/bartutex1.php?action=' . $poll .'" alt="" border="0">';
 $imagePoll .='<h2>Answers</h2><ol>';
 $inicialNumber = $answer_poll->ident;
 $numberofanswers = count_records('poll_answer','id_poll',$poll);
@@ -78,17 +92,18 @@ $cantidadFinal = $numberofanswers + $inicialNumber;
 $i = $inicialNumber;
     for($i; $i<$cantidadFinal;$i++)
 	{
-        $answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
-	//echo "Variable i::::" . $i;
-        $answer = $answerInfo->answer;
-	$imagePoll .='<li>' . $answer . '</li>';
+        	$answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
+		//echo "Variable i::::" . $i;
+        	$answer = $answerInfo->answer;
+		$imagePoll .='<li>' . $answer . '</li>';
 	}
 $imagePoll .='</ol>';
 
 //$imagePoll .='<h2>Answers</h2><ol><li>respuesta1</li></ol>';
 
 
-  $run_result .= templates_draw(array (
+
+$run_result .= templates_draw(array (
     'context' => 'plug_detailedpoll',
     'date' => $date,
     'title' => $title,
