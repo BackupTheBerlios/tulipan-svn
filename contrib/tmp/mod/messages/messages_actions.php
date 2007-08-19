@@ -23,7 +23,7 @@
  *                    $selected array with the messages ids
  *                    $sent if the requirement comes from the sent messages list
  *                  Uses:
- *                    $USER
+ *                    $USERfile:///usr/local/apache/tmp/mod/messages/messages_actions.php
  *
  * @param string $action Action to be executed
  *

@@ -122,7 +122,6 @@ $run_result .= templates_draw(array (
 $url = $CFG->wwwroot;
 $run_result .=<<< END
 <script type='text/javascript' src="$url/mod/polls/lib/xDisplay.js" language=JavaScript></script>
-
 <script>
 function add_answers_fiels(){
 if (document.elggform.poll_answers.value == "2"){
@@ -401,8 +400,8 @@ $run_result .= templates_draw(array (
   'context' => 'databox1',
   'name' => $endpoll,
 ));
-$url .= "mod/polls/lib/calendar.js";
-$script_calendar= "/popcalendar.js";
+//$url .= "mod/polls/lib/calendar.js";
+//$script_calendar= "/popcalendar.js";
 //$metatags .= "<script language=\"javascript\" type=\"text/javascript\" src=\"$url\"></script>";
 //$metatags .= "<script language=\"javascript\" type=\"text/javascript\" src=\"$url\"></script>";
 
@@ -412,7 +411,62 @@ $script_calendar= "/popcalendar.js";
 //$metatags .= "<script type=\"text/javascript\" src=\"calendar-es.js\"></script>";
 //$metatags .= "<script type=\"text/javascript\" src=\"calendar-setup.js\"></script>";
 
+//$metatags .= "<style type=\"text/css\" src=\"$url/mod/polls/lib/calendar-green.css\" />";
+$metatags .= "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"$url/mod/polls/lib/calendar-brown.css\" title=\"win2k-cold-1\" />"; 
 
+//   alert("No me pises, que llevo chanclas");
+       // return true;     
+
+
+$run_result .=<<< END
+<script type='text/javascript' src="$url/mod/polls/lib/calendar.js" language=JavaScript></script>
+<script type='text/javascript' src="$url/mod/polls/lib/calendar-en.js" language=JavaScript></script>
+<script type='text/javascript' src="$url/mod/polls/lib/calendar-setup.js" language=JavaScript></script>
+<script>
+function show_calendar(){
+
+	alert(document.elggform.new_date_poll.value);
+	if (document.elggform.new_date_poll.value =="Automatically"){
+		xDisplay('calendar', 'block');
+	}
+}
+</script>
+<style type="text/css">
+#calendar{
+position:relative;
+display:none;
+}
+
+</style>
+
+<input type=radio name=new_date_poll value=manual>Manual end<br>
+<input type=radio name=new_date_poll value=auto onClick="show_calendar()">Automatically<br><br>
+
+<br>
+
+<div id=calendar>
+<table cellspacing="2" cellpadding="2" border="0">
+<tr>
+    <td width=140>Select your end date:</td>
+    <td><input type="text" name="date_poll" id="date_field" />
+        <input type="button" id="launcher" value="..." />
+    </td>
+</tr>
+</table>
+</div>
+
+
+<!-- script que define y configura el calendario-->
+<script type="text/javascript">
+   Calendar.setup({
+    inputField     :    "date_field",     // id del campo de texto
+     ifFormat     :     "%Y/%m/%d",     
+     button     :    "launcher"     // el id del botón que lanzará el calendario
+});
+</script>
+
+END;
+/*
 $run_result .=<<< END
 <script type='text/javascript' src="$url/mod/polls/lib/popcalendar.js" language=JavaScript></script>
 
@@ -423,11 +477,8 @@ Select your end date:
 <input name="date_poll" type="text"  id="dateArrival" onClick="popUpCalendar(this,elggform.dateArrival,'mm/dd/yyyy');" size="10">
 
 
-
-
-
 END;
-
+*/
 
 //*********************************************************************************************
 
@@ -450,8 +501,6 @@ $run_result .=<<< END
     <input type="submit" value="$submitButton" class="boton">
   </form>
 </div>
-
-
 
 
 

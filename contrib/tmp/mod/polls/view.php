@@ -21,8 +21,11 @@ $poll_information = get_record('polls', 'ident', $poll);
 
 
 templates_page_setup();
-if($poll_information->owner_id != $profile_id)
-{$body = run("polls:detailedview",$poll_information);
+if($poll_information->owner_id == $profile_id)
+{
+$answer_poll  = get_record('poll_answer', 'ident',$poll);
+//$body = run("polls:jpgraph",$answer_poll);
+$body = run("polls:detailedview",$poll_information);
 }
 else
 {

@@ -92,7 +92,7 @@ global $CFG, $function, $db, $METATABLES;
   // JpGraph
   // http://www.aditus.nu/jpgraph/index.php
 
-  $function['polls:jpgraph'][] = $CFG->dirroot . "mod/polls/jpgraph/src/jpgraph.php";
+  $function['polls:jpgraph'][] = $CFG->dirroot . "mod/polls/jpgraph/src/elgg_polls/bartutex1.php";
   $function['polls:jpgraph_bar'][] = $CFG->dirroot . "mod/polls/jpgraph/src/jpgraph_bar.php";
 
 }

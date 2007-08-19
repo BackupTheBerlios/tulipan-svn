@@ -27,22 +27,23 @@ $action = __gettext("Action:");
 $date = __gettext("Date");
 $pollname = __gettext("Polls");
 $state = __gettext("State");
-$actionMsg = __gettext("Select an action");
+$actionPoll = __gettext("Select an action");
 $returnConfirm = __gettext("Are you sure you want to permanently delete this poll(s)?");
 
 $action_options = "<option value=\"read\">$finish_poll</option>";
 $action_options .= "<option value=\"delete\">$delete</option>";
 
 $filterlink = "";
-/*$where_sent = "to_id=$profile_id AND hidden_to='0'";
+$where_sent = "to_id=$profile_id AND hidden_to='0'";
+//PENDIENTE HISTORIAL !!!!
 if ($sent === 1) {
   $from = __gettext("Sent to");
-  $title = __gettext("Sent messages");
+  $title = __gettext("Historial of Polls");
   $where_sent = "from_id=$profile_id AND hidden_from='0'";
-  $filterlink = "sent/";
+  $filterlink = "history/";
   $action_options = "<option value=\"delete\">$delete</option>";
 }
-*/
+
 $polls = get_records_select('polls');
 //$polls = get_records_select('polls', "", null, '', '*', $msg_offset,'');
 $numberofpolls = count_records_select('polls');
@@ -69,26 +70,35 @@ if (!empty ($polls)) {
   $back = __gettext("Back");
   $next = __gettext("Next");
 
-/*
-  if ($numberofpolls - ($msg_offset + $polls_per_page) > 0) {
+//Pagging the Polls
+echo "PAGINANDO::::::";
+echo $numberofpolls;
+echo "::::: offset :::::" . $msg_offset;
+echo "polls por pagina :::" . $polls_per_page;
+  //if ($numberofpolls - ($msg_offset + $polls_per_page) > 0) {
+if ($numberofpolls  > $polls_per_page) {
+
     $display_msg_offset = $msg_offset + $polls_per_page;
+    echo "entro al primer IF::::DISPLAY" . $display_msg_offset;
+
     $pagging .=<<< END
 
-                <a href="{$CFG->wwwroot}{$msg_name}/messages/{$filterlink}msg_offset/{$display_msg_offset}">$next &gt;&gt;</a>
+                <a href="{$CFG->wwwroot}{$msg_name}/polls/{$filterlink}msg_offset/{$display_msg_offset}">$next &gt;&gt;</a>
 
 END;
   }
   if ($msg_offset > 0) {
+    echo "Entro al segundo IF";
     $display_msg_offset = $msg_offset - $polls_per_page;
     if ($display_msg_offset < 0) {
       $display_msg_offset = 0;
     }
     $pagging .=<<< END
 
-                <a href="{$CFG->wwwroot}{$msg_name}/messages/{$filterlink}msg_offset/{$display_msg_offset}">&lt;&lt; $back</a>
+                <a href="{$CFG->wwwroot}{$msg_name}/polls/{$filterlink}msg_offset/{$display_msg_offset}">&lt;&lt; $back</a>
 
 END;
-  }*/
+  }
 
 }
 //http://pymera/mod/messages/messages_actions.php?action=multiple&sent=0
@@ -98,14 +108,14 @@ $run_result .= templates_draw(array (
   'paging' => $pagging,
   'title' => $title,
   'creator' => $creatorPoll,
-  'action_form' => url . "mod/polls/polls_actions.php?action=multiple&sent=$sent",
-  'action_options' => $action_options,
+  'action_form_poll' => url . "mod/polls/polls_actions.php?action=multiple&sent=$sent",
+  'action_options_poll' => $action_options,
   'sent' => $sent,
   'action' => $action,
   'date' => $date,
   'state' => $state,
   'polls_name' => $pollname,
-  'actionMsg' => $actionMsg,
+  'actionPoll' => $actionPoll,
   'returnConfirm' => $returnConfirm
 ));
 ?>

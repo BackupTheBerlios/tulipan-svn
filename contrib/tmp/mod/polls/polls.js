@@ -10,17 +10,17 @@ var messages_selected = 0;
 * @author Diego Andr�s Ram�rez Arag�n <diego@somosmas.org>
 * @copyright Corporaci�n Somos m�s - 2007
 */
-function submitMessagesAction(select,actionform,msg){
-  if(select.options[select.selectedIndex].value!=-1 && select.options[select.selectedIndex].value!='delete' && messages_selected>0){
+function submitPollsAction(select,actionform,msg){
+  if(select.options[select.selectedIndex].value!=-1 && select.options[select.selectedIndex].value!='delete' && polls_selected>0){
     actionform.submit();
-  }
-  else if(select.options[select.selectedIndex].value=='delete' && messages_selected>0){
-  	if(confirm(msg)){
+  }  //else if(select.options[select.selectedIndex].value=='delete' && polls_selected>0){
+  else if(select.options[select.selectedIndex].value=='delete'){
+    	if(confirm(msg)){
   	  actionform.submit();
   	}
   }
 }
-
+//
 /**
 * Modify the 'messages_select' global variable acording to the check status
 * 
@@ -30,9 +30,9 @@ function submitMessagesAction(select,actionform,msg){
 */
 function mark(check){
   if(check.checked){
-    messages_selected++;
+    polls_selected++;
   }
   else{
-    messages_selected--;
+    polls_selected--;
   }
 }

@@ -13,7 +13,7 @@ require_once (dirname(dirname(__FILE__)) . "/../includes.php");
 
 function deletePoll($poll, $user,$sent=0) {
   global $messages;
-  if ($pol_info = get_record('polls', 'ident', $poll)) {
+  if ($poll_info = get_record('polls', 'ident', $poll)) {
       delete_records('polls', 'ident', $poll);
     $messages[] = __gettext("The selected Poll was deleted.");
   } else {
@@ -35,13 +35,16 @@ $action = optional_param('action');
 
 switch ($action) {
   case "delete" :
-    echo "MSG ID ::::: " . $msg;
 
-    $msg = optional_param('msg_id', 0, PARAM_INT);
+    $poll = optional_param('poll_id', 0, PARAM_INT);
     $sent = optional_param('sent',0,PARAM_INT);
-    if (logged_on && !empty ($msg)) {
+
+    if (logged_on && !empty ($poll)) {
       $redirect_url = url . user_info('username', $USER->ident) . "/polls/";
-      $sent = deleteMessage($msg, $USER->ident);
+      $sent = deletePoll($poll, $USER->ident,$sent);
+      if ($sent) {
+        $redirect_url .= "view";
+      }
       define('redirect_url', $redirect_url);
     }
     break;
@@ -52,44 +55,70 @@ switch ($action) {
     $creator_poll_name = (isset ($poll_creator_id)) ? user_info('name', $poll_creator_id) : "";
     $title_poll = optional_param('new_poll_name');
     $kind_poll = optional_param('new_kind_poll');
-    $poll_question = optional_param('new_poll_question');
-    $answers_quantity = optional_param('poll_answers');
-switch ($answers_quantity) {
-
-  case "2" :
-$answers_poll =array(optional_param('answer1'),optional_param('answer2'));
-    break;
-case "3" :
-$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'));
-    break;
-case "4" :
-$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'));
-    break;
-case "5" :
-$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'));
-    break;
-case "6" :
-$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'));
-    break;
-case "7" :
-$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'));
-    break;
-case "8" :
-$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'),optional_param('answer8'));
-    break;
-case "9" :
-$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'),optional_param('answer8'),optional_param('answer9'));
-    break;
-case "10" :
-$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'),optional_param('answer8'),optional_param('answer9'),optional_param('answer10'));
-    break;
+    $dateend_poll = optional_param('date_poll');
+    $datestart_poll = date("Y-n-j");
+    $finish = optional_param('new_date_poll');
+if($finish == "manual")
+{  
+   $dateend_poll = "0000-00-00";
+   $statePoll = "active";
 
 }
+else
+{
+    if($dateend_poll == $datestart_poll)
+    {
+       $statePoll = "closed";
+
+
+    }
+    else
+    {
+       $statePoll = "active";
+
+    }
+
+}
+   
+    //echo "FECHA DE COMIENZO DEL POLL:::" . $datestart_poll;
+    $poll_question = optional_param('new_poll_question');
+    $answers_quantity = optional_param('poll_answers');
+	switch ($answers_quantity) {
+
+  	case "2" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'));
+    	break;
+	case "3" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'));
+    	break;
+	case "4" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'));
+    	break;
+	case "5" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'));
+    	break;
+	case "6" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'));
+    	break;
+	case "7" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'));
+    	break;
+	case "8" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'),optional_param('answer8'));
+    	break;
+	case "9" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'),optional_param('answer8'),optional_param('answer9'));
+    	break;
+	case "10" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'),optional_param('answer8'),optional_param('answer9'),optional_param('answer10'));
+    	break;
+
+	}
     
   /*  $answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'),optional_param('answer8'),optional_param('answer9'),optional_param('answer10'));*/
-    $date = optional_param('new_date_poll');
+    	$date = optional_param('new_date_poll');
 
-
+if(trim($statePoll) == "active"){ 
 
       if (trim($title_poll) != "") {
 
@@ -105,8 +134,10 @@ $answers_poll =array(optional_param('answer1'),optional_param('answer2'),optiona
         $poll->title = trim($title_poll);
         $poll->question = trim($poll_question);
         $poll->kind = trim($kind_poll);
-        $poll->date_start = time();
-        $poll->date_end = trim($date);
+        $poll->date_start = $datestart_poll;
+        $poll->date_end = trim($dateend_poll);
+        $poll->state = trim($statePoll);
+        $poll->finish = trim($finish);
 	$idpoll = insert_record('polls', $poll);
         //Poll Answer
         $answer = new StdClass;
@@ -128,7 +159,7 @@ $answers_poll =array(optional_param('answer1'),optional_param('answer2'),optiona
 
           if ($idpoll != -1) {
             $poll++;
-          }
+          	}	
 /*
         // The members will see the poll
         $recipients = array ();
@@ -192,22 +223,32 @@ $answers_poll =array(optional_param('answer1'),optional_param('answer2'),optiona
        */	
 		}
 		else {
+                $redirect_url = url . user_info('username', $_SESSION['userid']) . "/polls/create";
         	$messages[] = __gettext("You must specify minimun two Answers!");
       	     	     }
 	     }
       	     else {
+                $redirect_url = url . user_info('username', $_SESSION['userid']) . "/polls/create";
              	$messages[] = __gettext("You must specify a Question!");
       	          }
 	}
         else {
+                $redirect_url = url . user_info('username', $_SESSION['userid']) . "/polls/create";
       		$messages[] = __gettext("You must specify the Poll's Name!");
              }
+}
+else {
+       $messages[] = __gettext("Your Poll will end today. Plase choose other date!");
+       $redirect_url = url . user_info('username', $_SESSION['userid']) . "/polls/create";
+     }
+
+
 
     define('redirect_url', $redirect_url);
     break;
 
 case "multiple" :
-    $action_type = optional_param('message_action_type', -1, PARAM_ALPHA);
+    $action_type = optional_param('poll_action_type', -1, PARAM_ALPHA);
     $selected = optional_param('selected');
     $sent = optional_param('sent');
     if (is_array($selected)) {
@@ -233,7 +274,7 @@ case "multiple" :
       }
     }
 
-    $redirect_url = url . user_info('username', $USER->ident) . "/messages/";
+    $redirect_url = url . user_info('username', $USER->ident) . "/polls/";
     if ($sent) {
       $redirect_url .= "sent";
     }

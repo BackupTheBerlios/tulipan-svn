@@ -13,13 +13,9 @@ global $USER, $messages;
 
 if ($profile_name = optional_param('profile_name')) {
 
-echo $profile_name;
-
   if ($profile_id = user_info_username('ident', $profile_name)) {
     $page_owner = $profile_id;
 	
-echo $page_owner;
-
   }
 }
 

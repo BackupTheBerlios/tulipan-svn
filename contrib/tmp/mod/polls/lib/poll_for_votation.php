@@ -25,8 +25,8 @@ if (isset ($parameter)) {
 
 $submitButton = optional_param('vote');
 $submitButton = "vote";
-$redirect = url . "mod/polls/lib/votation.php?action=vote";
-//$redirect = url . "mod/polls/lib/votation.php";
+//$redirect = url . "mod/polls/lib/votation.php?action=vote";
+$redirect = url . "mod/polls/lib/votation.php";
 
 
 
@@ -47,12 +47,14 @@ $redirect = url . "mod/polls/lib/votation.php?action=vote";
   //$imagePoll = '<img src="/mod/polls/jpgraph/src/elgg_polls/graph_poll.php" alt="" border="0">';
 //Poll Votation
 if ($answersPoll= get_record('poll_answer', 'id_poll',$poll->ident)) {
-    $fullInfo= get_record('poll_answer', 'id_poll',$poll->ident);
+    //$InfocurrentPoll= get_record('poll_answer', 'id_poll',$poll->ident,);
     $inicialNumber = $answersPoll->ident;
     $numberofanswers = count_records('poll_answer','id_poll',$poll->ident);
     $cantidadFinal = $numberofanswers + $inicialNumber;
     $creatorPoll = $poll->owner;
-
+    $answerID = $fullInfo->ident;
+//echo "POLL !!!! IDENT !!! ::::: " . $poll->ident;
+//echo "ANSWER !!!! ID EN EL FORMULARIO !!! ::::: " . $answerID;
 //<form name="form1" method="post" action="/mod/polls/jpgraph/src/elgg_polls/graph_poll.php">
 
 
@@ -65,7 +67,8 @@ $Poll .=<<<END
     <tr> 
       <td colspan="2"><strong>$title_poll</strong>
       <input type="hidden" name="creator_id" value=$creatorid>
-      <input type="hidden" name="creatorname" value=$creatorPoll></td>		
+      <input type="hidden" name="creatorname" value=$creatorPoll>
+      <input type="hidden" name="answer_id" value=$answerID></td>		
     </tr>
 
     <tr> 
@@ -101,16 +104,18 @@ END;
 else
 	{
 $i = $inicialNumber;
+$numberForOption = 1;
     for($i; $i<$cantidadFinal;$i++)
 	{
         $answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
 	//echo "Variable i::::" . $i;
         $answerforshow = $answerInfo->answer;
 	//echo "Mostrando las Respuestas::::" . $answerforshow;
-
+        $nameOption = "opcion" . $numberForOption;
+        $numberForOption++;
 
 $Poll .=<<<END
-      <td width="51"><input type="checkbox" name="opcion" value="$i"></td>
+      <td width="51"><input type="checkbox" name="$nameOption" value="$i"></td>
       <td width="283">$answerforshow</td>
     </tr>
     <?php } ?>
@@ -123,7 +128,7 @@ END;
 	  
 $Poll .=<<<END
     <tr>
-      <td><input type="submit" name="submitpoll" value="$submitButton"></td>
+      <td><input type="submit" name="submitpoll" value="vote"></td>
       <td>This poll ends: <?php echo date('d-m-y',$fecha); ?></td>
    
   	</table>

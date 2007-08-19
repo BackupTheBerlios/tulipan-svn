@@ -7,6 +7,7 @@
  */
 require_once (dirname(dirname(__FILE__)) ."/../includes.php");
 
+global $poll;
 run("profile:init");
 run("polls:init");
 
@@ -18,14 +19,14 @@ $poll = optional_param('message');
 
 //$poll_information = get_record('polls', 'owner_id', $profile_id);
 $poll_information = get_record('polls', 'ident', $poll);
-echo "Mostrando Datos de poll information ::::: " . $poll;
-echo ":::IDENT POLL ::::: " . $poll_information->owner_id;
-echo ":::PROFILE ID ::::: " . $profile_id;
 
 
 templates_page_setup();
-if($poll_information->owner_id != $profile_id)
-{$body = run("polls:detailedview",$poll_information);
+if($poll_information->owner_id == $profile_id)
+{
+$answer_poll  = get_record('poll_answer', 'ident',$poll);
+//$body = run("polls:jpgraph",$answer_poll);
+$body = run("polls:detailedview",$poll_information);
 }
 else
 {

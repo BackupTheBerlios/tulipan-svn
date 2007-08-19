@@ -11,7 +11,6 @@
 
 
 /// FUNCTIONS FOR DATABASE HANDLING  ////////////////////////////////
-
 /**
  * Execute a given sql command string
  *
@@ -616,11 +615,9 @@ function get_record($table, $field1=null, $value1=null, $field2=null, $value2=nu
     $select = where_clause_prepared($field1, $field2, $field3);
 
     $values = where_values_prepared($value1, $value2, $value3);
-    
+
     $returnvalue = get_record_sql('SELECT '.$fields.' FROM '. $CFG->prefix . $table .' '. $select, $values);
 
-
-    
     if ($trycache) {
         $setres = elggcache_set($table, $field1 . "_" . $value1, $returnvalue);
     }
