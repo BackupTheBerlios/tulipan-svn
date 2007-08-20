@@ -69,6 +69,11 @@ function polls_init() {
 global $CFG, $function, $db, $METATABLES;
 // Functions to perform initializacion
 
+
+//Keywordo {{polls}}
+  (string) $CFG->templates->variables_substitute['polls'][] = 'polls_active';
+
+
   $function['polls:init'][] = $CFG->dirroot . "mod/polls/lib/polls_init.php";
 
   // Compose / Delete messages
@@ -88,7 +93,7 @@ global $CFG, $function, $db, $METATABLES;
   //$function['users:infobox:menu:text'][] = $CFG->dirroot ."/mod/messages/lib/messages_sidebar_link.php";
 
   $function['display:sidebar'][] = $CFG->dirroot . "mod/polls/sidebar/current_polls_info.php";
-
+  $function['polls:info'][]= $CFG->dirroot . "mod/polls/sidebar/poll_sidebar.php";
   // JpGraph
   // http://www.aditus.nu/jpgraph/index.php
 
@@ -96,4 +101,10 @@ global $CFG, $function, $db, $METATABLES;
   $function['polls:jpgraph_bar'][] = $CFG->dirroot . "mod/polls/jpgraph/src/jpgraph_bar.php";
 
 }
+
+function poll_active($vars) {
+   
+       return date("F j, Y, g:i a");
+   
+   }
 ?>

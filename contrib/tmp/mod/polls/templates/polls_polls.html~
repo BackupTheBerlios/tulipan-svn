@@ -20,8 +20,15 @@
       <th width="23%">{{date}}</th>
       <th width="23%">{{state}}</th>
      </tr>
-        {{polls}}
+        {{messages}}
      <tr>
+     </tr>
+        {{blog}}
+     <tr>
+     </tr>
+        {{contact}}
+     <tr>
+
       <th colspan="4" style="text-align:left">{{paging}}</th>
       <th>&nbsp;</th>
      </tr>

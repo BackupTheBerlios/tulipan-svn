@@ -38,9 +38,40 @@ if (isset ($parameter)) {
   }
 
   $creatorPoll->icon= '<a href="' . url . $creatorPoll->username . '/">' .user_icon_html($creatorPoll->ident,50). "</a>";
-  $mark= "<input type=\"checkbox\" name=\"selected[]\" value=\"" . $poll->ident . "\" onclick=\"mark(this)\">";
 
-  $date= strftime("%d/%m/%Y", $poll->date_start);
+  echo "Estamos en POLL POLL VIEW !!!! PROFILE ID :::: " . $profile_id;
+  echo "Datos :::: Propietario ::::" . $poll->owner_id;
+  if($profile_id == $poll->owner_id)
+  {
+      $mark= "<input type=\"checkbox\" name=\"selected[]\" value=\"" . $poll->ident . "\" onclick=\"mark(this)\">";
+
+  }
+  else
+  {
+      $mark=""; 
+  }
+// CHECKKKK The user can't delete the Poll If he isn't the creator
+/*$poll_information = get_record('polls', 'ident', $poll);
+
+echo "Analizando las encuestas :::Creador del Poll" . $poll_information->owner;
+templates_page_setup();
+if($poll_information->owner_id != $profile_id)
+{
+$answer_poll  = get_record('poll_answer', 'ident',$poll);
+//$body = run("polls:jpgraph",$answer_poll);
+$body = run("polls:detailedview",$poll_information);
+}
+else
+{
+
+$body = run("polls:pollforvotation",$poll_information);
+}
+
+//END CHECKKKK*/
+
+
+
+  $date= $poll->date_start;
 
   $state = $poll->state;
 

@@ -11,17 +11,30 @@
 require_once (dirname(dirname(__FILE__)) . "/../includes.php");
 
 
+
 function deletePoll($poll, $user,$sent=0) {
   global $messages;
   if ($poll_info = get_record('polls', 'ident', $poll)) {
       delete_records('polls', 'ident', $poll);
     $messages[] = __gettext("The selected Poll was deleted.");
   } else {
-    $messages[] = __gettext("The message ID its not valid!.");
+    $messages[] = __gettext("The poll ID its not valid!.");
   }
   return $sent;
 }
 
+function finishPoll($poll, $user,$sent=0) {
+  global $messages;
+
+  if ($poll_info = get_record('polls', 'ident', $poll->ident)) {
+      $poll->state = "closed";
+      update_record('polls', $poll);
+      $messages[] = __gettext("The selected Poll has been finished");
+  } else {
+    $messages[] = __gettext("The poll ID its not valid!.");
+  }
+  return $sent;
+}
 
 run("polls:init");
 
@@ -45,6 +58,18 @@ switch ($action) {
       if ($sent) {
         $redirect_url .= "view";
       }
+      define('redirect_url', $redirect_url);
+    }
+    break;
+
+case "finish" :
+    $poll_id = optional_param('poll_id', 0, PARAM_INT);
+    $sent = optional_param('sent',0,PARAM_INT);
+    $poll = get_record('polls', 'ident', $poll_id);
+
+    if (logged_on && !empty ($poll)) {
+      $redirect_url = url . user_info('username', $USER->ident) . "/polls/";
+      finishPoll($poll, $USER->ident,$sent);
       define('redirect_url', $redirect_url);
     }
     break;
@@ -255,17 +280,8 @@ case "multiple" :
       foreach ($selected as $option) {
         $msg = get_record('polls', 'ident', $option);
         switch ($action_type) {
-          case "read";
-            if ($msg->status == "unread") {
-              $msg->status = "read";
-              update_record('messages', $msg);
-            }
-            break;
-          case "unread";
-            if ($msg->status == "read") {
-              $msg->status = "unread";
-              update_record('messages', $msg);
-            }
+          case "finish";
+            finishPoll($msg, $USER->ident,$sent);
             break;
           case "delete";
             deletePoll($option, $USER->ident,$sent);

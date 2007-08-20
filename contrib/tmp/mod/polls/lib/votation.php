@@ -30,16 +30,18 @@ $poll_vote = new StdClass;
 $poll_answer = new StdClass;
 
 // PENDIENTE MIRAR SI SON MULTIPLES VOTACIONES !!!! opcion 1, 2, 3, 4 , 5 etc...
-$poll_vote->id_answer = trim($_POST['opcion']);
+$vote_selected = trim($_POST['opcion']);
 $poll_vote->id_user = trim($_POST['creator_id']);
 //$poll_answer->ident = trim($_POST['answer_id']);
 //Get IDENT from Current Poll
 
-
-
+ 
 //Get the quantity of votes from the Answer 
-$quantity = get_record_select('poll_answer', 'ident',$poll_vote->id_answer,'quantity');
-$answer  = get_record('poll_answer', 'ident', $poll_vote->id_answer);
+$quantity = get_record_select('poll_answer', 'ident',$vote_selected,'quantity');
+$answer  = get_record('poll_answer', 'ident', $vote_selected);
+$poll_id = get_record('poll_answer', 'ident',$vote_selected,null,null,null,null,'id_poll');
+$poll_vote->id_poll = $poll_id->id_poll;
+
 //echo "Show RECORD::: IDENT::" . $answer->ident . "ANSWER:::" . $answer->answer . "CANTIDAD" . $answer->quantity; 
 $answer->quantity = $answer->quantity + 1;
 //echo "NUEVA CANTIDAD :::: " . $answer->quantity;

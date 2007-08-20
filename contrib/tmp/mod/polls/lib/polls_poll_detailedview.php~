@@ -56,7 +56,7 @@ $update = update_record('polls',$current_poll);
 $current_poll = get_record('polls','ident',$poll);
 $daysforendPoll = get_record('polls','ident',$poll,null,null,null,null,'DAY(date_end)-DAY(actual_date) AS days');
 echo "DIAS para que termine el POLL ::::" . $daysforendPoll->days;
- $links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?action=delete&amp;sent=' . $sent . '&amp;poll_id=' . $msg->ident . '" onclick="return confirm(\'' . $returnConfirm . '\')">' . $Delete . '</a> |';
+$links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?action=delete&amp;sent=' . $sent . '&amp;poll_id=' . $msg->ident . '" onclick="return confirm(\'' . $returnConfirm . '\')">' . $Delete . '</a> |';
 
 
 if($daysforendPoll->days==0 || $daysforendPoll->days<0)
@@ -76,7 +76,8 @@ if($answer_poll->state == "active" &&  $answer_poll->finish == "manual")
 
 echo "Estamos en POLL :::" . $poll;
 
- $links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?action=delete&amp;sent=' . $sent . '&amp;msg_id=' . $msg->ident . '" onclick="return confirm(\'' . $returnConfirm . '\')">' . $endPoll . '</a> |';
+ $links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?action=finish&amp;sent=' . $sent . '">' . $endPoll . '</a> |';
+//$links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?action=finish&amp;sent=' . $sent  . '</a> |';
 }
 
 

@@ -30,12 +30,12 @@ $state = __gettext("State");
 $actionPoll = __gettext("Select an action");
 $returnConfirm = __gettext("Are you sure you want to permanently delete this poll(s)?");
 
-$action_options = "<option value=\"read\">$finish_poll</option>";
+$action_options = "<option value=\"finish\">$finish_poll</option>";
 $action_options .= "<option value=\"delete\">$delete</option>";
 
 $filterlink = "";
 $polls_closed = get_record('polls','state','closed');
-echo "POLLS Closed ::::" . $polls_closed->state;
+echo "PROFILE ID ::::" . $profile_id;
 //PENDIENTE HISTORIAL !!!!
 /*if ($polls_closed->state) {
   echo "Entro al IF de los cerrados ::::";
@@ -55,10 +55,6 @@ $msgs = "";
 $pagging = "&nbsp;";
 
 
-/*$pagging .=<<< END
-CARGANDO GRAFICO !!!!	
-<img src="/mod/polls/jpgraph/src/elgg_polls/graph_poll.php" alt="" border="0">
-END;*/
 
 /////
 if (!empty ($polls)) {
@@ -73,10 +69,10 @@ if (!empty ($polls)) {
   $next = __gettext("Next");
 
 //Pagging the Polls
-echo "PAGINANDO::::::";
-echo $numberofpolls;
-echo "::::: offset :::::" . $msg_offset;
-echo "polls por pagina :::" . $polls_per_page;
+//echo "PAGINANDO::::::";
+//echo $numberofpolls;
+//echo "::::: offset :::::" . $msg_offset;
+//echo "polls por pagina :::" . $polls_per_page;
   //if ($numberofpolls - ($msg_offset + $polls_per_page) > 0) {
 if ($numberofpolls  > $polls_per_page) {
 

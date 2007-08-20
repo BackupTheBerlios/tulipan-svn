@@ -76,7 +76,8 @@ if($answer_poll->state == "active" &&  $answer_poll->finish == "manual")
 
 echo "Estamos en POLL :::" . $poll;
 
- $links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?action=delete&amp;sent=' . $sent . '&amp;msg_id=' . $msg->ident . '" onclick="return confirm(\'' . $returnConfirm . '\')">' . $endPoll . '</a> |';
+ $links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?action=finish&amp;sent=' . $sent . '&amp;poll_id=' . $msg->ident .'">' . $endPoll . '</a> |';
+//$links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?action=finish&amp;sent=' . $sent  . '</a> |';
 }
 
 

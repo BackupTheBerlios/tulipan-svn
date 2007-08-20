@@ -50,7 +50,7 @@ $current_poll->actual_date = $actualDate;
 $update = update_record('polls',$current_poll);
 $current_poll = get_record('polls','ident',$poll->ident);
 $daysforendPoll = get_record('polls','ident',$poll->ident,null,null,null,null,'DAY(date_end)-DAY(actual_date) AS days');
-echo "DIAS para que termine el POLL ::::" . $daysforendPoll->days;
+//echo "DIAS para que termine el POLL ::::" . $daysforendPoll->days;
 if($daysforendPoll->days==0 || $daysforendPoll->days<0)
 {
   $Poll = "<h3>This Poll has finished</h3><br><br><h2>Thanks for your Vote !! </h2>";
@@ -60,10 +60,17 @@ else
 {
   $Poll = "<h2>This Poll will end in:   " . $current_poll->date_end . "</h2><br>";
 
+  echo "Votando... IDENT:::::" . $poll->ident . "PROFILE:::" . $profile_id;
 
-
-
-
+  $vote = get_record('poll_vote','id_poll',$poll->ident,null,null,null,null,'id_poll');
+  echo "Votando... :::::" . $vote->id_poll;
+  if($vote->id_poll)
+  {
+    $Poll .="<h3>You already have voted in this poll</h3><br><h2>Thanks for your vote !! </h2>";
+  }
+  else
+  { 
+  
   //$date= strftime("%d %b %Y, %H:%M", $creator->username);
 
 
@@ -158,8 +165,8 @@ $Poll .=<<<END
 	</form>
 
 END;
-
-//End ELSE
+	} //End ELSE If the user already have voted
+//End ELSE -- If the Poll have finished
 }
 
 
