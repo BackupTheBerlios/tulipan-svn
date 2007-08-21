@@ -425,10 +425,13 @@ $run_result .=<<< END
 <script>
 function show_calendar(){
 
-	alert(document.elggform.new_date_poll.value);
-	if (document.elggform.new_date_poll.value =="Automatically"){
-		xDisplay('calendar', 'block');
-	}
+	xDisplay('calendar', 'block');
+}
+</script>
+<script>
+function hide_calendar(){
+
+	xDisplay('calendar', 'none');
 }
 </script>
 <style type="text/css">
@@ -439,7 +442,7 @@ display:none;
 
 </style>
 
-<input type=radio name=new_date_poll value=manual>Manual end<br>
+<input type=radio name=new_date_poll value=manual onClick="hide_calendar()">Manual end<br>
 <input type=radio name=new_date_poll value=auto onClick="show_calendar()">Automatically<br><br>
 
 <br>

@@ -70,8 +70,6 @@ global $CFG, $function, $db, $METATABLES;
 // Functions to perform initializacion
 
 
-//Keywordo {{polls}}
-  (string) $CFG->templates->variables_substitute['polls'][] = 'polls_active';
 
 
   $function['polls:init'][] = $CFG->dirroot . "mod/polls/lib/polls_init.php";
@@ -100,11 +98,9 @@ global $CFG, $function, $db, $METATABLES;
   $function['polls:jpgraph'][] = $CFG->dirroot . "mod/polls/jpgraph/src/elgg_polls/bartutex1.php";
   $function['polls:jpgraph_bar'][] = $CFG->dirroot . "mod/polls/jpgraph/src/jpgraph_bar.php";
 
+
 }
 
-function poll_active($vars) {
+
    
-       return date("F j, Y, g:i a");
-   
-   }
 ?>

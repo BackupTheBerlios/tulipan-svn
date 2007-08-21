@@ -18,7 +18,7 @@ $msg_offset = optional_param('msg_offset', 0, PARAM_INT);
 $sent = optional_param('sent', 0, PARAM_INT);
 //******************************
 $delete = __gettext("Delete");
-$finish = __gettext("Finish");
+$finish_poll = __gettext("Finish the Poll");
 
 $title = __gettext("Polls");
 $creatorPoll = __gettext("Creator");
@@ -27,28 +27,34 @@ $action = __gettext("Action:");
 $date = __gettext("Date");
 $pollname = __gettext("Polls");
 $state = __gettext("State");
-$actionPoll = __gettext("Select an action");
+$actionPoll = __gettext("--Select an action: --");
 $returnConfirm = __gettext("Are you sure you want to permanently delete this poll(s)?");
 
-$action_options = "<option value=\"read\">$finish</option>";
+$action_options = "<option value=\"finish\">$finish_poll</option>";
 $action_options .= "<option value=\"delete\">$delete</option>";
 
 $filterlink = "";
 $polls_closed = get_record('polls','state','closed');
 echo "PROFILE ID ::::" . $profile_id;
 //PENDIENTE HISTORIAL !!!!
-/*if ($polls_closed->state) {
+if ($sent === 1) {
   echo "Entro al IF de los cerrados ::::";
-  $from = __gettext("Sent to");
   $title = __gettext("Historial of Polls");
-  $where_sent = "from_id=$profile_id AND hidden_from='0'";
   $filterlink = "history/";
   $action_options = "<option value=\"delete\">$delete</option>";
-}*/
+  $polls = get_records_select('polls', "state='closed'", null, 'date_start', '*', $msg_offset, $polls_per_page);
+  $numberofpolls = count_records('polls','state','closed');
 
-$polls = get_records_select('polls');
+}
+else
+{
+  $polls = get_records_select('polls', "state='active'", null, 'date_start', '*', $msg_offset, $polls_per_page);
+  $numberofpolls = count_records_select('polls','state','active');
+
+}
+
+//$polls = get_records_select('polls');
 //$polls = get_records_select('polls', "", null, '', '*', $msg_offset,'');
-$numberofpolls = count_records_select('polls');
 
 //PAGE VIEW POLL
 $msgs = "";
@@ -64,20 +70,16 @@ if (!empty ($polls)) {
     $index++;
   }
 
+
+//Pagging the Polls
   $msg_name = htmlspecialchars($profile_id, ENT_COMPAT, 'utf-8');
   $back = __gettext("Back");
   $next = __gettext("Next");
 
-//Pagging the Polls
-//echo "PAGINANDO::::::";
-//echo $numberofpolls;
-//echo "::::: offset :::::" . $msg_offset;
-//echo "polls por pagina :::" . $polls_per_page;
-  //if ($numberofpolls - ($msg_offset + $polls_per_page) > 0) {
-if ($numberofpolls  > $polls_per_page) {
+echo "Numero de POLLS ::: " . $numberofpolls;
+  if ($numberofpolls - ($msg_offset + $polls_per_page) > 0) {
 
     $display_msg_offset = $msg_offset + $polls_per_page;
-    echo "entro al primer IF::::DISPLAY" . $display_msg_offset;
 
     $pagging .=<<< END
 
@@ -86,7 +88,6 @@ if ($numberofpolls  > $polls_per_page) {
 END;
   }
   if ($msg_offset > 0) {
-    echo "Entro al segundo IF";
     $display_msg_offset = $msg_offset - $polls_per_page;
     if ($display_msg_offset < 0) {
       $display_msg_offset = 0;
@@ -102,7 +103,7 @@ END;
 //http://pymera/mod/messages/messages_actions.php?action=multiple&sent=0
 $run_result .= templates_draw(array (
   'context' => 'plug_polls',
-  'messages' => $msgs,
+  'polls_list' => $msgs,
   'paging' => $pagging,
   'title' => $title,
   'creator' => $creatorPoll,
