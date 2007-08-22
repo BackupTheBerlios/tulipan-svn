@@ -49,7 +49,7 @@ if ($sent === 1) {
 else
 {
   $polls = get_records_select('polls', "state='active'", null, 'date_start', '*', $msg_offset, $polls_per_page);
-  $numberofpolls = count_records_select('polls','state','active');
+  $numberofpolls = count_records('polls','state','active');
 
 }
 

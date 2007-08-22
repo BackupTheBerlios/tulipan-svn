@@ -16,11 +16,8 @@ define("context", "polls");
 templates_page_setup();
 
 $title = run("profile:display:name") . " :: " . __gettext("Polls CREATE");
-
-$body = run("content:polls:new");
 $body .= run("polls:new");
-// Needed for add the tinymce editor
-$body .= run("messages:new:body",array(array("new_msg_body")));
+
 
 $body = templates_draw(array (
   'context' => 'contentholder',

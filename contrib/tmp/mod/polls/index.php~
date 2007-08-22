@@ -7,7 +7,6 @@
  * @copyright Corporación Somos Más - 2007
  */
 
-
 require_once(dirname(dirname(__FILE__))."/../includes.php");
 
 run("profile:init");
@@ -17,7 +16,7 @@ define("context", "polls");
 templates_page_setup();
 
 $title = run("profile:display:name") . " :: " . __gettext("Polls");
-$body .= run("polls:new");
+$body .= run("polls:view");
 
 $body = templates_draw(array (
   'context' => 'contentholder',

@@ -1,6 +1,6 @@
 <?php
 /*
- * This script initialize the enviroment for show the message list
+ * This script initialize the enviroment for show the poll list
  * @author Johan Eduardo Quijano Garcia <gerencia@treszero.com>
  * @copyright Tres Zero - 2007
  * @author Diego Andrés Ramírez Aragón <diego@somosmas.org>
@@ -22,13 +22,13 @@ function polls_pagesetup() {
   require_once $CFG->dirroot . "mod/polls/default_template.php";
 
   if (isloggedin() && user_info("user_type", $_SESSION['userid']) != "external") {
-    // Add the JavaScript functions
-    // Lose the trailing slash
+    // Add the JavaScript Polls functions
     $url= substr($CFG->wwwroot, 0, -1);
     $metatags .= "<script language=\"javascript\" type=\"text/javascript\" src=\"$url/mod/polls/polls.js\"></script>";
     $metatags .= "<link rel=\"stylesheet\" href=\"" . $CFG->wwwroot . "/mod/polls/css.css\" type=\"text/css\" media=\"screen\" />";
+ 
 
-    //$messages = count_records_select('polls','to_id='.$USER->ident." AND status='unread'");
+    //Show the poll in the top menu
     if (defined("context") && context == "polls" && $pgowner == $_SESSION['userid']) {
       $PAGE->menu[]= array (
         'name' => 'polls',
@@ -54,11 +54,8 @@ function polls_pagesetup() {
 
         $PAGE->menu_sub[]= array (
           'name' => 'polls:history',
-          'html' => '<a href="' . $CFG->wwwroot . $_SESSION['username'] . '/polls/history">' . __gettext("Historial") . '</a>');
+          'html' => '<a href="' . $CFG->wwwroot . $_SESSION['username'] . '/polls/history">' . __gettext("History") . '</a>');
 
-	/*$PAGE->menu_sub[]= array (
-          'name' => 'polls:best',
-          'html' => '<a href="' . $CFG->wwwroot . $_SESSION['username'] . '/polls/sent">' . __gettext("Best Polls") . '</a>');*/
       }
     }
   }
@@ -69,14 +66,10 @@ function polls_init() {
 global $CFG, $function, $db, $METATABLES;
 // Functions to perform initializacion
 
-
-
-
   $function['polls:init'][] = $CFG->dirroot . "mod/polls/lib/polls_init.php";
 
-  // Compose / Delete messages
+  // Create polls
   $function['polls:new'][] = $CFG->dirroot . "mod/polls/lib/polls_new.php";
-  //$function['messages:new:body'][] = $CFG->dirroot . "units/tinymce/tinymce_js.php";
 /*
   // View a message
   */
@@ -87,20 +80,11 @@ global $CFG, $function, $db, $METATABLES;
 
 
   // Sidebar display function
-  //$function['messages:contact:link'][] = $CFG->dirroot ."/mod/messages/lib/messages_sidebar_link.php";
-  //$function['users:infobox:menu:text'][] = $CFG->dirroot ."/mod/messages/lib/messages_sidebar_link.php";
-
   $function['display:sidebar'][] = $CFG->dirroot . "mod/polls/sidebar/current_polls_info.php";
-  $function['polls:info'][]= $CFG->dirroot . "mod/polls/sidebar/poll_sidebar.php";
+  
   // JpGraph
   // http://www.aditus.nu/jpgraph/index.php
-
   $function['polls:jpgraph'][] = $CFG->dirroot . "mod/polls/jpgraph/src/elgg_polls/bartutex1.php";
-  $function['polls:jpgraph_bar'][] = $CFG->dirroot . "mod/polls/jpgraph/src/jpgraph_bar.php";
-
-
 }
-
-
    
 ?>

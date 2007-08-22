@@ -28,7 +28,6 @@ function finishPoll($poll, $user,$sent=0) {
 
   if ($poll_info = get_record('polls', 'ident', $poll->ident)) {
       $poll->state = "closed";
-      echo "Finalizando el Poll STATE:::" . $poll->state;
       update_record('polls', $poll);
       $messages[] = __gettext("The selected Poll has been finished");
   } else {
@@ -82,11 +81,11 @@ case "finish" :
     $title_poll = optional_param('new_poll_name');
     $kind_poll = optional_param('new_kind_poll');
     $dateend_poll = optional_param('date_poll');
-    $datestart_poll = date("Y-n-j");
+    $datestart_poll = date("Y/m/d");
     $finish = optional_param('new_date_poll');
 if($finish == "manual")
 {  
-   $dateend_poll = "0000-00-00";
+   $dateend_poll = "0000/00/00";
    $statePoll = "active";
 
 }
@@ -95,8 +94,21 @@ else
     if($dateend_poll == $datestart_poll)
     {
        $statePoll = "closed";
+       $redirect_url = url . user_info('username', $USER->ident) . "/polls/create";
+       $messages[] = __gettext("The Poll finish today !! Please select other date");
+       define('redirect_url', $redirect_url);
 
+       break;
 
+    }
+    else if($dateend_poll < $datestart_poll)
+    {
+       $statePoll = "closed";
+       $redirect_url = url . user_info('username', $USER->ident) . "/polls/create";
+       $messages[] = __gettext("Your date for finish the poll already pass !! Please select other date");
+       define('redirect_url', $redirect_url);
+
+       break;
     }
     else
     {
@@ -105,8 +117,8 @@ else
     }
 
 }
-   
-    //echo "FECHA DE COMIENZO DEL POLL:::" . $datestart_poll;
+
+//Answers MAX 10   
     $poll_question = optional_param('new_poll_question');
     $answers_quantity = optional_param('poll_answers');
 	switch ($answers_quantity) {
@@ -141,7 +153,7 @@ else
 
 	}
     
-  /*  $answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'),optional_param('answer8'),optional_param('answer9'),optional_param('answer10'));*/
+
     	$date = optional_param('new_date_poll');
 
 if(trim($statePoll) == "active"){ 
@@ -173,80 +185,14 @@ if(trim($statePoll) == "active"){
                 $idpoll_answer = insert_record('poll_answer', $answer);
 
 	}
-        //$answer->answer = trim($answers_poll[0]);
-        //$answer->answer = trim($answer_poll[0]);
-
-
-        //Poll Votes CUANDO UN USUARIO CUALQUIERA VOTE ............ CAPTURA DE LOS VOTOS
-        //$vote = new StdClass;
-        //$vote->id_answer = $idpoll_answer;
-        //$vote->id_user = $_SESSION['userid'];
- 	//$idpoll_vote = insert_record('poll_vote', $vote);
 
           if ($idpoll != -1) {
             $poll++;
           	}	
-/*
-        // The members will see the poll
-        $recipients = array ();
-        //$recipient = get_record("users", "ident", "*");
-        //If the message if for the community
-        if ($recipient->user_type == "community") {
-          $members = get_records_sql('SELECT u.*, f.ident AS friendident FROM ' . $CFG->prefix . 'friends f ' .
-                                     'JOIN ' . $CFG->prefix . 'users u ON u.ident = f.owner ' .
-                                     'WHERE f.friend = ? AND u.user_type = ?', array (
-            $to,
-            'person'
-          ));
-
-          foreach ($members as $key => $infoMember) {
-            $recipients[] = $key;
-          }
-        } else {
-          $recipients[] = $to;
-        }
-
-        $msgs = 0;
-        foreach ($recipients as $rcpt) {
-          $msg->to_id = trim($rcpt);
-          $msg->title = $subject;
-          if ($recipient->user_type == "community") {
-            $msg->title = "[" . $recipient->name . "] " . $subject;
-          }
+	
 
 
-          $insert_idpoll = insert_record('polls', $poll);
-          if ($insert_idpoll != -1) {
-            $poll++;
-          }
 
-          // MAIL !!!!!!
-          // Send the email confirmation if configured
-          // Don't use the weblog plug-in hook because it inserts data in the polls table too
-          $notifications = user_flag_get("emailnotifications", $msg->to_id);
-          if ($notifications) {
-            $email_from = new StdClass;
-            $email_from->email = $CFG->noreplyaddress;
-            $email_from->name = $CFG->sitename;
-            $email_message = sprintf(__gettext("You have received a message from %s."), user_info("name", $msg->from_id));
-            $email_message .= "\n\n";
-            $email_message .= sprintf(__gettext("To reply, click here: %s"), $CFG->wwwroot . user_info("username", $msg->to_id) . "/messages/");
-            $email_message = wordwrap($email_message);
-
-            if ($email_to = get_record_sql("select * from " . $CFG->prefix . "users where ident = " . $msg->to_id)) {
-
-              if (!email_to_user($email_to, $email_from, $msg->title, $email_message . "\n\n\n" . __gettext("You cannot reply to this message by email."))) {
-                $messages[] = __gettext("Failed to send email. An unknown error occurred.");
-              }
-            }
-          }
-        }
-
-        if ($msgs == count($recipients)) {
-          $messages[] = __gettext("Your message was sent");
-          $redirect_url = url . user_info('username', $USER->ident) . "/messages/sent";
-        }
-       */	
 		}
 		else {
                 $redirect_url = url . user_info('username', $_SESSION['userid']) . "/polls/create";
@@ -293,7 +239,7 @@ case "multiple" :
 
     $redirect_url = url . user_info('username', $USER->ident) . "/polls/";
     if ($sent) {
-      $redirect_url .= "sent";
+      $redirect_url .= "history";
     }
     define('redirect_url', $redirect_url);
 

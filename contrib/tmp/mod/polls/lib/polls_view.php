@@ -36,7 +36,8 @@ $action_options .= "<option value=\"delete\">$delete</option>";
 $filterlink = "";
 $polls_closed = get_record('polls','state','closed');
 echo "PROFILE ID ::::" . $profile_id;
-//PENDIENTE HISTORIAL !!!!
+
+//Polls History
 if ($sent === 1) {
   echo "Entro al IF de los cerrados ::::";
   $title = __gettext("Historial of Polls");
@@ -100,7 +101,6 @@ END;
   }
 
 }
-//http://pymera/mod/messages/messages_actions.php?action=multiple&sent=0
 $run_result .= templates_draw(array (
   'context' => 'plug_polls',
   'polls_list' => $msgs,

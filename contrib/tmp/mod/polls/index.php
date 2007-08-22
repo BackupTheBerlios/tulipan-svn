@@ -1,12 +1,11 @@
 <?php
 /*
- * This script initialize the enviroment for show the message list
+ * This script initialize the enviroment for show the polls list
  * @author Johan Eduardo Quijano Garcia <gerencia@treszero.com>
  * @copyright Tres Zero - 2007
  * @author Diego Andrés Ramírez Aragón <diego@somosmas.org>
  * @copyright Corporación Somos Más - 2007
  */
-
 
 require_once(dirname(dirname(__FILE__))."/../includes.php");
 
