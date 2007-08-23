@@ -1,10 +1,7 @@
 <?php
 
 /*
- * This script loads and append to $run_result the basic data for the specified message
- *
- * @param object $msg ($parameter) The message to be showed
- * @param int $sent If the list must to show the sent messages (optional)
+ * This script loads and append to $run_result the basic data for the specified poll
  *
  * @uses $profile_id
  * @uses $CFG
@@ -29,8 +26,9 @@ if (isset ($parameter)) {
   if ($creatorInfo= get_record('users', 'ident',$poll->owner_id)) {
 
     $creatorPoll->username= $creatorInfo->username;
-    $creatorPoll->fullname= htmlspecialchars($authorInfo->name, ENT_COMPAT, 'utf-8');
+    $creatorPoll->fullname= htmlspecialchars($creatorPoll->name, ENT_COMPAT, 'utf-8');
     $creatorPoll->ident = $creatorInfo->ident;
+
   } else {
     $creatorPoll->username= "";
     $creatorPoll->fullname= "";
@@ -48,50 +46,16 @@ if (isset ($parameter)) {
   {
       $mark=""; 
   }
-// CHECKKKK The user can't delete the Poll If he isn't the creator
-/*$poll_information = get_record('polls', 'ident', $poll);
 
-echo "Analizando las encuestas :::Creador del Poll" . $poll_information->owner;
-templates_page_setup();
-if($poll_information->owner_id != $profile_id)
-{
-$answer_poll  = get_record('poll_answer', 'ident',$poll);
-//$body = run("polls:jpgraph",$answer_poll);
-$body = run("polls:detailedview",$poll_information);
-}
-else
-{
-
-$body = run("polls:pollforvotation",$poll_information);
-}
-
-//END CHECKKKK*/
-
-
+  $username= user_name($poll->owner_id);
 
   $date= $poll->date_start;
 
-  $state = $poll->state;
-
-  $username= user_info('username', $poll->owner_id);
+  $state = $poll->state;  
 
   $title= run("weblogs:text:process", $poll->title);
 
   $poll_style= "";
-
-//'<img src="/mod/polls/jpgraph/src/elgg_polls/graph_poll.php" alt="" border="0">'
-
-  /* $run_result .= templates_draw(array (
-    'context' => 'plug_poll',
-    'date' => $date,
-    'title' => '<a href="' . url . $_SESSION['username'] . '/polls/view/' . $msg->owner_id . "/$sent\">" . $title . "</a>",
-    'from_username' => $creatorPoll->username,
-    'from_name' => '<a href="' . url . $creatorPoll->username . '/">' . $creatorPoll->fullname . "</a>",
-    'from_icon' => $creatorPoll->icon,
-    'msg_style' => $msg_style,
-    'mark' => $mark,
-    'index' => $index
-  ));*/
 
 
 $run_result .= templates_draw(array (
@@ -100,7 +64,7 @@ $run_result .= templates_draw(array (
     'state' => $state,
     'title' => '<a href="' . url . $_SESSION['username'] . '/polls/view/' . $poll->ident . "/$sent\">" . $title . "</a>",
     'from_username' => $creatorPoll->username,
-    'from_name' => '<a href="' . url . $creatorPoll->username . '/">' . $creatorPoll->fullname . "</a>",
+    'from_name' => '<a href="' . url . $creatorPoll->username . '/">' . $username . "</a>",
     'from_icon' => $creatorPoll->icon,
     'msg_style' => $poll_style,
     'mark' => $mark,

@@ -28,7 +28,6 @@ if (!logged_on) {
 }
 if ($profile_id != $USER->ident || !logged_on) {
 
-echo "entrando al IF (profile_id    USER -- ident || logged_on)";
 
   $messages[] = __gettext("You may view only your own messages");
   $redirect_url = url . user_info('username', $USER->ident) . "/messages/";

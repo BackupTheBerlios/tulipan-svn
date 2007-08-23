@@ -80,9 +80,17 @@ case "finish" :
     $creator_poll_name = (isset ($poll_creator_id)) ? user_info('name', $poll_creator_id) : "";
     $title_poll = optional_param('new_poll_name');
     $kind_poll = optional_param('new_kind_poll');
+    if($kind_poll == "")
+    {
+      $kind_poll = "only"; 
+    }
     $dateend_poll = optional_param('date_poll');
     $datestart_poll = date("Y/m/d");
     $finish = optional_param('new_date_poll');
+    if($finish == "")
+    {
+      $finish = "manual"; 
+    }
 
 //Checking the DATE information of the news poll
 if($finish == "manual")

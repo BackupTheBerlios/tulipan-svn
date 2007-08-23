@@ -13,7 +13,6 @@ global $profile_id, $CFG, $db;
 $polls_per_page = 7;
 
 // If the msg offset hasn't been set, it's 0
-//PENDIENTE MIRAR DONDE ESTAN DEFINIDAS
 $msg_offset = optional_param('msg_offset', 0, PARAM_INT);
 $sent = optional_param('sent', 0, PARAM_INT);
 //******************************
@@ -35,11 +34,9 @@ $action_options .= "<option value=\"delete\">$delete</option>";
 
 $filterlink = "";
 $polls_closed = get_record('polls','state','closed');
-echo "PROFILE ID ::::" . $profile_id;
 
 //Polls History
 if ($sent === 1) {
-  echo "Entro al IF de los cerrados ::::";
   $title = __gettext("Historial of Polls");
   $filterlink = "history/";
   $action_options = "<option value=\"delete\">$delete</option>";
@@ -77,7 +74,6 @@ if (!empty ($polls)) {
   $back = __gettext("Back");
   $next = __gettext("Next");
 
-echo "Numero de POLLS ::: " . $numberofpolls;
   if ($numberofpolls - ($msg_offset + $polls_per_page) > 0) {
 
     $display_msg_offset = $msg_offset + $polls_per_page;

@@ -149,8 +149,8 @@ RewriteRule ^([A-Za-z0-9]+)\/news/$ mod/news/index.php?profile_name=$1
 RewriteRule ^([A-Za-z0-9]+)\/news\/msg_offset/([0-9]+)$ mod/news/index.php?profile_name=$1&msg_offset=$2
 #RewriteRule ^([A-Za-z0-9]+)\/news\/history$ mod/news/index.php?profile_name=$1&history=1
 #RewriteRule ^([A-Za-z0-9]+)\/news\/history\/msg_offset/([0-9]+)$ mod/news/index.php?profile_name=$1&history=1&msg_offset=$2
-#RewriteRule ^([A-Za-z0-9]+)\/news\/create$ mod/news/create.php?profile_name=$1
-#RewriteRule ^([A-Za-z0-9]+)\/polls\/create$ mod/polls/polls_actions.php?action=create
+RewriteRule ^([A-Za-z0-9]+)\/news\/create$ mod/news/create.php?profile_name=$1
+RewriteRule ^([A-Za-z0-9]+)\/news\/create$ mod/news/news_actions.php?action=create
 RewriteRule ^([A-Za-z0-9]+)\/news\/view\/([0-9]+)\/([0-1])$ mod/news/view.php?profile_name=$1&message=$2&sent=$3
 
 # Some blogging clients probe Wordpress or MoveableType endpoints,
