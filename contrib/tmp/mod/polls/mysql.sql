@@ -1,12 +1,32 @@
-CREATE TABLE prefix_polls (
-ident int(11) NOT NULL default '',
-title varchar(50) NOT NULL default '',
-description varchar(50) NOT NULL default '',
-owner varchar(50) NOT NULL default '',
-opcions varchar(50) NOT NULL default '',
-poll_answers varchar(50) NOT NULL default '',
-date_start int(50) NOT NULL default '',
-date_end int(50) NOT NULL default '',
-user_answers varchar(50) NOT NULL default '',
-results varchar(50) NOT NULL default '' );
+CREATE TABLE elggpolls (
+ident int(38) NOT NULL AUTO_INCREMENT,
+question TEXT(100) NOT NULL,
+title varchar(50) NOT NULL ,
+description varchar(50) NOT NULL ,
+owner varchar(50) NOT NULL ,
+owner_id  int(38) NOT NULL,
+kind varchar(50) NOT NULL ,
+access VARCHAR(50) NOT NULL,
+finish varchar(50) NOT NULL,
+date_start date NOT NULL ,
+date_end date NOT NULL,
+actual_date date NOT NULL,
+state varchar(50) NOT NULL,
+PRIMARY KEY(ident),
+FOREIGN KEY(owner_id) references elggusers(ident));
+
+CREATE TABLE elggpoll_vote (
+id_poll INT(38) NOT NULL,
+id_user INT(10) NOT NULL,
+FOREIGN KEY(id_poll) references elggpolls(ident),
+FOREIGN KEY(id_user) references elggusers(ident));
+
+CREATE TABLE elggpoll_answer (
+ident int(38) NOT NULL AUTO_INCREMENT ,
+id_poll int(38) NOT NULL,
+answer TEXT(25) NOT NULL,
+quantity INT(32),
+PRIMARY KEY(ident),
+FOREIGN KEY(id_poll) references elggpoll(id_poll));
+
 

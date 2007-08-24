@@ -66,6 +66,18 @@ function polls_init() {
 global $CFG, $function, $db, $METATABLES;
 // Functions to perform initializacion
 
+/*if (!get_config('polls')) {
+		if (file_exists(dirname(__FILE__) . "/" . $CFG->dbtype . ".sql")) {
+			modify_database(dirname(__FILE__) . "/" . $CFG->dbtype . ".sql");
+		} else {
+			error("Error: Your database ($CFG->dbtype) is not yet fully supported by the Elgg suggest plug-in.  See the mod/suggest directory.");
+		}
+    set_config('polls',time());
+	}
+
+*/
+  echo "Pichi FILE :::" .  dirname(__FILE__) . $CFG->dbtype;
+
   $function['polls:init'][] = $CFG->dirroot . "mod/polls/lib/polls_init.php";
 
   // Create polls
@@ -84,7 +96,9 @@ global $CFG, $function, $db, $METATABLES;
   
   // JpGraph
   // http://www.aditus.nu/jpgraph/index.php
-  $function['polls:jpgraph'][] = $CFG->dirroot . "mod/polls/jpgraph/src/elgg_polls/bartutex1.php";
+  //$function['polls:jpgraph'][] = $CFG->dirroot . "mod/polls/jpgraph/src/elgg_polls/bartutex1.php";
+  $function['polls:jpgraph'][] = $CFG->dirroot . "mod/polls/jpgraph/src/elgg_polls/gantt.php";
+
 }
    
 ?>
