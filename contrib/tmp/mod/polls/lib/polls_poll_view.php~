@@ -28,7 +28,6 @@ if (isset ($parameter)) {
     $creatorPoll->username= $creatorInfo->username;
     $creatorPoll->fullname= htmlspecialchars($creatorPoll->name, ENT_COMPAT, 'utf-8');
     $creatorPoll->ident = $creatorInfo->ident;
-    echo "Creador del POLL :::: NAME" . $creatorPoll->name;
 
   } else {
     $creatorPoll->username= "";

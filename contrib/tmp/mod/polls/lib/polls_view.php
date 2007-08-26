@@ -8,7 +8,6 @@
 
 
 // Get the current profile ID
-
 global $profile_id, $CFG, $db;
 $polls_per_page = 7;
 
@@ -51,16 +50,12 @@ else
 
 }
 
-//$polls = get_records_select('polls');
-//$polls = get_records_select('polls', "", null, '', '*', $msg_offset,'');
 
 //PAGE VIEW POLL
 $msgs = "";
 $pagging = "&nbsp;";
 
-
-
-/////
+//
 if (!empty ($polls)) {
   $index = $msg_offset+1;
   foreach ($polls as $poll) {

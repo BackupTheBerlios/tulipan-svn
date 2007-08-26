@@ -84,18 +84,12 @@ case "finish" :
     {
       $kind_poll = "only"; 
     }
-    else
-    {
-    }
     $dateend_poll = optional_param('date_poll');
     $datestart_poll = date("Y/m/d");
     $finish = optional_param('new_date_poll');
     if($finish == "")
     {
       $finish = "manual"; 
-    }
-    else
-    {
     }
 
 //Checking the DATE information of the news poll

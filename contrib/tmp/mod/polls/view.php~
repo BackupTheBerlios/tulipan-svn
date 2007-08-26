@@ -1,6 +1,6 @@
 <?php
 /*
- * This script initialize the enviroment for view a message
+ * This script initialize the enviroment for view a poll
  * @param int $message The msg Id
  * @author Diego Andrés Ramírez Aragón <diego@somosmas.org>
  * @copyright Corporación Somos Más - 2007
@@ -16,7 +16,6 @@ templates_page_setup();
 $title = run("profile:display:name") . " :: " . __gettext("Polls");
 $poll = optional_param('message');
 
-//$poll_information = get_record('polls', 'owner_id', $profile_id);
 $poll_information = get_record('polls', 'ident', $poll);
 
 echo "Analizando las encuestas :::Creador del Poll" . $poll_information->owner;
@@ -24,12 +23,10 @@ templates_page_setup();
 if($poll_information->owner_id == $profile_id)
 {
 $answer_poll  = get_record('poll_answer', 'ident',$poll);
-//$body = run("polls:jpgraph",$answer_poll);
 $body = run("polls:detailedview",$poll_information);
 }
 else
 {
-
 $body = run("polls:pollforvotation",$poll_information);
 }
 

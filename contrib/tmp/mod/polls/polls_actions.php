@@ -1,6 +1,6 @@
 <?php
 /*
- * This script defines the actions avaible for the private polls plug-in.
+ * This script defines the actions avaible for the polls plug-in.
  *
  * @author Johan Eduardo Quijano Garcia <gerencia@treszero.com>
  * @copyright Tres Zero - 2007

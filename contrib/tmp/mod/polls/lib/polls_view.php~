@@ -74,7 +74,6 @@ if (!empty ($polls)) {
   $back = __gettext("Back");
   $next = __gettext("Next");
 
-echo "Numero de POLLS ::: " . $numberofpolls;
   if ($numberofpolls - ($msg_offset + $polls_per_page) > 0) {
 
     $display_msg_offset = $msg_offset + $polls_per_page;

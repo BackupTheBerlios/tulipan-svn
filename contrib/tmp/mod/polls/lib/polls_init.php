@@ -1,7 +1,6 @@
 <?php
 /*
- * This script initialize the enviroment for the private poll.
- * It checks if the user is logged and if he is trying to access another private polls
+ * This script initialize the enviroment for the poll.
  * @author Johan Eduardo Quijano Garcia <gerencia@treszero.com>
  * @copyright Tres Zero-- 2007
  * @author Diego Andrés Ramírez Aragón <diego@somosmas.org>

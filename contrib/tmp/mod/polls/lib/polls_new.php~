@@ -93,7 +93,6 @@ $run_result .= templates_draw(array (
 $run_result .=<<< END
 <input type=radio name=new_kind_poll value=only>Only one asnwer<br>
 <input type=radio name=new_kind_poll value=multiple>Multiple Answer<br>
-<input type=radio name=new_kind_poll value=open>Open Answer*<br>
 <br>
 END;
 

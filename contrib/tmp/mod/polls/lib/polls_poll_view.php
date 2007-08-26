@@ -16,7 +16,7 @@ global $template;
 if (isset ($parameter)) {
   global $CFG, $profile_id;
   $poll= $parameter[0];
-  //$sent= $parameter[1];
+  $sent= $parameter[1];
   $index= $parameter[1];
 
   $sent= optional_param('sent', 0, PARAM_INT);

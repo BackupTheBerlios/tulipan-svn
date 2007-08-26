@@ -1,5 +1,5 @@
 // Global message counter
-var messages_selected = 0;
+var polls_selected = 0;
 
 /**
 * Function that check the conditions for send the messages action form
