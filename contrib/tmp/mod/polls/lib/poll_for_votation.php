@@ -1,17 +1,16 @@
 <?php
 
 /*
- * This script loads and append to $run_result the data for the specified message
- *
- * @param object $msg ($parameter) The message to be showed
- * @param int $sent If the list must to show the sent messages (optional)
- *
+ * This script loads and append to $run_result the data for the specified poll
+
  * @uses $profile_id
  * @uses $CFG
  *
+ * @author Johan Eduardo Quijano Garcia <gerencia@treszero.com>
+ * @copyright Tres Zero - 2007
  * @author Diego Andrés Ramírez Aragón <diego@somosmas.org>
  * @copyright Corporación Somos Más - 2007
-*/
+ */
 if (isset ($parameter)) {
   global $CFG, $profile_id;
   $poll= $parameter;
