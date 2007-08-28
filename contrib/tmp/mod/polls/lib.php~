@@ -66,7 +66,8 @@ function polls_init() {
 global $CFG, $function, $db, $METATABLES;
 // Functions to perform initializacion
 
-/*if (!get_config('polls')) {
+//Database Polls
+if (!get_config('polls')) {
 		if (file_exists(dirname(__FILE__) . "/" . $CFG->dbtype . ".sql")) {
 			modify_database(dirname(__FILE__) . "/" . $CFG->dbtype . ".sql");
 		} else {
@@ -75,8 +76,7 @@ global $CFG, $function, $db, $METATABLES;
     set_config('polls',time());
 	}
 
-*/
-  echo "Pichi FILE :::" .  dirname(__FILE__) . $CFG->dbtype;
+
 
   $function['polls:init'][] = $CFG->dirroot . "mod/polls/lib/polls_init.php";
 

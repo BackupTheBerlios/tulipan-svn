@@ -62,10 +62,11 @@ $redirect = url . "mod/news/news_actions.php?action=compose";
 
 // Initializing the label messages
 $title = __gettext("New News");
-$from = __gettext("From:");
+$namepoll = __gettext("Title of News");
 $to = __gettext("To:");
 $subject = __gettext("Subject:");
-$message = __gettext("Message:");
+$news_body = __gettext("News:");
+$source = __gettext("News Source:");
 $submitButton = ($action == "reply") ? "Reply" : "Send";
 
 
@@ -81,42 +82,24 @@ $run_result .= templates_draw(array (
   'contents' => $creator_param_name
 ));
 
-if (is_array($to_param)) {
-  $run_result .= templates_draw(array (
-    'context' => 'databoxvertical',
-    'name' => $to,
-    'contents' => display_input_field(array (
-      "new_msg_to",
-      "",
-      "as_select",
-      null,
-      null,
-      null,
-      $to_param
-    )
-  )));
-} else {
-  $run_result .= "<input type=\"hidden\" name=\"new_msg_to\" value=\"$to_param_id\">";
-  $run_result .= templates_draw(array (
-    'context' => 'databoxvertical',
-    'name' => $to,
-    'contents' => $to_param
-  ));
-}
-
+//Title
 $run_result .= templates_draw(array (
   'context' => 'databoxvertical',
-  'name' => $subject,
+  'name' => $namepoll,
   'contents' => display_input_field(array (
-    "new_msg_subject",
-    $subject_param,
+    "new_news_name",
+    $nameofpoll,
     "text"
   )
 )));
 
+
+
+//News Editor
+
 $run_result .= templates_draw(array (
   'context' => 'databoxvertical',
-  'name' => $message,
+  'name' => $news_body,
   'contents' => display_input_field(array (
     "new_msg_body",
     stripslashes($msg
@@ -124,8 +107,42 @@ $run_result .= templates_draw(array (
   "weblogtext"
 ))));
 
+//Source News
+$run_result .= templates_draw(array (
+  'context' => 'databoxvertical',
+  'name' => $source,
+  'contents' => display_input_field(array (
+    "new_news_name",
+    $nameofpoll,
+    "text"
+  )
+)));
+
+//Keywords -- Tags
+//PENDIENTE
+
+if(isset($extraField) && isset($extraValue)){
+      $body .= templates_draw(array(
+                                'context' => 'databoxvertical',
+                                'name' => $Keywords . "<br />" . $keywordDesc,
+                                'contents' =>  display_input_field(array("edit_weblog_keywords",$keywords,"mediumtext","weblog",$post->ident))
+                            )
+                            );
+    }
+    else{
+      $body .= templates_draw(array(
+                                'context' => 'databoxvertical',
+                                'name' => $Keywords . "<br />" . $keywordDesc,
+                                'contents' =>  display_input_field(array("edit_weblog_keywords","","keywords","weblog",$post->ident))
+                            )
+                            );
+    }
+
+//
+
 $run_result .=<<< END
-    <p>
+    <p>  
+
         <input type="submit" value="$submitButton" />
     </p>
 </form>

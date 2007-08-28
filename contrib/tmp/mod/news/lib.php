@@ -67,8 +67,15 @@ function news_init() {
 
 global $CFG, $function, $db, $METATABLES;
 // Functions to perform initializacion
+     if (!get_config('news')) {
 
-
+		if (file_exists(dirname(__FILE__) . "/" . $CFG->dbtype . ".sql")) {
+			modify_database(dirname(__FILE__) . "/" . $CFG->dbtype . ".sql");
+		} else {
+			error("Error: Your database ($CFG->dbtype) is not yet fully supported by the Elgg suggest plug-in.  See the mod/suggest directory.");
+		}
+    set_config('news',time());
+	}
 
 
   $function['news:init'][] = $CFG->dirroot . "mod/news/lib/news_init.php";

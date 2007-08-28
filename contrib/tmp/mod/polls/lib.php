@@ -18,7 +18,6 @@ function polls_pagesetup() {
 
   $pgowner= $profile_id;
 
-  require_once $CFG->dirroot . "mod/polls/lib/polls_config.php";
   require_once $CFG->dirroot . "mod/polls/default_template.php";
 
   if (isloggedin() && user_info("user_type", $_SESSION['userid']) != "external") {
