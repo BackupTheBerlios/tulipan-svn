@@ -15,7 +15,6 @@ state varchar(50) NOT NULL,
 PRIMARY KEY(ident),
 FOREIGN KEY(owner_id) references elggusers(ident));
 
-
 CREATE TABLE elggpoll_vote (
 id_poll INT(38) NOT NULL,
 id_user INT(10) NOT NULL,

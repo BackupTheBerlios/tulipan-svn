@@ -1,4 +1,4 @@
-CREATE TABLE elggpolls (
+CREATE TABLE prefix_polls (
 ident int(38) NOT NULL AUTO_INCREMENT,
 question TEXT(100) NOT NULL,
 title varchar(50) NOT NULL ,
@@ -15,13 +15,13 @@ state varchar(50) NOT NULL,
 PRIMARY KEY(ident),
 FOREIGN KEY(owner_id) references elggusers(ident));
 
-CREATE TABLE elggpoll_vote (
+CREATE TABLE prefix_poll_vote (
 id_poll INT(38) NOT NULL,
 id_user INT(10) NOT NULL,
 FOREIGN KEY(id_poll) references elggpolls(ident),
 FOREIGN KEY(id_user) references elggusers(ident));
 
-CREATE TABLE elggpoll_answer (
+CREATE TABLE prefix_poll_answer (
 ident int(38) NOT NULL AUTO_INCREMENT ,
 id_poll int(38) NOT NULL,
 answer TEXT(25) NOT NULL,
