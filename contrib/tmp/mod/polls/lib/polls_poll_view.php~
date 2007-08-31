@@ -51,9 +51,10 @@ if (isset ($parameter)) {
 
   $date= $poll->date_start;
   ////State of Poll
-  $vote_of_the_user= get_record('poll_vote','id_user',$profile_id,null,null,null,null,'state_current_poll');
+  $vote_of_the_user= get_record('poll_vote','id_poll',$poll->ident,'id_user',$profile_id,null,null,'state_current_poll');
   if($vote_of_the_user->state_current_poll)
   {
+     echo "Hay algo en STATE";
      $state = $vote_of_the_user->state_current_poll;  
 
   }

@@ -1,11 +1,6 @@
 <?php
 /*
- * This script loads and append to $run_result the data for the specified message
- *
- * @param int $from The sender Id
- * @param int $to The recipient Id
- * @param int $msg_id The messge id (optional, used if the new message its a reply)
- * @param int $action If the message is a reply (optional)
+ * This script loads and append to $run_result the data for the specified poll
  *
  * @uses $profile_id
  * @uses $CFG
@@ -19,24 +14,6 @@ global $CFG, $profile_id,$metatags;
 
 $creator_poll_id = optional_param('from', $profile_id, PARAM_INT);
 $creator_poll_name = (isset ($creator_poll_id)) ? user_info('name', $creator_poll_id) : "";
-/*
-//Analizando msg_param
- 
-$msg_param = optional_param('msg_id', -1, PARAM_INT);
-$msg = "";
-$subject_param = "";
-
-if ($msg_param != -1) {
-  function prepend($string) {
-    return "> $string";
-  }
-  $msg = get_record("messages", "ident", $msg_param);
-  $subject_param = "Re: " . $msg->title;
-  $msg_array = explode("\n", $msg->body);
-  $msg_array = array_map("prepend", $msg_array);
-  $msg = implode("\n<br>", $msg_array);
-}
-*/
 $action = optional_param('action');
 $redirect = url . "mod/polls/polls_actions.php?action=create";
 
@@ -120,7 +97,7 @@ $run_result .= templates_draw(array (
 
 $url = $CFG->wwwroot;
 $run_result .=<<< END
-<script type='text/javascript' src="$url/mod/polls/lib/xDisplay.js" language=JavaScript></script>
+<script type='text/javascript' src="$url/mod/polls/js/xDisplay.js" language=JavaScript></script>
 <script>
 function add_answers_fiels(){
 if (document.elggform.poll_answers.value == "2"){
@@ -380,17 +357,6 @@ display:none;}
 END;
 
 
-/*
-$run_result .= templates_draw(array (
-  'context' => 'databoxvertical',
-  'name' => $answers,
-  'contents' => display_input_field(array (
-    "new_msg_subject",
-    $subject_param,
-    "text"
-  )
-)));*/
-
 //*********************************************************************************************
 //Date Options
 
@@ -399,23 +365,8 @@ $run_result .= templates_draw(array (
   'context' => 'databox1',
   'name' => $endpoll,
 ));
-//$url .= "mod/polls/lib/calendar.js";
-//$script_calendar= "/popcalendar.js";
-//$metatags .= "<script language=\"javascript\" type=\"text/javascript\" src=\"$url\"></script>";
-//$metatags .= "<script language=\"javascript\" type=\"text/javascript\" src=\"$url\"></script>";
 
-// JS Calendar 
-//$metatags .= "<style type="text/css" src="css/calendar-estilo.css" />";
-//$metatags .= "<script type=\"text/javascript\" src=\"$url\"></script>";
-//$metatags .= "<script type=\"text/javascript\" src=\"calendar-es.js\"></script>";
-//$metatags .= "<script type=\"text/javascript\" src=\"calendar-setup.js\"></script>";
-
-//$metatags .= "<style type=\"text/css\" src=\"$url/mod/polls/lib/calendar-green.css\" />";
 $metatags .= "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"$url/mod/polls/lib/calendar-brown.css\" title=\"win2k-cold-1\" />"; 
-
-//   alert("No me pises, que llevo chanclas");
-       // return true;     
-
 
 $run_result .=<<< END
 <script type='text/javascript' src="$url/mod/polls/lib/calendar.js" language=JavaScript></script>
@@ -468,19 +419,6 @@ display:none;
 </script>
 
 END;
-/*
-$run_result .=<<< END
-<script type='text/javascript' src="$url/mod/polls/lib/popcalendar.js" language=JavaScript></script>
-
-
-<input type=radio name=new_date_poll value=manual>Manual end<br>
-<input type=radio name=new_date_poll value=auto>Automatically<br>
-Select your end date:
-<input name="date_poll" type="text"  id="dateArrival" onClick="popUpCalendar(this,elggform.dateArrival,'mm/dd/yyyy');" size="10">
-
-
-END;
-*/
 
 //*********************************************************************************************
 

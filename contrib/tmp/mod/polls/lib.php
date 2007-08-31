@@ -23,7 +23,7 @@ function polls_pagesetup() {
   if (isloggedin() && user_info("user_type", $_SESSION['userid']) != "external") {
     // Add the JavaScript Polls functions
     $url= substr($CFG->wwwroot, 0, -1);
-    $metatags .= "<script language=\"javascript\" type=\"text/javascript\" src=\"$url/mod/polls/polls.js\"></script>";
+    $metatags .= "<script language=\"javascript\" type=\"text/javascript\" src=\"$url/mod/polls/js/polls.js\"></script>";
     $metatags .= "<link rel=\"stylesheet\" href=\"" . $CFG->wwwroot . "/mod/polls/css.css\" type=\"text/css\" media=\"screen\" />";
  
 

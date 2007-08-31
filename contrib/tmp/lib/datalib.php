@@ -615,6 +615,8 @@ function get_record($table, $field1=null, $value1=null, $field2=null, $value2=nu
     $select = where_clause_prepared($field1, $field2, $field3);
 
     $values = where_values_prepared($value1, $value2, $value3);
+    
+    //echo "Analizando la SENTENCIA :::: SELECT " . $fields.' FROM '. $CFG->prefix . $table .' '. $select . $values;
 
     $returnvalue = get_record_sql('SELECT '.$fields.' FROM '. $CFG->prefix . $table .' '. $select, $values);
 

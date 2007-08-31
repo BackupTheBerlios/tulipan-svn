@@ -97,7 +97,7 @@ $run_result .= templates_draw(array (
 
 $url = $CFG->wwwroot;
 $run_result .=<<< END
-<script type='text/javascript' src="$url/mod/polls/lib/xDisplay.js" language=JavaScript></script>
+<script type='text/javascript' src="$url/mod/polls/js/xDisplay.js" language=JavaScript></script>
 <script>
 function add_answers_fiels(){
 if (document.elggform.poll_answers.value == "2"){
@@ -369,9 +369,9 @@ $run_result .= templates_draw(array (
 $metatags .= "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"$url/mod/polls/lib/calendar-brown.css\" title=\"win2k-cold-1\" />"; 
 
 $run_result .=<<< END
-<script type='text/javascript' src="$url/mod/polls/lib/calendar.js" language=JavaScript></script>
-<script type='text/javascript' src="$url/mod/polls/lib/calendar-en.js" language=JavaScript></script>
-<script type='text/javascript' src="$url/mod/polls/lib/calendar-setup.js" language=JavaScript></script>
+<script type='text/javascript' src="$url/mod/polls/js/calendar.js" language=JavaScript></script>
+<script type='text/javascript' src="$url/mod/polls/js/calendar-en.js" language=JavaScript></script>
+<script type='text/javascript' src="$url/mod/polls/js/calendar-setup.js" language=JavaScript></script>
 <script>
 function show_calendar(){
 

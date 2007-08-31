@@ -59,7 +59,6 @@ $user_votes = get_record('poll_vote','id_user',$profile_id);
 
   if($user_votes->id_poll)
   {
-     echo "Hay VOTOS !! !!!!::::: " . $poll_vote->id_poll;
      $index = $msg_offset+1;
 
      foreach ($polls_voted as $poll_active) {
@@ -68,13 +67,20 @@ $user_votes = get_record('poll_vote','id_user',$profile_id);
 
      }
 
-         $polls_of_others_active = get_records_select('polls', "owner_id !=" . $profile_id  . " AND state='active'" . $sql_and,null, 'date_end', '*', $msg_offset, $polls_per_page); 
+     $polls_of_others_active = get_records_select('polls', "owner_id !=" . $profile_id  . " AND state='active'" . $sql_and,null, 'date_end', '*', $msg_offset, $polls_per_page); 
 
 
      /////////////////////////
-     foreach ($polls_of_others_active as $poll_voted) {   
-     $sql_and_voted .= " AND ident= " . $poll_voted->ident;
-     echo "POLLITO !!!!!:::::::" . $sql_and_voted;
+     if (!empty ($polls_of_others_active)) {
+
+          foreach ($polls_of_others_active as $poll_voted_active) {   
+          $sql_and_voted .= " AND ident!= " . $poll_voted_active->ident;
+
+          }
+     }
+     else
+     { 
+       $sql_and_voted .= " ";
 
      }
          $polls_of_others_voted = get_records_select('polls', "owner_id !=" . $profile_id  . " AND state='active'" . $sql_and_voted,null, 'date_end', '*', $msg_offset, $polls_per_page);
@@ -82,7 +88,6 @@ $user_votes = get_record('poll_vote','id_user',$profile_id);
   }
   else
   {
-      echo "NOOOOO Hay VOTOS !! !!!!::::: " . $poll_vote->id_poll;
 
       $polls_of_others = get_records_select('polls', "owner_id !=" . $profile_id  . " AND state='active'",null, 'date_end', '*', $msg_offset, $polls_per_page);
   }
@@ -108,14 +113,15 @@ if (!empty ($polls)) {
   }
 }
 
-/*if (!empty ($polls_of_others)) {
+if (!empty ($polls_of_others)) {
 
-  $index = $msg_offset+1;
   foreach ($polls_of_others as $poll_other) {
     $msgs .= run("polls:poll:view", array($poll_other,$index));
     $index++;
   }
-}*/
+}
+else
+{
 //PAGE VIEW POLL
 $polls_net = "";
 $pagging = "&nbsp;";
@@ -140,6 +146,8 @@ if (!empty ($polls_of_others_voted)) {
     
   }
   
+}
+
 }
 
 

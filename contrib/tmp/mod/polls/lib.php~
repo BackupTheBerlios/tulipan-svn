@@ -70,7 +70,7 @@ if (!get_config('polls')) {
 		if (file_exists(dirname(__FILE__) . "/" . $CFG->dbtype . ".sql")) {
 			modify_database(dirname(__FILE__) . "/" . $CFG->dbtype . ".sql");
 		} else {
-			error("Error: Your database ($CFG->dbtype) is not yet fully supported by the Elgg suggest plug-in.  See the mod/polls directory.");
+			error("Error: Your database ($CFG->dbtype) is not yet fully supported by the Elgg polls plug-in.  See the mod/polls directory.");
 		}
     set_config('polls',time());
 	}

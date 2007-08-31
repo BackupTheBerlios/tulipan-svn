@@ -57,9 +57,9 @@ if($current_poll->date_end == '0000-00-00')
      $Poll = "<h2>This Poll will end Automatically</h2><br>";
 
      $vote = get_record('poll_vote','id_poll',$poll->ident,null,null,null,null,'id_poll');
-     $already_vote = get_record('poll_vote','id_poll',$poll->ident,null,null,null,null,'id_user');
+     $already_vote = get_record('poll_vote','id_poll',$poll->ident,'id_user',$profile_id);
 
-  if($vote->id_poll)
+  if($already_vote)
   {
     $Poll .="<h3>You already have voted in this poll</h3><br><h2>Thanks for your vote !! </h2>";
   }
