@@ -91,7 +91,7 @@ if (!get_config('polls')) {
 
 
   // Sidebar display function
-  $function['display:sidebar'][] = $CFG->dirroot . "mod/polls/sidebar/current_polls_info.php";
+  $function['display:sidebar'][] = $CFG->dirroot . "mod/polls/lib/current_polls_info.php";
   
   // JpGraph
   // http://www.aditus.nu/jpgraph/index.php
