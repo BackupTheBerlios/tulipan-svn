@@ -16,7 +16,7 @@ global $template;
 if (isset ($parameter)) {
   global $CFG, $profile_id;
   $poll= $parameter[0];
-  //$sent= $parameter[1];
+  $sent= $parameter[1];
   $index= $parameter[1];
 
   $sent= optional_param('sent', 0, PARAM_INT);
@@ -50,9 +50,17 @@ if (isset ($parameter)) {
   $username= user_name($poll->owner_id);
 
   $date= $poll->date_start;
+  ////State of Poll
+  $vote_of_the_user= get_record('poll_vote','id_user',$profile_id,null,null,null,null,'state_current_poll');
+  if($vote_of_the_user->state_current_poll)
+  {
+     $state = $vote_of_the_user->state_current_poll;  
 
+  }
+  else
+  {
   $state = $poll->state;  
-
+  }
   $title= run("weblogs:text:process", $poll->title);
 
   $poll_style= "";

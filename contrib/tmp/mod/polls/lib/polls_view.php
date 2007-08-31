@@ -39,13 +39,56 @@ if ($sent === 1) {
   $title = __gettext("Historial of Polls");
   $filterlink = "history/";
   $action_options = "<option value=\"delete\">$delete</option>";
-  $polls = get_records_select('polls', "state='closed'", null, 'date_start', '*', $msg_offset, $polls_per_page);
+  $polls = get_records_select('polls', "state='closed'", null, 'date_end', '*', $msg_offset, $polls_per_page);
   $numberofpolls = count_records('polls','state','closed');
 
 }
 else
 {
-  $polls = get_records_select('polls', "state='active'", null, 'date_start', '*', $msg_offset, $polls_per_page);
+
+  $polls_owner = get_record('polls','owner_id',$profile_id);
+
+  $polls = get_records_select('polls', "owner_id =" . $profile_id . " AND state='active'",null, 'date_end', '*', $msg_offset, $polls_per_page);
+
+
+
+
+  //Polls voted for the user
+$polls_voted = get_records('poll_vote','id_user',$profile_id);
+$user_votes = get_record('poll_vote','id_user',$profile_id);
+
+  if($user_votes->id_poll)
+  {
+     echo "Hay VOTOS !! !!!!::::: " . $poll_vote->id_poll;
+     $index = $msg_offset+1;
+
+     foreach ($polls_voted as $poll_active) {
+    
+     $sql_and .= " AND ident!= " . $poll_active->id_poll;
+
+     }
+
+         $polls_of_others_active = get_records_select('polls', "owner_id !=" . $profile_id  . " AND state='active'" . $sql_and,null, 'date_end', '*', $msg_offset, $polls_per_page); 
+
+
+     /////////////////////////
+     foreach ($polls_of_others_active as $poll_voted) {   
+     $sql_and_voted .= " AND ident!= " . $poll_voted->ident;
+     echo "POLLITO !!!!!:::::::" . $sql_and_voted;
+
+     }
+         $polls_of_others_voted = get_records_select('polls', "owner_id !=" . $profile_id  . " AND state='active'" . $sql_and_voted,null, 'date_end', '*', $msg_offset, $polls_per_page);
+ 
+  }
+  else
+  {
+      echo "NOOOOO Hay VOTOS !! !!!!::::: " . $poll_vote->id_poll;
+
+      $polls_of_others = get_records_select('polls', "owner_id !=" . $profile_id  . " AND state='active'",null, 'date_end', '*', $msg_offset, $polls_per_page);
+  }
+  //$polls_of_others = get_records_select('polls', "owner_id !=" . $profile_id  . " AND state='active'",null, 'date_end', '*', $msg_offset, $polls_per_page);
+  //$polls_of_others_voted = get_records_select('polls', "owner_id !=" . $profile_id  . " AND state='active'" . " and ident=(select id_poll from elggpoll_vote where state_current_poll ='voted' )",null, 'date_end', '*', $msg_offset, $polls_per_page);
+
   $numberofpolls = count_records('polls','state','active');
 
 }
@@ -57,11 +100,47 @@ $pagging = "&nbsp;";
 
 //
 if (!empty ($polls)) {
+
   $index = $msg_offset+1;
   foreach ($polls as $poll) {
     $msgs .= run("polls:poll:view", array($poll,$index));
     $index++;
   }
+}
+
+/*if (!empty ($polls_of_others)) {
+
+  $index = $msg_offset+1;
+  foreach ($polls_of_others as $poll_other) {
+    $msgs .= run("polls:poll:view", array($poll_other,$index));
+    $index++;
+  }
+}*/
+//PAGE VIEW POLL
+$polls_net = "";
+$pagging = "&nbsp;";
+
+//
+if (!empty ($polls_of_others_active)) {
+
+  $index = $msg_offset+1;
+  foreach ($polls_of_others_active as $poll_net) {
+    $polls_net .= run("polls:poll:view", array($poll_net,$index));
+    $index++;
+    
+  }
+  
+}
+if (!empty ($polls_of_others_voted)) {
+
+  //$index = $msg_offset+1;
+  foreach ($polls_of_others_voted as $poll_voted) {
+    $polls_net .= run("polls:poll:view", array($poll_voted,$index));
+    $index++;
+    
+  }
+  
+}
 
 
 //Pagging the Polls
@@ -91,10 +170,13 @@ END;
 END;
   }
 
-}
+
+
+
 $run_result .= templates_draw(array (
   'context' => 'plug_polls',
   'polls_list' => $msgs,
+  'polls_other_list' => $polls_net,
   'paging' => $pagging,
   'title' => $title,
   'creator' => $creatorPoll,

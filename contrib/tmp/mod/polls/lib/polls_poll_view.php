@@ -50,9 +50,17 @@ if (isset ($parameter)) {
   $username= user_name($poll->owner_id);
 
   $date= $poll->date_start;
+  ////State of Poll
+  $vote_of_the_user= get_record('poll_vote','id_poll',$poll->ident,null,null,null,null,'state_current_poll');
+  if($vote_of_the_user->state_current_poll)
+  {
+     $state = $vote_of_the_user->state_current_poll;  
 
+  }
+  else
+  {
   $state = $poll->state;  
-
+  }
   $title= run("weblogs:text:process", $poll->title);
 
   $poll_style= "";

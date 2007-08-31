@@ -53,10 +53,13 @@ $current_poll = get_record('polls','ident',$poll);
 $daysforendPoll = get_record('polls','ident',$poll,null,null,null,null,'DAY(date_end)-DAY(actual_date) AS days');
 $links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?action=delete&amp;sent=' . $sent . '&amp;poll_id=' . $msg->ident . '" onclick="return confirm(\'' . $returnConfirm . '\')">' . $Delete . '</a> |';
 
-
 if($daysforendPoll->days==0 || $daysforendPoll->days<0)
 {
+
   $imagePoll = "<h2>This Poll has finished</h2><br>";
+  //$current_poll->state = "closed";
+  //$updateState = update_record('polls',$current_poll);
+
   
 }
 else

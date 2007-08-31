@@ -1,6 +1,6 @@
 <?php
 /*
- * This script initialize the enviroment for show the message list
+ * This script initialize the enviroment for show the polls list
  * @author Johan Eduardo Quijano Garcia <gerencia@treszero.com>
  * @copyright Tres Zero - 2007
  * @author Diego Andrés Ramírez Aragón <diego@somosmas.org>
@@ -16,6 +16,8 @@ define("context", "polls");
 templates_page_setup();
 
 $title = run("profile:display:name") . " :: " . __gettext("Polls");
+echo "Analizando otro usuario:::::" . $profile_id;
+
 $body .= run("polls:view");
 
 $body = templates_draw(array (

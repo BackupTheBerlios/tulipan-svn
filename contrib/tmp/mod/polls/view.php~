@@ -2,6 +2,8 @@
 /*
  * This script initialize the enviroment for view a poll
  * @param int $message The msg Id
+ * @author Johan Eduardo Quijano Garcia <gerencia@treszero.com>
+ * @copyright Tres Zero - 2007
  * @author Diego Andrés Ramírez Aragón <diego@somosmas.org>
  * @copyright Corporación Somos Más - 2007
  */
@@ -18,8 +20,9 @@ $poll = optional_param('message');
 
 $poll_information = get_record('polls', 'ident', $poll);
 
-echo "Analizando las encuestas :::Creador del Poll" . $poll_information->owner;
 templates_page_setup();
+
+echo "Analizando otro usuario:::::" . $profile_id;
 if($poll_information->owner_id == $profile_id)
 {
 $answer_poll  = get_record('poll_answer', 'ident',$poll);

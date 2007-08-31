@@ -20,8 +20,8 @@ $poll = optional_param('message');
 
 $poll_information = get_record('polls', 'ident', $poll);
 
-echo "Analizando las encuestas :::Creador del Poll" . $poll_information->owner;
 templates_page_setup();
+
 if($poll_information->owner_id == $profile_id)
 {
 $answer_poll  = get_record('poll_answer', 'ident',$poll);

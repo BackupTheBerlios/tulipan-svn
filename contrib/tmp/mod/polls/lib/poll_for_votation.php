@@ -49,20 +49,131 @@ $current_poll->actual_date = $actualDate;
 $update = update_record('polls',$current_poll);
 $current_poll = get_record('polls','ident',$poll->ident);
 $daysforendPoll = get_record('polls','ident',$poll->ident,null,null,null,null,'DAY(date_end)-DAY(actual_date) AS days');
-//echo "DIAS para que termine el POLL ::::" . $daysforendPoll->days;
+
+//If the poll ends manually
+if($current_poll->date_end == '0000-00-00')
+{
+     $date = "Unlimited";
+     $Poll = "<h2>This Poll will end Automatically</h2><br>";
+
+     $vote = get_record('poll_vote','id_poll',$poll->ident,null,null,null,null,'id_poll');
+     $already_vote = get_record('poll_vote','id_poll',$poll->ident,null,null,null,null,'id_user');
+
+  if($vote->id_poll)
+  {
+    $Poll .="<h3>You already have voted in this poll</h3><br><h2>Thanks for your vote !! </h2>";
+  }
+  else
+  { 
+    if ($answersPoll= get_record('poll_answer', 'id_poll',$poll->ident)) {
+    //$InfocurrentPoll= get_record('poll_answer', 'id_poll',$poll->ident,);
+    $inicialNumber = $answersPoll->ident;
+    $numberofanswers = count_records('poll_answer','id_poll',$poll->ident);
+    $cantidadFinal = $numberofanswers + $inicialNumber;
+    $creatorPoll = $poll->owner;
+    $answerID = $fullInfo->ident;
+
+// POLLS !!!!
+// Checking if the poll is with only One answer or Multiple answers
+
+$Poll .=<<<END
+<form name="form1" method="post" action="$redirect">
+  <table width="350" border="1">
+    <tr> 
+      <td colspan="2"><strong>$title_poll</strong>
+      <input type="hidden" name="creator_id" value=$creatorid>
+      <input type="hidden" name="creatorname" value=$creatorPoll>
+      <input type="hidden" name="answer_id" value=$answerID></td>
+      <input type="hidden" name="user" value=$profile_id></td>		
+		
+    </tr>
+
+    <tr> 
+END;
+
+$kindPoll = get_record('polls', 'ident',$poll->ident,null,null,null,null,'kind');
+
+if($kindPoll->kind == "only")
+{
+
+$i = $inicialNumber;
+    for($i; $i<$cantidadFinal;$i++)
+	{
+        $answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
+	//echo "Variable i::::" . $i;
+        $answerforshow = $answerInfo->answer;
+	//echo "Mostrando las Respuestas::::" . $answerforshow;
+	$Poll .=<<<END
+      <td width="51"><input type="radio" name="opcion" value="$i"></td>
+      <td width="283">$answerforshow</td>
+    </tr>
+    <?php } ?>
+END;
+  	
+
+	}
+
+
+//
+// End Poll Votation With ONLY one answer
+//
+}
+else
+	{
+$i = $inicialNumber;
+$numberForOption = 1;
+$arrayOptions = "";
+    for($i; $i<$cantidadFinal;$i++)
+	{
+        $answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
+        $answerforshow = $answerInfo->answer;
+        $nameOption = "opcion" . $numberForOption;
+        $arrayOptions .= $nameOption;
+        $numberForOption++;
+
+$Poll .=<<<END
+      <input type="hidden" name="array_options" value=$arrayOptions>
+      <td width="51"><input type="checkbox" name="$nameOption" value="$i"></td>
+      <td width="283">$answerforshow</td>
+    </tr>
+    <?php } ?>
+END;
+  	}
+	// End poll with Multiple Answers
+    }
+
+}
+	  
+$Poll .=<<<END
+    <tr>
+      <td><input type="submit" name="submitpoll" value="vote"></td>
+      <td>This poll ends: Automatically</td>
+   
+  	</table>
+	</form>
+
+END;
+	} //End ELSE If the user already have voted
+//End ELSE -- If the Poll have finished
+}
+else{
+/////////////////////////////
 if($daysforendPoll->days==0 || $daysforendPoll->days<0)
 {
   $Poll = "<h3>This Poll has finished</h3><br><br><h2>Thanks for your Vote !! </h2>";
+  $current_poll->state = "closed";
+  $updateState = update_record('polls',$current_poll);
+
   
 }
 else
 {
+
+
   $Poll = "<h2>This Poll will end in:   " . $current_poll->date_end . "</h2><br>";
 
-  echo "Votando... IDENT:::::" . $poll->ident . "PROFILE:::" . $profile_id;
 
   $vote = get_record('poll_vote','id_poll',$poll->ident,null,null,null,null,'id_poll');
-  echo "Votando... :::::" . $vote->id_poll;
   if($vote->id_poll)
   {
     $Poll .="<h3>You already have voted in this poll</h3><br><h2>Thanks for your vote !! </h2>";
@@ -70,11 +181,8 @@ else
   else
   { 
   
-  //$date= strftime("%d %b %Y, %H:%M", $creator->username);
 
 
-  //$imagePoll = '<img src="/mod/polls/jpgraph/src/elgg_polls/graph_poll.php" alt="" border="0">';
-//Poll Votation
 if ($answersPoll= get_record('poll_answer', 'id_poll',$poll->ident)) {
     //$InfocurrentPoll= get_record('poll_answer', 'id_poll',$poll->ident,);
     $inicialNumber = $answersPoll->ident;
@@ -82,10 +190,6 @@ if ($answersPoll= get_record('poll_answer', 'id_poll',$poll->ident)) {
     $cantidadFinal = $numberofanswers + $inicialNumber;
     $creatorPoll = $poll->owner;
     $answerID = $fullInfo->ident;
-//echo "POLL !!!! IDENT !!! ::::: " . $poll->ident;
-//echo "ANSWER !!!! ID EN EL FORMULARIO !!! ::::: " . $answerID;
-//<form name="form1" method="post" action="/mod/polls/jpgraph/src/elgg_polls/graph_poll.php">
-
 
 // POLLS !!!!
 // Checking if the poll is with only One answer or Multiple answers
@@ -158,7 +262,7 @@ END;
 $Poll .=<<<END
     <tr>
       <td><input type="submit" name="submitpoll" value="vote"></td>
-      <td>This poll ends: <?php echo date('d-m-y',$fecha); ?></td>
+      <td>This poll ends: <?php echo date('d-m-y',$date); ?></td>
    
   	</table>
 	</form>
@@ -166,8 +270,9 @@ $Poll .=<<<END
 END;
 	} //End ELSE If the user already have voted
 //End ELSE -- If the Poll have finished
-}
+    }
 
+}
 
   $run_result .= templates_draw(array (
     'context' => 'plug_detailedpoll',
