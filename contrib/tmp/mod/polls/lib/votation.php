@@ -22,6 +22,7 @@ define('redirect_url', $redirect_url);
 $poll_vote = new StdClass;
 $poll_answer = new StdClass;
 
+// Revisar las Votaciones !!!
 if($vote_selected = trim($_POST['opcion']))
 {
   $vote = $vote_selected;
@@ -32,17 +33,54 @@ if($vote_selected1 = trim($_POST['opcion1']))
   $vote = $vote_selected1;
   vote($vote);
 }
-else
-{
-    if($vote_selected1 = trim($_POST['opcion2']))
+if($vote_selected1 = trim($_POST['opcion2']))
     {
        $vote = $vote_selected1;
        vote($vote);
     }
-    else
+    if($vote_selected1 = trim($_POST['opcion3']))
     {
-       echo "No hay nada mano!!!";
+       $vote = $vote_selected1;
+       vote($vote);
     }
+    if($vote_selected1 = trim($_POST['opcion4']))
+    {
+       $vote = $vote_selected1;
+       vote($vote);
+    }
+    if($vote_selected1 = trim($_POST['opcion5']))
+    {
+       $vote = $vote_selected1;
+       vote($vote);
+    }
+if($vote_selected1 = trim($_POST['opcion6']))
+    {
+       $vote = $vote_selected1;
+       vote($vote);
+    }
+if($vote_selected1 = trim($_POST['opcion7']))
+    {
+       $vote = $vote_selected1;
+       vote($vote);
+    }
+if($vote_selected1 = trim($_POST['opcion8']))
+    {
+       $vote = $vote_selected1;
+       vote($vote);
+    }
+if($vote_selected1 = trim($_POST['opcion9']))
+    {
+       $vote = $vote_selected1;
+       vote($vote);
+    }
+if($vote_selected1 = trim($_POST['opcion10']))
+    {
+       $vote = $vote_selected1;
+       vote($vote);
+    }
+else
+{
+       $messages[] = __gettext("Error in your votation, Please Try Again");
 }
 
 function vote($vote)
