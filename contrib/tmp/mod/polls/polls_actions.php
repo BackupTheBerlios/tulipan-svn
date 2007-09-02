@@ -36,10 +36,9 @@ function finishPoll($poll, $user,$sent=0) {
   return $sent;
 }
 
-function vote($vote)
+function votePoll($vote)
 {
-$poll_vote->id_user = trim($_POST['user']);
-
+$poll_vote->id_user = optional_param('user');
 $quantity = get_record_select('poll_answer', 'ident',$vote,'quantity');
 $answer  = get_record('poll_answer', 'ident', $vote);
 $poll_id = get_record('poll_answer', 'ident',$vote,null,null,null,null,'id_poll');
@@ -73,57 +72,57 @@ $poll_answer = new StdClass;
 if($vote_selected = trim($_POST['opcion']))
 {
   $vote = $vote_selected;
-  vote($vote);
+  votePoll($vote);
 }
 if($vote_selected1 = trim($_POST['opcion1']))
 {
   $vote = $vote_selected1;
-  vote($vote);
+  votePoll($vote);
 }
 if($vote_selected1 = trim($_POST['opcion2']))
     {
        $vote = $vote_selected1;
-       vote($vote);
+       votePoll($vote);
     }
 if($vote_selected1 = trim($_POST['opcion3']))
 {
        $vote = $vote_selected1;
-       vote($vote);
+       votePoll($vote);
 }
     if($vote_selected1 = trim($_POST['opcion4']))
     {
        $vote = $vote_selected1;
-       vote($vote);
+       votePoll($vote);
     }
     if($vote_selected1 = trim($_POST['opcion5']))
     {
        $vote = $vote_selected1;
-       vote($vote);
+       votePoll($vote);
     }
 if($vote_selected1 = trim($_POST['opcion6']))
     {
        $vote = $vote_selected1;
-       vote($vote);
+       votePoll($vote);
     }
 if($vote_selected1 = trim($_POST['opcion7']))
     {
        $vote = $vote_selected1;
-       vote($vote);
+       votePoll($vote);
     }
 if($vote_selected1 = trim($_POST['opcion8']))
     {
        $vote = $vote_selected1;
-       vote($vote);
+       votePoll($vote);
     }
 if($vote_selected1 = trim($_POST['opcion9']))
     {
        $vote = $vote_selected1;
-       vote($vote);
+       votePoll($vote);
     }
 if($vote_selected1 = trim($_POST['opcion10']))
     {
        $vote = $vote_selected1;
-       vote($vote);
+       votePoll($vote);
     }
 if($vote_selected1 = "")
 {

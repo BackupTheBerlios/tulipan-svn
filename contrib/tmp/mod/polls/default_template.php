@@ -2,10 +2,9 @@
 /*
  * This script configure the templates used for the polls plug-in
  * @author Johan Eduardo Quijano Garcia <gerencia@treszero.com>
- * @copyright Tres Zero - 2007
- * @author Diego Andrés Ramírez Aragón <diego@somosmas.org>
  * @copyright Corporación Somos Más - 2007
  */
+
 global $template;
 global $template_definition;
 

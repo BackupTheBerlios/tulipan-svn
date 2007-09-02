@@ -1,4 +1,8 @@
 <?php
+/*
+ * @author Johan Eduardo Quijano Garcia <gerencia@treszero.com>
+ * @copyright Corporación Somos Más - 2007
+ */
 
 require_once (dirname(dirname(__FILE__)) . "/../../../../includes.php");
 include ("../jpgraph.php");

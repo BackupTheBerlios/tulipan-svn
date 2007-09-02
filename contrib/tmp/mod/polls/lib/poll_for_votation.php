@@ -7,8 +7,6 @@
  * @uses $CFG
  *
  * @author Johan Eduardo Quijano Garcia <gerencia@treszero.com>
- * @copyright Tres Zero - 2007
- * @author Diego Andrés Ramírez Aragón <diego@somosmas.org>
  * @copyright Corporación Somos Más - 2007
  */
 if (isset ($parameter)) {
@@ -25,7 +23,7 @@ if (isset ($parameter)) {
 $submitButton = optional_param('vote');
 $submitButton = "vote";
 //$redirect = url . "mod/polls/lib/votation.php?action=vote";
-$redirect = url . "mod/polls/polls_actions.php?action=votation";
+$redirect = url . "mod/polls/polls_actions.php?action=votation&user=$profile_id";
 
 
   if ($creatorInfo= get_record('users', 'ident', $creatorid)) {
