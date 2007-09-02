@@ -21,7 +21,7 @@ if (isset ($parameter)) {
 
   $creatorPoll= new StdClass;
 
-  if ($creatorInfo= get_record('users', 'ident',$poll->owner_id)) {
+  if ($creatorInfo= get_record('users', 'ident',$poll->owner)) {
 
     $creatorPoll->username= $creatorInfo->username;
     $creatorPoll->fullname= htmlspecialchars($creatorPoll->name, ENT_COMPAT, 'utf-8');
@@ -35,7 +35,7 @@ if (isset ($parameter)) {
 
   $creatorPoll->icon= '<a href="' . url . $creatorPoll->username . '/">' .user_icon_html($creatorPoll->ident,50). "</a>";
 
-  if($profile_id == $poll->owner_id)
+  if($profile_id == $poll->owner)
   {
       $mark= "<input type=\"checkbox\" name=\"selected[]\" value=\"" . $poll->ident . "\" onclick=\"mark(this)\">";
 
@@ -45,7 +45,7 @@ if (isset ($parameter)) {
       $mark=""; 
   }
 
-  $username= user_name($poll->owner_id);
+  $username= user_name($poll->owner);
 
   $date= $poll->date_start;
   ////State of Poll

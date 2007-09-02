@@ -111,7 +111,7 @@ global $profile_id;
    $automatically = __gettext("This poll ends: Automatically");
    $redirect = url . "mod/polls/polls_actions.php?action=votation&user=$profile_id";
 
-   $last_active_poll = get_records_select('polls', "owner_id !=" . $profile_id . " AND state='active'",null, 'date_start DESC');
+   $last_active_poll = get_records_select('polls', "owner !=" . $profile_id . " AND state='active'",null, 'date_start DESC');
    if (!empty ($last_active_poll)) {
    foreach ($last_active_poll as $poll) {
    $already_vote = get_record('poll_vote','id_poll',$poll->ident,'id_user',$profile_id);

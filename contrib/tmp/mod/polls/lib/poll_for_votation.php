@@ -17,8 +17,8 @@ if (isset ($parameter)) {
   $creator= new StdClass;
   $answers= new StdClass;
   $title_poll=$poll->question;
-  $creatorid= $poll->owner_id;
-  $createdby= __gettext("Created by :   ") . $poll->owner;
+  $creatorid= $poll->owner;
+  $createdby= __gettext("Created by :   ") . $poll->owner_name;
 
 $submitButton = optional_param('vote');
 $submitButton = __gettext("vote");
@@ -69,7 +69,7 @@ if($current_poll->date_end == '0000-00-00')
         $inicialNumber = $answersPoll->ident;
         $numberofanswers = count_records('poll_answer','id_poll',$poll->ident);
         $cantidadFinal = $numberofanswers + $inicialNumber;
-        $creatorPoll = $poll->owner;
+        $creatorPoll = $poll->owner_name;
         $answerID = $fullInfo->ident;
 
      // POLLS !!!!
@@ -245,7 +245,7 @@ if ($answersPoll= get_record('poll_answer', 'id_poll',$poll->ident)) {
     $inicialNumber = $answersPoll->ident;
     $numberofanswers = count_records('poll_answer','id_poll',$poll->ident);
     $cantidadFinal = $numberofanswers + $inicialNumber;
-    $creatorPoll = $poll->owner;
+    $creatorPoll = $poll->owner_name;
     $answerID = $fullInfo->ident;
 
 // POLLS !!!!

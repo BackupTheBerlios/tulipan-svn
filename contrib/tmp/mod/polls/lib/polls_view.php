@@ -37,16 +37,15 @@ if ($sent === 1) {
   $title = __gettext("Historial of Polls");
   $filterlink = "history/";
   $action_options = "<option value=\"delete\">$delete</option>";
-  $polls = get_records_select('polls', "state='closed'", null, 'date_start', '*', $msg_offset, $polls_per_page);
+  $polls = get_records_select('polls', "state='closed' AND access IN ('PUBLIC', 'LOGGED_IN')", null, 'date_start', '*', $msg_offset, $polls_per_page);
   $numberofpolls = count_records('polls','state','closed');
 
 }
 else
 {
-  $polls_owner = get_record('polls','owner_id',$profile_id);
+  $polls_owner = get_record('polls','owner',$profile_id);
 
-  $polls = get_records_select('polls', "owner_id =" . $profile_id . " AND state='active'",null, 'date_start DESC', '*', $msg_offset, $polls_per_page);
-
+  $polls = get_records_select('polls', "owner =" . $profile_id . " AND state='active'",null, 'date_start DESC', '*', $msg_offset, $polls_per_page);
 
 
 
@@ -64,7 +63,7 @@ $user_votes = get_record('poll_vote','id_user',$profile_id);
 
      }
 
-     $polls_of_others_active = get_records_select('polls', "owner_id !=" . $profile_id  . " AND state='active'" . $sql_and,null, 'date_start DESC', '*', $msg_offset, $polls_per_page); 
+     $polls_of_others_active = get_records_select('polls', " (owner !=" . $profile_id . $sql_and . " AND access IN ('PUBLIC', 'LOGGED_IN')) AND state='active'" ,null, 'date_start DESC', '*', $msg_offset, $polls_per_page); 
 
 
      /////////////////////////
@@ -80,13 +79,13 @@ $user_votes = get_record('poll_vote','id_user',$profile_id);
        $sql_and_voted .= " ";
 
      }
-         $polls_of_others_voted = get_records_select('polls', "owner_id !=" . $profile_id  . " AND state='active'" . $sql_and_voted,null, 'date_start DESC', '*', $msg_offset, $polls_per_page);
+       $polls_of_others_voted = get_records_select('polls', "(owner !=" . $profile_id  . $sql_and_voted . " AND access IN ('PUBLIC', 'LOGGED_IN')) AND state='active'" ,null, 'date_start DESC', '*', $msg_offset, $polls_per_page);
  
   }
   else
   {
 
-      $polls_of_others = get_records_select('polls', "owner_id !=" . $profile_id  . " AND state='active'",null, 'date_start DESC', '*', $msg_offset, $polls_per_page);
+      $polls_of_others = get_records_select('polls', "(owner !=" . $profile_id  . " AND access IN ('PUBLIC', 'LOGGED_IN')) AND state='active'",null, 'date_start DESC', '*', $msg_offset, $polls_per_page);
   }
 
   $numberofpolls = count_records('polls','state','active');

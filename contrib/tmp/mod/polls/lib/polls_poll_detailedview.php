@@ -16,7 +16,7 @@ if (isset ($parameter)) {
   $sent= optional_param('sent');
   $creator= new StdClass;
 
- $creatorid= $msg->owner_id;
+ $creatorid= $msg->owner;
   if ($creatorInfo= get_record('users', 'ident', $creatorid)) {
     $creator->username= $creatorInfo->username;
     $creator->fullname= htmlspecialchars($creatorInfo->name, ENT_COMPAT, 'utf-8');

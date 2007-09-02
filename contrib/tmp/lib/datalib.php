@@ -799,7 +799,7 @@ function get_recordset_select($table, $select='', $values=null, $sort='', $field
     if ($sort) {
         $sort = ' ORDER BY '. $sort;
     }
-    //echo "RECORDS :::: SELECT" . $fields . "FROM" . $CFG->prefix . $table . $select . $sort .' '. $limit, $values;
+    //echo "RECORDS :::: SELECT " . $fields . " FROM " . $CFG->prefix . $table . $select . $sort .' '. $limit, $values;
  
     return get_recordset_sql('SELECT '. $fields .' FROM '. $CFG->prefix . $table . $select . $sort .' '. $limit, $values);
 }

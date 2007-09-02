@@ -25,6 +25,8 @@ $answers = __gettext("Answers:");
 $answer = __gettext("Answer");
 $endpoll = __gettext("When you want end the Poll?");
 $date_polls = __gettext("Date for end the Poll");
+$accessRes = __gettext("Access restrictions:"); // gettext variable
+
 $submitButton = ($action == "reply") ? "Reply" : "Create";
 
 
@@ -418,6 +420,13 @@ display:none;
 </script>
 
 END;
+
+$run_result .= templates_draw(array(
+                                'context' => 'databoxvertical',
+                                'name' => $accessRes,
+                                'contents' => run("display:access_level_select",array("new_poll_access",default_access))
+                            )
+                            );
 
 //*********************************************************************************************
 

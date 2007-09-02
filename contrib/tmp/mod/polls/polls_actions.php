@@ -175,7 +175,7 @@ case "finish" :
     {
       $finish = "manual"; 
     }
-
+    $accessPoll = optional_param('new_poll_access');
 //Checking the DATE information of the news poll
 if($finish == "manual")
 {  
@@ -261,8 +261,8 @@ if(trim($statePoll) == "active"){
 
         //Poll
         $poll = new StdClass;
-        $poll->owner_id = trim($poll_creator_id);
-        $poll->owner = trim($creator_poll_name);
+        $poll->owner = trim($poll_creator_id);
+        $poll->owner_name = trim($creator_poll_name);
         $poll->title = trim($title_poll);
         $poll->question = trim($poll_question);
         $poll->kind = trim($kind_poll);
@@ -270,6 +270,7 @@ if(trim($statePoll) == "active"){
         $poll->date_end = trim($dateend_poll);
         $poll->state = trim($statePoll);
         $poll->finish = trim($finish);
+        $poll->access = trim($accessPoll);
 	$idpoll = insert_record('polls', $poll);
         //Poll Answer
         $answer = new StdClass;
@@ -284,6 +285,7 @@ if(trim($statePoll) == "active"){
             $poll++;
           	}	
 	
+        $messages[] = __gettext("Your Post has been created"); // gettext variable
 
 
 

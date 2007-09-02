@@ -22,7 +22,7 @@ $poll_information = get_record('polls', 'ident', $poll);
 
 templates_page_setup();
 
-if($poll_information->owner_id == $profile_id)
+if($poll_information->owner == $profile_id)
 {
 $answer_poll  = get_record('poll_answer', 'ident',$poll);
 $body = run("polls:detailedview",$poll_information);
