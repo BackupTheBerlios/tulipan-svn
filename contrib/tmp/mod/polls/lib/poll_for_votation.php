@@ -25,7 +25,7 @@ if (isset ($parameter)) {
 $submitButton = optional_param('vote');
 $submitButton = "vote";
 //$redirect = url . "mod/polls/lib/votation.php?action=vote";
-$redirect = url . "mod/polls/lib/votation.php";
+$redirect = url . "mod/polls/polls_actions.php?action=votation";
 
 
   if ($creatorInfo= get_record('users', 'ident', $creatorid)) {

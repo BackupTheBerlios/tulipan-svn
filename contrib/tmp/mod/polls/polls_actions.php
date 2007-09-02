@@ -36,6 +36,20 @@ function finishPoll($poll, $user,$sent=0) {
   return $sent;
 }
 
+function vote($vote)
+{
+$poll_vote->id_user = trim($_POST['user']);
+
+$quantity = get_record_select('poll_answer', 'ident',$vote,'quantity');
+$answer  = get_record('poll_answer', 'ident', $vote);
+$poll_id = get_record('poll_answer', 'ident',$vote,null,null,null,null,'id_poll');
+$poll_vote->id_poll = $poll_id->id_poll;
+$poll_vote->state_current_poll = "voted";
+$answer->quantity = $answer->quantity + 1;
+$votation = update_record('poll_answer',$answer);
+$idpoll_vote = insert_record('poll_vote', $poll_vote);
+}
+
 run("polls:init");
 
 global $USER;
@@ -47,6 +61,77 @@ global $profile_id;
 $action = optional_param('action');
 
 switch ($action) {
+
+  case "votation" :
+$redirect_url = url . user_info('username', $_SESSION['userid']) . "/polls/";
+define('redirect_url', $redirect_url);
+
+$poll_vote = new StdClass;
+$poll_answer = new StdClass;
+
+// Revisar las Votaciones !!!
+if($vote_selected = trim($_POST['opcion']))
+{
+  $vote = $vote_selected;
+  vote($vote);
+}
+if($vote_selected1 = trim($_POST['opcion1']))
+{
+  $vote = $vote_selected1;
+  vote($vote);
+}
+if($vote_selected1 = trim($_POST['opcion2']))
+    {
+       $vote = $vote_selected1;
+       vote($vote);
+    }
+if($vote_selected1 = trim($_POST['opcion3']))
+{
+       $vote = $vote_selected1;
+       vote($vote);
+}
+    if($vote_selected1 = trim($_POST['opcion4']))
+    {
+       $vote = $vote_selected1;
+       vote($vote);
+    }
+    if($vote_selected1 = trim($_POST['opcion5']))
+    {
+       $vote = $vote_selected1;
+       vote($vote);
+    }
+if($vote_selected1 = trim($_POST['opcion6']))
+    {
+       $vote = $vote_selected1;
+       vote($vote);
+    }
+if($vote_selected1 = trim($_POST['opcion7']))
+    {
+       $vote = $vote_selected1;
+       vote($vote);
+    }
+if($vote_selected1 = trim($_POST['opcion8']))
+    {
+       $vote = $vote_selected1;
+       vote($vote);
+    }
+if($vote_selected1 = trim($_POST['opcion9']))
+    {
+       $vote = $vote_selected1;
+       vote($vote);
+    }
+if($vote_selected1 = trim($_POST['opcion10']))
+    {
+       $vote = $vote_selected1;
+       vote($vote);
+    }
+if($vote_selected1 = "")
+{
+       $messages[] = __gettext("Error in your votation, Please Try Again");
+}
+
+    break;
+
   case "delete" :
 
     $poll = optional_param('poll_id', 0, PARAM_INT);
