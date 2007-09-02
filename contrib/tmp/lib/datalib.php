@@ -616,7 +616,7 @@ function get_record($table, $field1=null, $value1=null, $field2=null, $value2=nu
 
     $values = where_values_prepared($value1, $value2, $value3);
     
-    //echo "Analizando la SENTENCIA :::: SELECT " . $fields.' FROM '. $CFG->prefix . $table .' '. $select . $values;
+    //echo "Analizando la SENTENCIA :::: SELECT " . $fields. " FROM  " . $CFG->prefix . $table .' '. $select . $values;
 
     $returnvalue = get_record_sql('SELECT '.$fields.' FROM '. $CFG->prefix . $table .' '. $select, $values);
 
@@ -800,7 +800,7 @@ function get_recordset_select($table, $select='', $values=null, $sort='', $field
         $sort = ' ORDER BY '. $sort;
     }
     //echo "RECORDS :::: SELECT" . $fields . "FROM" . $CFG->prefix . $table . $select . $sort .' '. $limit, $values;
-
+ 
     return get_recordset_sql('SELECT '. $fields .' FROM '. $CFG->prefix . $table . $select . $sort .' '. $limit, $values);
 }
 

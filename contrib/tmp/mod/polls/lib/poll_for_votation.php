@@ -50,6 +50,7 @@ $poll_already = __gettext("You already have voted in this poll");
 $thanks = __gettext("Thanks for your vote !! ");
 $finish_poll =__gettext("This Poll has finished");
 $poll_will_finish =__gettext("This Poll will end in:   ");
+$automatically = __gettext("This poll ends: Automatically");
 //If the poll ends manually
 if($current_poll->date_end == '0000-00-00')
 {
@@ -57,9 +58,7 @@ if($current_poll->date_end == '0000-00-00')
      $date = __gettext("Unlimited");
      $Poll = "<h2>$poll_anto</h2><br>";
 
-     $vote = get_record('poll_vote','id_poll',$poll->ident,null,null,null,null,'id_poll');
      $already_vote = get_record('poll_vote','id_poll',$poll->ident,'id_user',$profile_id);
-
      if($already_vote)
      {
         $Poll .="<h3>$poll_already</h3><br><h2>$thanks</h2>";
@@ -73,8 +72,8 @@ if($current_poll->date_end == '0000-00-00')
         $creatorPoll = $poll->owner;
         $answerID = $fullInfo->ident;
 
-// POLLS !!!!
-// Checking if the poll is with only One answer or Multiple answers
+     // POLLS !!!!
+     // Checking if the poll is with only One answer or Multiple answers
 
 	$Poll .=<<<END
 	<form name="form1" method="post" action="$redirect">
@@ -112,16 +111,16 @@ END;
 	}
 
 
-//
-// End Poll Votation With ONLY one answer
-//
-}
-else
+    //
+    // End Poll Votation With ONLY one answer
+    //
+    }
+    else
 	{
-$i = $inicialNumber;
-$numberForOption = 1;
-$arrayOptions = "";
-    for($i; $i<$cantidadFinal;$i++)
+        $i = $inicialNumber;
+        $numberForOption = 1;
+	$arrayOptions = "";
+        for($i; $i<$cantidadFinal;$i++)
 	{
         $answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
         $answerforshow = $answerInfo->answer;
@@ -145,7 +144,7 @@ END;
 $Poll .=<<<END
     <tr>
       <td><input type="submit" name="submitpoll" value="vote"></td>
-      <td>This poll ends: Automatically</td>
+      <td>$automatically</td>
    
   	</table>
 	</form>
@@ -232,10 +231,10 @@ else
   $Poll = "<h2>$poll_will_finish   " . $current_poll->date_end . "</h2><br>";
 
 
-  $vote = get_record('poll_vote','id_poll',$poll->ident,null,null,null,null,'id_poll');
-  if($vote->id_poll)
+  $already_vote = get_record('poll_vote','id_poll',$poll->ident,'id_user',$profile_id);
+  if($already_vote)
   {
-    $Poll .="<h3>$poll_already</h3><br><h2>$thanks</h2>";
+        $Poll .="<h3>$poll_already</h3><br><h2>$thanks</h2>";
   }
   else
   { 
@@ -312,11 +311,12 @@ END;
     }
 
 }
-	  
+
+$date = $poll->date_end;	  
 $Poll .=<<<END
     <tr>
       <td><input type="submit" name="submitpoll" value="vote"></td>
-      <td>This poll ends: <?php echo date('d-m-y',$date); ?></td>
+      <td>This poll ends: $date</td>
    
   	</table>
 	</form>

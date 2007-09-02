@@ -73,8 +73,11 @@ if (!get_config('polls')) {
     set_config('polls',time());
 	}
 
+  //Keyword
+  $CFG->templates->variables_substitute['active_poll'][] = (string) 'last_active_poll';
 
 
+  //Paths
   $function['polls:init'][] = $CFG->dirroot . "mod/polls/lib/polls_init.php";
 
   // Create polls
@@ -95,6 +98,139 @@ if (!get_config('polls')) {
   // http://www.aditus.nu/jpgraph/index.php
   //$function['polls:jpgraph'][] = $CFG->dirroot . "mod/polls/jpgraph/src/elgg_polls/bartutex1.php";
   $function['polls:jpgraph'][] = $CFG->dirroot . "mod/polls/jpgraph/src/elgg_polls/gantt.php";
+
+}
+
+function last_active_poll($vars) {
+
+global $profile_id;
+
+   $msg_offset = optional_param('msg_offset', 0, PARAM_INT);
+   $limit = 1;
+   $none = __gettext("Don't have active polls");
+   $automatically = __gettext("This poll ends: Automatically");
+   $redirect = url . "mod/polls/polls_actions.php?action=votation&user=$profile_id";
+
+   $last_active_poll = get_records_select('polls', "owner_id !=" . $profile_id . " AND state='active'",null, 'date_start DESC');
+   if (!empty ($last_active_poll)) {
+   foreach ($last_active_poll as $poll) {
+   $already_vote = get_record('poll_vote','id_poll',$poll->ident,'id_user',$profile_id);
+   if($already_vote)
+   {
+       if($poll_for_show)
+       {$poll_for_show = $poll_for_show;}
+       else
+       {$poll_for_show = null;}
+       }
+   else
+   {
+       if($poll_for_show)
+       {$poll_for_show = $poll_for_show;}
+       else
+       {$poll_for_show = $poll;}
+    }   
+}
+
+if ($poll_for_show) {
+ 
+
+  $title = $poll_for_show->question;
+   $creatorid= $poll_for_show->owner_id;
+
+        if ($answersPoll= get_record('poll_answer', 'id_poll',$poll_for_show->ident)) {
+        $inicialNumber = $answersPoll->ident;
+        $numberofanswers = count_records('poll_answer','id_poll',$poll_for_show->ident);
+        $cantidadFinal = $numberofanswers + $inicialNumber;
+        $creatorPoll = $poll_for_show->owner;
+        $answerID = $fullInfo->ident;
+
+
+
+   $Poll .=<<<END
+	<form name="form1" method="post" action="$redirect">
+  	<table width="350" border="1">
+    	<tr> 
+      	<td colspan="2"><strong>$title</strong>
+      	<input type="hidden" name="creator_id" value=$creatorid>
+      	<input type="hidden" name="creatorname" value=$creatorPoll>
+      	<input type="hidden" name="answer_id" value=$answerID></td>
+      	<input type="hidden" name="user" value=$profile_id></td>			
+    	</tr>
+
+    	<tr> 
+END;
+
+	if($kindPoll->kind == "only")
+	{
+
+	$i = $inicialNumber;
+    	for($i; $i<$cantidadFinal;$i++)
+		{
+        	$answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
+        	$answerforshow = $answerInfo->answer;
+		$Poll .=<<<END
+      	<td width="51"><input type="radio" name="opcion" value="$i"></td>
+      	<td width="283">$answerforshow</td>
+    	</tr>
+    	<?php } ?>
+END;
+	}
+    //
+    // End Poll Votation With ONLY one answer
+    //
+    }
+    else
+	{
+        $i = $inicialNumber;
+        $numberForOption = 1;
+	$arrayOptions = "";
+        for($i; $i<$cantidadFinal;$i++)
+	{
+        $answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
+        $answerforshow = $answerInfo->answer;
+        $nameOption = "opcion" . $numberForOption;
+        $arrayOptions .= $nameOption;
+        $numberForOption++;
+
+$Poll .=<<<END
+      <input type="hidden" name="array_options" value=$arrayOptions>
+      <td width="51"><input type="checkbox" name="$nameOption" value="$i"></td>
+      <td width="283">$answerforshow</td>
+    </tr>
+    <?php } ?>
+END;
+  	}
+	// End poll with Multiple Answers
+    }
+
+
+}
+    $Poll .=<<<END
+      <td><input type="submit" name="submitpoll" value="vote"></td>
+  	</table>
+	</form>
+
+END;
+
+   return $Poll;  
+
+}
+else
+   {
+   $poll_for_show = $none;
+   return $poll_for_show;  
+
+   }
+
+}
+else
+{
+   $poll_for_show = $none;
+   return $poll_for_show;  
+
+}
+
+
 
 }
    
