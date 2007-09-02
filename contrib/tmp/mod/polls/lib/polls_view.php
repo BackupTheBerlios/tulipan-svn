@@ -88,8 +88,6 @@ $user_votes = get_record('poll_vote','id_user',$profile_id);
 
       $polls_of_others = get_records_select('polls', "owner_id !=" . $profile_id  . " AND state='active'",null, 'date_start DESC', '*', $msg_offset, $polls_per_page);
   }
-  //$polls_of_others = get_records_select('polls', "owner_id !=" . $profile_id  . " AND state='active'",null, 'date_end', '*', $msg_offset, $polls_per_page);
-  //$polls_of_others_voted = get_records_select('polls', "owner_id !=" . $profile_id  . " AND state='active'" . " and ident=(select id_poll from elggpoll_vote where state_current_poll ='voted' )",null, 'date_end', '*', $msg_offset, $polls_per_page);
 
   $numberofpolls = count_records('polls','state','active');
 
@@ -134,7 +132,6 @@ if (!empty ($polls_of_others_active)) {
 }
 if (!empty ($polls_of_others_voted)) {
 
-  //$index = $msg_offset+1;
   foreach ($polls_of_others_voted as $poll_voted) {
     $polls_net .= run("polls:poll:view", array($poll_voted,$index));
     $index++;

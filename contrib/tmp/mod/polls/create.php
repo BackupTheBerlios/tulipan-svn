@@ -13,7 +13,7 @@ run("polls:init");
 define("context", "polls");
 templates_page_setup();
 
-$title = run("profile:display:name") . " :: " . __gettext("Polls CREATE");
+$title = run("profile:display:name") . " :: " . __gettext("Polls create");
 $body .= run("polls:new");
 
 

@@ -22,6 +22,7 @@ $namepoll = __gettext("Name of Poll");
 $kindpoll = __gettext("What kind of poll Do you want create?");
 $question = __gettext("Question:");
 $answers = __gettext("Answers:");
+$answer = __gettext("Answer");
 $endpoll = __gettext("When you want end the Poll?");
 $date_polls = __gettext("Date for end the Poll");
 $submitButton = ($action == "reply") ? "Reply" : "Create";
@@ -255,7 +256,7 @@ display:none;}
 <div id=answerfield>
 <table cellspacing="2" cellpadding="2" border="0">
 <tr>
-    <td width=140>Answer 1:</td>
+    <td width=140>$answer 1:</td>
     <td><input type="text" name="answer1" size="25"></td>
 </tr>
 </table>
@@ -265,7 +266,7 @@ display:none;}
 <div id=answerfield2>
 <table cellspacing="2" cellpadding="2" border="0">
 <tr>
-    <td width=140>Answer 2:</td>
+    <td width=140>$answer 2:</td>
     <td><input type="text" name="answer2" size="25"></td>
 </tr>
 </table>
@@ -275,7 +276,7 @@ display:none;}
 <div id=answerfield3>
 <table cellspacing="2" cellpadding="2" border="0">
 <tr>
-    <td width=140>Answer 3:</td>
+    <td width=140>$answer 3:</td>
     <td><input type="text" name="answer3" size="25"></td>
 </tr>
 </table>
@@ -285,7 +286,7 @@ display:none;}
 <div id=answerfield4>
 <table cellspacing="2" cellpadding="2" border="0">
 <tr>
-    <td width=140>Answer 4:</td>
+    <td width=140>$answer 4:</td>
     <td><input type="text" name="answer4" size="25"></td>
 </tr>
 </table>
@@ -295,7 +296,7 @@ display:none;}
 <div id=answerfield5>
 <table cellspacing="2" cellpadding="2" border="0">
 <tr>
-    <td width=140>Answer 5:</td>
+    <td width=140>$answer 5:</td>
     <td><input type="text" name="answer5" size="25"></td>
 </tr>
 </table>
@@ -305,7 +306,7 @@ display:none;}
 <div id=answerfield6>
 <table cellspacing="2" cellpadding="2" border="0">
 <tr>
-    <td width=140>Answer 6:</td>
+    <td width=140>$answer 6:</td>
     <td><input type="text" name="answer6" size="25"></td>
 </tr>
 </table>
@@ -315,7 +316,7 @@ display:none;}
 <div id=answerfield7>
 <table cellspacing="2" cellpadding="2" border="0">
 <tr>
-    <td width=140>Answer 7:</td>
+    <td width=140>$answer 7:</td>
     <td><input type="text" name="answer7" size="25"></td>
 </tr>
 </table>
@@ -325,7 +326,7 @@ display:none;}
 <div id=answerfield8>
 <table cellspacing="2" cellpadding="2" border="0">
 <tr>
-    <td width=140>Answer 8:</td>
+    <td width=140>$answer 8:</td>
     <td><input type="text" name="answer8" size="25"></td>
 </tr>
 </table>
@@ -335,7 +336,7 @@ display:none;}
 <div id=answerfield9>
 <table cellspacing="2" cellpadding="2" border="0">
 <tr>
-    <td width=140>Answer 9:</td>
+    <td width=140>$answer 9:</td>
     <td><input type="text" name="answer9" size="25"></td>
 </tr>
 </table>
@@ -345,7 +346,7 @@ display:none;}
 <div id=answerfield10>
 <table cellspacing="2" cellpadding="2" border="0">
 <tr>
-    <td width=140>Answer 10:</td>
+    <td width=140>$answer 10:</td>
     <td><input type="text" name="answer10" size="25"></td>
 </tr>
 </table>
@@ -364,7 +365,7 @@ $run_result .= templates_draw(array (
   'name' => $endpoll,
 ));
 
-$metatags .= "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"$url/mod/polls/lib/calendar-brown.css\" title=\"win2k-cold-1\" />"; 
+$metatags .= "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"$url/mod/polls/css/calendar-brown.css\" title=\"win2k-cold-1\" />"; 
 
 $run_result .=<<< END
 <script type='text/javascript' src="$url/mod/polls/js/calendar.js" language=JavaScript></script>

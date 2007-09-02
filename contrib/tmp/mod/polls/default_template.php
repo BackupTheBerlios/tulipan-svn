@@ -8,7 +8,7 @@
 global $template;
 global $template_definition;
 
-$template['css'] .= file_get_contents($CFG->dirroot . "mod/polls/css.css");
+$template['css'] .= file_get_contents($CFG->dirroot . "mod/polls/css/css.css");
 
 // Registering template definitions
 $template_definition[] = array ('id' => 'plug_polls',

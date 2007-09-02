@@ -22,7 +22,7 @@ function polls_pagesetup() {
     // Add the JavaScript Polls functions
     $url= substr($CFG->wwwroot, 0, -1);
     $metatags .= "<script language=\"javascript\" type=\"text/javascript\" src=\"$url/mod/polls/js/polls.js\"></script>";
-    $metatags .= "<link rel=\"stylesheet\" href=\"" . $CFG->wwwroot . "/mod/polls/css.css\" type=\"text/css\" media=\"screen\" />";
+    $metatags .= "<link rel=\"stylesheet\" href=\"" . $CFG->wwwroot . "/mod/polls/css/css.css\" type=\"text/css\" media=\"screen\" />";
  
 
     //Show the poll in the top menu

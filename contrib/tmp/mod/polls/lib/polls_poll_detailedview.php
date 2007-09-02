@@ -35,12 +35,15 @@ if (isset ($parameter)) {
   $returnConfirm= __gettext("Are you sure you want to permanently delete this Poll?");
   $Delete= __gettext("Delete");
   $endPoll = __gettext("Finish the Poll");
+  $poll_will_finish =__gettext("This Poll will end in:   ");
 
-  $from_msg= __gettext("Creator:");
- 
+
+$from_msg= __gettext("Creator:");
 $poll = optional_param('message');
-$answer_poll  = get_record('polls', 'ident',$poll);
+$poll_finished = __gettext("This Poll has finished");
+$answers = __gettext("Answers");
 
+$answer_poll  = get_record('polls', 'ident',$poll);
 $current_poll = get_record('polls','ident',$poll);
 
 //Updating the actual date of Poll
@@ -54,7 +57,7 @@ $links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?actio
 if($daysforendPoll->days==0 || $daysforendPoll->days<0)
 {
 
-  $imagePoll = "<h2>This Poll has finished</h2><br>";
+  $imagePoll = "<h2>$poll_finished</h2><br>";
   //$current_poll->state = "closed";
   //$updateState = update_record('polls',$current_poll);
 
@@ -62,7 +65,7 @@ if($daysforendPoll->days==0 || $daysforendPoll->days<0)
 }
 else
 {
-  $imagePoll = "<h2>This Poll will end in:   " . $current_poll->date_end . "</h2><br>";
+  $imagePoll = "<h2>$poll_will_finish   " . $current_poll->date_end . "</h2><br>";
 }
 
 
@@ -76,7 +79,7 @@ if($answer_poll->state == "active" &&  $answer_poll->finish == "manual")
 
 $answer_poll  = get_record('poll_answer', 'id_poll',$poll);
 $imagePoll .= '<img src="/mod/polls/jpgraph/src/elgg_polls/bartutex1.php?action=' . $poll .'" alt="" border="0">';
-$imagePoll .='<h2>Answers</h2><ol>';
+$imagePoll .='<h2>' . $answers . '</h2><ol>';
 $inicialNumber = $answer_poll->ident;
 $numberofanswers = count_records('poll_answer','id_poll',$poll);
 $cantidadFinal = $numberofanswers + $inicialNumber;

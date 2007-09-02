@@ -18,11 +18,10 @@ if (isset ($parameter)) {
   $answers= new StdClass;
   $title_poll=$poll->question;
   $creatorid= $poll->owner_id;
-  $createdby= "Created by :   " . $poll->owner;
+  $createdby= __gettext("Created by :   ") . $poll->owner;
 
 $submitButton = optional_param('vote');
-$submitButton = "vote";
-//$redirect = url . "mod/polls/lib/votation.php?action=vote";
+$submitButton = __gettext("vote");
 $redirect = url . "mod/polls/polls_actions.php?action=votation&user=$profile_id";
 
 
@@ -46,41 +45,28 @@ $actualDate = date("Y-n-j");
 $current_poll->actual_date = $actualDate;
 $update = update_record('polls',$current_poll);
 $current_poll = get_record('polls','ident',$poll->ident);
-
-//Check the Day for end the  Poll
-//Years
-//$yearsforendPoll = get_record('polls','ident',$poll->ident,null,null,null,null,'YEAR(date_end)-YEAR(actual_date) AS years');
-//echo "Anos:::" . $yearsforendPoll->years;
-//echo "Currente POLL:::" . $poll->ident;
-//if($yearsforendPoll->years == 0)
-//{
-  //echo "Vamos bien !!!!";
-//}
-//Months
-//$monthsforendPoll = get_record('polls','ident',$poll->ident,null,null,null,null,'MONTH(date_end)-MONTH(actual_date) AS days');
-
-//Days
-//$daysforendPoll = get_record('polls','ident',$poll->ident,null,null,null,null,'DAY(date_end)-DAY(actual_date) AS days');
-
+$poll_auto = __gettext("This Poll will end Automatically");
+$poll_already = __gettext("You already have voted in this poll");
+$thanks = __gettext("Thanks for your vote !! ");
+$finish_poll =__gettext("This Poll has finished");
+$poll_will_finish =__gettext("This Poll will end in:   ");
 //If the poll ends manually
 if($current_poll->date_end == '0000-00-00')
 {
 
-     echo "Entro a Manual !!!!:::";
-     $date = "Unlimited";
-     $Poll = "<h2>This Poll will end Automatically</h2><br>";
+     $date = __gettext("Unlimited");
+     $Poll = "<h2>$poll_anto</h2><br>";
 
      $vote = get_record('poll_vote','id_poll',$poll->ident,null,null,null,null,'id_poll');
      $already_vote = get_record('poll_vote','id_poll',$poll->ident,'id_user',$profile_id);
 
      if($already_vote)
      {
-        $Poll .="<h3>You already have voted in this poll</h3><br><h2>Thanks for your vote !! </h2>";
+        $Poll .="<h3>$poll_already</h3><br><h2>$thanks</h2>";
      }
      else
      { 
         if ($answersPoll= get_record('poll_answer', 'id_poll',$poll->ident)) {
-        //$InfocurrentPoll= get_record('poll_answer', 'id_poll',$poll->ident,);
         $inicialNumber = $answersPoll->ident;
         $numberofanswers = count_records('poll_answer','id_poll',$poll->ident);
         $cantidadFinal = $numberofanswers + $inicialNumber;
@@ -114,9 +100,7 @@ END;
     	for($i; $i<$cantidadFinal;$i++)
 		{
         	$answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
-		//echo "Variable i::::" . $i;
         	$answerforshow = $answerInfo->answer;
-		//echo "Mostrando las Respuestas::::" . $answerforshow;
 		$Poll .=<<<END
       	<td width="51"><input type="radio" name="opcion" value="$i"></td>
       	<td width="283">$answerforshow</td>
@@ -205,12 +189,10 @@ else
     {
           if($daysforendPoll->days == 0 || $daysforendPoll->days > 0)
           {$daysforendPoll->days = $yearsforendPoll->years * 365 + $monthsforendPoll->months + $daysforendPoll->days;
-          echo "dias:::" . $daysforendPoll->days;
           }
           else
           {
            $daysforendPoll->days = $yearsforendPoll->years * 365 + $monthsforendPoll->months + (30 + $daysforendPoll->days); 
-             echo "dias:::" . $daysforendPoll->days;
 
           } 
 
@@ -235,7 +217,7 @@ else
 ///////////
 if($daysforendPoll->days==0 || $daysforendPoll->days<0)
 {
-  $Poll = "<h3>This Poll has finished</h3><br><br><h2>Thanks for your Vote !! </h2>";
+  $Poll = "<h3>$finish_poll</h3><br><br><h2>$thanks</h2>";
   $current_poll->state = "closed";
   $updateState = update_record('polls',$current_poll);
 
@@ -247,13 +229,13 @@ else
 
 
 ////
-  $Poll = "<h2>This Poll will end in:   " . $current_poll->date_end . "</h2><br>";
+  $Poll = "<h2>$poll_will_finish   " . $current_poll->date_end . "</h2><br>";
 
 
   $vote = get_record('poll_vote','id_poll',$poll->ident,null,null,null,null,'id_poll');
   if($vote->id_poll)
   {
-    $Poll .="<h3>You already have voted in this poll</h3><br><h2>Thanks for your vote !! </h2>";
+    $Poll .="<h3>$poll_already</h3><br><h2>$thanks</h2>";
   }
   else
   { 
@@ -261,7 +243,6 @@ else
 
 
 if ($answersPoll= get_record('poll_answer', 'id_poll',$poll->ident)) {
-    //$InfocurrentPoll= get_record('poll_answer', 'id_poll',$poll->ident,);
     $inicialNumber = $answersPoll->ident;
     $numberofanswers = count_records('poll_answer','id_poll',$poll->ident);
     $cantidadFinal = $numberofanswers + $inicialNumber;
@@ -293,9 +274,7 @@ $i = $inicialNumber;
     for($i; $i<$cantidadFinal;$i++)
 	{
         $answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
-	//echo "Variable i::::" . $i;
         $answerforshow = $answerInfo->answer;
-	//echo "Mostrando las Respuestas::::" . $answerforshow;
 	$Poll .=<<<END
       <td width="51"><input type="radio" name="opcion" value="$i"></td>
       <td width="283">$answerforshow</td>
@@ -318,9 +297,7 @@ $numberForOption = 1;
     for($i; $i<$cantidadFinal;$i++)
 	{
         $answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
-	//echo "Variable i::::" . $i;
         $answerforshow = $answerInfo->answer;
-	//echo "Mostrando las Respuestas::::" . $answerforshow;
         $nameOption = "opcion" . $numberForOption;
         $numberForOption++;
 
