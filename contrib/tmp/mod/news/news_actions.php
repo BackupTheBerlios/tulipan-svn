@@ -1,38 +1,8 @@
 <?php
 /*
- * This script defines the actions avaible for the private messages plug-in.
- *
- * Actions avaible:
- *      - Delete    Allows to delete the specified message
- *                  Params:
- *                    $msg_id
- *                  Uses:
- *                    $USER
- *      - Compose   Allows to create a new message
- *                  Params:
- *                    $new_msg_from
- *                    $new_msg_to
- *                    $new_msg_subject
- *                    $new_msg_body
- *                  Uses:
- *                    $USER
- *      - Multiple  Allows to do the following operations over several messages:
- *                  (Mark as read | mark as unread | delete)
- *                  Params:
- *                    $message_action_type (read | unread | delete)
- *                    $selected array with the messages ids
- *                    $sent if the requirement comes from the sent messages list
- *                  Uses:
- *                    $USER
- *
- * @param string $action Action to be executed
- *
- * @uses $USER
- * @uses $CFG
- * @uses $messages
- *
- * @author Diego Andrés Ramírez Aragón <diego@somosmas.org>
- * @copyright Corporación Somos Más - 2007
+* @author Johan Eduardo Quijano Garcia <gerencia@treszero.com>
+ * @author Andrea Ximena Bocanegra Soto <sistemas@treszero.com>
+ * @copyright Tres Zero - 2007
 */
 
 require_once (dirname(dirname(__FILE__)) . "/../includes.php");
@@ -88,6 +58,7 @@ switch ($action) {
 
   case "create" :
     $redirect_url = url . user_info('username', $_SESSION['userid']) . "/news/create";
+    $title = optional_param('new_msg_title');
     $from = optional_param('new_msg_from', -1, PARAM_INT);
     $to = optional_param('new_msg_to', -1, PARAM_INT);
     $subject = optional_param('new_msg_subject');

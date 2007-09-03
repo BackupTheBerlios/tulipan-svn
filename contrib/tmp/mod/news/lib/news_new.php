@@ -63,11 +63,12 @@ $redirect = url . "mod/news/news_actions.php?action=compose";
 // Initializing the label messages
 $title = __gettext("New News");
 $namepoll = __gettext("Title of News");
-$to = __gettext("To:");
 $subject = __gettext("Subject:");
 $news_body = __gettext("News:");
 $source = __gettext("News Source:");
-$submitButton = ($action == "reply") ? "Reply" : "Send";
+$submitButton = ($action == "reply") ? "Reply" : "Create";
+$Keywords = __gettext("Keywords (Separated by commas):");
+$keywordDesc = __gettext("Keywords commonly referred to as 'Tags' are words that represent the weblog post you have just made. This will make it easier for others to search and find your posting.");
 
 
 $run_result =<<< END
@@ -119,26 +120,13 @@ $run_result .= templates_draw(array (
 )));
 
 //Keywords -- Tags
-//PENDIENTE
-
-if(isset($extraField) && isset($extraValue)){
-      $body .= templates_draw(array(
+$run_result .= templates_draw(array(
                                 'context' => 'databoxvertical',
                                 'name' => $Keywords . "<br />" . $keywordDesc,
-                                'contents' =>  display_input_field(array("edit_weblog_keywords",$keywords,"mediumtext","weblog",$post->ident))
-                            )
-                            );
-    }
-    else{
-      $body .= templates_draw(array(
-                                'context' => 'databoxvertical',
-                                'name' => $Keywords . "<br />" . $keywordDesc,
-                                'contents' =>  display_input_field(array("edit_weblog_keywords","","keywords","weblog",$post->ident))
-                            )
-                            );
-    }
+                                'contents' =>  display_input_field(array("edit_weblog_keywords",$keywords,"mediumtext","weblog",$post->ident)
+)));
 
-//
+
 
 $run_result .=<<< END
     <p>  
