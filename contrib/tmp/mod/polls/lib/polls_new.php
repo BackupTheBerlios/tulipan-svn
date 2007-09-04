@@ -450,16 +450,9 @@ $run_result .=<<< END
     <input type="submit" name="button" value="$submitButtonSave" class="boton">        
     <input type="submit" name="button" value="$submitButton" class="boton">
 </div>
-
     <br>
-
-
-
-
     </p>
 </form>
-
-
 END;
 
 //End of Form poll

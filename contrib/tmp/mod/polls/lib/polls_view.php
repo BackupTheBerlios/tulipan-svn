@@ -18,7 +18,8 @@ $finish_poll = __gettext("Finish the Poll");
 
 $title = __gettext("Polls");
 $creatorPoll = __gettext("Creator");
-
+$owner_polls= __gettext("Owner Polls");
+$polls_of_network = __gettext("Polls of Network");
 $action = __gettext("Action:");
 $date = __gettext("Date");
 $pollname = __gettext("Polls");
@@ -186,7 +187,9 @@ END;
 $run_result .= templates_draw(array (
   'context' => 'plug_polls',
   'polls_list' => $msgs,
+  'owner_polls' => $owner_polls,
   'pagging_owner' => $pagging_owner,
+  'polls_of_network' =>$polls_of_network,
   'polls_other_list' => $polls_net,
   'pagging_others' => $pagging_others,
   'title' => $title,

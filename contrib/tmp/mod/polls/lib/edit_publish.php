@@ -30,7 +30,7 @@ $answer = __gettext("Answer");
 $endpoll = __gettext("When you want end the Poll?");
 $date_polls = __gettext("Date for end the Poll");
 $accessRes = __gettext("Access restrictions:"); // gettext variable
-
+$select_quantity = __gettext("-- Select the quantity of answers -- ");
 $submitButton = __gettext("Publish");
 $submitButtonSave = __gettext("Save");
 
@@ -240,73 +240,83 @@ $inicialNumber = $answer_poll->ident;
 $numberofanswers = count_records('poll_answer','id_poll',$poll->ident);
 $cantidadFinal = $numberofanswers + $inicialNumber;
 $i = $inicialNumber;
+$initial_value = 1;
     for($i; $i<$cantidadFinal;$i++)
 	{
-        	$answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
-        	$answerPoll = $answerInfo->answer;
-		//$imagePoll .='<li>' . $answer . '</li>';
-	}
-
-
-$run_result .=<<< END
-#answerfield1{
+		$run_result .=<<< END
+#
+END;
+		$run_result .=<<< END
+answerfield$initial_value{
 position:relative;}
-#answerfield2{
-position:relative;}
-#answerfield3{
-position:relative;}
-#answerfield4{
-position:relative;}
-#answerfield5{
-position:relative;}
-#answerfield6{
-position:relative;}
-#answerfield7{
-position:relative;}
-#answerfield8{
-position:relative;}
-#answerfield9{
-position:relative;}
-#answerfield10{
-position:relative;}
-</style>
 
 END;
 
+$initial_value++;
+	}
+
+//
+    for($initial_value; $initial_value<=10;$initial_value++)
+	{
+		$run_result .=<<< END
+#
+END;
+		$run_result .=<<< END
+answerfield$initial_value{
+position:relative;
+display:none;}
+
+END;
+	}
 
 
+//Answers Quantity in the Select
+$quantity = count_records('poll_answer','id_poll',$poll->ident);
 $run_result .=<<< END
+</style>
 
 <select size="1" name="poll_answers" onchange="add_answers_fiels()" >
-<option value="4">-- Select the quantity of answers -- </option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
+<option value="4">$select_quantity</option>
+END;
+
+for($initial = 2; $initial<=10; $initial++)
+{
+
+   if($quantity == $initial)
+   {
+$run_result .=<<< END
+<option value="$initial" SELECTED>$initial</option>
+END;
+   }
+   else
+   {
+$run_result .=<<< END
+<option value="$initial">$initial</option>
+END;
+   }
+}
+
+$run_result .=<<< END
 </select>
 <br>
 <br>
 END;
-
 /////
 $answer_poll  = get_record('poll_answer', 'id_poll',$poll->ident);
 $inicialNumber = $answer_poll->ident;
 $numberofanswers = count_records('poll_answer','id_poll',$poll->ident);
-$cantidadFinal = $numberofanswers + $inicialNumber;
+$totalnumberofanswers = count_records('poll_answer');
+$cantidadFinal = $totalnumberofanswers + $inicialNumber;
 $i = $inicialNumber;
 $value = 1;
 
     for($i; $i<$cantidadFinal;$i++)
 	{
-        	$answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
+        	$answerInfo= get_record('poll_answer', 'ident',$i,'id_poll',$poll->ident,null,null,'answer');
         	$answerPoll = $answerInfo->answer;
-		//$imagePoll .='<li>' . $answer . '</li>';
-$run_result .=<<< END
+                if($answerPoll)
+                {
+		$run_result .=<<< END
 
 <!-- Answers Fields-->
 <!-- Field 1-->
@@ -319,8 +329,9 @@ $run_result .=<<< END
 </table>
 </div>
 END;
-
 $value++;
+
+}
 
 
 	}
@@ -334,7 +345,7 @@ $run_result .=<<< END
 <table cellspacing="2" cellpadding="2" border="0">
 <tr>
     <td width=140>$answer $value :</td>
-    <td><input type="text" name="answer" . $value size="25"></td>
+    <td><input type="text" name="answer$value" size="25"></td>
 </tr>
 </table>
 </div>
@@ -342,11 +353,8 @@ END;
 
 	}
 
-
-
 //*********************************************************************************************
 //Date Options
-
 
 $run_result .= templates_draw(array (
   'context' => 'databox1',
@@ -472,17 +480,11 @@ $run_result .=<<< END
         height:19px;
        }
 </style>
-
 <div align="center">
     <input type="submit" name="button" value="$submitButtonSave" class="boton">        
     <input type="submit" name="button" value="$submitButton" class="boton">
 </div>
-
     <br>
-
-
-
-
     </p>
 </form>
 

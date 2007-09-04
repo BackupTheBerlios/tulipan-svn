@@ -73,19 +73,20 @@ $imagePoll .= '<img src="/mod/polls/jpgraph/src/elgg_polls/bartutex1.php?action=
 $imagePoll .='<h2>' . $answers . '</h2><ol>';
 $inicialNumber = $answer_poll->ident;
 $numberofanswers = count_records('poll_answer','id_poll',$poll);
-$cantidadFinal = $numberofanswers + $inicialNumber;
+$totalnumberofanswers = count_records('poll_answer');
+$cantidadFinal = $totalnumberofanswers + $inicialNumber;
 $i = $inicialNumber;
     for($i; $i<$cantidadFinal;$i++)
 	{
-        	$answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
+        	$answerInfo= get_record('poll_answer', 'ident',$i,'id_poll',$poll,null,null,'answer');
         	$answer = $answerInfo->answer;
+		if($answer)
+                {
 		$imagePoll .='<li>' . $answer . '</li>';
+                }
 	}
 $imagePoll .='</ol>';
-
 $username= user_name($creatorid);
-
-
 }
 else
 {
@@ -103,21 +104,17 @@ $daysforendPoll = get_record('polls','ident',$current_poll->ident,null,null,null
 
 if($yearsforendPoll->years == 0)
 {
-
     if($monthsforendPoll->months == 0)
     {
        $daysforendPoll->days = $daysforendPoll->days;
-
     }
     else
     {
        $daysforendPoll->days = $monthsforendPoll->months + $daysforendPoll->days;
     }
-
 }
 else
 {
-
     if($monthsforendPoll->months == 0 || $monthsforendPoll->months > 0)
     {
           if($daysforendPoll->days == 0 || $daysforendPoll->days > 0)
@@ -126,9 +123,7 @@ else
           else
           {
            $daysforendPoll->days = $yearsforendPoll->years * 365 + $monthsforendPoll->months + (30 + $daysforendPoll->days); 
-
           } 
-
     }
     else
     {
@@ -139,34 +134,21 @@ else
           else
           {
            $daysforendPoll->days = $yearsforendPoll->years * 365 + (12 + $monthsforendPoll->months) + (30 + $daysforendPoll->days); 
-
           } 
-
     }
-
 }
 if($daysforendPoll->days==0 || $daysforendPoll->days<0)
 {
-
   $imagePoll = "<h2>$poll_finished</h2><br>";
-  //$current_poll->state = "closed";
-  //$updateState = update_record('polls',$current_poll);
-
 }
 else
 {
   $imagePoll = "<h2>$poll_will_finish   " . $current_poll->date_end . "</h2><br>";
 }
-
-
-
 if($answer_poll->state == "active" &&  $answer_poll->finish == "manual")
 {
-
  $links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?action=finish&amp;sent=' . $sent . '&amp;poll_id=' . $msg->ident .'">' . $endPoll . '</a> |';
 }
-
-
 $answer_poll  = get_record('poll_answer', 'id_poll',$poll);
 $imagePoll .= '<img src="/mod/polls/jpgraph/src/elgg_polls/bartutex1.php?action=' . $poll .'" alt="" border="0">';
 $imagePoll .='<h2>' . $answers . '</h2><ol>';

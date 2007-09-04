@@ -70,10 +70,12 @@ if($current_poll->date_end == '0000-00-00')
         if ($answersPoll= get_record('poll_answer', 'id_poll',$poll->ident)) {
         $inicialNumber = $answersPoll->ident;
         $numberofanswers = count_records('poll_answer','id_poll',$poll->ident);
-        $cantidadFinal = $numberofanswers + $inicialNumber;
+	$totalnumberofanswers = count_records('poll_answer');
+        $cantidadFinal = $totalnumberofanswers + $inicialNumber;
+
         $creatorPoll = $poll->owner_name;
         $answerID = $fullInfo->ident;
-
+        
      // POLLS !!!!
      // Checking if the poll is with only One answer or Multiple answers
 
@@ -96,22 +98,21 @@ END;
 
 	if($kindPoll->kind == "only")
 	{
-
 	$i = $inicialNumber;
     	for($i; $i<$cantidadFinal;$i++)
 		{
-        	$answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
+        	$answerInfo= get_record('poll_answer', 'ident',$i,'id_poll',$poll->ident,null,null,'answer');
         	$answerforshow = $answerInfo->answer;
+		if($answerforshow)
+		{
 		$Poll .=<<<END
       	<td width="51"><input type="radio" name="opcion" value="$i"></td>
       	<td width="283">$answerforshow</td>
     	</tr>
     	<?php } ?>
 END;
-  	
-
+		}  	
 	}
-
 
     //
     // End Poll Votation With ONLY one answer
@@ -124,11 +125,13 @@ END;
 	$arrayOptions = "";
         for($i; $i<$cantidadFinal;$i++)
 	{
-        $answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
+        $answerInfo= get_record('poll_answer', 'ident',$i,'id_poll',$poll->ident,null,null,'answer');
         $answerforshow = $answerInfo->answer;
-        $nameOption = "opcion" . $numberForOption;
-        $arrayOptions .= $nameOption;
-        $numberForOption++;
+        	if($answerforshow)
+        	{
+        	$nameOption = "opcion" . $numberForOption;
+        	$arrayOptions .= $nameOption;
+        	$numberForOption++;
 
 $Poll .=<<<END
       <input type="hidden" name="array_options" value=$arrayOptions>
@@ -137,6 +140,7 @@ $Poll .=<<<END
     </tr>
     <?php } ?>
 END;
+        	}
   	}
 	// End poll with Multiple Answers
     }
@@ -185,7 +189,6 @@ if($yearsforendPoll->years == 0)
 }
 else
 {
-
     if($monthsforendPoll->months == 0 || $monthsforendPoll->months > 0)
     {
           if($daysforendPoll->days == 0 || $daysforendPoll->days > 0)
@@ -194,9 +197,7 @@ else
           else
           {
            $daysforendPoll->days = $yearsforendPoll->years * 365 + $monthsforendPoll->months + (30 + $daysforendPoll->days); 
-
           } 
-
     }
     else
     {
@@ -214,25 +215,17 @@ else
 
 }
 
-
 ///////////
 if($daysforendPoll->days==0 || $daysforendPoll->days<0)
 {
   $Poll = "<h3>$finish_poll</h3><br><br><h2>$thanks</h2>";
   $current_poll->state = "closed";
-  $updateState = update_record('polls',$current_poll);
-
-  
+  $updateState = update_record('polls',$current_poll); 
 }
 else
 {
-
-
-
 ////
   $Poll = "<h2>$poll_will_finish   " . $current_poll->date_end . "</h2><br>";
-
-
   $already_vote = get_record('poll_vote','id_poll',$poll->ident,'id_user',$profile_id);
   if($already_vote)
   {
@@ -241,8 +234,6 @@ else
   else
   { 
   
-
-
 if ($answersPoll= get_record('poll_answer', 'id_poll',$poll->ident)) {
     $inicialNumber = $answersPoll->ident;
     $numberofanswers = count_records('poll_answer','id_poll',$poll->ident);
@@ -285,8 +276,6 @@ END;
   	
 
 	}
-
-
 //
 // End Poll Votation With ONLY one answer
 //

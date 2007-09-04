@@ -47,14 +47,14 @@ $poll_vote->state_current_poll = "voted";
 $answer->quantity = $answer->quantity + 1;
 $votation = update_record('poll_answer',$answer);
 $idpoll_vote = insert_record('poll_vote', $poll_vote);
+$messages[] = __gettext("Thanks for your vote !!!");
+
 }
 
-function editPoll()
+function editPoll($publish)
 {
     $redirect_url = url . user_info('username', $_SESSION['userid']) . "/polls/";
     $ident = optional_param('poll_ident');
-    //echo "IDENT !!!!!::::::" . $ident;
-    $publish = "no";
     $poll_creator_id = optional_param('new_poll');
     $creator_poll_name = (isset ($poll_creator_id)) ? user_info('name', $poll_creator_id) : "";
     $title_poll = optional_param('new_poll_name');
@@ -113,7 +113,6 @@ else
     $poll_question = optional_param('new_poll_question');
 
     $answers_quantity = optional_param('poll_answers');
-
 	switch ($answers_quantity) {
 
   	case "2" :
@@ -175,15 +174,19 @@ if(trim($statePoll) == "active"){
 	$idpoll = update_record('polls', $poll);
         //Poll Answer
         $answer = new StdClass;
-        $answer->id_poll = $idpoll;
+        $answer->id_poll = $poll->ident;
         foreach ($answers_poll as $answer_poll) {
-		$answer->answer = trim($answer_poll);
-                $idpoll_answer = update_record('poll_answer', $answer);
 
+                $answer_exist = get_record('poll_answer','answer',$answer_poll,'id_poll',$poll->ident,null,null,'answer');
+                if(!$answer_exist->answer)
+                {
+		$answer->answer = trim($answer_poll);
+                $idpoll_answer = insert_record('poll_answer', $answer);
+                }
 	}
+	$messages[] = __gettext("Your Poll has been Saved"); // gettext variable
+
 	
-	
-        $messages[] = __gettext("Your Poll has been Saved"); // gettext variable
 
 
 
@@ -329,12 +332,24 @@ case "finish" :
   if($button == "Publish")
     {
     $publish = "yes"; 
+    $ident = optional_param('poll_ident');
+    $poll_exist = get_record('polls','ident',$ident);
+    	if($poll_exist)
+    	{
+    		editPoll($publish);
+    		break;
+    	}
     }
   else
     {
-    $publish = "no"; 
-    editPoll();
-    break;
+    $publish = "no";
+    $ident = optional_param('poll_ident');
+    $poll_exist = get_record('polls','ident',$ident);
+    	if($poll_exist)
+    	{
+            editPoll($publish);
+            break;
+        }
     }
 
     $redirect_url = url . user_info('username', $_SESSION['userid']) . "/polls/";
