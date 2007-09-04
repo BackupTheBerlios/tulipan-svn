@@ -25,6 +25,7 @@ $pollname = __gettext("Polls");
 $state = __gettext("State");
 $actionPoll = __gettext("--Select an action: --");
 $returnConfirm = __gettext("Are you sure you want to permanently delete this poll(s)?");
+$published = __gettext("Published");
 
 $action_options = "<option value=\"finish\">$finish_poll</option>";
 $action_options .= "<option value=\"delete\">$delete</option>";
@@ -63,7 +64,7 @@ $user_votes = get_record('poll_vote','id_user',$profile_id);
 
      }
 
-     $polls_of_others_active = get_records_select('polls', " (owner !=" . $profile_id . $sql_and . " AND access IN ('PUBLIC', 'LOGGED_IN')) AND state='active'" ,null, 'date_start DESC', '*', $msg_offset, $polls_per_page); 
+     $polls_of_others_active = get_records_select('polls', " (owner !=" . $profile_id . $sql_and . " AND access IN ('PUBLIC', 'LOGGED_IN')) AND state='active' AND published = 'yes' " ,null, 'date_start DESC', '*', $msg_offset, $polls_per_page); 
 
 
      /////////////////////////
@@ -79,19 +80,18 @@ $user_votes = get_record('poll_vote','id_user',$profile_id);
        $sql_and_voted .= " ";
 
      }
-       $polls_of_others_voted = get_records_select('polls', "(owner !=" . $profile_id  . $sql_and_voted . " AND access IN ('PUBLIC', 'LOGGED_IN')) AND state='active'" ,null, 'date_start DESC', '*', $msg_offset, $polls_per_page);
+       $polls_of_others_voted = get_records_select('polls', "(owner !=" . $profile_id  . $sql_and_voted . " AND access IN ('PUBLIC', 'LOGGED_IN')) AND state='active' AND published = 'yes' " ,null, 'date_start DESC', '*', $msg_offset, $polls_per_page);
  
   }
   else
   {
 
-      $polls_of_others = get_records_select('polls', "(owner !=" . $profile_id  . " AND access IN ('PUBLIC', 'LOGGED_IN')) AND state='active'",null, 'date_start DESC', '*', $msg_offset, $polls_per_page);
+      $polls_of_others = get_records_select('polls', "(owner !=" . $profile_id  . " AND access IN ('PUBLIC', 'LOGGED_IN')) AND state='active' AND published = 'yes' ",null, 'date_start DESC', '*', $msg_offset, $polls_per_page);
   }
 
-  $numberofpolls = count_records('polls','state','active');
+  $numberofpolls_owner = count_records('polls',"owner !=" .$profile_id.  " AND state ",'active','published','yes');
 
 }
-
 
 //PAGE VIEW POLL
 $msgs = "";
@@ -142,19 +142,16 @@ if (!empty ($polls_of_others_voted)) {
 }
 
 
-//Pagging the Polls
+//Pagging the Owner Polls 
   $msg_name = htmlspecialchars($profile_id, ENT_COMPAT, 'utf-8');
   $back = __gettext("Back");
   $next = __gettext("Next");
 
-  if ($numberofpolls - ($msg_offset + $polls_per_page) > 0) {
-
+  if ($numberofpolls_owner - ($msg_offset + $polls_per_page) > 0) {
     $display_msg_offset = $msg_offset + $polls_per_page;
-
-    $pagging .=<<< END
+    $pagging_owner .=<<< END
 
                 <a href="{$CFG->wwwroot}{$msg_name}/polls/{$filterlink}msg_offset/{$display_msg_offset}">$next &gt;&gt;</a>
-
 END;
   }
   if ($msg_offset > 0) {
@@ -162,21 +159,36 @@ END;
     if ($display_msg_offset < 0) {
       $display_msg_offset = 0;
     }
-    $pagging .=<<< END
-
+    $pagging_owner .=<<< END
                 <a href="{$CFG->wwwroot}{$msg_name}/polls/{$filterlink}msg_offset/{$display_msg_offset}">&lt;&lt; $back</a>
-
 END;
   }
 
+//Pagging Poll of Other Users
+  if ($numberofpolls_owner - ($msg_offset + $polls_per_page) > 0) {
+    $display_msg_offset = $msg_offset + $polls_per_page;
+    $pagging_others .=<<< END
 
+                <a href="{$CFG->wwwroot}{$msg_name}/polls/{$filterlink}msg_offset/{$display_msg_offset}">$next &gt;&gt;</a>
+END;
+  }
+  if ($msg_offset > 0) {
+    $display_msg_offset = $msg_offset - $polls_per_page;
+    if ($display_msg_offset < 0) {
+      $display_msg_offset = 0;
+    }
+    $pagging_others .=<<< END
+                <a href="{$CFG->wwwroot}{$msg_name}/polls/{$filterlink}msg_offset/{$display_msg_offset}">&lt;&lt; $back</a>
+END;
+  }
 
 
 $run_result .= templates_draw(array (
   'context' => 'plug_polls',
   'polls_list' => $msgs,
+  'pagging_owner' => $pagging_owner,
   'polls_other_list' => $polls_net,
-  'paging' => $pagging,
+  'pagging_others' => $pagging_others,
   'title' => $title,
   'creator' => $creatorPoll,
   'action_form_poll' => url . "mod/polls/polls_actions.php?action=multiple&sent=$sent",
@@ -185,6 +197,7 @@ $run_result .= templates_draw(array (
   'action' => $action,
   'date' => $date,
   'state' => $state,
+  'published' => $published,
   'polls_name' => $pollname,
   'actionPoll' => $actionPoll,
   'returnConfirm' => $returnConfirm

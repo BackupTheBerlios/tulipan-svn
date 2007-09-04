@@ -49,6 +49,172 @@ $votation = update_record('poll_answer',$answer);
 $idpoll_vote = insert_record('poll_vote', $poll_vote);
 }
 
+function editPoll()
+{
+    $redirect_url = url . user_info('username', $_SESSION['userid']) . "/polls/";
+    $ident = optional_param('poll_ident');
+    //echo "IDENT !!!!!::::::" . $ident;
+    $publish = "no";
+    $poll_creator_id = optional_param('new_poll');
+    $creator_poll_name = (isset ($poll_creator_id)) ? user_info('name', $poll_creator_id) : "";
+    $title_poll = optional_param('new_poll_name');
+    $kind_poll = optional_param('new_kind_poll');
+
+    if($kind_poll == "")
+    {
+      $kind_poll = "only"; 
+    }
+    $dateend_poll = optional_param('date_poll');
+    $datestart_poll = date("Y/m/d");
+    $finish = optional_param('new_date_poll');
+
+    if($finish == "")
+    {
+      $finish = "manual"; 
+    }
+    $accessPoll = optional_param('new_poll_access');
+//Checking the DATE information of the news poll
+if($finish == "manual")
+{  
+   $dateend_poll = "0000/00/00";
+   $statePoll = "active";
+
+}
+else
+{
+    if($dateend_poll == $datestart_poll)
+    {
+       $statePoll = "closed";
+       $redirect_url = url . user_info('username', $USER->ident) . "/polls/create";
+       $messages[] = __gettext("The Poll finish today !! Please select other date");
+       define('redirect_url', $redirect_url);
+
+       break;
+
+    }
+    else if($dateend_poll < $datestart_poll)
+    {
+       $statePoll = "closed";
+       $redirect_url = url . user_info('username', $USER->ident) . "/polls/create";
+       $messages[] = __gettext("Your date for finish the poll already pass !! Please select other date");
+       define('redirect_url', $redirect_url);
+
+       break;
+    }
+    else
+    {
+       $statePoll = "active";
+
+    }
+
+}
+
+//Answers MAX 10   
+    $poll_question = optional_param('new_poll_question');
+
+    $answers_quantity = optional_param('poll_answers');
+
+	switch ($answers_quantity) {
+
+  	case "2" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'));
+    	break;
+	case "3" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'));
+    	break;
+	case "4" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'));
+    	break;
+	case "5" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'));
+    	break;
+	case "6" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'));
+    	break;
+	case "7" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'));
+    	break;
+	case "8" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'),optional_param('answer8'));
+    	break;
+	case "9" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'),optional_param('answer8'),optional_param('answer9'));
+    	break;
+	case "10" :
+	$answers_poll =array(optional_param('answer1'),optional_param('answer2'),optional_param('answer3'),optional_param('answer4'),optional_param('answer5'),optional_param('answer6'),optional_param('answer7'),optional_param('answer8'),optional_param('answer9'),optional_param('answer10'));
+    	break;
+
+	}
+    
+
+    	$date = optional_param('new_date_poll');
+
+if(trim($statePoll) == "active"){ 
+
+      if (trim($title_poll) != "") {
+
+
+         if (trim($poll_question) != "") {
+
+		if (trim($answers_poll[0]) != "") {
+
+        //Poll
+        $poll = new StdClass;
+        $poll->ident = trim($ident);
+        $poll->owner = trim($poll_creator_id);
+        $poll->owner_name = trim($creator_poll_name);
+        $poll->title = trim($title_poll);
+        $poll->question = trim($poll_question);
+        $poll->kind = trim($kind_poll);
+        $poll->date_start = trim($datestart_poll);
+        $poll->date_end = trim($dateend_poll);
+        $poll->state = trim($statePoll);
+        $poll->finish = trim($finish);
+        $poll->access = trim($accessPoll);
+        $poll->published = trim($publish);
+	$idpoll = update_record('polls', $poll);
+        //Poll Answer
+        $answer = new StdClass;
+        $answer->id_poll = $idpoll;
+        foreach ($answers_poll as $answer_poll) {
+		$answer->answer = trim($answer_poll);
+                $idpoll_answer = update_record('poll_answer', $answer);
+
+	}
+	
+	
+        $messages[] = __gettext("Your Poll has been Saved"); // gettext variable
+
+
+
+		}
+		else {
+                $redirect_url = url . user_info('username', $_SESSION['userid']) . "/polls/";
+        	$messages[] = __gettext("You must specify minimun two Answers!");
+      	     	     }
+	     }
+      	     else {
+                $redirect_url = url . user_info('username', $_SESSION['userid']) . "/polls/";
+             	$messages[] = __gettext("You must specify a Question!");
+      	          }
+	}
+        else {
+                $redirect_url = url . user_info('username', $_SESSION['userid']) . "/polls/";
+      		$messages[] = __gettext("You must specify the Poll's Name!");
+             }
+}
+else {
+       $messages[] = __gettext("Your Poll will end today. Plase choose other date!");
+       $redirect_url = url . user_info('username', $_SESSION['userid']) . "/polls/";
+     }
+
+
+
+
+    define('redirect_url', $redirect_url);
+
+}
+
 run("polls:init");
 
 global $USER;
@@ -159,6 +325,18 @@ case "finish" :
     break;
   
   case "create" :
+    $button = optional_param('button');
+  if($button == "Publish")
+    {
+    $publish = "yes"; 
+    }
+  else
+    {
+    $publish = "no"; 
+    editPoll();
+    break;
+    }
+
     $redirect_url = url . user_info('username', $_SESSION['userid']) . "/polls/";
     $poll_creator_id = optional_param('new_poll');
     $creator_poll_name = (isset ($poll_creator_id)) ? user_info('name', $poll_creator_id) : "";
@@ -271,6 +449,7 @@ if(trim($statePoll) == "active"){
         $poll->state = trim($statePoll);
         $poll->finish = trim($finish);
         $poll->access = trim($accessPoll);
+        $poll->published = trim($publish);
 	$idpoll = insert_record('polls', $poll);
         //Poll Answer
         $answer = new StdClass;
@@ -285,7 +464,7 @@ if(trim($statePoll) == "active"){
             $poll++;
           	}	
 	
-        $messages[] = __gettext("Your Post has been created"); // gettext variable
+        $messages[] = __gettext("Your Poll has been created"); // gettext variable
 
 
 
@@ -312,7 +491,9 @@ else {
 
 
 
+
     define('redirect_url', $redirect_url);
+    
     break;
 
 case "multiple" :

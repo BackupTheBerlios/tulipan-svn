@@ -42,6 +42,8 @@ $from_msg= __gettext("Creator:");
 $poll = optional_param('message');
 $poll_finished = __gettext("This Poll has finished");
 $answers = __gettext("Answers");
+$poll_auto = __gettext("This Poll will end Automatically");
+$poll_manual = __gettext("This Poll will end when you decide");
 
 $answer_poll  = get_record('polls', 'ident',$poll);
 $current_poll = get_record('polls','ident',$poll);
@@ -54,6 +56,95 @@ $current_poll = get_record('polls','ident',$poll);
 $daysforendPoll = get_record('polls','ident',$poll,null,null,null,null,'DAY(date_end)-DAY(actual_date) AS days');
 $links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?action=delete&amp;sent=' . $sent . '&amp;poll_id=' . $msg->ident . '" onclick="return confirm(\'' . $returnConfirm . '\')">' . $Delete . '</a> |';
 
+//Check if the poll finish manually
+if($current_poll->date_end == '0000-00-00')
+{
+ 	 $imagePoll = "<h2>$poll_manual</h2><br>";
+  
+
+if($answer_poll->state == "active" &&  $answer_poll->finish == "manual")
+{
+
+ $links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?action=finish&amp;sent=' . $sent . '&amp;poll_id=' . $msg->ident .'">' . $endPoll . '</a> |';
+}
+
+$answer_poll  = get_record('poll_answer', 'id_poll',$poll);
+$imagePoll .= '<img src="/mod/polls/jpgraph/src/elgg_polls/bartutex1.php?action=' . $poll .'" alt="" border="0">';
+$imagePoll .='<h2>' . $answers . '</h2><ol>';
+$inicialNumber = $answer_poll->ident;
+$numberofanswers = count_records('poll_answer','id_poll',$poll);
+$cantidadFinal = $numberofanswers + $inicialNumber;
+$i = $inicialNumber;
+    for($i; $i<$cantidadFinal;$i++)
+	{
+        	$answerInfo= get_record('poll_answer', 'ident',$i,null,null,null,null,'answer');
+        	$answer = $answerInfo->answer;
+		$imagePoll .='<li>' . $answer . '</li>';
+	}
+$imagePoll .='</ol>';
+
+$username= user_name($creatorid);
+
+
+}
+else
+{
+//The poll finish Automatically
+//
+//
+
+//Check the Day for end the  Poll
+//Years
+$yearsforendPoll = get_record('polls','ident',$current_poll->ident,null,null,null,null,'YEAR(date_end)-YEAR(actual_date) AS years');
+  //Months
+$monthsforendPoll = get_record('polls','ident',$current_poll->ident,null,null,null,null,'MONTH(date_end)-MONTH(actual_date) AS months');
+//Days
+$daysforendPoll = get_record('polls','ident',$current_poll->ident,null,null,null,null,'DAY(date_end)-DAY(actual_date) AS days');
+
+if($yearsforendPoll->years == 0)
+{
+
+    if($monthsforendPoll->months == 0)
+    {
+       $daysforendPoll->days = $daysforendPoll->days;
+
+    }
+    else
+    {
+       $daysforendPoll->days = $monthsforendPoll->months + $daysforendPoll->days;
+    }
+
+}
+else
+{
+
+    if($monthsforendPoll->months == 0 || $monthsforendPoll->months > 0)
+    {
+          if($daysforendPoll->days == 0 || $daysforendPoll->days > 0)
+          {$daysforendPoll->days = $yearsforendPoll->years * 365 + $monthsforendPoll->months + $daysforendPoll->days;
+          }
+          else
+          {
+           $daysforendPoll->days = $yearsforendPoll->years * 365 + $monthsforendPoll->months + (30 + $daysforendPoll->days); 
+
+          } 
+
+    }
+    else
+    {
+          
+          if($daysforendPoll->days == 0 || $daysforendPoll->days > 0)
+          {$daysforendPoll->days = $yearsforendPoll->years * 365 + (12 + $monthsforendPoll->months) + $daysforendPoll->days;
+          }
+          else
+          {
+           $daysforendPoll->days = $yearsforendPoll->years * 365 + (12 + $monthsforendPoll->months) + (30 + $daysforendPoll->days); 
+
+          } 
+
+    }
+
+}
 if($daysforendPoll->days==0 || $daysforendPoll->days<0)
 {
 
@@ -61,7 +152,6 @@ if($daysforendPoll->days==0 || $daysforendPoll->days<0)
   //$current_poll->state = "closed";
   //$updateState = update_record('polls',$current_poll);
 
-  
 }
 else
 {
@@ -94,6 +184,7 @@ $imagePoll .='</ol>';
 
 $username= user_name($creatorid);
 
+}
 $run_result .= templates_draw(array (
     'context' => 'plug_detailedpoll',
     'date' => $date,

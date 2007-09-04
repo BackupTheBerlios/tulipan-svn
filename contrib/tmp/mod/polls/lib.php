@@ -89,6 +89,7 @@ if (!get_config('polls')) {
   $function['polls:poll:view'][] = $CFG->dirroot . "mod/polls/lib/polls_poll_view.php";
   $function['polls:detailedview'][] = $CFG->dirroot . "mod/polls/lib/polls_poll_detailedview.php";
   $function['polls:pollforvotation'][] = $CFG->dirroot . "mod/polls/lib/poll_for_votation.php";
+  $function['polls:publish'][] = $CFG->dirroot . "mod/polls/lib/edit_publish.php";
 
 
   // Sidebar display function

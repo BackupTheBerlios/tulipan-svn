@@ -46,7 +46,9 @@ $current_poll->actual_date = $actualDate;
 $update = update_record('polls',$current_poll);
 $current_poll = get_record('polls','ident',$poll->ident);
 $poll_auto = __gettext("This Poll will end Automatically");
+$poll_manual = __gettext("This Poll will end When the Creator decides");
 $poll_already = __gettext("You already have voted in this poll");
+
 $thanks = __gettext("Thanks for your vote !! ");
 $finish_poll =__gettext("This Poll has finished");
 $poll_will_finish =__gettext("This Poll will end in:   ");
@@ -56,7 +58,7 @@ if($current_poll->date_end == '0000-00-00')
 {
 
      $date = __gettext("Unlimited");
-     $Poll = "<h2>$poll_anto</h2><br>";
+     $Poll = "<h2>$poll_auto</h2><br>";
 
      $already_vote = get_record('poll_vote','id_poll',$poll->ident,'id_user',$profile_id);
      if($already_vote)

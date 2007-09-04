@@ -27,7 +27,8 @@ $endpoll = __gettext("When you want end the Poll?");
 $date_polls = __gettext("Date for end the Poll");
 $accessRes = __gettext("Access restrictions:"); // gettext variable
 
-$submitButton = ($action == "reply") ? "Reply" : "Create";
+$submitButton = __gettext("Publish");
+$submitButtonSave = __gettext("Save");
 
 
 //******************************************************************************************
@@ -403,19 +404,19 @@ display:none;
 <tr>
     <td width=140>Select your end date:</td>
     <td><input type="text" name="date_poll" id="date_field" />
-        <input type="button" id="launcher" value="..." />
+        <input type="button" id="launcher" value="date" />
     </td>
 </tr>
 </table>
 </div>
 
 
-<!-- script que define y configura el calendario-->
+<!-- script that configure the calendar-->
 <script type="text/javascript">
    Calendar.setup({
-    inputField     :    "date_field",     // id del campo de texto
+    inputField     :    "date_field",     
      ifFormat     :     "%Y/%m/%d",     
-     button     :    "launcher"     // el id del botón que lanzará el calendario
+     button     :    "launcher"     
 });
 </script>
 
@@ -446,14 +447,15 @@ $run_result .=<<< END
 </style>
 
 <div align="center">
-    <input type="submit" value="$submitButton" class="boton">
-  </form>
+    <input type="submit" name="button" value="$submitButtonSave" class="boton">        
+    <input type="submit" name="button" value="$submitButton" class="boton">
 </div>
 
+    <br>
 
 
-</BODY>
-</HTML>  
+
+
     </p>
 </form>
 

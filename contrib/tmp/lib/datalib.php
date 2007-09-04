@@ -512,6 +512,8 @@ function count_records($table, $field1=null, $value1=null, $field2=null, $value2
 
     $values = where_values_prepared($value1, $value2, $value3);
 
+
+    //echo "SENTENCIA ::::" . 'SELECT COUNT(*) FROM '. $CFG->prefix . $table .' '. $select, $values;
     return count_records_sql('SELECT COUNT(*) FROM '. $CFG->prefix . $table .' '. $select, $values);
 }
 
@@ -1436,6 +1438,7 @@ function addslashes_object( $dataobject ) {
  * @todo Finish documenting this function. Dataobject is actually an associateive array, correct?
  */
 function update_record($table, $dataobject) {
+
 
     global $db, $CFG;
 

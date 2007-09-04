@@ -49,6 +49,17 @@ if (isset ($parameter)) {
 
   $date= $poll->date_start;
   ////State of Poll
+
+//First check if the poll has been published.
+$poll_published= get_record('polls','ident',$poll->ident,null,null,null,null,'published');
+if($poll_published->published == "no")
+{
+   $state = __gettext("Not Published");;
+}
+else
+{
+
+ //
   $vote_of_the_user= get_record('poll_vote','id_poll',$poll->ident,'id_user',$profile_id,null,null,'state_current_poll');
   if($vote_of_the_user->state_current_poll)
   {
@@ -59,16 +70,26 @@ if (isset ($parameter)) {
   {
   $state = $poll->state;  
   }
+
+}
   $title= run("weblogs:text:process", $poll->title);
 
   $poll_style= "";
 
+//VIEW OR EDIT Poll
+if($poll->published == "no")
+{
+$Link_of_Poll = '<a href="' . url . $_SESSION['username'] . '/polls/edit/' . $poll->ident . "/$sent\" " . "?poll_id=" . $poll->ident . ">" . $title  .  "</a>";
+}
+else
+{  $Link_of_Poll = '<a href="' . url . $_SESSION['username'] . '/polls/view/' . $poll->ident . "/$sent\">" . $title . "</a>";
+}
 
 $run_result .= templates_draw(array (
     'context' => 'plug_poll',
     'date' => $date,
     'state' => $state,
-    'title' => '<a href="' . url . $_SESSION['username'] . '/polls/view/' . $poll->ident . "/$sent\">" . $title . "</a>",
+    'title' => $Link_of_Poll,
     'from_username' => $creatorPoll->username,
     'from_name' => '<a href="' . url . $creatorPoll->username . '/">' . $username . "</a>",
     'from_icon' => $creatorPoll->icon,
