@@ -643,7 +643,7 @@ function get_record($table, $field1=null, $value1=null, $field2=null, $value2=nu
  * @return Found record as object. False if not found or error
  */
 function get_record_sql($sql, $values=null, $expectmultiple=false, $nolimit=false) {
-
+    //echo "SENTENCIA" . $sql;
     global $db, $CFG;
 
     if (isset($CFG->debug) && $CFG->debug > 7 && !$expectmultiple) {    // Debugging mode - don't use limit

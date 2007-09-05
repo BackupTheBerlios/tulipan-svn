@@ -15,7 +15,6 @@ $sent = optional_param('sent', 0, PARAM_INT);
 //******************************
 $delete = __gettext("Delete");
 $finish_poll = __gettext("Finish the Poll");
-
 $title = __gettext("Polls");
 $creatorPoll = __gettext("Creator");
 $owner_polls= __gettext("Owner Polls");
@@ -97,11 +96,14 @@ $user_votes = get_record('poll_vote','id_user',$profile_id);
 //PAGE VIEW POLL
 $msgs = "";
 $pagging = "&nbsp;";
+$actualDate = date("Y/n/j/h/i/s");
 
 //
 if (!empty ($polls)) {
   $index = $msg_offset+1;
   foreach ($polls as $poll) {
+    $poll->actual_date = $actualDate;
+    $update = update_record('polls',$poll);
     $msgs .= run("polls:poll:view", array($poll,$index));
     $index++;
   }
@@ -111,6 +113,8 @@ if (!empty ($polls_of_others)) {
   $index = $msg_offset+1;
 
   foreach ($polls_of_others as $poll_other) {
+    $poll_other->actual_date = $actualDate;
+    $update = update_record('polls',$poll_other);
     $polls_net .= run("polls:poll:view", array($poll_other,$index));
     $index++;
   }
@@ -124,6 +128,8 @@ if (!empty ($polls_of_others_active)) {
 
   $index = $msg_offset+1;
   foreach ($polls_of_others_active as $poll_net) {
+    $poll_net->actual_date = $actualDate;
+    $update = update_record('polls',$poll_net);
     $polls_net .= run("polls:poll:view", array($poll_net,$index));
     $index++;
     
@@ -133,6 +139,8 @@ if (!empty ($polls_of_others_active)) {
 if (!empty ($polls_of_others_voted)) {
 
   foreach ($polls_of_others_voted as $poll_voted) {
+    $poll_voted->actual_date = $actualDate;
+    $update = update_record('polls',$poll_voted);
     $polls_net .= run("polls:poll:view", array($poll_voted,$index));
     $index++;
     

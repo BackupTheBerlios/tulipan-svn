@@ -28,16 +28,13 @@ if (isset ($parameter)) {
   }
   $creator->icon= '<a href="' . url . $creator->username . '/">' .user_icon_html($creator->ident)."</a>";
 
-  $date= strftime("%d %b %Y, %H:%M", $msg->posted);
-  $title= run("weblogs:text:process", $msg->title);
-  $body= run("weblogs:text:process", $msg->body);
+$title= run("weblogs:text:process", $msg->title);
+$body= run("weblogs:text:process", $msg->body);
  
-  $returnConfirm= __gettext("Are you sure you want to permanently delete this Poll?");
-  $Delete= __gettext("Delete");
-  $endPoll = __gettext("Finish the Poll");
-  $poll_will_finish =__gettext("This Poll will end in:   ");
-
-
+$returnConfirm= __gettext("Are you sure you want to permanently delete this Poll?");
+$Delete= __gettext("Delete");
+$endPoll = __gettext("Finish the Poll");
+$poll_will_finish =__gettext("This Poll will end in:   ");
 $from_msg= __gettext("Creator:");
 $poll = optional_param('message');
 $poll_finished = __gettext("This Poll has finished");
@@ -49,7 +46,7 @@ $answer_poll  = get_record('polls', 'ident',$poll);
 $current_poll = get_record('polls','ident',$poll);
 
 //Updating the actual date of Poll
-$actualDate = date("Y-n-j");
+$actualDate = date("Y/n/j/h/i/s");
 $current_poll->actual_date = $actualDate;
 $update = update_record('polls',$current_poll);
 $current_poll = get_record('polls','ident',$poll);
@@ -59,8 +56,15 @@ $links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?actio
 //Check if the poll finish manually
 if($current_poll->date_end == '0000-00-00')
 {
+
+     if($sent == 1)
+     {
+ 	 $imagePoll = "<h2>$poll_finished</h2><br>";
+     }
+     else
+     {
  	 $imagePoll = "<h2>$poll_manual</h2><br>";
-  
+     }
 
 if($answer_poll->state == "active" &&  $answer_poll->finish == "manual")
 {
@@ -143,12 +147,13 @@ if($daysforendPoll->days==0 || $daysforendPoll->days<0)
 }
 else
 {
-  $imagePoll = "<h2>$poll_will_finish   " . $current_poll->date_end . "</h2><br>";
+$date_poll  = get_record_sql('SELECT date(date_start) AS date FROM '.$CFG->prefix.'polls WHERE ident = '.$current_poll->ident);
+
+  $imagePoll = "<h2>$poll_will_finish   " . $date_poll->date . "</h2><br>";
 }
-if($answer_poll->state == "active" &&  $answer_poll->finish == "manual")
-{
+
  $links .= '&nbsp;<a href="' . $CFG->wwwroot . 'mod/polls/polls_actions.php?action=finish&amp;sent=' . $sent . '&amp;poll_id=' . $msg->ident .'">' . $endPoll . '</a> |';
-}
+
 $answer_poll  = get_record('poll_answer', 'id_poll',$poll);
 $imagePoll .= '<img src="/mod/polls/jpgraph/src/elgg_polls/bartutex1.php?action=' . $poll .'" alt="" border="0">';
 $imagePoll .='<h2>' . $answers . '</h2><ol>';

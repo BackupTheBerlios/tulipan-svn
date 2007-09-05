@@ -12,8 +12,8 @@
 if (isset ($parameter)) {
   global $CFG, $profile_id;
   $poll= $parameter;
-
   $sent= optional_param('sent');
+
   $creator= new StdClass;
   $answers= new StdClass;
   $title_poll=$poll->question;
@@ -58,8 +58,14 @@ if($current_poll->date_end == '0000-00-00')
 {
 
      $date = __gettext("Unlimited");
+     if($sent == 1)
+     {
+     $Poll = "<h2>$finish_poll</h2><br>";    
+     }
+     else
+     {
      $Poll = "<h2>$poll_auto</h2><br>";
-
+     }
      $already_vote = get_record('poll_vote','id_poll',$poll->ident,'id_user',$profile_id);
      if($already_vote)
      {
@@ -224,8 +230,9 @@ if($daysforendPoll->days==0 || $daysforendPoll->days<0)
 }
 else
 {
-////
-  $Poll = "<h2>$poll_will_finish   " . $current_poll->date_end . "</h2><br>";
+$date_poll  = get_record_sql('SELECT date(date_start) AS date FROM '.$CFG->prefix.'polls WHERE ident = '.$current_poll->ident);
+
+  $Poll = "<h2>$poll_will_finish   " . $date_poll->date . "</h2><br>";
   $already_vote = get_record('poll_vote','id_poll',$poll->ident,'id_user',$profile_id);
   if($already_vote)
   {
@@ -303,11 +310,11 @@ END;
 
 }
 
-$date = $poll->date_end;	  
+$date = $date_poll->date;	  
 $Poll .=<<<END
     <tr>
       <td><input type="submit" name="submitpoll" value="vote"></td>
-      <td>This poll ends: $date</td>
+      <td>This poll ends: $date </td>
    
   	</table>
 	</form>

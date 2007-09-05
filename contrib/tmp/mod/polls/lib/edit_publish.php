@@ -302,7 +302,7 @@ $run_result .=<<< END
 <br>
 END;
 /////
-$answer_poll  = get_record('poll_answer', 'id_poll',$poll->ident);
+$answer_poll  = get_record_sql('SELECT * FROM '.$CFG->prefix.'poll_answer WHERE id_poll = '.$poll->ident. ' order by ident');
 $inicialNumber = $answer_poll->ident;
 $numberofanswers = count_records('poll_answer','id_poll',$poll->ident);
 $totalnumberofanswers = count_records('poll_answer');

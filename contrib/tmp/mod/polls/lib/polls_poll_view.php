@@ -47,7 +47,8 @@ if (isset ($parameter)) {
 
   $username= user_name($poll->owner);
 
-  $date= $poll->date_start;
+$date_poll  = get_record_sql('SELECT date(date_start) AS date FROM '.$CFG->prefix.'polls WHERE ident = '.$poll->ident);
+  $date= $date_poll->date;
   ////State of Poll
 
 //First check if the poll has been published.

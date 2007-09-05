@@ -16,6 +16,7 @@ function deletePoll($poll, $user,$sent=0) {
   global $messages;
   if ($poll_info = get_record('polls', 'ident', $poll)) {
       delete_records('polls', 'ident', $poll);
+      delete_records('poll_answer','id_poll',$poll);
     $messages[] = __gettext("The selected Poll was deleted.");
   } else {
     $messages[] = __gettext("The poll ID its not valid!.");
@@ -175,17 +176,39 @@ if(trim($statePoll) == "active"){
         //Poll Answer
         $answer = new StdClass;
         $answer->id_poll = $poll->ident;
+        $quantityanswers = COUNT($answers_poll);
+        $answersforcompare = count_records('poll_answer','id_poll',$poll->ident);
+        $index = 1;
         foreach ($answers_poll as $answer_poll) {
-
-                $answer_exist = get_record('poll_answer','answer',$answer_poll,'id_poll',$poll->ident,null,null,'answer');
-                if(!$answer_exist->answer)
-                {
-		$answer->answer = trim($answer_poll);
+        $answer_exist = get_record('poll_answer','id_poll',$poll->ident,'index_number',$index);
+        $answer->ident = trim($answer_exist->ident);        
+        $answer->answer = trim($answer_poll);
+           if($answer_exist->answer)
+           {
+                $idpoll_answer = update_record('poll_answer', $answer);
+           }
+           else
+           {
+		$answer->index_number = $index;
                 $idpoll_answer = insert_record('poll_answer', $answer);
-                }
-	}
-	$messages[] = __gettext("Your Poll has been Saved"); // gettext variable
+           }
 
+        $index++;
+
+	}
+
+        if($quantityanswers < $answersforcompare)
+        {
+           for($index;$index<=$answersforcompare;$index++)
+           {
+            $answer_exist = get_record('poll_answer','id_poll',$poll->ident,'index_number',$index);
+	    $answer->ident = trim($answer_exist->ident);        
+            $delete = delete_records('poll_answer','ident',$answer->ident);
+           }
+        }
+
+     
+	$messages[] = __gettext("Your Poll has been Saved"); // gettext variable
 	
 
 
@@ -362,7 +385,7 @@ case "finish" :
       $kind_poll = "only"; 
     }
     $dateend_poll = optional_param('date_poll');
-    $datestart_poll = date("Y/m/d");
+    $datestart_poll = date("Y/m/d/h/i/s");
     $finish = optional_param('new_date_poll');
     if($finish == "")
     {
@@ -461,6 +484,7 @@ if(trim($statePoll) == "active"){
         $poll->kind = trim($kind_poll);
         $poll->date_start = $datestart_poll;
         $poll->date_end = trim($dateend_poll);
+        $poll->actual_date = date("Y/m/d/h/i/s");
         $poll->state = trim($statePoll);
         $poll->finish = trim($finish);
         $poll->access = trim($accessPoll);
@@ -469,10 +493,12 @@ if(trim($statePoll) == "active"){
         //Poll Answer
         $answer = new StdClass;
         $answer->id_poll = $idpoll;
+        $number = 1;
         foreach ($answers_poll as $answer_poll) {
 		$answer->answer = trim($answer_poll);
+                $answer->index_number = $number;
                 $idpoll_answer = insert_record('poll_answer', $answer);
-
+                $number++;
 	}
 
           if ($idpoll != -1) {
