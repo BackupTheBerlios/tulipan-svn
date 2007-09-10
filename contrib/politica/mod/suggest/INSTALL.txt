@@ -1,0 +1,7 @@
+Elgg suggest plug-in
+Diego Andrés Ramírez <diego@somosmas.org>
+Initial concept: Diego Ramírez
+Programming and development: Diego Ramírez
+
+To use, the 'suggest' folder must sit in the 'mod' folder of your Elgg installation.
+

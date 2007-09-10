@@ -1,0 +1,11 @@
+Version 1.1
+	Bug fixes
+Version 1.0
+  Initial release
+  - Suggest users
+  - Suggest contents
+  - Suggest contents (extension_context)
+  - Suggestion tracking
+  - Suggestion tracking filtering
+  - {{suggest}} keyword
+  - Suggestion widget

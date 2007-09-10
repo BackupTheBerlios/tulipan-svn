@@ -1,0 +1,7 @@
+Author:
+  Diego Andrés Ramírez Aragón (http://elgg.org/dramirez/)
+Contributors:
+  Ben Werdmuller (http://elgg.org/bwerdmuller/)
+    Initial code for user suggestion (taked from the similarusers plugin)
+  Tom (http://elgg.org/tom/)
+    Bug reports

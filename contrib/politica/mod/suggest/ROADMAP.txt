@@ -1,0 +1,2 @@
+Version 1.2
+	Add an optional suggestions menu 

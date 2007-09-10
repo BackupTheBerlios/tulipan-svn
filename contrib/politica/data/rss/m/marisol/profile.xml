@@ -1,0 +1,9 @@
+<?xml-stylesheet type="text/xsl" href="http://localhost/marisol/rss/rssstyles.xsl"?>
+<rss version='2.0'   xmlns:dc='http://purl.org/dc/elements/1.1/'>
+    <channel xml:base='http://localhost/marisol/'>
+        <title><![CDATA[marisol : Actividad]]></title>
+        <description><![CDATA[Actividad para  marisol, alojada en LatinPyme.]]></description>
+        <generator>Elgg</generator>
+        <link>http://localhost/marisol/</link>
+    </channel>
+</rss>

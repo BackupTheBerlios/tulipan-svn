@@ -1,0 +1,21 @@
+<h1>Bienvenido {{name}}</h1>
+<img src="/images/">
+<BR>
+<BR>
+
+<p>
+    Esta es {{sitename}}, la comunidad de empresarios Pyme de Latinoamerica. Si lo desea, puede consultar <a href="{{url}}_weblog/everyone.php">lo que está sucediendo</a> ahora mismo en nuestro sitio.
+</p>
+<p>
+    <a href="{{url}}/mod/browser/">Encuentre a otros empresarios</a> con deseos de hacer negocios e intercambiar experiencias.
+</p>
+<p>
+    Este es un ejemplo de los empresarios que hacen parte de nuestra comunidad: {{randomusers}}
+</p>
+<p>
+    <a href="{{url}}{{username}}">Visite su perfíl!</a> Recuerde que su presentación es la principal forma de que otros empresarios lo encuentren. 
+</p>
+<p>
+    Si desea ampliar su red de negocios, puede invitar a sus amigos enviandole una invitación:</a>.
+</p>
+

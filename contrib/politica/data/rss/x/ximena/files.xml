@@ -1,0 +1,9 @@
+<?xml-stylesheet type="text/xsl" href="http://latinpyme/ximena/files/rss/rssstyles.xsl"?>
+<rss version='2.0'   xmlns:dc='http://purl.org/dc/elements/1.1/'>
+    <channel xml:base='http://latinpyme/ximena/files/'>
+        <title><![CDATA[ximena bocanegra : Archivos]]></title>
+        <description><![CDATA[Archivos parar ximena bocanegra, alojados en Politica.com.]]></description>
+        <generator>Elgg</generator>
+        <link>http://latinpyme/ximena/files/</link>
+    </channel>
+</rss>
