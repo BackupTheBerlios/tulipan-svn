@@ -18,12 +18,6 @@
 {{toolbar}}
 <div id="content-holder"><!-- open content-holder div -->
     <div id="content-holder-inner" class="fixed">
-	<div id="splitpane-content"><!-- open splitpane-content div -->
-	<div id="splitpane-content-inner">
-		{{messageshell}}
-		{{mainbody}}
-	</div>
-	</div><!-- close open splitpane-content div -->
 	<div id="splitpane-sidebar"><!-- open splitpane-sidebar div -->
 	<div id="splitpane-sidebar-inner">
 		<ul><!-- open sidebar lists -->
@@ -31,11 +25,24 @@
 		</ul><!-- close sidebar lists -->
 	</div>
 	</div><!-- close splitpane-sidebar div -->
+	<div id="splitpane-content"><!-- open splitpane-content div -->
+	<div id="splitpane-content-inner">
+		{{messageshell}}
+		{{mainbody}}
+	</div>
+	</div><!-- close open splitpane-content div -->
+	<div id="splitpane-register"><!-- open splitpane-content div -->
+	<div id="splitpane-register-inner">
+		{{register}}
+	</div>
+	</div><!-- close open splitpane-content div -->
+
+
     </div>
 </div><!-- close content-holder div --> 
 <div id="footer" class="fixed"><!-- start footer -->
 	<span style="color:#FF934B">{{sitename}}</span> <a href="{{url}}content/terms.php">Términos y Condiciones</a>&nbsp;|&nbsp;<a href="{{url}}content/privacy.php">Póliza de Privacidad</a><br />
-	<a href="http://elgg.org/"><img src="{{url}}mod/template/icons/elgg_powered.png" title="Elgg powered" border="0" alt="Elgg powered" /></a>
+
 	<br />
 	{{perf}}
 </div><!-- end footer -->

@@ -33,6 +33,7 @@
                                 )
                                 );
 
+
     $inviteFriend .= run("invite:invite");
     $showTags = run("search:tags:display");
     $showNewsLatinPyme = run("news:display");
@@ -42,6 +43,13 @@
 } else {
         $body = templates_draw(array(
                                         'context' => 'frontpage_loggedout'
+                                )
+                                );
+
+        $body .= templates_draw(array(
+
+
+                                        'context' => 'register_loggedout'
                                 )
                                 );
     }

@@ -29,9 +29,9 @@
         
     // User count underneath the logon pane
         // $function['display:log_on_pane'][] = $CFG->dirroot . "units/users/current_user_info.php";
-        $function['display:log_on_pane'][] = $CFG->dirroot . "units/users/function_number_of_users.php";    
+       // $function['display:log_on_pane'][] = $CFG->dirroot . "units/users/function_number_of_users.php";    
         // $function['display:sidebar'][] = $CFG->dirroot . "units/users/current_user_info.php";
-        $function['display:sidebar'][] = $CFG->dirroot . "units/users/function_number_of_users.php";    
+        //$function['display:sidebar'][] = $CFG->dirroot . "units/users/function_number_of_users.php";    
         
     // Access level select
         $function['display:access_level_select'][] = $CFG->dirroot . "units/users/function_access_level_select.php";

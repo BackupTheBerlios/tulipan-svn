@@ -25,6 +25,7 @@
                                                             '{{menu}}' => __gettext("Menu"),
                                                             '{{topmenu}}' => __gettext("Status menu"),
                                                             '{{mainbody}}' => __gettext("Main body"),
+                                                            '{{register}}' => __gettext("Main body"),
                                                             '{{sidebar}}' => __gettext("Sidebar")
                                                         )
                                     );
@@ -33,6 +34,8 @@
     
     $template['frontpage_loggedout'] = file_get_contents($CFG->templatesroot . "Default_Template/frontpage_loggedout");
     $template['frontpage_loggedin'] = file_get_contents($CFG->templatesroot . "Default_Template/frontpage_loggedin");
+    $template['register_loggedout'] = file_get_contents($CFG->templatesroot . "Default_Template/register_loggedout");
+
 
     $template_definition[] = array(
                                     'id' => 'contentholder',

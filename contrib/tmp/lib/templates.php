@@ -59,6 +59,7 @@ function default_template () {
                                                        '{{menu}}' => __gettext("Menu"),
                                                        '{{topmenu}}' => __gettext("Status menu"),
                                                        '{{mainbody}}' => __gettext("Main body"),
+                                                       '{{register}}' => __gettext("Main body"),
                                                        '{{sidebar}}' => __gettext("Sidebar")
                                                        )
                                    );
@@ -531,6 +532,8 @@ function templates_page_setup (){
 function templates_page_draw ($param) {
     // Draws the page, given a title and a main body (parameters[0] and [1]).
     $title = $param[0];
+
+
 global $inviteFriend;
 global $showTags;
 global $showNewsLatinPyme;
@@ -540,7 +543,7 @@ global $showFriends;
 
 
     $mainbody = $param[1] . $showFriends . $inviteFriend . $showTags . $showNewsLatinPyme;
-
+    $register = $param[2];
     $run_result = '';
 
     global $messages;
@@ -594,6 +597,7 @@ if (isset($messages) && sizeof($messages) > 0) {
                             'top'          => displaymenu_top(),
                             'sidebar'      => $sidebarhtml,
                             'mainbody'     => $mainbody,
+                            'register'     => $register,
                             'messageshell' => $messageshell
                             ));
             
@@ -714,7 +718,6 @@ function templates_draw ($parameter) {
     // Draw a page element using a specified template (or, if the template is -1, the default)
     // $parameter['template'] = the template ID, $parameter['element'] = the template element,
     // all other $parameter[n] = template elements
-
     // Initialise global template variable, which contains the Default_Template
         global $template;
         
