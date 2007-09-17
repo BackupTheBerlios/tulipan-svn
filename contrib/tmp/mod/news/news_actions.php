@@ -58,7 +58,6 @@ switch ($action) {
 
   case "create" :
     $redirect_url = url . user_info('username', $_SESSION['userid']) . "/news/create";
-    $title = optional_param('new_msg_title');
     $from = optional_param('new_msg_from', -1, PARAM_INT);
     $to = optional_param('new_msg_to', -1, PARAM_INT);
     $subject = optional_param('new_msg_subject');

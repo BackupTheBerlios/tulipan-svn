@@ -6,22 +6,17 @@
         if ($CFG->publicreg == true) {
             
             $sitename = sitename;
-            $partOne = sprintf(__gettext("Thank you for registering for an account with %s! Registration is completely free, but before you fill in your details, please take a moment to read the following documents:"),$sitename); // gettext variable
+            $partOne = sprintf(__gettext("Please enter your dates:"),$sitename); // gettext variable
             $terms = __gettext("terms and conditions"); // gettext variable
             $privacy = __gettext("Privacy policy"); // gettext variable
-            $partFour = __gettext("When you fill in the details below, we will send an \"invitation code\" to your email address in order to validate it. You must then click on this within seven days to create your account."); // gettext variable
+	    $termsandconditions = __gettext("You must be read the");
+	    $and = __gettext("and");
+	    $checkterms = __gettext("Yes, I accept the Terms and Conditions and the Privacy Policy");
                             
                 $run_result .= <<< END
                 
     <p>
         $partOne
-    </p>
-    <ul>
-        <li><a href="{$CFG->wwwroot}content/terms.php" target="_blank">$sitename $terms</a></li>
-        <li><a href="{$CFG->wwwroot}content/privacy.php" target="_blank">$privacy</a></li>
-    </ul>
-    <p>
-        $partFour
     </p>
     <form action="" method="post">
                 
@@ -30,22 +25,48 @@ END;
                 $run_result .= templates_draw(array(
                                                 'context' => 'databoxvertical',
                                                 'name' => __gettext("Your name"),
-                                                'contents' => display_input_field(array("invite_name","","text"))
+                                                'contents' => display_input_field(array("join_name","","text"))
                     )
                     );
+		$run_result .= templates_draw(array(
+                                            'context' => 'databoxvertical',
+                                            'name' => __gettext("Your username - (Must be letters only)"),
+                                            'contents' => display_input_field(array("join_username",$username,"text"))
+                                            )
+                                      );
                 $run_result .= templates_draw(array(
                                                 'context' => 'databoxvertical',
                                                 'name' => __gettext("Your email address"),
                                                 'contents' => display_input_field(array("invite_email","","text"))
                     )
                     );
+		$run_result .= templates_draw(array(
+                                            'context' => 'databoxvertical',
+                                            'name' => __gettext("Enter a password"),
+                                            'contents' => display_input_field(array("join_password1","","password"))
+                                            )
+                                      );
+        	$run_result .= templates_draw(array(
+                                            'context' => 'databoxvertical',
+                                            'name' => __gettext("Your password again for verification purposes"),
+                                            'contents' => display_input_field(array("join_password2","","password"))
+                                            )
+                                      );
             $buttonValue = __gettext("Register");
             $run_result .= <<< END
-            <p align="center">
-                <input type="hidden" name="action" value="invite_invite" />
+            
+	<ul>
+        <li> $termsandconditions <a href="{$CFG->wwwroot}content/terms.php" target="_blank">$sitename $terms</a> $and <a href="{$CFG->wwwroot}content/privacy.php" target="_blank">$privacy</a></li>
+    	</ul>
+	<p align="center">
+                <label for="acceptcheckbox"><input type="checkbox" id="acceptcheckbox" name="accept" value="yes" /> <strong>$checkterms</strong></label>
+        </p>
+	<p align="center">
+                <input type="hidden" name="action" value="invite_join" />
                 <input type="submit" value=$buttonValue />
-            </p>
-        </form>
+        </p>
+    	</form>
+    
                 
 END;
         } else {

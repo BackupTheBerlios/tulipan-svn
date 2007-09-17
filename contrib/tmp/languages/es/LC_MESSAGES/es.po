@@ -172,6 +172,11 @@ msgstr "Invitar a un amigo"
 msgid "Join %s"
 msgstr "Entrar %s"
 
+#: _invite/register.php:11
+msgid "Sign up"
+msgstr "Registro"
+
+
 #: _invite/new_password.php:11
 #, php-format
 msgid "Get new %s password"
