@@ -18,6 +18,7 @@
 {{toolbar}}
 <div id="content-holder"><!-- open content-holder div -->
     <div id="content-holder-inner" class="fixed">
+
 	<div id="splitpane-sidebar"><!-- open splitpane-sidebar div -->
 	<div id="splitpane-sidebar-inner">
 		<ul><!-- open sidebar lists -->
@@ -25,19 +26,16 @@
 		</ul><!-- close sidebar lists -->
 	</div>
 	</div><!-- close splitpane-sidebar div -->
+
 	<div id="splitpane-content"><!-- open splitpane-content div -->
 	<div id="splitpane-content-inner">
 		{{messageshell}}
 		{{mainbody}}
 	</div>
 	</div><!-- close open splitpane-content div -->
-	<div id="splitpane-register"><!-- open splitpane-content div -->
-	<div id="splitpane-register-inner">
+    </div>
+    <div id="splitpane-register-inner">
 		{{register}}
-	</div>
-	</div><!-- close open splitpane-content div -->
-
-
     </div>
 </div><!-- close content-holder div --> 
 <div id="footer" class="fixed"><!-- start footer -->

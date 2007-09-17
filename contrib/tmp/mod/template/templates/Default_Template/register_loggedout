@@ -1,0 +1,6 @@
+<h1>Registrate Ahora !!!! {{name}}</h1>
+<p>
+    Si desea unirse a nuestra comunidad, lo invitamos a que se registre ahora mismo:<div align="center"> <a href="{{url}}_invite/register.php"><img src="{{url}}mod/template/templates/Default_Template/images/registrateaqui.png" border="0"></a></div> 
+</p>
+<BR>
+<BR>

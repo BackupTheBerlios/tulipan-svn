@@ -1,36 +1,22 @@
 /*
 Elgg general CSS
-CSS last updated 16/01/07
-Theme adapted from:
-Theme Name: Light
-Theme URI: http://vaguedream.com/wordpress-themes/
-Description: A theme created by Stephen Reinhardt.
+Description: A theme created by Johan Quijano.
 Version: 1.0	
-Author: Stephen Reinhardt
-Author URI: http://vaguedream.com/
-*/
-
-/*
-	GLOBALS: used to set all the general elements
+Author: Johan Eduardo Quijano
+Author URI: http://www.treszero.com
 */
 
 body {
 	background:white;
 	/* url({{url}}mod/template/templates/Default_Template/images/wrap.gif) repeat-y; */
 	color:black;
-	font-family:'Trebuchet MS','Lucida Grande', Arial, sans-serif;
+	font-family:verdana,'Trebuchet MS','Lucida Grande', sans-serif;
 	text-align:left;
 	margin:0 auto;
 	padding:0;
 	font-size: 100%;
 	line-height:1.6em;
 }
-
-/*
-div {
-	border: 1px solid red;
-}
-*/
 
 p {
 	color:black;
@@ -43,11 +29,13 @@ a {
 }
 
 ol, ul {
-	color:#697C83;
+	color:black;
 }
 
 h1 {
 	font-size:150%;
+	color:black;
+
 }
 
 h2, h3, h4, h5 {
@@ -55,7 +43,7 @@ h2, h3, h4, h5 {
 }
 
 blockquote{
-	background: white url({{url}}mod/template/templates/Default_Template/images/blockquote.png) no-repeat bottom left;
+	background: red url({{url}}mod/template/templates/Default_Template/images/blockquote.png) no-repeat bottom left;
 	padding: 10px;
 	padding-bottom: 40px;
 	margin: 1em;
@@ -82,11 +70,11 @@ td h4, h3, h5 {
 
 div#container {
 	width:940px;
-	heigth:140px;
+	height:600px;
 	margin:0 auto;
 	padding:0;
 	background:white;
-	border-top:1px solid #fff;
+	border-top:1px solid white;
 }
 
 /*
@@ -170,20 +158,16 @@ div#header #search-header span a {
 */
 
 #content-holder {
-	height:200%;
         color:black;
 }
 
+
 div#content-holder a:hover {
 	text-decoration:underline;
-	height:200%;
-
 }
 
 div#content-holder h1 {
 	font-size:150%;
-	height:200%;
-
 }
 
 div#content-holder h2 {
@@ -193,77 +177,32 @@ div#content-holder h2 {
 	margin:0 0 10px 0;
 	color:#666;
 	font-size:1.1em;
-	height:200%;
-
 }
 
-/*
-	VARIOUS LAYOUTS WITHIN CONTENT-HOLDER
-*/
-
-/*
-	THE MAIN CONTENT AREA WHEN IT IS A SINGLE PAGE, NO SIDEBAR
-*/
-
-div#single-page {
-	margin: 0;
-	padding: 0 15px 0 0;
-	width:900px;
-	text-align: left;
-	border:1px solid #eee;
-	height:200%;
-
+#content-holder-inner {
+position: relative;
+width: 950px;
+margin: 0 auto;
+padding-top: 3.5em;
 }
 
-/*
-	THE MAIN CONTENT AREA WHEN THE SIDEBAR IS IN PLACE
-*/
-
-div#splitpane-content {
-	text-align: left;
+#splitpane-content {
 	position: relative;
 	margin-right: 17em;
 	padding:0 10px 0 0;
-        heigth: 450px;
-}
-
-	/* Secondary Content */
-	
-	#splitpane-sidebar {
-	   float: right;
-	height:200%;
-
-	}
-	
-	#splitpane-sidebar-inner {
-	width: 15.0em;
-	float: left;
-	padding: 0em 0em 0.5em 2em;
-	border-left: dotted 1px #E1E1E1;
-        height:420%;
-     
 	}
 
-	#splitpane-register {
-	margin-right: 170em;
-	padding:0 100px 0 0;
-        heigth: 250px;
-        color:black;
-        background:red;
-	font-size: 10%;
-
-	}
-
-        #splitpane-register-inner {
+#splitpane-content-inner {
 	position: relative;
 	float: left;
-        height:5620%;
-	width: 90%;
-	margin-right: -40em;
-	padding-right: 10em;
-        color:black;
-	font-size: 10%;
+	width: 100%;
+	margin-right: -15em;
+	padding-right: 2em;
+
 	}
+
+
+
 /*
 	FOOTER
 */

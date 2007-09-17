@@ -30,7 +30,7 @@
                         'body' => '
             <table>
                 <tr>
-                    <td align="right"><p>
+                    <td align="center"><p>
                         <label>' . __gettext("Username") . '&nbsp;<input type="text" name="username" id="username" style="size: 200px" /></label><br />
                         <label>' . __gettext("Password") . '&nbsp;<input type="password" name="password" id="password" style="size: 200px" />
                         </label>
