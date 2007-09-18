@@ -33,10 +33,14 @@
 		{{mainbody}}
 	</div>
 	</div><!-- close open splitpane-content div -->
-    </div>
-    <div id="splitpane-register-inner">
+
+	<div id="splitpane-register"><!-- open splitpane-content div -->
+	<div id="splitpane-register-inner">
 		{{register}}
+	</div>
+	</div><!-- close open splitpane-content div -->
     </div>
+
 </div><!-- close content-holder div --> 
 <div id="footer" class="fixed"><!-- start footer -->
 	<span style="color:#FF934B">{{sitename}}</span> <a href="{{url}}content/terms.php">Términos y Condiciones</a>&nbsp;|&nbsp;<a href="{{url}}content/privacy.php">Póliza de Privacidad</a><br />

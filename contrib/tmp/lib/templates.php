@@ -70,6 +70,7 @@ function default_template () {
 
     $template['frontpage_loggedout'] = file_get_contents($CFG->templatesroot . "Default_Template/frontpage_loggedout");
     $template['frontpage_loggedin'] = file_get_contents($CFG->templatesroot . "Default_Template/frontpage_loggedin");
+    $template['register_loggedout'] = file_get_contents($CFG->templatesroot . "Default_Template/register_loggedout");
     
     // REMOVED stylesheet (was old version and should not have been here)
     // TODO: extract all Default_Template stuff from lib/templates.php
