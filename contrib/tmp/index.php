@@ -38,6 +38,8 @@
     $showTags = run("search:tags:display");
     $showNewsLatinPyme = run("news:display");
     $showFriends =  run("friends:editpage");
+
+
     // $showFriends = run();
 
 } else {

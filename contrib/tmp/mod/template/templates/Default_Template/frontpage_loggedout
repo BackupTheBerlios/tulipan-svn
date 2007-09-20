@@ -1,8 +1,15 @@
-<h1>Bienvenido {{name}}</h1>
+<script type="text/javascript" src="/javascript/thickbox/jquery.js"></script>
+<script type="text/javascript" src="/javascript/thickbox/thickbox.js"></script>
+
+<link rel="stylesheet" href="/javascript/thickbox/thickbox.css" type="text/css" media="screen" />
+
+<h1>Bienvenido</h1>
 <img src="/images/latinpyme_logo.png">
 <BR>
 
 <p>
-    {{sitename}} es una red de empresarios Pymes de Latinoamerica. Si lo desea, puede consultar <a href="{{url}}_weblog/everyone.php">lo que está sucediendo</a> ahora mismo en nuestro sitio.
+    {{sitename}} es una red de Politica de Latinoamerica. Si lo desea, puede consultar <a href="{{url}}_weblog/everyone.php">lo que está sucediendo</a> ahora mismo en nuestro sitio.
 </p>
 <BR>
+
+<a href="/javascript/thickbox/single.jpg" title="add a caption to title attribute / or leave blank" class="thickbox"><img src="/javascript/thickbox/single_t.jpg" alt="Single Image"/></a>
