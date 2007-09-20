@@ -18,7 +18,6 @@
 {{toolbar}}
 <div id="content-holder"><!-- open content-holder div -->
     <div id="content-holder-inner" class="fixed">
-
 	<div id="splitpane-sidebar"><!-- open splitpane-sidebar div -->
 	<div id="splitpane-sidebar-inner">
 		<ul><!-- open sidebar lists -->
@@ -30,18 +29,36 @@
 	<div id="splitpane-content"><!-- open splitpane-content div -->
 	<div id="splitpane-content-inner">
 		{{messageshell}}
-		{{mainbody}}
-	</div>
-	</div><!-- close open splitpane-content div -->
+             <table>
+                    <td width=170 align="left">
+			<img src="/images/manos-unidas.jpg">
+                    </td>
 
-	<div id="splitpane-register"><!-- open splitpane-content div -->
-	<div id="splitpane-register-inner">
-		{{register}}
+		    <td align='justify'>
+		        {{mainbody}}
+                    </td>
+            </table>
+
 	</div>
 	</div><!-- close open splitpane-content div -->
+<br>
+
+	<div id="otro" align="center">
+
+            <table>
+                    <td width=720 align="center">
+                <h1>Registrate Ahora !!!!</h1>
+		<p>
+    Lo invitamos a que pertenezca a esta Red Social:<div align="center"> <a href="{{url}}_invite/register.php"><img src="{{url}}mod/template/templates/Default_Template/images/registrateaqui.png" border="0"></a></div> 
+		</p>
+                    </td>
+
+            </table>
+       </div>
+
     </div>
-
 </div><!-- close content-holder div --> 
+<br>
 <div id="footer" class="fixed"><!-- start footer -->
 	<span style="color:#FF934B">{{sitename}}</span> <a href="{{url}}content/terms.php">Términos y Condiciones</a>&nbsp;|&nbsp;<a href="{{url}}content/privacy.php">Póliza de Privacidad</a><br />
 

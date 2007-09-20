@@ -10,20 +10,19 @@
 <link rel="stylesheet" href="/javascript/lightbox/css/lightbox.css" type="text/css" media="screen" />
 
 
-<h1>Bienvenido</h1>
-<img src="/images/latinpyme_logo.png">
-<BR>
+<script type="text/javascript" src="javascript/prototype.js"></script>
+<script type="text/javascript" src="javascript/scriptaculous.js?load=effects"></script>
+<script type="text/javascript" src="javascript/lightwindow.js"></script>
+<link rel="stylesheet" href="css/lightwindow.css" type="text/css" media="screen" />
 
+
+<h1>Bienvenido</h1>
+<BR>
 <p>
     {{sitename}} es una red de Politica de Latinoamerica. Si lo desea, puede consultar <a href="{{url}}_weblog/everyone.php">lo que está sucediendo</a> ahora mismo en nuestro sitio.
 </p>
-<BR>
 <p>
     Quieres conocer mas sobre nuestra red. Realiza un Tour de nuestro sitio.
 </p>
-<a href="/javascript/thickbox/single.jpg" title="Presentacion de la Red de Politica. Para salir puede dar click en la foto" class="thickbox"><img src="/javascript/thickbox/single_t.jpg" alt="Single Image" align="center"/></a>
-<BR>
-
-Si quieres ver otra presentacion :
 <a href="/javascript/lightbox/images/image-1.jpg" rel="lightbox[roadtrip]">Presentacion</a>
 <a href="/javascript/thickbox/single.jpg" rel="lightbox[roadtrip]"></a>

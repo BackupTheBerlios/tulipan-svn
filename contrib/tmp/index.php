@@ -48,12 +48,12 @@
                                 )
                                 );
 
-        $body .= templates_draw(array(
+        /*$body .= templates_draw(array(
 
 
                                         'context' => 'register_loggedout'
                                 )
-                                );
+                                );*/
     }
 
 /**

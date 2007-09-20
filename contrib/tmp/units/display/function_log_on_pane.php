@@ -39,13 +39,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="right"><p>
-                        <input type="hidden" name="action" value="log_on" />
-                        <label>' . __gettext("Log on") . ':<input type="submit" name="submit" value="'.__gettext("Go").'" /></label><br /><br />
-                        <label><input type="checkbox" name="remember" checked="checked" />
+                    <td align="center"><p>
+                        <input type="hidden" name="action" value="Join" />
+                        <label>'  . '<input type="submit" name="submit" value="'.__gettext("Join").'" /></label><br /><br />
+                        <label><input type="checkbox" name="remember" />
                                 ' . __gettext("Remember Login") . '</label><br />
                         <small>
-                            ' . $reg_link . '
+                            
                             <a href="' . url . '_invite/forgotten_password.php">'. __gettext("Forgotten password") .'</a>
                         </small></p>
                     </td>
