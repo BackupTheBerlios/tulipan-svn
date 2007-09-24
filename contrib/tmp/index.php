@@ -34,9 +34,9 @@
                                 );
 
 
-    $inviteFriend .= run("invite:invite");
-    $showTags = run("search:tags:display");
-    $showNewsLatinPyme = run("news:display");
+  // $inviteFriend .= run("invite:invite");
+  //  $showTags = run("search:tags:display");
+ //   $showNewsLatinPyme = run("news:display");
     $showFriends =  run("friends:editpage");
 
 
@@ -47,15 +47,13 @@
                                         'context' => 'frontpage_loggedout'
                                 )
                                 );
-
-        /*$body .= templates_draw(array(
-
-
+        $register = templates_draw(array(
                                         'context' => 'register_loggedout'
                                 )
-                                );*/
-    }
+                                );
 
+    
+    }
 /**
  * Templates_page_draw
  * @global array $CFG
@@ -63,7 +61,9 @@
  */   
     echo templates_page_draw( array(
                     $CFG->sitename,
-                    $body
+                    $body,
+                    '_sidebar',
+                    $register
             )
             );
     

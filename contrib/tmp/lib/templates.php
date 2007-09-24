@@ -59,6 +59,7 @@ function default_template () {
                                                        '{{menu}}' => __gettext("Menu"),
                                                        '{{topmenu}}' => __gettext("Status menu"),
                                                        '{{mainbody}}' => __gettext("Main body"),
+                                                       '{{register}}' => __gettext("Register"),
                                                        '{{sidebar}}' => __gettext("Sidebar")
                                                        )
                                    );
@@ -543,9 +544,11 @@ global $showFriends;
 
 
     $mainbody = $param[1] . $showFriends . $inviteFriend . $showTags . $showNewsLatinPyme;
-    $register = $param[2];
+    $register = $param[3];
     $run_result = '';
-
+     
+    //echo "mostrando las variables MAIN" . $param[1];
+   //echo "mostrando las variables REGISTER" . $register;
     global $messages;
 /*ANALISIS JOHAN VIERNES
 print("Analizando LIB/TEMPLATES.PHP: messages");
@@ -584,7 +587,15 @@ if (isset($messages) && sizeof($messages) > 0) {
     // If $parameter[2] is set, we'll substitute it for the
     // sidebar
     if (isset($param[2])) {
+
+        if($param[2] == '_sidebar')
+        {
+        $sidebarhtml = run("display:sidebar");	  
+	}
+        else
+        {
         $sidebarhtml = $param[2];
+        }
     } else {
         $sidebarhtml = run("display:sidebar");
     }    
@@ -720,7 +731,8 @@ function templates_draw ($parameter) {
     // all other $parameter[n] = template elements
     // Initialise global template variable, which contains the Default_Template
         global $template;
-        
+        //echo "Mostrando ...paramentros 2" . $parameter['register'];
+
     // Initialise global template ID variable, which contains the template ID we're using
         global $template_name;
         global $page_owner;
@@ -743,7 +755,6 @@ function templates_draw ($parameter) {
                 }
             }
         }
-        
     // Template ID override
         $t = optional_param('template_preview');
         if (!empty($t)) {
@@ -769,7 +780,6 @@ function templates_draw ($parameter) {
                 $template_element = $template[$parameter['context']];
             }
         }
-        
         if (!empty($CFG->templates->variables_substitute) && !empty($CFG->templates->variables_substitute[$parameter['context']])) {
             if (is_array($CFG->templates->variables_substitute[$parameter['context']])) {
                 foreach ($CFG->templates->variables_substitute[$parameter['context']] as $sub_function) {
@@ -781,11 +791,11 @@ function templates_draw ($parameter) {
         }
 
         if ($parameter['context'] === 'topmenuitem') {
+
             // error_log("templates_draw pcontext " . print_r($template_element));
         }
-
     // Substitute elements
-
+        //var_export($parameter);
         $functionbody = "
             \$passed = array(".var_export($parameter,true).",\$matches[1], '" . $template_name . "');
             return templates_variables_substitute(\$passed);
