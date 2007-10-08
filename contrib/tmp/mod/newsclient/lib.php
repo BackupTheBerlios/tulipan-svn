@@ -11,11 +11,11 @@ function newsclient_pagesetup() {
 
     if (isloggedin()) {
         if (defined("context") && context == "resources" && $page_owner == $_SESSION['userid']) {
-            $PAGE->menu[] = array( 'name' => 'feeds',
-                                   'html' => "<li><a href=\"{$CFG->wwwroot}{$_SESSION['username']}/feeds/\" class=\"selected\" >" .__gettext("Your Resources").'</a></li>');
+           /* $PAGE->menu[] = array( 'name' => 'feeds',
+                                   'html' => "<li><a href=\"{$CFG->wwwroot}{$_SESSION['username']}/feeds/\" class=\"selected\" >" .__gettext("Your Resources").'</a></li>');*/
         } else {
-            $PAGE->menu[] = array( 'name' => 'feeds',
-                                   'html' => "<li><a href=\"{$CFG->wwwroot}{$_SESSION['username']}/feeds/\" >" .__gettext("Your Resources").'</a></li>');
+           /* $PAGE->menu[] = array( 'name' => 'feeds',
+                                   'html' => "<li><a href=\"{$CFG->wwwroot}{$_SESSION['username']}/feeds/\" >" .__gettext("Your Resources").'</a></li>'); */
         }
     }
 

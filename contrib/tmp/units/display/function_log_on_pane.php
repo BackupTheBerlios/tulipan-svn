@@ -21,7 +21,11 @@
         $basedomain = substr($CFG->wwwroot,0,strlen($CFG->wwwroot) - 1);
         $subdir = str_replace($_SERVER['SERVER_NAME'],"",substr($basedomain,strpos($basedomain,"://") + 3,strlen($basedomain) - 3));
         $passthru = $basedomain . str_replace($subdir,"",$_SERVER['REQUEST_URI']);
-        
+        if($passthru == $CFG->wwwroot."_invite/register.php")
+        {
+		$passthru = "";
+        }
+        echo "Analizando el link para el redireccionamiento ::::" . $passthru;
         $body .= templates_draw(array(
                         'template' => -1,
                         'context' => 'sidebarholder',

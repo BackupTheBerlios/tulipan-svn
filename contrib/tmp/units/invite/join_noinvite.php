@@ -28,6 +28,12 @@ END;
                                                 'contents' => display_input_field(array("join_name","","text"))
                     )
                     );
+
+            $run_result .= <<< END
+    <br>
+<br>
+END;
+
 		$run_result .= templates_draw(array(
                                             'context' => 'databoxvertical',
                                             'name' => __gettext("Your username - (Must be letters only)"),

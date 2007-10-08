@@ -1,45 +1,26 @@
-<script type="text/javascript" src="http://localhost/tmp/mod/template/templates/Default_Template/mootools.js"></script>
+<script type="text/javascript" src="/tmp/javascript/mootools/mootools-release-1.11.js"></script>
 
 
 <script type="text/javascript">
-  var draggableOptions = {
-      onStart:function()
-      {
-        this.el.setOpacity(.5);
-      },
-      onComplete:function()
-      {
-        // put the element back where it belongs
-        this.el.setOpacity(1);
-        this.el.style.left = 0;
-        this.el.style.top = 0;
-      }
-  };
-
-  var droppableOptions = {
-      onOver:function(){
-          this.addClassName('dragover');
-      },
-      onLeave:function(){
-        this.removeClassName('dragover');
-      },
-      onDrop:function(){
-        this.addClassName('dropped');
-        this.innerHTML = 'dropped';
-      }
-  }
-
-  window.onload=function()
-  {
-    var dropitems = document.getElementsBySelector('.item'); //Declaramos los elementos recipientes
-    dropitems.each(function(drop){ drop.extend(droppableOptions)   });
-    draggableOptions.droppables = dropitems;
-    $('dragger').addClassName('drag').makeDraggable(draggableOptions); //El objeto que moveremos a los recipientes
-
-  }
+$('start').addEvent('click', function(e) {
+	e = new Event(e).stop();
+ 
+	var url = "http://demos.mootools.net/demos/Ajax/lipsum.html";
+ 
+	/**
+	 * The simple way for an Ajax request, use onRequest/onComplete/onFailure
+	 * to do add your own Ajax depended code.
+	 */
+	new Ajax(url, {
+		method: 'get',
+		update: $('log')
+	}).request();
+});
 </script>
 
-  <h1>Mootools Drag and Drop example</h1>
-  <p><a href=“http://www.snook.ca/archives/javascript/mootools_drag_a/”>See related post &raquo;</a></p>
-  <div id=“dragger”>Drag me</div>
-  <div class=“item”>Item 1</div><div class=“item”>Item 2</div><div class=“item”>Item 3</div><div class=“item”>Item 4</div>
+<h3>Simple Ajax Request</h3>
+<p><a id="start" href="#">Click here</a> to start Ajax request</p>
+<div id="log">
+	<p>Waiting...</p>
+</div>
+

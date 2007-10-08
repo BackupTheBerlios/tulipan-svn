@@ -456,7 +456,7 @@ function templates_page_setup (){
                                   'name' => 'userdetails',
                                   //'html' => a_href("{$CFG->wwwroot}_userdetails/",
                                   //                  "Account settings"));
-                                  'html' => "<li><a href=\"" . $CFG->wwwroot . "_userdetails/\">" . __gettext("Account settings") . "</a></li>");
+                                  'html' => "<li><a href=\"" . $CFG->wwwroot . "_userdetails/\">" . __gettext("Account") . "</a></li>");
     
         $PAGE->menu_top[] = array(
                                   'name' => 'logoff',

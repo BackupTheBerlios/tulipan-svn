@@ -319,9 +319,9 @@ div#footer a:link, div#footer a:visited {
 */
 
 div#system-message{
-	border:1px solid #D3322A;
-	background:#F7DAD8;
-	color:#000;
+	border:1px solid black;
+	background:white;
+	color:blue;
 	padding:3px 50px;
 	margin:20px 20px 0 20px;
 }
@@ -331,6 +331,14 @@ div#system-message p{
 	margin:2px;
 }
 
+div#js {
+
+border:1px solid blue;
+	background:blue;
+	color:blue;
+	padding:3px 50px;
+	margin:20px 20px 0 20px;
+}
 /*
 	CLEAR BOTH
 */
@@ -612,3 +620,55 @@ img.profile-photo {
     padding:0 0 0 10px;
     font-weight:normal;
 }
+
+
+
+.preview {
+	float: left;
+	width: 180px;
+	height: 180px;
+	margin: 4px;
+	padding: 5px;
+	text-align: center;
+	background-color: #F9F9F9;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+ 
+.preview span { 
+	display: block;
+	font-size: 11px; 
+	margin-bottom: 4px;
+}
+ 
+.popular {
+	color: #2e8531;
+	font-weight: bold;
+}
+ 
+.SUPERpopular {
+	font-weight: bold;
+	color: #d62222;
+}
+ 
+.normal {
+	font-weight: bold;
+}
+
+/*
+	MOOTOOLS -- AJAX Library
+*/
+
+#log {
+	background: #f8f8f8;
+	border: 1px solid #d6d6d6;
+	border-left-color: #e4e4e4;
+	border-top-color: #e4e4e4;
+	padding: 0.3em;
+	margin-top: 10px;
+}
+ 
+#start a {
+	font-weight: bold;
+}
+
