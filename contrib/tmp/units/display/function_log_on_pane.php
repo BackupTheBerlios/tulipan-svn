@@ -25,7 +25,6 @@
         {
 		$passthru = "";
         }
-        echo "Analizando el link para el redireccionamiento ::::" . $passthru;
         $body .= templates_draw(array(
                         'template' => -1,
                         'context' => 'sidebarholder',
