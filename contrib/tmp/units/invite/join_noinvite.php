@@ -28,24 +28,24 @@ END;
                                                 'contents' => display_input_field(array("join_name","","text"))
                     )
                     );
-
-            $run_result .= <<< END
-    <br>
-<br>
-END;
-
 		$run_result .= templates_draw(array(
-                                            'context' => 'databoxvertical',
-                                            'name' => __gettext("Your username - (Must be letters only)"),
-                                            'contents' => display_input_field(array("join_username",$username,"text"))
-                                            )
-                                      );
-                $run_result .= templates_draw(array(
                                                 'context' => 'databoxvertical',
                                                 'name' => __gettext("Your email address"),
                                                 'contents' => display_input_field(array("invite_email","","text"))
                     )
                     );
+
+            	$run_result .= <<< END
+<br>
+END;
+
+		$run_result .= templates_draw(array(
+                                            'context' => 'databoxvertical',
+                                            'name' => __gettext("Your username"),
+                                            'contents' => display_input_field(array("join_username",$username,"text"))
+                                            )
+                                      );
+                
 		$run_result .= templates_draw(array(
                                             'context' => 'databoxvertical',
                                             'name' => __gettext("Enter a password"),

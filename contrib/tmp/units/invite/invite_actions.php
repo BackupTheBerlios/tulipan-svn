@@ -79,30 +79,30 @@ switch ($action) {
          $password1 = trim(optional_param('join_password1'));
          $password2 = trim(optional_param('join_password2'));
 	 $mail = trim(optional_param('invite_email'));
-	//echo $mail;
+
          if (isset($name) && isset($code)) {
              if (!($CFG->maxusers == 0 || (count_users('person') < $CFG->maxusers))) {
-                 $messages[] = __gettext("Unfortunately this community has reached its account limit and you are unable to join at this time.");
-                 break;
+                 /*$messages[] = __gettext("Unfortunately this community has reached its account limit and you are unable to join at this time.");
+                 break;*/
              }
 	     if (empty($name)){
 		 $messages[] = __gettext("You must write your name");
                  break;
 	     }
+             if (empty($mail)){
+		 $messages[] = __gettext("You must write an email account.");
+                 break;
+	     }
 	     if (!preg_match("/^[A-Za-z0-9]{3,12}$/",$username)) {
-                 $messages[] = __gettext("Error! Your username must contain letters and numbers only, cannot be blank, and must be between 3 and 12 characters in length.");
+                 $messages[] = __gettext("Your username must contain letters and numbers only, cannot be blank, and must be between 3 and 12 characters in length.");
                  break;
              }
              /*if (!$details = get_record('invitations','code',$code)) {
                  $messages[] = __gettext("Error! Invalid invite code.");
                  break;
              } */
-             if (empty($mail)){
-		 $messages[] = __gettext("You must write an email account.");
-                 break;
-	     }
              if ($password1 != $password2 || strlen($password1) < 6 || strlen($password2) > 16) {
-                 $messages[] = __gettext("Error! Invalid password. Your passwords must match and be between 6 and 16 characters in length.");
+                 $messages[] = __gettext("Invalid password. Your passwords must match and be between 6 and 16 characters in length.");
                  break;
              }
              
@@ -144,10 +144,10 @@ switch ($action) {
                      insert_record('friends',$f);
                  }
                  // make them friend the news user
-                 $f = new StdClass;
+                 /*$f = new StdClass;
                  $f->owner = $ident;
                  $f->friend = 1;
-                 insert_record('friends',$f);
+                 insert_record('friends',$f);*/
                  
                  //$u = plugin_hook("user","publish",$u);
                  $rssresult = run("weblogs:rss:publish", array($ident, false));
