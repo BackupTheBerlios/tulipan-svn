@@ -12,7 +12,7 @@
         $title = sprintf(__gettext("Join %s"),sitename);
         
         $body = run("content:invite:join");
-        $body .= run("invite:join");
+        $body .= run("join:no_invite");
         
         $body = templates_draw(array(
                         'context' => 'contentholder',

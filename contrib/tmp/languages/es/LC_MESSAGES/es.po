@@ -3801,44 +3801,17 @@ msgstr "%s cuenta de verificación"
 
 #: units/invite/invite_actions.php:42 units/invite/invite_actions.php:43
 msgid "has invited you to join"
-msgstr "te ha invitado a participar"
+msgstr "lo invita a participar"
+
+msgid "a social network."
+msgstr "una Red Social"
+
+msgid "Dear %s,\n\n%s %s\n\nTo join, visit the following URL:\n\n\t%s\n\nYour email address has not been passed onto any third parties, and will be removed from our system within seven days.\n\nRegards,\n\nThe %s team."
+msgstr "Estimado(a) %s,\n\n%s %s\n\nPara ingresar, visite la siguiente dirección:\n\n\t%s\n\nSu dirección de correo electrónico no ha sido pasada a terceros, y será eliminada de nuestro sistema dentro de siete días.\n\nAtentamente,\n\nEl Equipo %s."
 
 #: units/invite/invite_actions.php:42
 msgid "a learning landscape system."
 msgstr "un sistema de entorno de aprendizaje."
-
-#: units/invite/invite_actions.php:46
-#, php-format
-msgid ""
-"Dear %s,\n"
-"\n"
-"%s %s\n"
-"\n"
-"To join, visit the following URL:\n"
-"\n"
-"\t%s\n"
-"\n"
-"Your email address has not been passed onto any third parties, and will be "
-"removed from our system within seven days.\n"
-"\n"
-"Regards,\n"
-"\n"
-"The %s team."
-msgstr ""
-"Estimado %s,\n"
-"\n"
-"%s %s\n"
-"\n"
-"Para ingresar, visita la siguiente URL:\n"
-"\n"
-"\t%s\n"
-"\n"
-"Su dirección email no fue dada a ningúna tercera parte, y será removida de "
-"nuestro sistema en siete días.\n"
-"\n"
-"Saludos,\n"
-"\n"
-"El equipo %s."
 
 #: units/invite/invite_actions.php:48
 #, php-format
@@ -3902,8 +3875,8 @@ msgid ""
 "you supplied. You have been sent an email containing these details for "
 "reference purposes."
 msgstr ""
-"¡Su cuenta fue creada! Puedes iniciar la sesión utilizando el nombre de "
-"usuario y contraseña que proporcionaste. Se te ha enviado un correo "
+"¡Su cuenta fue creada! Puede iniciar sesión utilizando el nombre de "
+"usuario y contraseña que proporcionó. Se ha enviado un correo "
 "electrónico con estos datos para fines de referencia."
 
 #: units/invite/invite_actions.php:138
@@ -3916,15 +3889,20 @@ msgstr "Su %s cuenta"
 msgid ""
 "Thanks for joining %s!\n"
 "\n"
-"For your records, your %s username and password are:\n"
+"Your dates are:\n"
 "\n"
 "\t"
 msgstr ""
 "Gracias por entrar a %s!\n"
 "\n"
-"Para tu información, tu %s nombre de usuario y contraseña son:\n"
+"Sus datos son:\n"
 "\n"
 "\t"
+msgid "Username: %s\n\tPassword: %s\n\nYou can log in at any time by visiting %s and entering these details into the login form.\n\n"
+msgstr "Nombre de usuario: %s\n\tContraseña: %s\n\nUsted puede loguearse visitando %s.\n\n"
+
+msgid "We hope you enjoy using the system.\n\nAtentamente,\n\nThe %s Team"
+msgstr "Lo esperamos.\n\nRegards,\n\nEl Equipo de %s."
 
 #: units/invite/invite_actions.php:158
 #, php-format
@@ -3970,6 +3948,15 @@ msgstr "Términos y Condiciones"
 msgid "Privacy policy"
 msgstr "Política de privacidad"
 
+msgid "You must be read the"
+msgstr "Usted debe leer los"
+
+msgid "and"
+msgstr "y la"
+
+msgid "Yes, I accept the Terms and Conditions and the Privacy Policy"
+msgstr "Acepto los Términos y Condiciones y la Política de Privacidad"
+
 #: units/invite/invite_join.php:31
 msgid ""
 "Submitting the form below indicates acceptance of these terms. Please note "
@@ -3980,20 +3967,24 @@ msgstr ""
 
 #: units/invite/invite_join.php:50 units/invite/join_noinvite.php:32
 #: units/weblogs/weblogs_comments_add.php:48
-msgid "Your name"
-msgstr "Su nombre"
+msgid "Please enter your dates:"
+msgstr "Por favor ingrese los datos:"
+
+msgid "Your first name"
+msgstr "Nombre"
+
+msgid "Your last name"
+msgstr "Apellido"
 
 #: units/invite/invite_join.php:56
-msgid "Your username - (Must be letters only)"
-msgstr "Su nombre de usuario - (Deben ser letras sólo)"
 
 #: units/invite/invite_join.php:62
 msgid "Enter a password"
-msgstr "Introducir una contraseña"
+msgstr "Contraseña"
 
 #: units/invite/invite_join.php:68
 msgid "Your password again for verification purposes"
-msgstr "Su contraseña otra vez con el propósito de verificar"
+msgstr "Su contraseña otra vez para verificar"
 
 #: units/invite/invite_join.php:72
 msgid "I am at least thirteen years of age."
@@ -4062,7 +4053,7 @@ msgstr ""
 
 #: units/invite/join_noinvite.php:38
 msgid "Your email address"
-msgstr "Su dirección de correo electrónico"
+msgstr "Correo Electrónico"
 
 #: units/invite/join_noinvite.php:53
 msgid "Self-registration is currently disabled."
@@ -4139,9 +4130,9 @@ msgid "This method reduces the chance of a mistakenly reset password."
 msgstr ""
 "Este método reduce las posibilidades de cambiar de contraseña por error."
 
-#: units/invite/password_request.php:22
+#: units/invite/password_request.php:22 units/invite/join_noinvite.php:50
 msgid "Your username"
-msgstr "Su nombre de usuario"
+msgstr "Nombre de Usuario"
 
 #: units/invite/password_request.php:26
 msgid "Request new password"
@@ -5333,22 +5324,6 @@ msgstr "XML error: "
 #~ "electrónico, pincha en el siguiente enlace:\n"
 #~ "\n"
 #~ "\t%s\n"
-#~ "\n"
-
-#, php-format
-#~ msgid ""
-#~ "Username: %s\n"
-#~ "\tPassword: %s\n"
-#~ "\n"
-#~ "You can log in at any time by visiting %s and entering these details into "
-#~ "the login form.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Nombre de usuario: %s\n"
-#~ "\tContraseña: %s\n"
-#~ "\n"
-#~ "Puedes iniciar la sesión cuando quieras visitando %s e introduciendo estos "
-#~ "datos en el formulario de entrada.\n"
 #~ "\n"
 
 #~ msgid "View your profile!"

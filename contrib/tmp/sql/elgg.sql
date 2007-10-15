@@ -648,6 +648,7 @@ CREATE TABLE `elggusers` (
   `password` varchar(32) collate utf8_unicode_ci NOT NULL default '',
   `email` varchar(128) collate utf8_unicode_ci NOT NULL default '',
   `name` varchar(128) collate utf8_unicode_ci NOT NULL default '' COMMENT 'descriptive name',
+  `lastname` varchar(128) collate utf8_unicode_ci NOT NULL default '' COMMENT 'descriptive name',
   `icon` int(11) NOT NULL default '-1' COMMENT '-> icons.ident',
   `active` enum('yes','no') collate utf8_unicode_ci NOT NULL default 'yes',
   `alias` varchar(128) collate utf8_unicode_ci NOT NULL default '',

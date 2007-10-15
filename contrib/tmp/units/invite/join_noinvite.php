@@ -24,8 +24,14 @@ END;
                 
                 $run_result .= templates_draw(array(
                                                 'context' => 'databoxvertical',
-                                                'name' => __gettext("Your name"),
+                                                'name' => __gettext("Your first name"),
                                                 'contents' => display_input_field(array("join_name","","text"))
+                    )
+                    );
+                $run_result .= templates_draw(array(
+                                                'context' => 'databoxvertical',
+                                                'name' => __gettext("Your last name"),
+                                                'contents' => display_input_field(array("join_lname","","text"))
                     )
                     );
 		$run_result .= templates_draw(array(
@@ -62,7 +68,7 @@ END;
             $run_result .= <<< END
             
 	<ul>
-        <li> $termsandconditions <a href="{$CFG->wwwroot}content/terms.php" target="_blank">$sitename $terms</a> $and <a href="{$CFG->wwwroot}content/privacy.php" target="_blank">$privacy</a></li>
+        <li> $termsandconditions <a href="{$CFG->wwwroot}content/terms.php" target="_blank"> $terms</a> $and <a href="{$CFG->wwwroot}content/privacy.php" target="_blank">$privacy</a></li>
     	</ul>
 	<p align="center">
                 <label for="acceptcheckbox"><input type="checkbox" id="acceptcheckbox" name="accept" value="yes" /> <strong>$checkterms</strong></label>

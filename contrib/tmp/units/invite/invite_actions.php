@@ -28,7 +28,7 @@ switch ($action) {
                                  $invite->added = time();
                                  $invite->owner = $USER->ident;
                                  insert_record('invitations',$invite);
-                                 $url = url . "_invite/join.php?invitecode=" . $invite->code;
+                                 $url = url . "_invite/join.php";
                                  if (!logged_on) {
                                      $invitetext = '';
                                      $greetingstext = sprintf(__gettext("Thank you for registering with %s."),$sitename);
@@ -43,7 +43,7 @@ switch ($action) {
                                      $subjectline = $USER->name . " " . __gettext("has invited you to join") ." $sitename";
                                      $from_email = $USER->email;
                                  }
-                                 $emailmessage = sprintf(__gettext("Dear %s,\n\n%s %sfile:///usr/local/apache/tmp/units/invite/invite_actions.php\n\nTo join, visit the following URL:\n\n\t%s\n\nYour email address has not been passed onto any third parties, and will be removed from our system within seven days.\n\nRegards,\n\nThe %s team."),$strippedname,$greetingstext,$invitetext,$url, $sitename);
+                                 $emailmessage = sprintf(__gettext("Dear %s,\n\n%s %s\n\nTo join, visit the following URL:\n\n\t%s\n\nYour email address has not been passed onto any third parties, and will be removed from our system within seven days.\n\nRegards,\n\nThe %s team."),$strippedname,$greetingstext,$invitetext,$url, $sitename);
                                  $emailmessage = wordwrap($emailmessage);
                                  $messages[] = sprintf(__gettext("Your invitation was sent to %s at %s. It will be valid for seven days."),$strippedname,$invite->email);
                                  email_to_user($invite,null,$subjectline,$emailmessage);
@@ -73,6 +73,7 @@ switch ($action) {
          // Join using an invitation
      case "invite_join":
          $name = trim(optional_param('join_name'));
+	 $lastname = trim(optional_param('join_lname'));
          $code = trim(optional_param('invitecode'));
          $accept = optional_param('accept');
          $username = trim(optional_param('join_username'));
@@ -118,6 +119,7 @@ switch ($action) {
              $displaypassword = $password1;
              $u = new StdClass;
              $u->name = $name;
+	     $u->lastname = $lastname;
              $u->password = md5($password1);
              $u->email = $mail;
              $u->username = $username;
@@ -154,12 +156,12 @@ switch ($action) {
                  $rssresult = run("files:rss:publish", array($ident, false));
                  $rssresult = run("profile:rss:publish", array($ident, false));
                  $_SESSION['messages'][] = __gettext("Your account was created! You can now log in using the username and password you supplied. You have been sent an email containing these details for reference purposes.");
-                 delete_records('invitations','code',$code);
+                 //delete_records('invitations','code',$code);
                  email_to_user($u,null,sprintf(__gettext("Your %s account"),$sitename), 
-                      sprintf(__gettext("Thanks for joining %s!\n\nFor your records, your %s username and password are:\n\n\t")
+                      sprintf(__gettext("Thanks for joining %s!\n\nYour dates are:\n\n\t")
                                       .__gettext("Username: %s\n\tPassword: %s\n\nYou can log in at any time by visiting %s and entering these details into the login form.\n\n")
                                       .__gettext("We hope you enjoy using the system.\n\nRegards,\n\nThe %s Team")
-                              ,$sitename,$sitename,$username,$displaypassword,url,$sitename));
+                              ,$sitename,$username,$displaypassword,url,$sitename));
                  header("Location: " . $CFG->wwwroot);
                  exit();
              
