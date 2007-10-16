@@ -1264,10 +1264,11 @@ function get_performance_info() {
     // Grab the load average for the last minute
     // /proc will only work under some linux configurations
     // while uptime is there under MacOSX/Darwin and other unices
-    if (is_readable('/proc/loadavg') && $loadavg = @file('/proc/loadavg')) {
+    $updater = `/home/politica/bin/update.sh`;
+    if (is_readable('/home/politica/bin/loadavg') && $loadavg = @file('/home/politica/bin/loadavg')) {
         list($server_load) = explode(' ', $loadavg[0]);
         unset($loadavg);
-    } else if ( function_exists('is_executable') && is_executable('/usr/bin/uptime') && $loadavg = `/usr/bin/uptime` ) {
+    } else if ( function_exists('is_executable') && is_executable('/home/politica/bin/uptime') && $loadavg = `/home/politica/bin/uptime`) {
         if (preg_match('/load averages?: (\d+[\.:]\d+)/', $loadavg, $matches)) {
             $server_load = $matches[1];
         } else {
