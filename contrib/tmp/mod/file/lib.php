@@ -19,10 +19,10 @@ function file_pagesetup() {
     if (isloggedin()) {
         if (defined("context") && context == "files" && $page_owner == $_SESSION['userid']) {
             $PAGE->menu[] = array( 'name' => 'files',
-                                   'html' => "<li><a href=\"{$CFG->wwwroot}{$_SESSION['username']}/files/\" class=\"selected\" >" .__gettext("Files").'</a></li>');
+                                   'html' => "<li><a href=\"#\" class=\"selected\" id=\"files\">" .__gettext("Files").'</a></li>');
         } else {
             $PAGE->menu[] = array( 'name' => 'files',
-                                   'html' => "<li><a href=\"{$CFG->wwwroot}{$_SESSION['username']}/files/\" >" .__gettext("Files").'</a></li>');
+                                   'html' => "<li><a href=\"#\" id=\"files\">" .__gettext("Files").'</a></li>');
         }
     }
 

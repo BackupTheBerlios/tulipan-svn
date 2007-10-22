@@ -13,10 +13,10 @@ function profile_pagesetup() {
     if (isloggedin()) {
         if (defined("context") && context == "profile" && $pgowner == $_SESSION['userid']) {
             $PAGE->menu[] = array( 'name' => 'profile', 
-                                   'html' => '<li><a href="'.$CFG->wwwroot.$_SESSION['username'].'/profile/" class="selected">'.__gettext("Your Profile").'</a></li>');
+                                   'html' => '<li><a href="#" class="selected" id="profile">'.__gettext("Your Profile").'</a></li>');
         } else {
             $PAGE->menu[] = array( 'name' => 'profile',
-                                   'html' => '<li><a href="'.$CFG->wwwroot.$_SESSION['username'].'/profile/">'.__gettext("Your Profile").'</a></li>');
+                                   'html' => '<li><a href="#" id="profile">'.__gettext("Your Profile").'</a></li>');
         }
 
         if (profile_permissions_check("profile") && defined("context") && context == "profile") {

@@ -30,13 +30,13 @@ if (isloggedin() && user_info("user_type",$_SESSION['userid']) != "external") {
 
    if (defined("context") && context == "calendar" && $page_owner == $_SESSION['userid']) {
             $PAGE->menu[] = array( 'name' => 'calendar',
-             'html' => "<li><a href=\"{$CFG->wwwroot}{$_SESSION['username']}/calendar/\" class=\"selected\" >" .
+             'html' => "<li><a href=\"#\" class=\"selected\" id=\"events\">" .
 		__gettext("Events").'</a></li>');
 
 // Else just add Your Calendar to tabs
     } else {
            $PAGE->menu[] = array( 'name' => 'calendar',
-                  'html' => "<li><a href=\"{$CFG->wwwroot}{$_SESSION['username']}/calendar/\" >" .
+                  'html' => "<li><a href=\"#\"  class=\"selected\" id=\"events\">" .
 			__gettext("Events").'</a></li>');
                 }
 

@@ -29,12 +29,12 @@ function friend_pagesetup() {
 
             
             $PAGE->menu[] = array( 'name' => 'friends',
-                                   'html' => "<li><a href=\"{$CFG->wwwroot}{$_SESSION['username']}/friends/\" class=\"selected\" >" .__gettext("Network").'</a></li>');
+                                   'html' => "<li><a href=\"#\" class=\"selected\" id=\"network\">" .__gettext("Network").'</a></li>');
 
             } else {
 
                 $PAGE->menu[] = array( 'name' => 'friends',
-                                       'html' => "<li><a href=\"{$CFG->wwwroot}{$_SESSION['username']}/friends/\" >" .__gettext("Network").'</a></li>');
+                                       'html' => "<li><a href=\"#\" id=\"network\">" .__gettext("Network").'</a></li>');
 
             }
     }        

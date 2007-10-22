@@ -26,12 +26,12 @@ function messages_pagesetup() {
     if (defined("context") && context == "messages" && $pgowner == $_SESSION['userid']) {
       $PAGE->menu[]= array (
         'name' => 'messages',
-        'html' => '<li><a href="' . $CFG->wwwroot . $_SESSION['username'] . '/messages/" class="selected">' .
+        'html' => '<li><a href="#" class="selected" id=\"messages\">' .
                   __gettext("Messages") . " ($messages)".'</a></li>');
     } else {
       $PAGE->menu[]= array (
         'name' => 'messages',
-        'html' => '<li><a href="' . $CFG->wwwroot . $_SESSION['username'] . '/messages/">' . __gettext("Messages") .
+        'html' => '<li><a href="#" id="messages">' . __gettext("Messages") .
                   " ($messages)". '</a></li>');
     }
 
