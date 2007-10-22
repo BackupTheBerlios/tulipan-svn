@@ -1,26 +1,5 @@
-<script type="text/javascript" src="/tmp/javascript/mootools/mootools-release-1.11.js"></script>
+<br>
+<div id="gallery"></div>
 
 
-<script type="text/javascript">
-$('start').addEvent('click', function(e) {
-	e = new Event(e).stop();
- 
-	var url = "http://demos.mootools.net/demos/Ajax/lipsum.html";
- 
-	/**
-	 * The simple way for an Ajax request, use onRequest/onComplete/onFailure
-	 * to do add your own Ajax depended code.
-	 */
-	new Ajax(url, {
-		method: 'get',
-		update: $('log')
-	}).request();
-});
-</script>
-
-<h3>Simple Ajax Request</h3>
-<p><a id="start" href="#">Click here</a> to start Ajax request</p>
-<div id="log">
-	<p>Waiting...</p>
-</div>
 

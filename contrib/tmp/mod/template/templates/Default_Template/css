@@ -622,6 +622,10 @@ img.profile-photo {
 }
 
 
+/*
+ AJAX Mootools
+*/
+
 
 .preview {
 	float: left;
@@ -655,20 +659,4 @@ img.profile-photo {
 	font-weight: bold;
 }
 
-/*
-	MOOTOOLS -- AJAX Library
-*/
-
-#log {
-	background: #f8f8f8;
-	border: 1px solid #d6d6d6;
-	border-left-color: #e4e4e4;
-	border-top-color: #e4e4e4;
-	padding: 0.3em;
-	margin-top: 10px;
-}
- 
-#start a {
-	font-weight: bold;
-}
 
