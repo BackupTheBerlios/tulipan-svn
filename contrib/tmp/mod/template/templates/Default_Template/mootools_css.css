@@ -1,0 +1,49 @@
+
+
+.preview {
+	float: left;
+	width: 180px;
+	height: 180px;
+	margin: 4px;
+	padding: 5px;
+	text-align: center;
+	background-color: #F9F9F9;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+ 
+.preview span { 
+	display: block;
+	font-size: 11px; 
+	margin-bottom: 4px;
+}
+ 
+.popular {
+	color: #2e8531;
+	font-weight: bold;
+}
+ 
+.SUPERpopular {
+	font-weight: bold;
+	color: #d62222;
+}
+ 
+.normal {
+	font-weight: bold;
+}
+
+
+
+#log {
+	background: #f8f8f8;
+	border: 1px solid #d6d6d6;
+	border-left-color: #e4e4e4;
+	border-top-color: #e4e4e4;
+	padding: 0.3em;
+	margin-top: 10px;
+}
+ 
+#start a {
+	font-weight: bold;
+}
+
