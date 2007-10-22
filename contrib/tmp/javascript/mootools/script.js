@@ -60,6 +60,61 @@ var link = new Element('a',{'href':''}).setHTML(image.link).injectInside(el);			
 				}
 			}).send();
 		});
+
+		$('events').addEvent('click', function(e) {
+			e = new Event(e).stop();
+			$('gallery').empty();
+			var url = 'http://localhost/tmp/javascript/mootools/data_events.js';
+			var request = new Json.Remote(url, {
+				onComplete: function(jsonObj) {
+					addImages(jsonObj.previews);
+				}
+			}).send();
+		});
+
+		$('files').addEvent('click', function(e) {
+			e = new Event(e).stop();
+			$('gallery').empty();
+			var url = 'http://localhost/tmp/javascript/mootools/data_files.js';
+			var request = new Json.Remote(url, {
+				onComplete: function(jsonObj) {
+					addImages(jsonObj.previews);
+				}
+			}).send();
+		});
+
+		$('network').addEvent('click', function(e) {
+			e = new Event(e).stop();
+			$('gallery').empty();
+			var url = 'http://localhost/tmp/javascript/mootools/data_network.js';
+			var request = new Json.Remote(url, {
+				onComplete: function(jsonObj) {
+					addImages(jsonObj.previews);
+				}
+			}).send();
+		});
+
+		$('messages').addEvent('click', function(e) {
+			e = new Event(e).stop();
+			$('gallery').empty();
+			var url = 'http://localhost/tmp/javascript/mootools/data_messages.js';
+			var request = new Json.Remote(url, {
+				onComplete: function(jsonObj) {
+					addImages(jsonObj.previews);
+				}
+			}).send();
+		});
+
+		$('profile').addEvent('click', function(e) {
+			e = new Event(e).stop();
+			$('gallery').empty();
+			var url = 'http://localhost/tmp/javascript/mootools/data_profile.js';
+			var request = new Json.Remote(url, {
+				onComplete: function(jsonObj) {
+					addImages(jsonObj.previews);
+				}
+			}).send();
+		});
 			
 		$('clearJson').addEvent('click', function(e) {
 			e = new Event(e).stop();
