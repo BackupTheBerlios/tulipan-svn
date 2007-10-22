@@ -1370,6 +1370,10 @@ function templates_variables_substitute ($param) {
                                  )
                 . "\n</style>\n";
             }
+            $metatags .= "\n" . '<script type="text/javascript" src="' . $CFG->wwwroot . 'javascript/mootools/mootools-release-1.11.js"></script>' . "\n";
+ 
+            $metatags .= "\n" . '<script type="text/javascript" src="' . $CFG->wwwroot . 'javascript/mootools/script.js"></script>' . "\n";
+
             $result .= $metatags;
             break;
             

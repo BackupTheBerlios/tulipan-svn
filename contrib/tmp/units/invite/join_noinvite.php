@@ -28,12 +28,16 @@ END;
                                                 'contents' => display_input_field(array("join_name","","text"))
                     )
                     );
+<<<<<<< .mine
+
+=======
                 $run_result .= templates_draw(array(
                                                 'context' => 'databoxvertical',
                                                 'name' => __gettext("Your last name"),
                                                 'contents' => display_input_field(array("join_lname","","text"))
                     )
                     );
+>>>>>>> .r93
 		$run_result .= templates_draw(array(
                                                 'context' => 'databoxvertical',
                                                 'name' => __gettext("Your email address"),

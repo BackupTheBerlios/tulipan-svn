@@ -33,15 +33,6 @@
                                 )
                                 );
 
-
-  // $inviteFriend .= run("invite:invite");
-  //  $showTags = run("search:tags:display");
- //   $showNewsLatinPyme = run("news:display");
-    $showFriends =  run("friends:editpage");
-
-
-    // $showFriends = run();
-
 } else {
         $body = templates_draw(array(
                                         'context' => 'frontpage_loggedout'
