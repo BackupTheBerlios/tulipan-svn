@@ -318,7 +318,7 @@ CREATE TABLE `prefix_users` (
   FULLTEXT KEY `name` (`name`)
 ) TYPE=MyISAM;
 
-INSERT INTO `prefix_users` VALUES (0, 'news', '5f4dcc3b5aa765d61d8327deb882cf99', '', 'News', -1, 'yes', '', '', 10, 10000000, -1, -1, 'person', 'no', 0, 'Default_Template');
+INSERT INTO `prefix_users` VALUES (0, 'news', '5f4dcc3b5aa765d61d8327deb882cf99', '', 'News','', -1, 'yes', '', '', 10, 10000000, -1, -1, 'person', 'no', 0, 'Default_Template');
 
 -- --------------------------------------------------------
 
