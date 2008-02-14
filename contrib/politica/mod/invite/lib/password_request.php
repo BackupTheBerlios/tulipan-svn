@@ -11,7 +11,7 @@ if (!empty($CFG->disable_passwordchanging)) {
 
     // Join
     $sitename = sitename;
-    $desc = sprintf(__gettext("To generate a new password at %s!, enter your email or email below. We will send the address of a unique verification page to you via email click on the link in the body of the message and a new password will be sent to you."), $sitename); // gettext variable
+    $desc = sprintf(__gettext("Please, enter your email address:"), $sitename); // gettext variable
     $thismethod = __gettext("This method reduces the chance of a mistakenly reset password.");
 
     $run_result .= <<< END
@@ -19,9 +19,9 @@ if (!empty($CFG->disable_passwordchanging)) {
     <p>
         $desc
     </p>
-    <p>
+    <!--p>
         $thismethod
-    </p>
+    </p-->
     <form action="" method="post">
 
 END;

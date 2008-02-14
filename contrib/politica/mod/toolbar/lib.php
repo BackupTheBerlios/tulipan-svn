@@ -61,14 +61,14 @@
         $tagcloud = __gettext("Tag cloud");
         $browse = __gettext("Browse");
         $searchdefault = __gettext("Search");
-        
+        $go = __gettext("Go");
         $searchbox = <<< END
         
         <div id="search-header"><!-- open search-header div -->
         <form id="searchform" action="{$CFG->wwwroot}search/index.php" method="get">
             <p><input type="text" size="20" name="tag" value="{$searchdefault}" onclick="if (this.value=='{$searchdefault}') { this.value='' }" />
 
-            <input type="submit" value="Go" />
+            <input type="submit" value=$go />
         </form>
         </div><!-- close search-header div -->
         

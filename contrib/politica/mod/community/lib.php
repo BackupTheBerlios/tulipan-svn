@@ -91,7 +91,7 @@ function community_pagesetup() {
               }
         }
         
-        if (defined("context") && context == "profile") {
+        /*if (defined("context") && context == "profile") {
 
             if (run("permissions:check", "profile")) {
                 
@@ -107,7 +107,7 @@ function community_pagesetup() {
             }
     
             }
-        }
+        }*/
     } else if ($usertype == "person") {
 
         if (defined("context") && context == COMMUNITY_CONTEXT) {

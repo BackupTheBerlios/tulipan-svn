@@ -44,7 +44,7 @@ function contenttoolbar_init(){
   $options = array('options'=> 'width=400,height=300,left=20,top=20,scrollbars=yes,resizable=yes',
                    'name'=> 'mediapopup',
                    'url' => $CFG->wwwroot."mod/contenttoolbar/contenttoolbar_video_wizard.php");
-  add_content_tool_button("mediapopup",__gettext("Add External video"), "image.png", "v", $options);
+  add_content_tool_button("mediapopup",__gettext("Add External Video"), "image.png", "v", $options);
 }
 
 function contenttoolbar_widget_edit($widget) {

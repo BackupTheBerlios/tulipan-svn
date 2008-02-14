@@ -177,7 +177,7 @@ msgstr "(Grupo)"
 
 #: messages_new.php:38
 msgid "No friends on your friends list to send to!"
-msgstr "¡No hay conexiones en tu listado de conexiones para enviarles!"
+msgstr "¡No hay Contactos en su listado de Contactos para enviarles!"
 
 #: messages_new.php:63
 msgid "New message"

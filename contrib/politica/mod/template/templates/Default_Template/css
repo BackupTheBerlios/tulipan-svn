@@ -149,7 +149,7 @@ div#header #logo h2{
 
 div#header #search-header {
 	float:right;
-	width:220px;
+	width:280px;
 	margin:0;
 	padding:0;
 	position:absolute;
