@@ -12,7 +12,7 @@ if ($page_owner != -1 && (user_type($page_owner) == "person" || user_type($page_
             $friends[] = (int) $row->ident;
         }
     }
-        $run_result .= "<li id=\"sidebar_friends\">";
+        //$run_result .= "<li id=\"sidebar_friends\">";
     if ($page_owner != $_SESSION['userid']) {
         $run_result .= run("users:infobox",
                            array(
@@ -31,7 +31,7 @@ if ($page_owner != -1 && (user_type($page_owner) == "person" || user_type($page_
                                  )
                            );
     }
-        $run_result .= "</li>";
+        //$run_result .= "</li>";
 
 }
 

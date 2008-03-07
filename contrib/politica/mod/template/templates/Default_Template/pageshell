@@ -9,8 +9,8 @@
 <div id="container"><!-- open container which wraps the header, maincontent and sidebar -->
 
 	<div id="header"><!-- open div header -->
-	<!--div id="top_nav"><a href="#">MAPA</a> | <a href="#">IDIOMA</a> | <a href="#">SALIR</a>
-	</div-->
+	<div id="top_nav"> | <a href="{{url}}">Inicio</a> | <!--a href="#">IDIOMA</a> | <a href="#">SALIR</a-->
+	</div>
 		<div id="header-inner">
 			<div id="logo"><!-- open div logo -->
 				<!--h1><a href="{{url}}">{{sitename}}</a></h1-->

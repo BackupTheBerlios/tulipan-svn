@@ -153,7 +153,7 @@ div#header #search-header {
 	margin:0;
 	padding:0;
 	position:absolute;
-	top:15px;
+	top:50px;
 	right:0;
 }
 
@@ -272,12 +272,12 @@ div#splitpane-sidebar ul {
 	list-style: none;
 }
 
-div#splitpane-sidebar ul li {
+div#splitpane-sidebar {
 	margin:10px 0;
 	padding-left: 5px;
 }
 
-div#splitpane-sidebar ul li ul li a {
+div#splitpane-sidebar a {
 	padding:0 0 0 5px;
 }
 
