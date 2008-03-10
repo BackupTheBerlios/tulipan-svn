@@ -44,7 +44,7 @@ END;
                 $w = 50;
             }
 
-            $username = user_name($info->ident);
+            $username = user_name($info->ident)." ".$info->lastname;
             $usermenu = '';
 
             $body .= <<< END
