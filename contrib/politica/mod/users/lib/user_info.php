@@ -49,7 +49,7 @@ END;
 
             $body .= <<< END
 
-            <a href="{$CFG->wwwroot}{$info->username}/">{$username}</a>
+            <a href="{$CFG->wwwroot}{$info->username}/">{$username}<br></a>
 
 END;
 
