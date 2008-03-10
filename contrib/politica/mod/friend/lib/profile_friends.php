@@ -18,7 +18,7 @@ if ($page_owner != -1 && (user_type($page_owner) == "person" || user_type($page_
                            array(
                                  __gettext("Friends"),
                                  $friends,
-                                 "<a href=\"".url."mod/friend/?owner=$profile_id\">[" . __gettext("View all Friends") . "]</a>"
+                                 "<a href=\"".url."mod/friend/?owner=$profile_id\">[" . __gettext("View all Friends") . "]<br></a>"
                                  )
                            );
 
@@ -27,7 +27,7 @@ if ($page_owner != -1 && (user_type($page_owner) == "person" || user_type($page_
                            array(
                                  __gettext("Your Friends"),
                                  $friends,
-                                 "<a href=\"".url.$_SESSION['username']."/friends/\">[" . __gettext("View all Friends") . "]</a>"
+                                 "<a href=\"".url.$_SESSION['username']."/friends/\">[" . __gettext("View all Friends") . "]<br></a>"
                                  )
                            );
     }
